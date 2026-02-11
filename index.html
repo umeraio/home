@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Simple Guides for Tech & Everyday Life | Umer Malik</title>
+<link href="https://fonts.googleapis.com/css2?family=Segoe+UI:wght@400;600;700;800&display=swap" rel="stylesheet">
+
+<style>
+body{
+  margin:0;
+  font-family:'Segoe UI',sans-serif;
+  background:#eaf2fb;
+  color:#222;
+}
+
+/* ===== HEADER ===== */
+header{
+  position:relative;
+  background:linear-gradient(90deg,#0a3d91,#005fa3,#0078D7);
+  color:#fff;
+  padding:20px 30px;
+  border-radius:40px;
+  margin:15px;
+  box-shadow:0 4px 15px rgba(0,0,0,0.25);
+  text-align:center;
+}
+
+/* NAVIGATION (Far Left & Right) */
+.nav{
+  position:absolute;
+  bottom:15px;
+  left:0;
+  width:100%;
+  display:flex;
+  justify-content:space-between;
+  padding:0 30px;
+  box-sizing:border-box;
+}
+
+.nav a{
+  color:#fff;
+  text-decoration:none;
+  font-weight:800;
+  font-size:1rem;
+  padding:8px 20px;
+  border-radius:25px;
+  background:rgba(255,255,255,0.15);
+  transition:all 0.3s ease;
+}
+
+.nav a:hover{
+  background:#ffffff;
+  color:#005fa3;
+  transform:scale(1.08);
+}
+
+/* HERO CENTERED */
+.hero h1{
+  font-size:1.6rem;
+  font-weight:800;
+  letter-spacing:0.5px;
+  margin:0 0 6px 0;
+}
+
+.hero p{
+  font-size:0.95rem;
+  opacity:0.95;
+  margin:0;
+  padding-bottom:25px; /* Space above nav */
+}
+
+/* ===== MAIN CONTENT ===== */
+.container{
+  max-width:1200px;
+  margin:60px auto;
+  display:flex;
+  justify-content:space-around;
+  flex-wrap:wrap;
+  gap:40px;
+}
+
+.column{
+  flex:1 1 320px;
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  gap:18px;
+}
+
+h2{
+  font-weight:700;
+  margin-bottom:5px;
+}
+
+.description{
+  font-size:0.9rem;
+  text-align:center;
+  color:#555;
+  margin-bottom:10px;
+  max-width:300px;
+}
+
+/* ===== CARD BASE ===== */
+a.card{
+  display:block;
+  width:85%;
+  text-align:center;
+  text-decoration:none;
+  background:#ffffff;
+  padding:18px 20px;
+  font-weight:800;
+  font-size:1.05rem;
+  border-radius:18px;
+  box-shadow:0 12px 25px rgba(0,0,0,0.18);
+  transition:all .35s ease;
+  border-left:8px solid;
+  border-right:8px solid;
+}
+
+a.card:hover{
+  transform:translateY(-8px) scale(1.03);
+}
+
+/* CARD COLORS */
+.tech{ border-color:#0078D7; color:#004a99; }
+.tech:hover{ box-shadow:0 20px 40px rgba(0,120,215,0.45); background:#f2f8ff; }
+
+.study{ border-color:#28a745; color:#1e7e34; }
+.study:hover{ box-shadow:0 20px 40px rgba(40,167,69,0.45); background:#f3fff6; }
+
+.tools{ border-color:#6f42c1; color:#4b2e83; }
+.tools:hover{ box-shadow:0 20px 40px rgba(111,66,193,0.45); background:#f7f3ff; }
+
+.life{ border-color:#FFD700; color:#b8860b; }
+.life:hover{ box-shadow:0 20px 40px rgba(255,215,0,0.45); background:#fffdf2; }
+
+/* ===== FOOTER WRAPPER ===== */
+.footer-container {
+  text-align: center;
+  width: 100%;
+  margin: 70px 0 30px 0;
+}
+
+/* ===== FOOTER ===== */
+footer{
+  display:inline-block;
+  text-align:center;
+  border-top:3px solid #FFD700;
+  padding:10px 25px; 
+  font-size:0.9rem;
+  font-style:italic;
+  font-weight:600;
+  background:#f4f8fd;
+  color:#444;
+  border-radius:15px;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.15);
+}
+
+</style>
+</head>
+<body>
+
+<header>
+
+  <div class="hero">
+    <h1>Simple Guides for Tech & Everyday Life</h1>
+    <p>Explore tutorials, courses, and step-by-step guides with Umer Malik.</p>
+  </div>
+
+  <div class="nav">
+    <a href="#">🏠 Home</a>
+    <a href="#">ℹ️ About</a>
+  </div>
+
+</header>
+
+<div class="container">
+
+  <div class="column">
+    <h2 style="color:#0078D7;">💻 Tech Guides</h2>
+    <div class="description">
+      Practical technical tutorials, system walkthroughs, and real-world IT knowledge.
+    </div>
+    <a href="#" class="card tech">Explore Tech Tutorials</a>
+  </div>
+
+  <div class="column">
+    <h2 style="color:#28a745;">📚 Study Material</h2>
+    <div class="description">
+      Structured learning resources, certification prep, and simplified notes.
+    </div>
+    <a href="#" class="card study">Browse Study Resources</a>
+  </div>
+
+  <div class="column">
+    <h2 style="color:#6f42c1;">🛠 Tools & Downloads</h2>
+    <div class="description">
+      Templates, utilities, scripts, and helpful downloadable materials.
+    </div>
+    <a href="#" class="card tools">Access Tools</a>
+  </div>
+
+  <div class="column">
+    <h2 style="color:#b8860b;">🌱 Life & Skills</h2>
+    <div class="description">
+      Productivity tips, personal development insights, and life skills.
+    </div>
+    <a href="#" class="card life">Improve Life Skills</a>
+  </div>
+
+</div>
+
+<div class="footer-container">
+  <footer>
+  Crafted Through Research by Umer Malik
+  </footer>
+</div>
+
+</body>
+</html>
