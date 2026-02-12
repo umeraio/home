@@ -26,16 +26,13 @@ header{
   text-align:center;
 }
 
-/* NAVIGATION (Far Left & Right) */
+/* NAVIGATION (Far Right Only) */
 .nav{
   position:absolute;
   bottom:15px;
-  left:0;
-  width:100%;
+  right:30px; /* Moved to right as requested */
   display:flex;
-  justify-content:space-between;
-  padding:0 30px;
-  box-sizing:border-box;
+  gap:10px;
 }
 
 .nav a{
@@ -67,7 +64,7 @@ header{
   font-size:0.95rem;
   opacity:0.95;
   margin:0;
-  padding-bottom:25px; /* Space above nav */
+  padding-bottom:25px; 
 }
 
 /* ===== MAIN CONTENT ===== */
@@ -135,14 +132,12 @@ a.card:hover{
 .life{ border-color:#FFD700; color:#b8860b; }
 .life:hover{ box-shadow:0 20px 40px rgba(255,215,0,0.45); background:#fffdf2; }
 
-/* ===== FOOTER WRAPPER ===== */
 .footer-container {
   text-align: center;
   width: 100%;
   margin: 70px 0 30px 0;
 }
 
-/* ===== FOOTER ===== */
 footer{
   display:inline-block;
   text-align:center;
@@ -162,51 +157,48 @@ footer{
 <body>
 
 <header>
-
   <div class="hero">
     <h1>Simple Guides for Tech & Everyday Life</h1>
     <p>Explore tutorials, courses, and step-by-step guides with Umer Malik.</p>
   </div>
 
   <div class="nav">
-    <a href="#">🏠 Home</a>
-    <a href="#">ℹ️ About</a>
+    <a href="https://umeraio.github.io/about/">🌐 About</a>
   </div>
-
 </header>
 
 <div class="container">
 
   <div class="column">
-    <h2 style="color:#0078D7;">💻 Tech Guides</h2>
+    <h2 style="color:#0078D7;">📂 Tech Guides</h2>
     <div class="description">
       Practical technical tutorials, system walkthroughs, and real-world IT knowledge.
     </div>
-    <a href="#" class="card tech">Explore Tech Tutorials</a>
+    <a href="https://umeraio.github.io/Tech-Guides/" class="card tech">Explore Tech Tutorials</a>
   </div>
 
   <div class="column">
-    <h2 style="color:#28a745;">📚 Study Material</h2>
+    <h2 style="color:#28a745;">📖 Study Material</h2>
     <div class="description">
       Structured learning resources, certification prep, and simplified notes.
     </div>
-    <a href="#" class="card study">Browse Study Resources</a>
+    <a href="https://umeraio.github.io/Study-Material/" class="card study">Browse Study Resources</a>
   </div>
 
   <div class="column">
-    <h2 style="color:#6f42c1;">🛠 Tools & Downloads</h2>
+    <h2 style="color:#6f42c1;">💻 Tools & Downloads</h2>
     <div class="description">
       Templates, utilities, scripts, and helpful downloadable materials.
     </div>
-    <a href="#" class="card tools">Access Tools</a>
+    <a href="https://umeraio.github.io/Tools-Downloads/" class="card tools">Access Tools</a>
   </div>
 
   <div class="column">
-    <h2 style="color:#b8860b;">🌱 Life & Skills</h2>
+    <h2 style="color:#b8860b;">🧪 Life & Skills</h2>
     <div class="description">
       Productivity tips, personal development insights, and life skills.
     </div>
-    <a href="#" class="card life">Improve Life Skills</a>
+    <a href="https://umeraio.github.io/Life-Skills/" class="card life">Improve Life Skills</a>
   </div>
 
 </div>
