@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Level 3 Assessor Qualifications (CAVA)</title>
+<link href="https://fonts.googleapis.com/css2?family=Segoe+UI:wght@400;600&display=swap" rel="stylesheet">
+<style>
+body{
+  margin:0;
+  font-family:"Segoe UI",sans-serif;
+  background:linear-gradient(120deg, #f7f4e6 0%, #f1e6c5 100%);  /* Light cream gradient */
+  color:#002b5b;
+  overflow:hidden;
+}
+.header{
+  position:fixed;top:0;left:0;width:100%;
+  background:linear-gradient(90deg,#004aad,#002b80);
+  color:#FFD700;text-align:center;
+  font-size:2rem;font-weight:bold;
+  padding:20px 0;z-index:20;
+  text-shadow:1px 1px 3px #000;
+  box-shadow:0 4px 8px rgba(0,0,0,0.25);
+  border-bottom:3px solid #FFD700;
+}
+.slide{
+  position:absolute;top:0;left:0;width:100%;height:100vh;
+  opacity:0;display:flex;justify-content:center;align-items:center;
+  transition:opacity 1s ease;
+}
+.slide.active{opacity:1;z-index:5;}
+.text-box{
+  background:rgba(255,255,255,0.9);
+  backdrop-filter:blur(10px);
+  border-radius:20px;
+  box-shadow:0 8px 25px rgba(0,0,0,0.15);
+  max-width:900px;
+  padding:40px 50px;
+  text-align:center;
+  animation:fadeIn 1s ease;
+  border-left:5px solid #004aad;
+  border-right:5px solid #004aad;
+}
+@keyframes fadeIn{
+  from{opacity:0;transform:translateY(20px);}
+  to{opacity:1;transform:translateY(0);}
+}
+.text-box h2{
+  color:#004aad;
+  margin-bottom:15px;
+  font-size:2rem;
+  text-shadow:0 0 4px rgba(255,255,255,0.7);
+}
+.text-box p, .text-box ul{
+  font-size:1.2rem;
+  line-height:1.8;
+  color:#002b5b;
+}
+ul{list-style:none;padding:0;}
+ul li::before{content:"• ";color:#004aad;font-weight:bold;}
+.page-num{
+  position:absolute;bottom:25px;right:30px;
+  font-size:1rem;font-weight:600;
+  color:#004aad;background:rgba(255,255,255,0.85);
+  padding:6px 12px;border-radius:8px;
+}
+#controls{
+  position:fixed;bottom:40px;width:100%;
+  text-align:center;z-index:10;
+}
+button{
+  background:#FFD700;
+  color:#001f54;
+  border:none;
+  margin:0 6px;
+  padding:6px 12px;
+  border-radius:50px;
+  cursor:pointer;
+  font-size:1.1rem;
+  font-weight:600;
+  transition:0.3s ease;
+}
+button:hover{background:#004aad;color:#fff;transform:scale(1.05);}
+#readBtn{background:#00c9a7;}
+#readBtn:hover{background:#009e82;color:#fff;}
+#muteBtn{background:#ff6666;color:#fff;}
+#muteBtn:hover{background:#cc0000;}
+#menuBtn{background:#fff;color:#001f54;}
+#menuBtn:hover{background:#FFD700;color:#001f54;}
+#footer{
+  position:fixed;bottom:0;left:0;width:100%;
+  font-size:0.9rem;text-align:center;padding:8px 0;
+  background:#002b80;color:#FFD700;border-top:2px solid #FFD700;
+}
+.progress-container{
+  position:fixed;bottom:48px;left:0;width:100%;height:6px;
+  background:rgba(0,0,0,0.1);z-index:5;
+}
+.progress-bar{
+  height:6px;
+  background:linear-gradient(90deg,#00c9a7,#FFD700,#004aad);
+  width:0%;
+  transition:width 0.6s ease,background 0.6s ease;
+  border-radius:3px;
+}
+</style>
+</head>
+<body>
+
+<div class="header">📋 Level 3 Assessor Qualifications (CAVA)</div>
+
+<div class="slide active"><div class="text-box">
+<h2>Welcome to Assessor Training</h2>
+<p>Welcome to the <b>Level 3 Assessor Qualifications</b> guide. Today we break down the requirements to become a qualified assessor in the UK. 🇬🇧</p>
+<p>Whether you are looking to assess apprenticeships, NVQs, or vocational skills, this module covers the <b>CAVA, ACWE, and AVRA</b> qualifications. 🎓</p>
+</div><div class="page-num">1 / 12</div></div>
+
+<div class="slide"><div class="text-box">
+<h2>What is an Assessor Qualification?</h2>
+<p>These qualifications authorise you to make decisions about a learner's occupational competence.</p>
+<ul>
+<li>🔎 You gather evidence (observation, questions, work products).</li>
+<li>⚖️ You judge that evidence against a set of standards.</li>
+<li>✅ You provide feedback and sign off on their competence.</li>
+</ul>
+<p>The most comprehensive qualification is the <b>Level 3 CAVA</b>. 🏆</p>
+</div><div class="page-num">2 / 12</div></div>
+
+<div class="slide"><div class="text-box">
+<h2>1️⃣ The CAVA Qualification</h2>
+<p><b>CAVA</b> stands for <b>Certificate in Assessing Vocational Achievement</b>.</p>
+<p>This is the modern replacement for the old "A1" or "D32/D33" awards. It is the "gold standard" because it qualifies you to assess in <b>ALL</b> environments:</p>
+<ul>
+<li>🏗️ <b>The Workplace:</b> Real jobs, live tasks.</li>
+<li>🏫 <b>The Learning Environment:</b> Classrooms, workshops, simulations.</li>
+</ul>
+</div><div class="page-num">3 / 12</div></div>
+
+<div class="slide"><div class="text-box">
+<h2>What does CAVA Cover?</h2>
+<p>To achieve CAVA, you typically complete three units:</p>
+<ul>
+<li>📘 <b>Unit 1:</b> Understanding the Principles & Practices of Assessment (Theory).</li>
+<li>💼 <b>Unit 2:</b> Assessing Competence in the Work Environment (Practical).</li>
+<li>🎓 <b>Unit 3:</b> Assessing Vocationally Related Achievement (Classroom/Skills Lab).</li>
+</ul>
+<p>This makes you a fully qualified assessor for Apprenticeships and NVQs. 🌟</p>
+</div><div class="page-num">4 / 12</div></div>
+
+<div class="slide"><div class="text-box">
+<h2>2️⃣ The ACWE Award</h2>
+<p><b>ACWE</b> stands for <b>Award in Assessing Competence in the Work Environment</b>.</p>
+<p>This is a shorter qualification for those who <b>ONLY</b> assess staff doing their daily jobs.</p>
+<ul>
+<li>🏗️ Ideal for: Construction site foremen assessing bricklayers.</li>
+<li>✂️ Ideal for: Salon managers assessing junior stylists on real clients.</li>
+<li>❌ You cannot assess in a classroom or workshop with this award.</li>
+</ul>
+</div><div class="page-num">5 / 12</div></div>
+
+<div class="slide"><div class="text-box">
+<h2>3️⃣ The AVRA Award</h2>
+<p><b>AVRA</b> stands for <b>Award in Assessing Vocationally Related Achievement</b>.</p>
+<p>This is for assessors who <b>ONLY</b> work in learning environments, such as colleges or training centres.</p>
+<ul>
+<li>🏫 Ideal for: Lecturers marking assignments or tests.</li>
+<li>📝 Ideal for: Assessing simulations or role-plays (not real work).</li>
+<li>❌ You cannot assess a learner in their real place of work with this.</li>
+</ul>
+</div><div class="page-num">6 / 12</div></div>
+
+<div class="slide"><div class="text-box">
+<h2>Do You Have the Experience?</h2>
+<p>You cannot buy these qualifications off the shelf—you need <b>Occupational Competence</b>. 🛠️</p>
+<ul>
+<li>💡 To assess a plumber, you must be a qualified plumber.</li>
+<li>💡 To assess a coder, you must have coding experience.</li>
+</ul>
+<p>Regulatory bodies require you to have relevant, up-to-date industry experience to judge others safely and fairly. 📜</p>
+</div><div class="page-num">7 / 12</div></div>
+
+<div class="slide"><div class="text-box">
+<h2>What happened to A1 and D32/33?</h2>
+<p>You might hear older colleagues refer to their <b>"A1 Assessor Award"</b> or the even older <b>"D32/D33"</b>.</p>
+<ul>
+<li>🔄 These are <b>legacy qualifications</b>.</li>
+<li>✅ If you hold them, they are usually still valid (you don't need to retake CAVA).</li>
+<li>📈 However, you must show you have kept your skills up to date (CPD).</li>
+</ul>
+<p>CAVA is simply the current version of these historic awards. 🕰️</p>
+</div><div class="page-num">8 / 12</div></div>
+
+<div class="slide"><div class="text-box">
+<h2>The Assessment Cycle</h2>
+<p>Regardless of which qualification you choose (CAVA, ACWE, AVRA), you will learn the <b>Assessment Cycle</b>:</p>
+<ol>
+<li>📅 <b>Plan:</b> Agree on what will be assessed and how.</li>
+<li>👁️ <b>Judge:</b> Observe the learner or examine their work.</li>
+<li>💬 <b>Feedback:</b> Give constructive praise and advice.</li>
+<li>📝 <b>Record:</b> Document the decision formally.</li>
+</ol>
+</div><div class="page-num">9 / 12</div></div>
+
+<div class="slide"><div class="text-box">
+<h2>How Will You Assess?</h2>
+<p>During your Level 3 course, you will master various methods:</p>
+<ul>
+<li>👀 <b>Observation:</b> Watching the learner work.</li>
+<li>🗣️ <b>Professional Discussion:</b> Asking them "why" they did something.</li>
+<li>📂 <b>Product Evidence:</b> Looking at documents or items they created.</li>
+<li>✍️ <b>Witness Testimony:</b> Asking their manager for feedback.</li>
+</ul>
+<p>A good assessor uses a mix of these methods (Triangulation). 📐</p>
+</div><div class="page-num">10 / 12</div></div>
+
+<div class="slide"><div class="text-box">
+<h2>Study Tips for Success</h2>
+<p>If you are enrolling in CAVA, prepare by:</p>
+<ul>
+<li>🤝 <b>Finding two learners:</b> You need real people to assess to pass your course.</li>
+<li>📑 <b>Knowing the Standards:</b> Read the NVQ/Unit criteria you are assessing against.</li>
+<li>🛡️ <b>Understanding IQA:</b> Learn how Internal Quality Assurers check your work.</li>
+</ul>
+<p>Remember: Assessment must be Valid, Authentic, Current, Sufficient, and Reliable (VACSR). 🔐</p>
+</div><div class="page-num">11 / 12</div></div>
+
+<div class="slide"><div class="text-box">
+<h2>🎓 Summary & Recap</h2>
+<ul>
+<li>🏆 <b>CAVA:</b> The full qualification (Workplace + Classroom).</li>
+<li>🏗️ <b>ACWE:</b> Workplace assessment only.</li>
+<li>🏫 <b>AVRA:</b> Classroom/Workshop assessment only.</li>
+</ul>
+<p>Becoming an assessor allows you to pass on your industry expertise to the next generation. Good luck with your Level 3 studies! 🍀</p>
+</div><div class="page-num">12 / 12</div></div>
+
+<div class="progress-container"><div class="progress-bar" id="progressBar"></div></div>
+
+<div id="controls">
+  <button id="prevBtn">⬅ Previous</button>
+  <button id="readBtn">🔊 Read</button>
+  <a href="index.html"><button id="menuBtn">🏠 Menu</button></a>
+  <button id="muteBtn">🔇 Mute</button>
+  <button id="nextBtn">Next ➡</button>
+</div>
+
+<div id="footer">
+  © 2025 HHF Training | Designed by Umer Malik | www.hhftraining.co.uk
+</div>
+
+<script>
+const slides=document.querySelectorAll('.slide');
+let current=0;
+const synth=window.speechSynthesis;
+const progressBar=document.getElementById('progressBar');
+function showSlide(i){
+  slides[current].classList.remove('active');
+  current=(i+slides.length)%slides.length;
+  slides[current].classList.add('active');
+  updateProgress();
+}
+function updateProgress(){
+  const progress=((current+1)/slides.length)*100;
+  progressBar.style.width=progress+"%";
+  if(progress<33){progressBar.style.background="linear-gradient(90deg,#00c9a7,#7fff00)";} 
+  else if(progress<66){progressBar.style.background="linear-gradient(90deg,#FFD700,#FFA500)";} 
+  else{progressBar.style.background="linear-gradient(90deg,#004aad,#001f54)";} 
+}
+function readText(){
+  if(synth.speaking){synth.cancel();}
+  const text=slides[current].innerText;
+  const utter=new SpeechSynthesisUtterance(text);
+  utter.lang='en-GB';utter.rate=1;
+  synth.speak(utter);
+}
+document.getElementById('nextBtn').onclick=()=>showSlide(current+1);
+document.getElementById('prevBtn').onclick=()=>showSlide(current-1);
+document.getElementById('readBtn').onclick=()=>readText();
+document.getElementById('muteBtn').onclick=()=>synth.cancel();
+updateProgress();
+</script>
+
+</body>
+</html>

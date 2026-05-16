@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Episode 2 – Types of AI (ANI, AGI & ASI)</title>
+<link href="https://fonts.googleapis.com/css2?family=Segoe+UI&family=Noto+Nastaliq+Urdu&display=swap" rel="stylesheet">
+
+<style>
+body{
+  margin:0;
+  font-family:"Segoe UI",sans-serif;
+  background:linear-gradient(90deg,#f8fbff 0%,#ffffff 50%,#fff8e1 100%);
+  color:#222;
+  overflow:hidden;
+}
+.header{
+  position:fixed;top:0;left:0;width:100%;
+  background:#0078D7;color:#fff;text-align:center;
+  font-size:1.6rem;font-weight:bold;letter-spacing:0.5px;
+  padding:15px 0;z-index:20;
+  box-shadow:0 3px 6px rgba(0,0,0,0.2);
+}
+.slide{
+  display:none;height:100vh;width:100%;
+  justify-content:space-between;align-items:center;
+  padding:100px 60px 80px 60px;box-sizing:border-box;
+  animation:fadein 1s ease;
+}
+.slide.active{display:flex;}
+@keyframes fadein{from{opacity:0;transform:translateY(30px);}to{opacity:1;transform:translateY(0);}}
+.card{
+  width:100%;display:flex;justify-content:space-between;align-items:center;
+  background:#fff;border-radius:20px;padding:40px 50px;
+  box-shadow:0 6px 15px rgba(0,0,0,0.2);
+}
+.text-en{width:30%;font-size:1.25rem;line-height:1.6;}
+.text-ur{
+  width:30%;font-family:'Noto Nastaliq Urdu',serif;font-size:1.6rem;
+  direction:rtl;text-align:right;line-height:2;font-weight:bold;
+}
+.visual{text-align:center;width:30%;}
+.visual img{max-width:230px;height:auto;}
+#controls{
+  position:fixed;bottom:65px;width:100%;text-align:center;z-index:10;
+}
+button{
+  background:#0078D7;color:#fff;border:none;margin:0 8px;
+  padding:12px 24px;border-radius:8px;cursor:pointer;font-size:1rem;transition:0.3s;
+}
+button:hover{background:#005fa3;}
+#readEnBtn,#readUrBtn{background:#FFD700;color:#222;font-weight:bold;}
+#muteBtn{background:#ff6666;color:#fff;font-weight:bold;}
+#footer{
+  position:fixed;bottom:0;left:0;width:100%;
+  font-size:0.9rem;text-align:center;padding:6px 0;
+  background:#f0f0f0;color:#333;border-top:3px solid #FFD700;
+}
+</style>
+</head>
+<body>
+
+<div class="header">Episode 2 – Types of AI (ANI, AGI & ASI)</div>
+
+<!-- 1 -->
+<div class="slide active">
+  <div class="card">
+    <div class="text-en">
+      <h2>Welcome Back!</h2>
+      <p>In the first episode we learned what AI means.  
+      Now, let’s explore the <b>three main types of Artificial Intelligence</b> that scientists talk about — <b>ANI, AGI,</b> and <b>ASI</b>.  
+      Each level represents how “smart” a machine can be.</p>
+    </div>
+    <div class="visual"><img src="https://cdn-icons-png.flaticon.com/512/4712/4712100.png" alt="AI Levels"></div>
+    <div class="text-ur" dir="rtl">
+      <p>پچھلی قسط میں ہم نے سیکھا کہ مصنوعی ذہانت کیا ہے۔  
+      اب ہم مصنوعی ذہانت کی تین اہم اقسام — محدود، عمومی اور اعلیٰ ذہانت — کے بارے میں جانیں گے۔  
+      یہ اقسام مشین کی سمجھ بوجھ کی سطح کو ظاہر کرتی ہیں۔</p>
+    </div>
+  </div>
+</div>
+
+<!-- 2 -->
+<div class="slide">
+  <div class="card">
+    <div class="text-en">
+      <h2>Understanding the Types</h2>
+      <p>The types of AI are based on <b>how capable</b> and <b>intelligent</b> a system is.  
+      Think of it like levels in a game — from simple to super smart.  
+      Level 1 = Narrow AI, Level 2 = General AI, Level 3 = Super AI.</p>
+    </div>
+    <div class="visual"><img src="https://cdn-icons-png.flaticon.com/512/4712/4712125.png" alt="AI Levels Chart"></div>
+    <div class="text-ur" dir="rtl">
+      <p>مصنوعی ذہانت کی اقسام اس بات پر مبنی ہیں کہ ایک نظام کتنی قابلیت اور عقل رکھتا ہے۔  
+      جیسے کسی کھیل کے درجے ہوتے ہیں — آسان سے لے کر بہت ذہین تک۔  
+      پہلا درجہ محدود، دوسرا عمومی، اور تیسرا اعلیٰ ذہانت ہے۔</p>
+    </div>
+  </div>
+</div>
+
+<!-- 3 -->
+<div class="slide">
+  <div class="card">
+    <div class="text-en">
+      <h2>1️⃣ ANI – Artificial Narrow Intelligence</h2>
+      <p>Also called <b>Weak AI</b>. It can do <b>only one specific task</b>.  
+      Examples include <b>Siri, Alexa, chatbots, spam filters, or face recognition</b>.  
+      ANI follows rules and data — it doesn’t truly “think.”</p>
+    </div>
+    <div class="visual"><img src="https://cdn-icons-png.flaticon.com/512/4712/4712109.png" alt="Narrow AI Assistant"></div>
+    <div class="text-ur" dir="rtl">
+      <p>اسے محدود یا کمزور مصنوعی ذہانت بھی کہا جاتا ہے۔  
+      یہ صرف ایک خاص کام کر سکتی ہے، جیسے سری، الیکسا، چیٹ بوٹ یا اسپام فلٹر۔  
+      یہ قوانین اور ڈیٹا پر کام کرتی ہے، خود سے نہیں سوچتی۔</p>
+    </div>
+  </div>
+</div>
+
+<!-- 4 -->
+<div class="slide">
+  <div class="card">
+    <div class="text-en">
+      <h2>Examples of ANI</h2>
+      <ul>
+        <li>🎧 Voice Assistants – understand commands.</li>
+        <li>📧 Spam Filters – detect junk emails.</li>
+        <li>🎬 Netflix or YouTube – recommend what to watch.</li>
+        <li>🚕 Taxi Apps – find nearest drivers.</li>
+        <li>🏥 Medical Scans – detect diseases from X-rays.</li>
+      </ul>
+      <p>These AIs help us daily but cannot go beyond their programmed role.</p>
+    </div>
+    <div class="visual"><img src="https://cdn-icons-png.flaticon.com/512/2890/2890220.png" alt="ANI Examples"></div>
+    <div class="text-ur" dir="rtl">
+      <p>کچھ مثالیں:</p>
+      <ul style="list-style:none;padding:0;margin:0;">
+        <li>🔹 وائس اسسٹنٹ جو ہدایات سمجھتے ہیں۔</li>
+        <li>🔹 ای میل اسپام فلٹر۔</li>
+        <li>🔹 نیٹ فلکس اور یوٹیوب کی تجاویز۔</li>
+        <li>🔹 ٹیکسی ایپس جو قریب ترین ڈرائیور دکھاتی ہیں۔</li>
+        <li>🔹 ایکسرے سے بیماریوں کی پہچان۔</li>
+      </ul>
+      <p>یہ سب روزمرہ زندگی میں مدد کرتے ہیں مگر اپنے دائرے سے باہر نہیں جا سکتے۔</p>
+    </div>
+  </div>
+</div>
+
+<!-- 5 -->
+<div class="slide">
+  <div class="card">
+    <div class="text-en">
+      <h2>2️⃣ AGI – Artificial General Intelligence</h2>
+      <p>Also called <b>Strong AI</b>.  
+      It would be able to <b>think, reason, and learn</b> like a human in any field.  
+      AGI can switch between skills — solve maths, play chess, write essays, drive cars — all with understanding.</p>
+    </div>
+    <div class="visual"><img src="https://cdn-icons-png.flaticon.com/512/4712/4712112.png" alt="AGI Brain"></div>
+    <div class="text-ur" dir="rtl">
+      <p>اسے مضبوط مصنوعی ذہانت بھی کہا جاتا ہے۔  
+      یہ انسان کی طرح سوچ سکتی، سیکھ سکتی اور مختلف شعبوں میں کام کر سکتی ہے۔  
+      جیسے حساب لگانا، مضمون لکھنا یا گاڑی چلانا — سب کچھ سمجھ کے ساتھ۔</p>
+    </div>
+  </div>
+</div>
+
+<!-- 6 -->
+<div class="slide">
+  <div class="card">
+    <div class="text-en">
+      <h2>AGI – Still a Dream</h2>
+      <p>True AGI does not exist yet.  
+      Scientists are experimenting with advanced neural networks that mimic human reasoning, but we are still far away.  
+      For now, AI can outperform humans in single tasks, not in general thinking.</p>
+    </div>
+    <div class="visual"><img src="https://cdn-icons-png.flaticon.com/512/4712/4712131.png" alt="AGI Research"></div>
+    <div class="text-ur" dir="rtl">
+      <p>ابھی حقیقی عمومی ذہانت موجود نہیں۔  
+      سائنس دان ایسے نظام بنا رہے ہیں جو انسان کی طرح سوچ سکیں، مگر ابھی سفر باقی ہے۔  
+      فی الحال مشینیں صرف مخصوص کاموں میں انسان سے بہتر ہیں۔</p>
+    </div>
+  </div>
+</div>
+
+<!-- 7 -->
+<div class="slide">
+  <div class="card">
+    <div class="text-en">
+      <h2>3️⃣ ASI – Artificial Super Intelligence</h2>
+      <p>ASI is the stage where machines become <b>smarter than humans</b>.  
+      It could design its own systems, improve itself, and possibly create new knowledge faster than people.  
+      It remains a theory — a mix of hope and concern.</p>
+    </div>
+    <div class="visual"><img src="https://cdn-icons-png.flaticon.com/512/4712/4712135.png" alt="Super AI"></div>
+    <div class="text-ur" dir="rtl">
+      <p>اعلیٰ مصنوعی ذہانت وہ ہوگی جو انسان سے بھی زیادہ ذہین ہو۔  
+      یہ خود کو بہتر بنا سکے گی اور نئی معلومات خود تیار کرے گی۔  
+      فی الحال یہ ایک نظری تصور ہے جو امید اور خدشے دونوں رکھتا ہے۔</p>
+    </div>
+  </div>
+</div>
+
+<!-- 8 -->
+<div class="slide">
+  <div class="card">
+    <div class="text-en">
+      <h2>Risks and Ethics</h2>
+      <p>As AI grows stronger, we must set rules and ethics.  
+      It’s important that AI systems follow human values — safety, fairness, and kindness — so technology remains a blessing, not a danger.</p>
+    </div>
+    <div class="visual"><img src="https://cdn-icons-png.flaticon.com/512/2886/2886742.png" alt="AI Ethics"></div>
+    <div class="text-ur" dir="rtl">
+      <p>جیسے جیسے مصنوعی ذہانت ترقی کر رہی ہے، ہمیں اس کے لیے اصول اور اخلاقیات مقرر کرنا ہوں گے۔  
+      ضروری ہے کہ یہ انسانی اقدار — حفاظت، انصاف اور خیر خواہی — کے مطابق ہو تاکہ ٹیکنالوجی رحمت بنے، خطرہ نہیں۔</p>
+    </div>
+  </div>
+</div>
+
+<!-- 9 -->
+<div class="slide">
+  <div class="card">
+    <div class="text-en">
+      <h2>Recap & Next Episode</h2>
+      <p><b>ANI</b> = Performs one task | <b>AGI</b> = Thinks like humans | <b>ASI</b> = Beyond human intelligence.  
+      In Episode 3 we’ll see <b>AI in Daily Life and Real Industries</b>.</p>
+    </div>
+    <div class="visual"><img src="https://cdn-icons-png.flaticon.com/512/4712/4712100.png" alt="AI Recap"></div>
+    <div class="text-ur" dir="rtl">
+      <p><b>محدود ذہانت</b> صرف ایک کام کرتی ہے،  
+      <b>عمومی ذہانت</b> انسان کی طرح سوچتی ہے،  
+      اور <b>اعلیٰ ذہانت</b> انسان سے آگے جا سکتی ہے۔  
+      اگلی قسط میں ہم حقیقی زندگی میں AI کے استعمالات دیکھیں گے۔</p>
+    </div>
+  </div>
+</div>
+
+<!-- Controls -->
+<div id="controls">
+  <button id="prevBtn">⬅ Previous</button>
+  <button id="readEnBtn">🔊 Read English</button>
+  <button id="readUrBtn">🔊 Read Urdu</button>
+  <button id="muteBtn">🔇 Mute</button>
+  <button id="nextBtn">Next ➡</button>
+</div>
+
+<div id="footer">
+  Designed by Umer Malik | HHF Training 2025 | www.hhftraining.co.uk
+</div>
+
+<script>
+const slides=document.querySelectorAll('.slide');
+let current=0;
+const synth=window.speechSynthesis;
+function showSlide(i){
+  slides[current].classList.remove('active');
+  current=(i+slides.length)%slides.length;
+  slides[current].classList.add('active');
+}
+function readText(langType){
+  if(synth.speaking){synth.cancel();}
+  let text, utter;
+  if(langType==='en'){
+    text=slides[current].querySelector('.text-en').innerText;
+    utter=new SpeechSynthesisUtterance(text);
+    utter.lang='en-GB';
+  }else{
+    text=slides[current].querySelector('.text-ur').innerText;
+    utter=new SpeechSynthesisUtterance(text);
+    const voices=synth.getVoices().filter(v=>v.lang.toLowerCase().startsWith('ur'));
+    if(voices.length>0){utter.voice=voices[0];}
+    else{alert("⚠ Urdu voice not available.\nPlease install Urdu (Pakistan) language pack in your system.");}
+    utter.lang='ur-PK';
+  }
+  utter.rate=1;
+  synth.speak(utter);
+}
+document.getElementById('nextBtn').onclick=()=>showSlide(current+1);
+document.getElementById('prevBtn').onclick=()=>showSlide(current-1);
+document.getElementById('readEnBtn').onclick=()=>readText('en');
+document.getElementById('readUrBtn').onclick=()=>readText('ur');
+document.getElementById('muteBtn').onclick=()=>synth.cancel();
+</script>
+</body>
+</html>

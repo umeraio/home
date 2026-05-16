@@ -1,0 +1,470 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Lead IQA Training Portal</title>
+<style>
+:root {
+  --bg:#eef5ff;
+  --bg2:#fff8e7;
+  --primary:#0b2f6b;
+  --primary2:#1455a3;
+  --gold:#d9a62e;
+  --gold2:#f4c542;
+  --text:#172033;
+  --muted:#5f6b7a;
+  --card:rgba(255,255,255,0.88);
+  --border:rgba(255,255,255,0.55);
+  --shadow:0 18px 45px rgba(15,40,80,0.14);
+  --radius:22px;
+}
+*{box-sizing:border-box;}
+body{
+  margin:0;
+  font-family:"Segoe UI",Arial,sans-serif;
+  color:var(--text);
+  background:radial-gradient(circle at top left,#dbeafe 0,transparent 30%), radial-gradient(circle at top right,#fff3bf 0,transparent 28%), linear-gradient(135deg,var(--bg),var(--bg2));
+  min-height:100vh;
+}
+.app{display:grid;grid-template-columns:310px 1fr;min-height:100vh;}
+.sidebar{
+  position:sticky;
+  top:0;
+  height:100vh;
+  overflow-y:auto;
+  padding:24px 18px;
+  background:linear-gradient(180deg,rgba(11,47,107,0.96),rgba(20,85,163,0.94));
+  color:white;
+}
+.home-link{
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  width:100%;
+  text-decoration:none;
+  background:linear-gradient(135deg,var(--gold),var(--gold2));
+  color:#172033;
+  font-weight:800;
+  padding:12px 16px;
+  border-radius:14px;
+  margin-bottom:18px;
+}
+.brand{
+  padding:12px 14px 22px;
+  border-bottom:1px solid rgba(255,255,255,0.18);
+  margin-bottom:18px;
+}
+.brand h1{margin:0 0 8px;font-size:22px;}
+.brand p{margin:0;color:rgba(255,255,255,0.78);font-size:13px;line-height:1.6;}
+.progress-box{
+  background:rgba(255,255,255,0.12);
+  border-radius:18px;
+  padding:14px;
+  margin-bottom:18px;
+}
+.progress-track{height:9px;background:rgba(255,255,255,0.18);border-radius:999px;overflow:hidden;}
+.progress-fill{height:100%;width:0;background:linear-gradient(90deg,var(--gold),#fff2a8);}
+.progress-label{display:flex;justify-content:space-between;font-size:13px;margin-bottom:8px;}
+.nav-title{font-size:12px;text-transform:uppercase;letter-spacing:0.08em;color:rgba(255,255,255,0.65);margin:14px 10px 10px;}
+.nav button{
+  width:100%;
+  display:flex;
+  align-items:center;
+  gap:10px;
+  border:0;
+  cursor:pointer;
+  background:transparent;
+  color:white;
+  padding:12px 14px;
+  border-radius:14px;
+  text-align:left;
+  transition:all .25s ease;
+}
+.nav button:hover,.nav button.active{background:rgba(255,255,255,0.16);transform:translateX(4px);}
+.dot{width:10px;height:10px;border-radius:50%;background:rgba(255,255,255,0.35);}
+.main{padding:28px;}
+.topbar{display:flex;justify-content:space-between;gap:18px;margin-bottom:24px;align-items:center;}
+.search{flex:1;max-width:540px;background:var(--card);border-radius:999px;padding:13px 18px;box-shadow:var(--shadow);}
+.search input{width:100%;border:0;outline:0;background:transparent;font-size:15px;}
+.pill{background:var(--card);padding:12px 16px;border-radius:999px;box-shadow:var(--shadow);font-weight:700;color:var(--primary);}
+.view{display:none;animation:fade .4s ease both;}
+.view.active{display:block;}
+@keyframes fade{from{opacity:0;transform:translateY(16px);}to{opacity:1;transform:translateY(0);}}
+.hero{
+  background:linear-gradient(135deg,rgba(11,47,107,0.96),rgba(20,85,163,0.88));
+  color:white;
+  border-radius:32px;
+  padding:44px;
+  box-shadow:var(--shadow);
+}
+.hero h2{font-size:clamp(36px,5vw,60px);margin:0 0 18px;line-height:1.05;}
+.hero p{font-size:18px;line-height:1.7;color:rgba(255,255,255,0.84);max-width:950px;}
+.hero-actions{display:flex;gap:12px;flex-wrap:wrap;margin-top:26px;}
+.btn{
+  border:0;
+  border-radius:999px;
+  padding:13px 20px;
+  font-weight:800;
+  cursor:pointer;
+  background:white;
+  color:var(--primary);
+}
+.btn.gold{background:linear-gradient(135deg,var(--gold),var(--gold2));}
+.section-header{margin-bottom:20px;}
+.section-header h2{font-size:clamp(30px,4vw,48px);color:var(--primary);margin:0 0 10px;}
+.section-header p{font-size:17px;color:var(--muted);line-height:1.7;max-width:980px;}
+.grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:18px;margin-top:22px;}
+.card{
+  background:var(--card);
+  border-radius:var(--radius);
+  padding:22px;
+  box-shadow:var(--shadow);
+}
+.card h3{margin:0 0 10px;color:var(--primary);font-size:21px;}
+.card p,.card li{color:var(--muted);line-height:1.65;font-size:15px;}
+.feature-list{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px;}
+.feature{
+  background:rgba(255,255,255,0.72);
+  border-left:5px solid var(--gold);
+  border-radius:18px;
+  padding:18px;
+  color:var(--muted);
+  line-height:1.65;
+}
+.feature strong{display:block;color:var(--primary);margin-bottom:6px;}
+.flow{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-top:22px;}
+.step{
+  background:white;
+  border-top:5px solid var(--gold);
+  border-radius:18px;
+  padding:20px;
+  box-shadow:var(--shadow);
+}
+.num{
+  width:34px;height:34px;border-radius:50%;background:var(--primary);color:white;font-weight:800;display:flex;align-items:center;justify-content:center;margin-bottom:10px;
+}
+.lead-board{
+  background:#fffdf5;
+  border:3px dashed rgba(217,166,46,0.35);
+  border-radius:28px;
+  padding:28px;
+  margin-top:24px;
+  box-shadow:var(--shadow);
+}
+.lead-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px;}
+.lead-box{
+  background:white;
+  border-radius:20px;
+  padding:18px;
+  border:2px dashed rgba(20,85,163,0.18);
+}
+.lead-icon{font-size:34px;margin-bottom:10px;display:block;}
+.scenario{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px;}
+details{background:var(--card);padding:18px;border-radius:18px;box-shadow:var(--shadow);}
+summary{cursor:pointer;font-weight:800;color:var(--primary);}
+.quiz-option{
+  display:block;
+  width:100%;
+  text-align:left;
+  padding:14px 16px;
+  margin:10px 0;
+  border-radius:14px;
+  border:1px solid rgba(20,85,163,0.16);
+  background:white;
+  cursor:pointer;
+}
+.quiz-option.correct{background:#e9f8ef;border-color:#2e9d55;}
+.quiz-option.wrong{background:#fff0f0;border-color:#cc3d3d;}
+.feedback{margin-top:12px;font-weight:700;color:var(--primary);}
+.footer{text-align:center;color:var(--muted);margin-top:28px;font-size:13px;}
+@media(max-width:1000px){
+  .app{grid-template-columns:1fr;}
+  .sidebar{position:relative;height:auto;}
+  .grid,.lead-grid{grid-template-columns:repeat(2,minmax(0,1fr));}
+  .flow{grid-template-columns:repeat(2,1fr);}
+}
+@media(max-width:680px){
+  .main{padding:18px;}
+  .topbar{flex-direction:column;align-items:stretch;}
+  .grid,.feature-list,.flow,.scenario,.lead-grid{grid-template-columns:1fr;}
+}
+</style>
+</head>
+<body>
+<div class="app">
+<aside class="sidebar">
+<a class="home-link" href="https://umeraio.github.io/Study-Material/" target="_blank">Home Page</a>
+<div class="brand">
+<h1>Lead IQA Training</h1>
+<p>Interactive professional learning portal for Lead Internal Quality Assurers responsible for strategic quality management, compliance, assessor standardisation, and EQA readiness.</p>
+</div>
+<div class="progress-box">
+<div class="progress-label"><span>Learning Progress</span><span id="progressText">0%</span></div>
+<div class="progress-track"><div id="progressFill" class="progress-fill"></div></div>
+</div>
+<div class="nav-title">Lead IQA Modules</div>
+<nav class="nav" id="nav">
+<button class="active" data-view="dashboard"><span class="dot"></span>Dashboard</button>
+<button data-view="lead"><span class="dot"></span>What is a Lead IQA?</button>
+<button data-view="leadrole"><span class="dot"></span>Main Responsibilities</button>
+<button data-view="strategy"><span class="dot"></span>Quality Strategy</button>
+<button data-view="risk"><span class="dot"></span>Risk Management</button>
+<button data-view="eqa"><span class="dot"></span>EQA Readiness</button>
+<button data-view="compliance"><span class="dot"></span>Compliance & Governance</button>
+<button data-view="staff"><span class="dot"></span>Managing Assessors & IQAs</button>
+<button data-view="standardisation"><span class="dot"></span>Standardisation Leadership</button>
+<button data-view="digital"><span class="dot"></span>Digital Quality Assurance</button>
+<button data-view="examples"><span class="dot"></span>Real-Life Lead IQA Examples</button>
+<button data-view="quiz"><span class="dot"></span>Knowledge Check</button>
+</nav>
+</aside>
+
+<main class="main">
+<div class="topbar">
+<div class="search"><input id="searchInput" placeholder="Search Lead IQA, EQA, compliance, governance, risk..." /></div>
+<div class="pill" id="sectionPill">Dashboard</div>
+</div>
+
+<section id="dashboard" class="view active">
+<div class="hero">
+<h2>The Role of a Lead IQA</h2>
+<p>A Lead Internal Quality Assurer oversees the entire internal quality assurance system within a centre or organisation. They manage quality strategy, standardisation, risk control, compliance, assessor support, EQA readiness, and continuous improvement across qualifications and delivery teams.</p>
+<div class="hero-actions">
+<button class="btn gold" onclick="goTo('lead')">Start Learning</button>
+<button class="btn" onclick="goTo('eqa')">View EQA Readiness</button>
+<button class="btn" onclick="goTo('examples')">Real-Life Examples</button>
+</div>
+</div>
+<div class="grid">
+<div class="card"><h3>Strategic Oversight</h3><p>Lead IQAs manage the overall quality assurance framework across multiple assessors, qualifications, sites, and delivery teams.</p></div>
+<div class="card"><h3>Regulatory Compliance</h3><p>Lead IQAs ensure compliance with Ofqual, awarding organisations, centre policies, GDPR, safeguarding, equality, and audit requirements.</p></div>
+<div class="card"><h3>EQA Coordination</h3><p>Lead IQAs coordinate evidence, records, sampling plans, and action tracking for successful EQA visits and audits.</p></div>
+</div>
+</section>
+
+<section id="lead" class="view">
+<div class="section-header">
+<h2>What is a Lead IQA?</h2>
+<p>A Lead IQA is the senior quality assurance professional responsible for leading and coordinating the centre’s internal quality assurance system. They supervise IQAs, support assessors, manage risks, and maintain assessment integrity across all programmes.</p>
+</div>
+<div class="feature-list">
+<div class="feature"><strong>Leadership</strong>Provides direction, guidance, and quality assurance leadership across the centre.</div>
+<div class="feature"><strong>Decision Oversight</strong>Monitors how assessors and IQAs apply standards and resolve inconsistencies.</div>
+<div class="feature"><strong>Continuous Improvement</strong>Drives improvement plans, staff development, and quality enhancement.</div>
+<div class="feature"><strong>Centre Accountability</strong>Acts as the key contact during EQA visits and quality investigations.</div>
+</div>
+</section>
+
+<section id="leadrole" class="view">
+<div class="section-header">
+<h2>Main Responsibilities of a Lead IQA</h2>
+<p>The Lead IQA role combines operational quality assurance with strategic management responsibilities.</p>
+</div>
+<div class="lead-board">
+<div class="lead-grid">
+<div class="lead-box"><span class="lead-icon">📊</span><h3>Manage Sampling Plans</h3><p>Approve and monitor risk-based sampling strategies across qualifications, assessors, and sites.</p></div>
+<div class="lead-box"><span class="lead-icon">⚖️</span><h3>Maintain Standards</h3><p>Ensure consistent interpretation of assessment criteria and awarding body requirements.</p></div>
+<div class="lead-box"><span class="lead-icon">🧑‍🏫</span><h3>Support Staff</h3><p>Coach assessors and IQAs through CPD, observation, feedback, and standardisation.</p></div>
+<div class="lead-box"><span class="lead-icon">🛡️</span><h3>Protect Compliance</h3><p>Monitor policies, malpractice prevention, GDPR, safeguarding, and quality controls.</p></div>
+<div class="lead-box"><span class="lead-icon">📁</span><h3>Audit Records</h3><p>Check records, audit trails, digital systems, certification claims, and learner evidence.</p></div>
+<div class="lead-box"><span class="lead-icon">🏢</span><h3>Lead EQA Visits</h3><p>Coordinate the centre response during EQA audits and action planning.</p></div>
+</div>
+</div>
+</section>
+
+<section id="strategy" class="view">
+<div class="section-header">
+<h2>Quality Strategy & Centre Management</h2>
+<p>Lead IQAs design and maintain the centre’s quality assurance strategy. This includes planning quality cycles, staff monitoring, documentation control, and continuous improvement systems.</p>
+</div>
+<div class="flow">
+<div class="step"><div class="num">1</div><h3>Plan</h3><p>Create annual IQA strategies, sampling schedules, and standardisation calendars.</p></div>
+<div class="step"><div class="num">2</div><h3>Monitor</h3><p>Review assessor and IQA performance, learner progress, and quality risks.</p></div>
+<div class="step"><div class="num">3</div><h3>Improve</h3><p>Implement corrective actions, CPD, policy updates, and quality enhancements.</p></div>
+<div class="step"><div class="num">4</div><h3>Evaluate</h3><p>Review outcomes, EQA feedback, learner achievement, and compliance indicators.</p></div>
+</div>
+</section>
+
+<section id="risk" class="view">
+<div class="section-header">
+<h2>Risk Management & Escalation</h2>
+<p>Lead IQAs manage high-risk quality issues to protect learners, qualifications, and centre approval status.</p>
+</div>
+<div class="grid">
+<div class="card"><h3>High-Risk Assessors</h3><p>New or inconsistent assessors may require increased observation, sampling, mentoring, and approval checks.</p></div>
+<div class="card"><h3>Malpractice Prevention</h3><p>Lead IQAs monitor plagiarism, falsified evidence, conflicts of interest, and unsafe assessment practice.</p></div>
+<div class="card"><h3>Escalation Procedures</h3><p>Serious quality issues are escalated through centre management and awarding organisation procedures.</p></div>
+</div>
+</section>
+
+<section id="eqa" class="view">
+<div class="section-header">
+<h2>EQA Readiness & External Visits</h2>
+<p>One of the most important Lead IQA responsibilities is preparing the centre for EQA monitoring and audit visits.</p>
+</div>
+<div class="feature-list">
+<div class="feature"><strong>EQA Coordination</strong>Organise learner evidence, IQA reports, sampling plans, action logs, and quality records.</div>
+<div class="feature"><strong>Action Tracking</strong>Monitor completion of previous EQA actions and demonstrate improvements.</div>
+<div class="feature"><strong>Evidence Presentation</strong>Ensure evidence is accessible, traceable, and clearly mapped.</div>
+<div class="feature"><strong>Centre Representation</strong>Act as the main quality contact during EQA discussions and audits.</div>
+</div>
+<div class="card" style="margin-top:18px;">
+<h3>Common EQA Focus Areas</h3>
+<ul>
+<li>Sampling strategy effectiveness</li>
+<li>Consistency of assessment decisions</li>
+<li>Quality of assessor feedback</li>
+<li>Learner authenticity and evidence sufficiency</li>
+<li>CPD and staff competence</li>
+<li>Standardisation records</li>
+<li>Risk management and action planning</li>
+</ul>
+</div>
+</section>
+
+<section id="compliance" class="view">
+<div class="section-header">
+<h2>Compliance & Governance</h2>
+<p>Lead IQAs ensure the centre operates within regulatory, awarding body, and organisational requirements.</p>
+</div>
+<div class="grid">
+<div class="card"><h3>Ofqual Requirements</h3><p>Ensure quality systems align with current regulatory expectations and qualification controls.</p></div>
+<div class="card"><h3>GDPR & Data Protection</h3><p>Protect learner information, assessment records, and digital portfolio access.</p></div>
+<div class="card"><h3>Equality & Inclusion</h3><p>Ensure learners receive fair assessment opportunities and reasonable adjustments where appropriate.</p></div>
+<div class="card"><h3>Safeguarding</h3><p>Maintain safe practice during workplace, online, and remote assessment activity.</p></div>
+<div class="card"><h3>Certification Claims</h3><p>Verify learner achievement claims before submission to the awarding organisation.</p></div>
+<div class="card"><h3>Policy Control</h3><p>Review and update centre quality assurance procedures and documentation.</p></div>
+</div>
+</section>
+
+<section id="staff" class="view">
+<div class="section-header">
+<h2>Managing Assessors & IQAs</h2>
+<p>Lead IQAs are responsible for maintaining assessor and IQA competence across the centre.</p>
+</div>
+<div class="feature-list">
+<div class="feature"><strong>Observation & Monitoring</strong>Observe assessors and IQAs carrying out their duties to ensure standards are met.</div>
+<div class="feature"><strong>CPD Planning</strong>Identify training needs, coaching requirements, and development opportunities.</div>
+<div class="feature"><strong>Mentoring</strong>Support new assessors and IQAs through structured guidance and quality reviews.</div>
+<div class="feature"><strong>Performance Management</strong>Address recurring issues through action plans and quality interventions.</div>
+</div>
+</section>
+
+<section id="standardisation" class="view">
+<div class="section-header">
+<h2>Leading Standardisation</h2>
+<p>Lead IQAs coordinate and chair standardisation activities to maintain consistent assessment practice across the centre.</p>
+</div>
+<div class="flow">
+<div class="step"><div class="num">1</div><h3>Select Evidence</h3><p>Choose assessment samples, portfolios, and feedback examples for discussion.</p></div>
+<div class="step"><div class="num">2</div><h3>Compare Judgements</h3><p>Review how different staff interpret criteria and evidence.</p></div>
+<div class="step"><div class="num">3</div><h3>Agree Standards</h3><p>Clarify expectations and update guidance where necessary.</p></div>
+<div class="step"><div class="num">4</div><h3>Record Outcomes</h3><p>Document attendance, actions, agreed standards, and quality improvements.</p></div>
+</div>
+</section>
+
+<section id="digital" class="view">
+<div class="section-header">
+<h2>Digital Quality Assurance</h2>
+<p>Modern Lead IQAs increasingly manage digital quality assurance systems and remote delivery models.</p>
+</div>
+<div class="grid">
+<div class="card"><h3>E-Portfolios</h3><p>Monitor learner evidence, timestamps, assessor feedback, and IQA tracking in digital systems.</p></div>
+<div class="card"><h3>Remote Sampling</h3><p>Carry out quality assurance across multiple sites using cloud systems and online meetings.</p></div>
+<div class="card"><h3>Digital Audit Trails</h3><p>Ensure version control, learner authentication, and secure storage processes are effective.</p></div>
+</div>
+</section>
+
+<section id="examples" class="view">
+<div class="section-header">
+<h2>Real-Life Lead IQA Examples</h2>
+<p>These scenarios show how Lead IQAs manage centre-wide quality assurance responsibilities.</p>
+</div>
+<div class="scenario">
+<details open>
+<summary>Preparing for an EQA Visit</summary>
+<p>The Lead IQA coordinates assessor records, learner portfolios, IQA reports, standardisation minutes, action plans, and certification claims before the EQA arrives.</p>
+</details>
+<details>
+<summary>Managing Inconsistent Assessors</summary>
+<p>A Lead IQA identifies inconsistent feedback from several assessors and increases sampling, arranges CPD, and leads a standardisation workshop.</p>
+</details>
+<details>
+<summary>Remote Delivery Risk</summary>
+<p>The centre moves to remote assessment. The Lead IQA updates authentication procedures, observation controls, digital sampling systems, and safeguarding processes.</p>
+</details>
+<details>
+<summary>Malpractice Investigation</summary>
+<p>A learner complaint triggers a quality investigation. The Lead IQA reviews records, interviews staff, checks evidence authenticity, and escalates concerns where necessary.</p>
+</details>
+</div>
+</section>
+
+<section id="quiz" class="view">
+<div class="section-header">
+<h2>Knowledge Check</h2>
+<p>Test your understanding of the Lead IQA role.</p>
+</div>
+<div class="card">
+<h3>Question 1</h3>
+<p>Which option best describes a Lead IQA responsibility?</p>
+<button class="quiz-option" onclick="answer(this,false)">Only assessing learners directly</button>
+<button class="quiz-option" onclick="answer(this,true)">Managing centre-wide quality assurance systems and EQA readiness</button>
+<button class="quiz-option" onclick="answer(this,false)">Ignoring standardisation meetings</button>
+<button class="quiz-option" onclick="answer(this,false)">Removing the need for assessor records</button>
+<div class="feedback" id="quizFeedback"></div>
+</div>
+</section>
+
+<div class="footer">Crafted &amp; Designed by Umer Malikk</div>
+</main>
+</div>
+<script>
+const buttons=Array.from(document.querySelectorAll('.nav button'));
+const views=Array.from(document.querySelectorAll('.view'));
+const completed=new Set();
+function goTo(id){
+views.forEach(v=>v.classList.toggle('active',v.id===id));
+buttons.forEach(btn=>{
+const active=btn.dataset.view===id;
+btn.classList.toggle('active',active);
+if(active){completed.add(id);document.getElementById('sectionPill').textContent=btn.textContent.trim();}
+});
+updateProgress();
+window.scrollTo({top:0,behavior:'smooth'});
+}
+function updateProgress(){
+const percentage=Math.round((completed.size/buttons.length)*100);
+document.getElementById('progressFill').style.width=percentage+'%';
+document.getElementById('progressText').textContent=percentage+'%';
+}
+buttons.forEach(button=>button.addEventListener('click',()=>goTo(button.dataset.view)));
+document.addEventListener('keydown',e=>{
+const currentIndex=buttons.findIndex(btn=>btn.classList.contains('active'));
+if(e.key==='ArrowRight'){
+const next=buttons[Math.min(currentIndex+1,buttons.length-1)];
+if(next)goTo(next.dataset.view);
+}
+if(e.key==='ArrowLeft'){
+const prev=buttons[Math.max(currentIndex-1,0)];
+if(prev)goTo(prev.dataset.view);
+}
+});
+function answer(button,isCorrect){
+const options=button.parentElement.querySelectorAll('.quiz-option');
+options.forEach(opt=>{opt.classList.remove('correct','wrong');opt.disabled=true;});
+button.classList.add(isCorrect?'correct':'wrong');
+document.getElementById('quizFeedback').textContent=isCorrect?'Correct. Lead IQAs manage strategic quality assurance and EQA readiness.':'Not quite. Lead IQAs oversee centre-wide quality assurance systems and compliance.';
+}
+document.getElementById('searchInput').addEventListener('input',function(){
+const term=this.value.toLowerCase().trim();
+if(!term)return;
+const match=buttons.find(btn=>btn.textContent.toLowerCase().includes(term));
+if(match)goTo(match.dataset.view);
+});
+completed.add('dashboard');
+updateProgress();
+</script>
+</body>
+</html>

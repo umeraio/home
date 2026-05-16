@@ -1,0 +1,311 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Episode 7 – Chatbots vs Artificial Intelligence</title>
+<link href="https://fonts.googleapis.com/css2?family=Segoe+UI&family=Noto+Nastaliq+Urdu&display=swap" rel="stylesheet">
+<style>
+body{margin:0;font-family:'Segoe UI',sans-serif;background:linear-gradient(90deg,#f8fbff 0%,#ffffff 50%,#fff8e1 100%);
+color:#222;overflow:hidden;}
+.header{position:fixed;top:0;left:0;width:100%;background:#0078D7;color:#fff;text-align:center;
+font-size:1.6rem;font-weight:bold;padding:15px 0;box-shadow:0 3px 6px rgba(0,0,0,0.2);z-index:20;}
+.slide{display:none;height:100vh;width:100%;justify-content:space-between;align-items:center;
+padding:100px 60px 80px 60px;box-sizing:border-box;animation:fadein 1s ease;}
+.slide.active{display:flex;}
+@keyframes fadein{from{opacity:0;transform:translateY(30px);}to{opacity:1;transform:translateY(0);}}
+.card{width:100%;display:flex;justify-content:space-between;align-items:center;background:#fff;border-radius:20px;
+padding:40px 50px;box-shadow:0 6px 15px rgba(0,0,0,0.2);}
+.text-en{width:30%;font-size:1.25rem;line-height:1.6;}
+.text-ur{width:30%;font-family:'Noto Nastaliq Urdu',serif;font-size:1.6rem;direction:rtl;text-align:right;
+line-height:2;font-weight:bold;}
+.visual{text-align:center;width:30%;}
+.visual img{max-width:240px;height:auto;}
+#controls{position:fixed;bottom:65px;width:100%;text-align:center;}
+button{background:#0078D7;color:#fff;border:none;margin:0 8px;padding:12px 24px;border-radius:8px;cursor:pointer;
+font-size:1rem;transition:0.3s;}
+button:hover{background:#005fa3;}
+#readEnBtn,#readUrBtn{background:#FFD700;color:#222;font-weight:bold;}
+#muteBtn{background:#ff6666;color:#fff;font-weight:bold;}
+#footer{position:fixed;bottom:0;left:0;width:100%;font-size:0.9rem;text-align:center;padding:6px 0;
+background:#f0f0f0;color:#333;border-top:3px solid #FFD700;}
+</style>
+</head>
+<body>
+
+<div class="header">Episode 7 – Chatbots vs Artificial Intelligence</div>
+
+<!-- 1 -->
+<div class="slide active">
+<div class="card">
+<div class="text-en">
+<h2>Welcome to Episode 7</h2>
+<p>In this episode, we’ll explore a common question:  
+Are <b>chatbots</b> and <b>artificial intelligence</b> the same?  
+They are closely related — but not identical. Let’s understand why.</p>
+</div>
+<div class="visual"><img src="https://cdn-icons-png.flaticon.com/512/4712/4712100.png" alt="Chatbot vs AI intro"></div>
+<div class="text-ur" dir="rtl">
+<p>آج ہم ایک عام سوال کا جواب ڈھونڈیں گے:  
+کیا چیٹ بوٹس اور مصنوعی ذہانت ایک ہی چیز ہیں؟  
+دونوں کا تعلق ایک دوسرے سے ہے مگر دونوں ایک جیسے نہیں۔ آئیے فرق جانتے ہیں۔</p>
+</div>
+</div>
+</div>
+
+<!-- 2 -->
+<div class="slide">
+<div class="card">
+<div class="text-en">
+<h2>💬 What Is a Chatbot?</h2>
+<p>A <b>chatbot</b> is a computer program designed to simulate conversation with humans — often through text or voice.</p>
+<ul>
+<li>Follows rules or scripts to answer questions.</li>
+<li>Used on websites, apps, and customer services.</li>
+<li>Some are simple, others use AI to understand better.</li>
+</ul>
+</div>
+<div class="visual"><img src="https://cdn-icons-png.flaticon.com/512/4712/4712118.png" alt="Chatbot concept"></div>
+<div class="text-ur" dir="rtl">
+<p><b>چیٹ بوٹ</b> ایک کمپیوٹر پروگرام ہے جو انسان سے بات چیت کی نقل کرتا ہے، عام طور پر ٹیکسٹ یا آواز کے ذریعے۔</p>
+<ul style="list-style:none;padding:0;margin:0;">
+<li>🔹 پہلے سے طے شدہ جوابات دیتا ہے۔</li>
+<li>🔹 ویب سائٹس، ایپس اور کسٹمر سروس میں استعمال ہوتا ہے۔</li>
+<li>🔹 کچھ سادہ ہوتے ہیں، کچھ AI استعمال کرتے ہیں۔</li>
+</ul>
+</div>
+</div>
+</div>
+
+<!-- 3 -->
+<div class="slide">
+<div class="card">
+<div class="text-en">
+<h2>🧠 What Is Artificial Intelligence?</h2>
+<p><b>Artificial Intelligence (AI)</b> means machines that can learn, reason, and improve over time.  
+AI gives chatbots their “brain” — allowing them to understand meaning, tone, and context.</p>
+<ul>
+<li>Understands user intent.</li>
+<li>Learns from new data and interactions.</li>
+<li>Makes intelligent decisions — not just fixed responses.</li>
+</ul>
+</div>
+<div class="visual"><img src="https://cdn-icons-png.flaticon.com/512/4712/4712123.png" alt="AI concept"></div>
+<div class="text-ur" dir="rtl">
+<p><b>مصنوعی ذہانت</b> وہ نظام ہے جو سیکھ سکتا ہے، سوچ سکتا ہے، اور وقت کے ساتھ بہتر ہو سکتا ہے۔  
+AI چیٹ بوٹ کو “دماغ” فراہم کرتا ہے تاکہ وہ مطلب اور لہجہ سمجھ سکے۔</p>
+<ul style="list-style:none;padding:0;margin:0;">
+<li>🔹 صارف کے ارادے کو سمجھتا ہے۔</li>
+<li>🔹 نئے ڈیٹا سے سیکھتا ہے۔</li>
+<li>🔹 صرف جواب نہیں دیتا بلکہ فیصلہ بھی کرتا ہے۔</li>
+</ul>
+</div>
+</div>
+</div>
+
+<!-- 4 -->
+<div class="slide">
+<div class="card">
+<div class="text-en">
+<h2>⚙️ Chatbot vs AI – Main Difference</h2>
+<ul>
+<li>Chatbot = Interface for talking.</li>
+<li>AI = Brain that powers the chatbot.</li>
+<li>Chatbots can exist <b>without AI</b> (rule-based systems).</li>
+<li>AI can exist <b>without a chatbot</b> (data analysis, image recognition, etc.).</li>
+</ul>
+</div>
+<div class="visual"><img src="https://cdn-icons-png.flaticon.com/512/2887/2887235.png" alt="Difference illustration"></div>
+<div class="text-ur" dir="rtl">
+<p>چیٹ بوٹ اور AI کے درمیان بنیادی فرق:</p>
+<ul style="list-style:none;padding:0;margin:0;">
+<li>🔹 چیٹ بوٹ = بات چیت کا ذریعہ۔</li>
+<li>🔹 AI = وہ دماغ جو چیٹ بوٹ کو طاقت دیتا ہے۔</li>
+<li>🔹 چیٹ بوٹ بغیر AI کے بھی کام کر سکتا ہے (طے شدہ جوابات کے ساتھ)۔</li>
+<li>🔹 AI بغیر چیٹ بوٹ کے بھی کام کرتا ہے (ڈیٹا یا تصاویر پر)۔</li>
+</ul>
+</div>
+</div>
+</div>
+
+<!-- 5 -->
+<div class="slide">
+<div class="card">
+<div class="text-en">
+<h2>🏢 Real-Life Example – Simple Chatbots</h2>
+<ul>
+<li>💬 Bank website bots that give fixed replies like “Our hours are 9–5.”</li>
+<li>💬 Online store bots that track your order status.</li>
+<li>💬 Hotel or airline bots that confirm bookings.</li>
+</ul>
+<p>These do not “think” — they follow scripts.</p>
+</div>
+<div class="visual"><img src="https://cdn-icons-png.flaticon.com/512/4348/4348329.png" alt="Simple chatbot examples"></div>
+<div class="text-ur" dir="rtl">
+<p>حقیقی مثالیں (سادہ چیٹ بوٹس):</p>
+<ul style="list-style:none;padding:0;margin:0;">
+<li>🔹 بینک کی ویب سائٹ پر بوٹ جو طے شدہ جواب دیتا ہے۔</li>
+<li>🔹 آن لائن اسٹور کا بوٹ جو آرڈر کی صورتحال بتاتا ہے۔</li>
+<li>🔹 ہوٹل یا ایئر لائن بکنگ تصدیق کرنے والا بوٹ۔</li>
+</ul>
+<p>یہ سوچتے نہیں، صرف پہلے سے دیے گئے جوابات دیتے ہیں۔</p>
+</div>
+</div>
+</div>
+
+<!-- 6 -->
+<div class="slide">
+<div class="card">
+<div class="text-en">
+<h2>🤖 Real-Life Example – AI Chatbots</h2>
+<ul>
+<li>💡 ChatGPT — understands language and creates ideas.</li>
+<li>🧠 Google Bard — reasons and summarises information.</li>
+<li>🎓 Duolingo AI Tutor — adapts lessons to your level.</li>
+<li>💼 Customer service bots that detect emotion and intent.</li>
+</ul>
+</div>
+<div class="visual"><img src="https://cdn-icons-png.flaticon.com/512/4712/4712131.png" alt="AI chatbot examples"></div>
+<div class="text-ur" dir="rtl">
+<p>حقیقی مثالیں (AI چیٹ بوٹس):</p>
+<ul style="list-style:none;padding:0;margin:0;">
+<li>🔹 چیٹ جی پی ٹی جو زبان سمجھ کر نیا مواد لکھتا ہے۔</li>
+<li>🔹 گوگل بارڈ جو معلومات کا خلاصہ بناتا ہے۔</li>
+<li>🔹 Duolingo AI Tutor جو سبق آپ کے معیار کے مطابق بدلتا ہے۔</li>
+<li>🔹 کسٹمر سروس بوٹس جو جذبات اور مقصد سمجھتے ہیں۔</li>
+</ul>
+</div>
+</div>
+</div>
+
+<!-- 7 -->
+<div class="slide">
+<div class="card">
+<div class="text-en">
+<h2>📊 Illustration: Chatbot vs AI</h2>
+<p><b>Chatbot:</b> Interface + Script → Fixed Answers  
+<br><b>AI:</b> Brain + Learning → Smart Responses</p>
+<p>Imagine a human talking through a walkie-talkie (chatbot interface).  
+The brain that forms the replies is AI.</p>
+</div>
+<div class="visual"><img src="https://cdn-icons-png.flaticon.com/512/4729/4729782.png" alt="Illustration Chatbot vs AI"></div>
+<div class="text-ur" dir="rtl">
+<p>مثال:</p>
+<p><b>چیٹ بوٹ:</b> انٹرفیس + ہدایات → طے شدہ جوابات  
+<br><b>AI:</b> دماغ + سیکھنا → ذہین جوابات</p>
+<p>ایسے سمجھیں جیسے انسان واکی ٹاکی کے ذریعے بات کرے —  
+بات کرنے کا ذریعہ چیٹ بوٹ ہے، اور سوچنے والا دماغ AI ہے۔</p>
+</div>
+</div>
+</div>
+
+<!-- 8 -->
+<div class="slide">
+<div class="card">
+<div class="text-en">
+<h2>🌍 How Chatbots and AI Work Together</h2>
+<p>Modern AI chatbots combine both:</p>
+<ul>
+<li>Automation handles quick tasks (login, order check).</li>
+<li>AI handles understanding and reasoning.</li>
+<li>Together, they make support fast and intelligent.</li>
+</ul>
+</div>
+<div class="visual"><img src="https://cdn-icons-png.flaticon.com/512/4712/4712115.png" alt="Chatbot and AI together"></div>
+<div class="text-ur" dir="rtl">
+<p>جدید چیٹ بوٹس خودکاری اور AI دونوں کو جوڑتے ہیں:</p>
+<ul style="list-style:none;padding:0;margin:0;">
+<li>🔹 خودکاری سادہ کام کرتی ہے (لاگ اِن، آرڈر چیک وغیرہ)۔</li>
+<li>🔹 AI مطلب اور منطق سمجھتا ہے۔</li>
+<li>🔹 دونوں مل کر تیز اور ذہین مدد فراہم کرتے ہیں۔</li>
+</ul>
+</div>
+</div>
+</div>
+
+<!-- 9 -->
+<div class="slide">
+<div class="card">
+<div class="text-en">
+<h2>💡 Everyday Uses of Chatbots</h2>
+<ul>
+<li>Customer care on websites.</li>
+<li>Educational assistants in online learning.</li>
+<li>Travel bots that book tickets and track flights.</li>
+<li>Healthcare bots that check symptoms.</li>
+</ul>
+</div>
+<div class="visual"><img src="https://cdn-icons-png.flaticon.com/512/4712/4712133.png" alt="Everyday chatbot uses"></div>
+<div class="text-ur" dir="rtl">
+<p>روزمرہ زندگی میں چیٹ بوٹس کے استعمالات:</p>
+<ul style="list-style:none;padding:0;margin:0;">
+<li>🔹 ویب سائٹس پر کسٹمر کیئر۔</li>
+<li>🔹 آن لائن تعلیم میں تعلیمی معاون۔</li>
+<li>🔹 ٹریول بوٹس جو ٹکٹ بک کرتے اور پروازوں کی معلومات دیتے ہیں۔</li>
+<li>🔹 صحت کے بوٹس جو علامات چیک کرتے ہیں۔</li>
+</ul>
+</div>
+</div>
+</div>
+
+<!-- 10 -->
+<div class="slide">
+<div class="card">
+<div class="text-en">
+<h2>🔚 Summary</h2>
+<p>Chatbots are <b>tools</b> for talking with users.  
+AI is the <b>intelligence</b> that helps them think and respond smartly.  
+Together, they make communication faster, easier, and more human-like.</p>
+</div>
+<div class="visual"><img src="https://cdn-icons-png.flaticon.com/512/4712/4712135.png" alt="Summary"></div>
+<div class="text-ur" dir="rtl">
+<p>چیٹ بوٹس بات چیت کے ٹولز ہیں۔  
+AI وہ ذہانت ہے جو انہیں سمجھدار جواب دینے کے قابل بناتی ہے۔  
+دونوں مل کر گفتگو کو تیز، آسان اور انسانی انداز میں لاتے ہیں۔</p>
+</div>
+</div>
+</div>
+
+<!-- Controls -->
+<div id="controls">
+<button id="prevBtn">⬅ Previous</button>
+<button id="readEnBtn">🔊 Read English</button>
+<button id="readUrBtn">🔊 Read Urdu</button>
+<button id="muteBtn">🔇 Mute</button>
+<button id="nextBtn">Next ➡</button>
+</div>
+
+<div id="footer">
+Designed by Umer Malik | HHF Training 2025 | www.hhftraining.co.uk
+</div>
+
+<script>
+const slides=document.querySelectorAll('.slide');
+let current=0;
+const synth=window.speechSynthesis;
+function showSlide(i){
+slides[current].classList.remove('active');
+current=(i+slides.length)%slides.length;
+slides[current].classList.add('active');
+}
+function readText(lang){
+if(synth.speaking)synth.cancel();
+let txt,ut;
+if(lang==='en'){txt=slides[current].querySelector('.text-en').innerText;
+ut=new SpeechSynthesisUtterance(txt);ut.lang='en-GB';}
+else{txt=slides[current].querySelector('.text-ur').innerText;
+ut=new SpeechSynthesisUtterance(txt);
+const v=synth.getVoices().filter(x=>x.lang.toLowerCase().startsWith('ur'));
+if(v.length>0)ut.voice=v[0];
+else alert('⚠ Urdu voice not available. Please install Urdu (Pakistan) language pack.');
+ut.lang='ur-PK';}
+ut.rate=1;synth.speak(ut);}
+document.getElementById('nextBtn').onclick=()=>showSlide(current+1);
+document.getElementById('prevBtn').onclick=()=>showSlide(current-1);
+document.getElementById('readEnBtn').onclick=()=>readText('en');
+document.getElementById('readUrBtn').onclick=()=>readText('ur');
+document.getElementById('muteBtn').onclick=()=>synth.cancel();
+</script>
+
+</body>
+</html>

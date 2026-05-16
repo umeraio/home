@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Episode 1 – What Is Artificial Intelligence?</title>
+
+<!-- Google Fonts -->
+<link href="https://fonts.googleapis.com/css2?family=Segoe+UI&family=Noto+Nastaliq+Urdu&display=swap" rel="stylesheet">
+
+<style>
+  body{
+    margin:0;
+    font-family:"Segoe UI",sans-serif;
+    background:linear-gradient(90deg,#f8fbff 0%,#ffffff 50%,#fff8e1 100%);
+    color:#222;
+    overflow:hidden;
+  }
+
+  /* Header Bar */
+  .header{
+    position:fixed;
+    top:0; left:0;
+    width:100%;
+    background:#0078D7;
+    color:#fff;
+    text-align:center;
+    font-size:1.6rem;
+    font-weight:bold;
+    letter-spacing:0.5px;
+    padding:15px 0;
+    z-index:20;
+    box-shadow:0 3px 6px rgba(0,0,0,0.2);
+  }
+
+  .slide{
+    display:none;
+    height:100vh;
+    width:100%;
+    justify-content:space-between;
+    align-items:center;
+    flex-direction:row;
+    padding:100px 60px 80px 60px;
+    box-sizing:border-box;
+    animation:fadein 1s ease;
+  }
+  .slide.active{display:flex;}
+  @keyframes fadein{from{opacity:0;transform:translateY(30px);}to{opacity:1;transform:translateY(0);} }
+
+  .card{
+    width:100%;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    background:#fff;
+    border-radius:20px;
+    padding:40px 50px;
+    box-shadow:0 6px 15px rgba(0,0,0,0.2);
+  }
+
+  .text-en{width:30%;font-size:1.25rem;line-height:1.6;}
+  .text-ur{
+    width:30%;
+    font-family:'Noto Nastaliq Urdu',serif;
+    font-size:1.6rem;
+    direction:rtl;
+    text-align:right;
+    line-height:2;
+    font-weight:bold;
+  }
+  .visual{
+    width:30%;
+    text-align:center;
+  }
+  .visual img{
+    max-width:230px;
+    height:auto;
+  }
+
+  #controls{
+    position:fixed;
+    bottom:65px;
+    width:100%;
+    text-align:center;
+    z-index:10;
+  }
+  button{
+    background:#0078D7;
+    color:#fff;
+    border:none;
+    margin:0 8px;
+    padding:12px 24px;
+    border-radius:8px;
+    cursor:pointer;
+    font-size:1rem;
+    transition:0.3s;
+  }
+  button:hover{background:#005fa3;}
+  #readEnBtn,#readUrBtn{background:#FFD700;color:#222;font-weight:bold;}
+  #muteBtn{background:#ff6666;color:#fff;font-weight:bold;}
+
+  #footer{
+    position:fixed;
+    bottom:0;left:0;width:100%;
+    font-size:0.9rem;text-align:center;
+    padding:6px 0;
+    background:#f0f0f0;color:#333;
+    border-top:3px solid #FFD700;
+  }
+</style>
+</head>
+<body>
+
+<div class="header">Episode 1 – What Is Artificial Intelligence?</div>
+
+<!-- SLIDES -->
+<div class="slide active">
+  <div class="card">
+    <div class="text-en">
+      <h2>Introduction</h2>
+      <p>Hello! I’m Umer Malik. Today we’ll learn what Artificial Intelligence means and how it helps in daily life – explained simply for everyone aged 10 to 70.</p>
+    </div>
+    <div class="visual"><img src="https://cdn-icons-png.flaticon.com/512/4712/4712100.png" alt="AI Brain"></div>
+    <div class="text-ur" dir="rtl">
+      <p>السلام علیکم! میں عمر ملک ہوں۔ آج ہم آسان الفاظ میں سمجھیں گے کہ مصنوعی ذہانت کیا ہے اور یہ ہماری روزمرہ زندگی میں کس طرح مدد کرتی ہے۔</p>
+    </div>
+  </div>
+</div>
+
+<div class="slide">
+  <div class="card">
+    <div class="text-en">
+      <h2>1️⃣ Simple Meaning of AI</h2>
+      <p>Artificial Intelligence means teaching machines to think and learn like humans.  
+      When your phone recognises your face or voice, that’s AI in action!</p>
+    </div>
+    <div class="visual"><img src="https://cdn-icons-png.flaticon.com/512/4712/4712109.png" alt="Robot Thinking"></div>
+    <div class="text-ur" dir="rtl">
+      <p>مصنوعی ذہانت کا مطلب ہے مشینوں کو یہ سکھانا کہ وہ انسانوں کی طرح سوچیں اور سیکھیں۔  
+      جب آپ کا فون آپ کا چہرہ یا آواز پہچانتا ہے تو یہ مصنوعی ذہانت کا کام ہے۔</p>
+    </div>
+  </div>
+</div>
+
+<div class="slide">
+  <div class="card">
+    <div class="text-en">
+      <h2>2️⃣ How AI Learns</h2>
+      <p>AI learns from data like we learn from experience.  
+      If it sees thousands of pictures of cats and dogs, it begins to tell the difference – this is Machine Learning.</p>
+    </div>
+    <div class="visual"><img src="https://cdn-icons-png.flaticon.com/512/6165/6165290.png" alt="AI Cat and Dog Learning"></div>
+    <div class="text-ur" dir="rtl">
+      <p>جیسے ہم تجربے سے سیکھتے ہیں ویسے ہی مصنوعی ذہانت اعداد و شمار سے سیکھتی ہے۔  
+      اگر اسے بلی اور کتے کی ہزاروں تصاویر دکھائی جائیں تو وہ فرق پہچاننا سیکھ جاتی ہے۔  
+      اسے مشین لرننگ کہا جاتا ہے۔</p>
+    </div>
+  </div>
+</div>
+
+<div class="slide">
+  <div class="card">
+    <div class="text-en">
+      <h2>3️⃣ AI in Phones</h2>
+      <ul>
+        <li>Predictive Text – suggests your next word.</li>
+        <li>Camera Mode – adjusts focus and light automatically.</li>
+        <li>Voice Assistants – Siri or Google Assistant understand your speech.</li>
+      </ul>
+    </div>
+    <div class="visual"><img src="https://cdn-icons-png.flaticon.com/512/9441/9441301.png" alt="Smartphone AI Features"></div>
+    <div class="text-ur" dir="rtl">
+      <ul style="list-style:none;padding:0;margin:0;">
+        <li>🔹 جب آپ لکھتے ہیں تو اگلا لفظ تجویز کرتا ہے۔</li>
+        <li>🔹 کیمرہ خود بخود روشنی اور فوکس درست کرتا ہے۔</li>
+        <li>🔹 وائس اسسٹنٹ آپ کی آواز سمجھ کر جواب دیتا ہے۔</li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<div class="slide">
+  <div class="card">
+    <div class="text-en">
+      <h2>4️⃣ AI in Games</h2>
+      <p>Games use AI to make computer opponents smarter.  
+      They learn your style and get better each round – making the game fun and challenging!</p>
+    </div>
+    <div class="visual"><img src="https://cdn-icons-png.flaticon.com/512/4712/4712127.png" alt="AI Games"></div>
+    <div class="text-ur" dir="rtl">
+      <p>کھیلوں میں بھی مصنوعی ذہانت استعمال ہوتی ہے۔  
+      کمپیوٹر حریف آپ کے انداز سے سیکھتا ہے اور ہر راؤنڈ میں مزید بہتر ہوتا جاتا ہے۔  
+      یہی کھیل کو دلچسپ بناتا ہے۔</p>
+    </div>
+  </div>
+</div>
+
+<div class="slide">
+  <div class="card">
+    <div class="text-en">
+      <h2>5️⃣ AI Around You</h2>
+      <ul>
+        <li>Google Maps – finds fast routes.</li>
+        <li>Email Filter – blocks spam.</li>
+        <li>Online Shopping – recommends items.</li>
+        <li>Healthcare – helps doctors detect diseases.</li>
+        <li>Taxi Apps – connect drivers and passengers.</li>
+      </ul>
+    </div>
+    <div class="visual"><img src="https://cdn-icons-png.flaticon.com/512/9243/9243342.png" alt="AI Daily Uses"></div>
+    <div class="text-ur" dir="rtl">
+      <p>مصنوعی ذہانت ہمارے اردگرد ہر جگہ ہے:  
+      گوگل میپ، ای میل فلٹر، آن لائن خریداری، ہسپتالوں میں تشخیص اور ٹیکسی ایپس سب میں۔</p>
+    </div>
+  </div>
+</div>
+
+<div class="slide">
+  <div class="card">
+    <div class="text-en">
+      <h2>6️⃣ Why AI Matters</h2>
+      <p>AI saves time, reduces errors, and makes life easier.  
+      But it must be used wisely because it learns what we teach it.</p>
+    </div>
+    <div class="visual"><img src="https://cdn-icons-png.flaticon.com/512/2886/2886742.png" alt="Why AI Matters"></div>
+    <div class="text-ur" dir="rtl">
+      <p>مصنوعی ذہانت وقت بچاتی ہے، غلطیاں کم کرتی ہے اور زندگی آسان بناتی ہے۔  
+      لیکن اسے دانشمندی سے استعمال کرنا ضروری ہے کیونکہ یہ وہی سیکھتی ہے جو ہم دکھاتے ہیں۔</p>
+    </div>
+  </div>
+</div>
+
+<div class="slide">
+  <div class="card">
+    <div class="text-en">
+      <h2>7️⃣ Summary & Next Episode</h2>
+      <p>AI is a smart helper that learns from data to make life better.  
+      Next episode: <b>Types of AI – ANI, AGI & ASI</b>.</p>
+      <p><b>Like 👍 | Subscribe 📺 | Comment 💬 what AI you’ve used today!</b></p>
+    </div>
+    <div class="visual"><img src="https://cdn-icons-png.flaticon.com/512/4712/4712135.png" alt="AI Future"></div>
+    <div class="text-ur" dir="rtl">
+      <p>مصنوعی ذہانت ایک ذہین مددگار ہے جو اعداد و شمار سے سیکھ کر ہماری زندگی بہتر بناتی ہے۔  
+      اگلی قسط میں ہم مصنوعی ذہانت کی اقسام پر بات کریں گے۔</p>
+    </div>
+  </div>
+</div>
+
+<!-- CONTROLS -->
+<div id="controls">
+  <button id="prevBtn">⬅ Previous</button>
+  <button id="readEnBtn">🔊 Read English</button>
+  <button id="readUrBtn">🔊 Read Urdu</button>
+  <button id="muteBtn">🔇 Mute</button>
+  <button id="nextBtn">Next ➡</button>
+</div>
+
+<div id="footer">
+  Designed by Umer Malik | HHF Training 2025 | www.hhftraining.co.uk
+</div>
+
+<script>
+const slides=document.querySelectorAll('.slide');
+let current=0;
+const synth=window.speechSynthesis;
+
+function showSlide(i){
+  slides[current].classList.remove('active');
+  current=(i+slides.length)%slides.length;
+  slides[current].classList.add('active');
+}
+
+function readText(langType){
+  if(synth.speaking){synth.cancel();}
+  let text, utter;
+  if(langType==='en'){
+    text=slides[current].querySelector('.text-en').innerText;
+    utter=new SpeechSynthesisUtterance(text);
+    utter.lang='en-GB';
+  } else if(langType==='ur'){
+    text=slides[current].querySelector('.text-ur').innerText;
+    utter=new SpeechSynthesisUtterance(text);
+    const voices=synth.getVoices().filter(v=>v.lang.toLowerCase().startsWith('ur'));
+    if(voices.length>0){utter.voice=voices[0];}
+    else{alert("⚠ Urdu voice not available.\nPlease install Urdu (Pakistan) language pack in your system.");}
+    utter.lang='ur-PK';
+  }
+  utter.rate=1;
+  synth.speak(utter);
+}
+
+document.getElementById('nextBtn').onclick=()=>showSlide(current+1);
+document.getElementById('prevBtn').onclick=()=>showSlide(current-1);
+document.getElementById('readEnBtn').onclick=()=>readText('en');
+document.getElementById('readUrBtn').onclick=()=>readText('ur');
+document.getElementById('muteBtn').onclick=()=>synth.cancel();
+</script>
+</body>
+</html>

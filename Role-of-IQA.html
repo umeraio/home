@@ -1,0 +1,821 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>IQA Training | Interactive Training Portal</title>
+  <style>
+    :root {
+      --bg: #eef5ff;
+      --bg2: #fff8e7;
+      --primary: #0b2f6b;
+      --primary2: #1455a3;
+      --gold: #d9a62e;
+      --gold2: #f4c542;
+      --text: #172033;
+      --muted: #5f6b7a;
+      --card: rgba(255,255,255,0.88);
+      --border: rgba(255,255,255,0.58);
+      --shadow: 0 18px 45px rgba(15, 40, 80, 0.14);
+      --radius: 22px;
+      --red: #d94a4a;
+      --amber: #d9a62e;
+      --green: #2e9d55;
+    }
+
+    * { box-sizing: border-box; }
+
+    body {
+      margin: 0;
+      font-family: "Segoe UI", Arial, sans-serif;
+      color: var(--text);
+      background: radial-gradient(circle at top left, #dbeafe 0, transparent 30%),
+                  radial-gradient(circle at top right, #fff3bf 0, transparent 28%),
+                  linear-gradient(135deg, var(--bg), var(--bg2));
+      min-height: 100vh;
+      overflow-x: hidden;
+    }
+
+    .app {
+      display: grid;
+      grid-template-columns: 310px 1fr;
+      min-height: 100vh;
+    }
+
+    .sidebar {
+      position: sticky;
+      top: 0;
+      height: 100vh;
+      padding: 24px 18px;
+      background: linear-gradient(180deg, rgba(11,47,107,0.96), rgba(20,85,163,0.94));
+      color: white;
+      overflow-y: auto;
+      box-shadow: 10px 0 30px rgba(11,47,107,0.22);
+    }
+
+    .home-link {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 100%;
+      text-decoration: none;
+      background: linear-gradient(135deg, var(--gold), var(--gold2));
+      color: #172033;
+      font-weight: 800;
+      padding: 12px 16px;
+      border-radius: 14px;
+      margin-bottom: 18px;
+      box-shadow: 0 10px 25px rgba(0,0,0,0.18);
+      transition: all 0.25s ease;
+    }
+
+    .home-link:hover { transform: translateY(-2px); }
+
+    .brand {
+      padding: 12px 14px 22px;
+      border-bottom: 1px solid rgba(255,255,255,0.18);
+      margin-bottom: 18px;
+    }
+
+    .brand h1 {
+      font-size: 22px;
+      line-height: 1.15;
+      margin: 0 0 8px;
+    }
+
+    .brand p {
+      margin: 0;
+      font-size: 13px;
+      color: rgba(255,255,255,0.78);
+    }
+
+    .progress-box {
+      background: rgba(255,255,255,0.12);
+      border: 1px solid rgba(255,255,255,0.18);
+      border-radius: 18px;
+      padding: 14px;
+      margin-bottom: 18px;
+    }
+
+    .progress-label {
+      display: flex;
+      justify-content: space-between;
+      font-size: 13px;
+      margin-bottom: 8px;
+    }
+
+    .progress-track {
+      width: 100%;
+      height: 9px;
+      background: rgba(255,255,255,0.18);
+      border-radius: 999px;
+      overflow: hidden;
+    }
+
+    .progress-fill {
+      height: 100%;
+      width: 0%;
+      background: linear-gradient(90deg, var(--gold), #fff2a8);
+      border-radius: 999px;
+      transition: width 0.45s ease;
+    }
+
+    .nav-title {
+      font-size: 12px;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.65);
+      margin: 14px 10px 10px;
+    }
+
+    .nav button {
+      width: 100%;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      border: 0;
+      cursor: pointer;
+      color: white;
+      text-align: left;
+      background: transparent;
+      padding: 12px 14px;
+      border-radius: 14px;
+      font-size: 14px;
+      transition: all 0.25s ease;
+    }
+
+    .nav button:hover,
+    .nav button.active {
+      background: rgba(255,255,255,0.16);
+      transform: translateX(4px);
+    }
+
+    .nav .dot {
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      background: rgba(255,255,255,0.35);
+      flex-shrink: 0;
+    }
+
+    .nav button.done .dot { background: var(--gold2); }
+
+    .main { padding: 28px; }
+
+    .topbar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 18px;
+      margin-bottom: 24px;
+    }
+
+    .search {
+      flex: 1;
+      max-width: 540px;
+      background: var(--card);
+      border: 1px solid rgba(255,255,255,0.7);
+      border-radius: 999px;
+      padding: 13px 18px;
+      box-shadow: var(--shadow);
+    }
+
+    .search input {
+      width: 100%;
+      border: 0;
+      outline: 0;
+      background: transparent;
+      font-size: 15px;
+      color: var(--text);
+    }
+
+    .pill {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 999px;
+      padding: 12px 16px;
+      box-shadow: var(--shadow);
+      color: var(--primary);
+      font-weight: 700;
+      font-size: 14px;
+    }
+
+    .view { display: none; animation: fadeUp 0.45s ease both; }
+    .view.active { display: block; }
+
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(16px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .hero {
+      background: linear-gradient(135deg, rgba(11,47,107,0.96), rgba(20,85,163,0.88)), radial-gradient(circle at top right, rgba(244,197,66,0.35), transparent 35%);
+      color: white;
+      border-radius: 32px;
+      padding: 44px;
+      box-shadow: var(--shadow);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero::after {
+      content: "";
+      position: absolute;
+      width: 280px;
+      height: 280px;
+      border-radius: 50%;
+      right: -80px;
+      top: -90px;
+      background: rgba(244,197,66,0.18);
+    }
+
+    .hero h2 {
+      font-size: clamp(34px, 5vw, 60px);
+      margin: 0 0 18px;
+      line-height: 1.05;
+      max-width: 980px;
+    }
+
+    .hero p {
+      font-size: 18px;
+      max-width: 900px;
+      color: rgba(255,255,255,0.84);
+      line-height: 1.65;
+      margin: 0 0 26px;
+    }
+
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      position: relative;
+      z-index: 1;
+    }
+
+    .btn {
+      border: 0;
+      border-radius: 999px;
+      padding: 13px 20px;
+      cursor: pointer;
+      font-weight: 800;
+      background: white;
+      color: var(--primary);
+      box-shadow: 0 10px 25px rgba(0,0,0,0.12);
+      transition: all 0.25s ease;
+    }
+
+    .btn:hover { transform: translateY(-2px); }
+    .btn.gold { background: linear-gradient(135deg, var(--gold), var(--gold2)); color: #1b263b; }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 18px;
+      margin-top: 22px;
+    }
+
+    .card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 22px;
+      box-shadow: var(--shadow);
+      backdrop-filter: blur(16px);
+      transition: all 0.25s ease;
+    }
+
+    .card:hover { transform: translateY(-4px); }
+
+    .card h3 {
+      margin: 0 0 10px;
+      font-size: 21px;
+      color: var(--primary);
+    }
+
+    .card p, .card li {
+      color: var(--muted);
+      line-height: 1.65;
+      font-size: 15px;
+    }
+
+    .section-header { margin-bottom: 20px; }
+
+    .section-header h2 {
+      font-size: clamp(30px, 4vw, 48px);
+      color: var(--primary);
+      margin: 0 0 10px;
+    }
+
+    .section-header p {
+      color: var(--muted);
+      font-size: 17px;
+      max-width: 980px;
+      line-height: 1.7;
+    }
+
+    .feature-list {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 16px;
+      margin-top: 18px;
+    }
+
+    .feature {
+      padding: 18px;
+      border-radius: 18px;
+      background: rgba(255,255,255,0.72);
+      border-left: 5px solid var(--gold);
+      color: var(--muted);
+      line-height: 1.65;
+    }
+
+    .feature strong {
+      display: block;
+      color: var(--primary);
+      margin-bottom: 6px;
+    }
+
+    .flow {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 14px;
+      margin-top: 22px;
+    }
+
+    .step {
+      position: relative;
+      background: white;
+      border-radius: 18px;
+      padding: 20px;
+      box-shadow: var(--shadow);
+      border-top: 5px solid var(--gold);
+    }
+
+    .step .num {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 34px;
+      height: 34px;
+      border-radius: 50%;
+      background: var(--primary);
+      color: white;
+      font-weight: 800;
+      margin-bottom: 10px;
+    }
+
+    .camera-board {
+      margin-top: 24px;
+      background: #fffdf5;
+      border: 3px solid rgba(217,166,46,0.35);
+      border-radius: 28px;
+      padding: 28px;
+      box-shadow: var(--shadow);
+      position: relative;
+    }
+
+    .camera-board::before {
+      content: "hand-drawn IQA sampling map";
+      position: absolute;
+      top: -14px;
+      left: 28px;
+      background: var(--gold2);
+      color: #172033;
+      font-size: 12px;
+      font-weight: 800;
+      padding: 6px 12px;
+      border-radius: 999px;
+      transform: rotate(-2deg);
+    }
+
+    .camera-title {
+      text-align: center;
+      font-size: clamp(34px, 5vw, 64px);
+      letter-spacing: 0.18em;
+      color: var(--primary);
+      margin: 0 0 18px;
+      font-weight: 900;
+    }
+
+    .camera-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 16px;
+    }
+
+    .camera-item {
+      background: white;
+      border: 2px dashed rgba(20,85,163,0.22);
+      border-radius: 20px;
+      padding: 18px;
+      min-height: 170px;
+      transform: rotate(-0.6deg);
+    }
+
+    .camera-item:nth-child(even) { transform: rotate(0.7deg); }
+
+    .camera-letter {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 44px;
+      height: 44px;
+      background: var(--primary);
+      color: white;
+      border-radius: 50%;
+      font-size: 24px;
+      font-weight: 900;
+      margin-bottom: 8px;
+      box-shadow: 0 8px 18px rgba(11,47,107,0.2);
+    }
+
+    .camera-item h3 { margin: 0 0 8px; color: var(--primary); }
+    .camera-item p { margin: 0; color: var(--muted); line-height: 1.55; }
+
+    .rag {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0,1fr));
+      gap: 16px;
+      margin-top: 18px;
+    }
+
+    .rag-card {
+      background: white;
+      border-radius: 18px;
+      padding: 18px;
+      box-shadow: var(--shadow);
+      border-top: 7px solid var(--green);
+    }
+
+    .rag-card.red { border-top-color: var(--red); }
+    .rag-card.amber { border-top-color: var(--amber); }
+    .rag-card.green { border-top-color: var(--green); }
+    .rag-card h3 { margin: 0 0 8px; color: var(--primary); }
+    .rag-card p { color: var(--muted); line-height: 1.6; margin: 0; }
+
+    .scenario {
+      margin-top: 18px;
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 16px;
+    }
+
+    details {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 18px;
+      padding: 17px 18px;
+      box-shadow: var(--shadow);
+    }
+
+    summary {
+      cursor: pointer;
+      color: var(--primary);
+      font-weight: 800;
+      font-size: 16px;
+    }
+
+    details p { color: var(--muted); line-height: 1.65; }
+
+    .quiz-option {
+      display: block;
+      width: 100%;
+      text-align: left;
+      padding: 14px 16px;
+      margin: 10px 0;
+      border-radius: 14px;
+      border: 1px solid rgba(20,85,163,0.16);
+      background: white;
+      cursor: pointer;
+      transition: all 0.2s ease;
+      font-size: 15px;
+    }
+
+    .quiz-option:hover { border-color: var(--primary2); transform: translateX(3px); }
+    .quiz-option.correct { background: #e9f8ef; border-color: #2e9d55; }
+    .quiz-option.wrong { background: #fff0f0; border-color: #cc3d3d; }
+
+    .feedback {
+      margin-top: 12px;
+      font-weight: 700;
+      color: var(--primary);
+    }
+
+    .footer {
+      margin-top: 28px;
+      text-align: center;
+      color: var(--muted);
+      font-size: 13px;
+    }
+
+    @media (max-width: 1000px) {
+      .app { grid-template-columns: 1fr; }
+      .sidebar { position: relative; height: auto; }
+      .grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+      .flow, .camera-grid, .rag { grid-template-columns: repeat(2, 1fr); }
+    }
+
+    @media (max-width: 680px) {
+      .main { padding: 18px; }
+      .topbar { flex-direction: column; align-items: stretch; }
+      .grid, .feature-list, .scenario, .flow, .camera-grid, .rag { grid-template-columns: 1fr; }
+      .hero { padding: 28px; }
+    }
+  </style>
+</head>
+<body>
+  <div class="app">
+    <aside class="sidebar">
+      <a class="home-link" href="https://umeraio.github.io/Study-Material/" target="_blank">Home Page</a>
+      <div class="brand">
+        <h1>IQA Training</h1>
+        <p>Interactive professional learning system for internal quality assurance in vocational education.</p>
+      </div>
+      <div class="progress-box">
+        <div class="progress-label"><span>Learning Progress</span><span id="progressText">0%</span></div>
+        <div class="progress-track"><div id="progressFill" class="progress-fill"></div></div>
+      </div>
+      <div class="nav-title">Learning Modules</div>
+      <nav class="nav" id="nav">
+        <button class="active" data-view="dashboard"><span class="dot"></span>Dashboard</button>
+        <button data-view="what"><span class="dot"></span>What is an IQA?</button>
+        <button data-view="role"><span class="dot"></span>Main IQA Role</button>
+        <button data-view="camera"><span class="dot"></span>CAMERA Framework</button>
+        <button data-view="sampling"><span class="dot"></span>Sampling Strategy</button>
+        <button data-view="rag"><span class="dot"></span>RAG Risk Sampling</button>
+        <button data-view="cycle"><span class="dot"></span>IQA Cycle</button>
+        <button data-view="checks"><span class="dot"></span>What IQAs Check</button>
+        <button data-view="technology"><span class="dot"></span>Digital IQA Monitoring</button>
+        <button data-view="feedback"><span class="dot"></span>IQA Feedback</button>
+        <button data-view="standardisation"><span class="dot"></span>Standardisation</button>
+        <button data-view="examples"><span class="dot"></span>Real-Life Examples</button>
+        <button data-view="quiz"><span class="dot"></span>Knowledge Check</button>
+      </nav>
+    </aside>
+
+    <main class="main">
+      <div class="topbar">
+        <div class="search"><input id="searchInput" placeholder="Search IQA, CAMERA, sampling, RAG, assessor feedback, EQA..." /></div>
+        <div class="pill" id="sectionPill">Dashboard</div>
+      </div>
+
+      <section id="dashboard" class="view active">
+        <div class="hero">
+          <h2>Internal Quality Assurance in Vocational Education</h2>
+          <p>Explore how IQAs maintain high standards by checking assessment decisions, sampling learner evidence, supporting assessors, improving practice, and ensuring assessment remains fair, consistent, valid, reliable, and compliant.</p>
+          <div class="hero-actions">
+            <button class="btn gold" onclick="goTo('what')">Start IQA Training</button>
+            <button class="btn" onclick="goTo('camera')">Open CAMERA Framework</button>
+            <button class="btn" onclick="goTo('rag')">View RAG Sampling</button>
+          </div>
+        </div>
+        <div class="grid">
+          <div class="card"><h3>Quality of Assessment</h3><p>IQA checks that assessment decisions are accurate, fair, consistent, and supported by valid learner evidence.</p></div>
+          <div class="card"><h3>CAMERA Sampling</h3><p>Use Candidates, Assessors, Methods, Evidence, Records, and Assessment Sites to plan representative sampling.</p></div>
+          <div class="card"><h3>Risk Management</h3><p>Use RAG ratings to decide where more sampling, support, and monitoring are needed.</p></div>
+        </div>
+      </section>
+
+      <section id="what" class="view">
+        <div class="section-header">
+          <h2>What is an IQA?</h2>
+          <p>An Internal Quality Assurer monitors, reviews, and improves assessment practice inside a training centre or organisation.</p>
+        </div>
+        <div class="feature-list">
+          <div class="feature"><strong>Internal</strong>The quality assurance activity happens inside the centre before external quality assurance takes place.</div>
+          <div class="feature"><strong>Quality</strong>The IQA checks whether assessment decisions are valid, reliable, fair, sufficient, authentic, and current.</div>
+          <div class="feature"><strong>Assurance</strong>The IQA gives confidence that assessment is controlled, consistent, and compliant.</div>
+          <div class="feature"><strong>Improvement</strong>The IQA identifies gaps and supports assessors to improve assessment practice.</div>
+        </div>
+      </section>
+
+      <section id="role" class="view">
+        <div class="section-header">
+          <h2>Main Role of an IQA</h2>
+          <p>The IQA protects the integrity of assessment by checking that assessors make sound decisions and that learners are treated fairly.</p>
+        </div>
+        <div class="grid">
+          <div class="card"><h3>Plan IQA Activity</h3><p>Create a sampling plan based on assessor experience, qualification risk, learner risk, delivery method, and previous issues.</p></div>
+          <div class="card"><h3>Sample Evidence</h3><p>Review learner work, observation records, questioning, feedback, portfolios, professional discussions, and assessment decisions.</p></div>
+          <div class="card"><h3>Check Assessor Decisions</h3><p>Confirm that judgements are accurate, consistent, justified, and mapped to criteria.</p></div>
+          <div class="card"><h3>Support Assessors</h3><p>Provide constructive feedback, identify development needs, and agree action plans.</p></div>
+          <div class="card"><h3>Maintain Records</h3><p>Keep sampling records, feedback reports, standardisation notes, action plans, and audit trails.</p></div>
+          <div class="card"><h3>Prepare for EQA</h3><p>Ensure the centre can evidence quality, compliance, and continuous improvement.</p></div>
+        </div>
+      </section>
+
+      <section id="camera" class="view">
+        <div class="section-header">
+          <h2>The CAMERA Sampling Framework</h2>
+          <p>CAMERA is a practical IQA sampling framework. It helps an IQA select a representative and risk-managed sample instead of checking 100% of the work. It is not a physical camera; it is a planning tool for quality assurance.</p>
+        </div>
+        <div class="camera-board">
+          <h2 class="camera-title">CAMERA</h2>
+          <div class="camera-grid">
+            <div class="camera-item"><span class="camera-letter">C</span><h3>Candidates / Learners</h3><p>Sample across learner groups, support needs, ability levels, ages, locations, and different cohorts so the sample is fair and representative.</p></div>
+            <div class="camera-item"><span class="camera-letter">A</span><h3>Assessors</h3><p>Sample all assessors, with closer monitoring for new, inexperienced, unqualified, or previously inconsistent assessors.</p></div>
+            <div class="camera-item"><span class="camera-letter">M</span><h3>Methods</h3><p>Check a variety of assessment methods, including questioning, observation, professional discussion, witness testimony, assignments, and online tests.</p></div>
+            <div class="camera-item"><span class="camera-letter">E</span><h3>Evidence / Elements</h3><p>Review different units, learning outcomes, criteria, assignments, photographs, work products, videos, and portfolio evidence.</p></div>
+            <div class="camera-item"><span class="camera-letter">R</span><h3>Records</h3><p>Inspect assessment records, feedback logs, progress reviews, mapping documents, IQA reports, signatures, and action plans.</p></div>
+            <div class="camera-item"><span class="camera-letter">A</span><h3>Assessment Sites</h3><p>Sample different assessment locations, including workplaces, classrooms, remote centres, online delivery, and digital classrooms.</p></div>
+          </div>
+        </div>
+        <div class="card" style="margin-top:18px;">
+          <h3>How to Use CAMERA in Practice</h3>
+          <p>An IQA should use CAMERA when building the sampling plan. For example, instead of only checking completed portfolios from one assessor, the IQA should sample different learners, different assessors, different methods, different evidence types, different records, and different assessment sites. This gives a stronger and more defensible quality assurance picture.</p>
+        </div>
+      </section>
+
+      <section id="sampling" class="view">
+        <div class="section-header">
+          <h2>Key IQA Sampling Activities</h2>
+          <p>CAMERA works alongside core IQA activities such as interim sampling, summative sampling, observation of assessors, and standardisation meetings.</p>
+        </div>
+        <div class="feature-list">
+          <div class="feature"><strong>Interim Sampling</strong>Sample work in progress so gaps can be corrected before the learner reaches final assessment.</div>
+          <div class="feature"><strong>Summative Sampling</strong>Review completed assessment decisions to confirm they are valid, reliable, authentic, sufficient, and correctly recorded.</div>
+          <div class="feature"><strong>Observation of Assessors</strong>Observe the assessor carrying out assessment with a learner to check professional practice, questioning, fairness, feedback, and decision-making.</div>
+          <div class="feature"><strong>Standardisation Meetings</strong>Bring assessors together to compare evidence, discuss decisions, agree standards, and reduce inconsistent judgement.</div>
+        </div>
+      </section>
+
+      <section id="rag" class="view">
+        <div class="section-header">
+          <h2>RAG Risk Management for IQA Sampling</h2>
+          <p>Risk-based sampling means the IQA samples more where risk is higher. RAG ratings help decide the frequency, depth, and focus of IQA activity.</p>
+        </div>
+        <div class="rag">
+          <div class="rag-card red"><h3>Red - High Risk</h3><p>New assessor, recent errors, weak feedback, poor records, new qualification, remote assessment, or complex learner needs. Requires frequent and deeper sampling.</p></div>
+          <div class="rag-card amber"><h3>Amber - Medium Risk</h3><p>Some experience but occasional issues, new unit, mixed evidence quality, or recent process changes. Requires planned and targeted sampling.</p></div>
+          <div class="rag-card green"><h3>Green - Lower Risk</h3><p>Experienced assessor, strong history, accurate decisions, clear records, and consistent feedback. Requires proportionate maintenance sampling.</p></div>
+        </div>
+        <div class="card" style="margin-top:18px;">
+          <h3>Recording the Sampling Decision</h3>
+          <p>For every sample, the IQA should record what was sampled, why it was sampled, what was found, what feedback was given, what action is required, who is responsible, and the review date.</p>
+        </div>
+      </section>
+
+      <section id="cycle" class="view">
+        <div class="section-header">
+          <h2>The IQA Cycle</h2>
+          <p>IQA is a continuous quality cycle. It should improve assessment practice, not just identify problems after the event.</p>
+        </div>
+        <div class="flow">
+          <div class="step"><div class="num">1</div><h3>Plan</h3><p>Use CAMERA and RAG ratings to select learners, assessors, methods, evidence, records, and sites.</p></div>
+          <div class="step"><div class="num">2</div><h3>Sample</h3><p>Review learner evidence, assessor feedback, records, mapping, and decisions.</p></div>
+          <div class="step"><div class="num">3</div><h3>Feedback</h3><p>Give clear findings, strengths, development points, and required actions.</p></div>
+          <div class="step"><div class="num">4</div><h3>Improve</h3><p>Monitor action completion, standardise practice, and update assessment processes.</p></div>
+        </div>
+      </section>
+
+      <section id="checks" class="view">
+        <div class="section-header">
+          <h2>What Does an IQA Check?</h2>
+          <p>The IQA checks the full assessment trail from learner evidence to assessor decision and final quality record.</p>
+        </div>
+        <div class="grid">
+          <div class="card"><h3>Evidence Quality</h3><p>Is the evidence valid, authentic, sufficient, current, reliable, and clearly linked to the criteria?</p></div>
+          <div class="card"><h3>Assessment Records</h3><p>Are decisions recorded clearly? Is the evidence reference precise? Are feedback and action points documented?</p></div>
+          <div class="card"><h3>Assessor Feedback</h3><p>Is feedback specific, constructive, criteria-linked, and useful to the learner?</p></div>
+          <div class="card"><h3>Assessment Methods</h3><p>Were methods appropriate for the criterion, learner needs, qualification requirements, and context?</p></div>
+          <div class="card"><h3>Fairness and Inclusion</h3><p>Were reasonable adjustments considered and applied correctly where needed?</p></div>
+          <div class="card"><h3>Compliance</h3><p>Are awarding organisation rules, centre procedures, qualification requirements, and GDPR expectations followed?</p></div>
+        </div>
+      </section>
+
+      <section id="technology" class="view">
+        <div class="section-header">
+          <h2>Digital IQA Monitoring Techniques</h2>
+          <p>Modern IQA practice often includes digital sampling, remote standardisation, and recorded evidence review.</p>
+        </div>
+        <div class="feature-list">
+          <div class="feature"><strong>Virtual Sampling</strong>Pull evidence directly from e-portfolios, digital trackers, online learner folders, or assessment platforms.</div>
+          <div class="feature"><strong>Observation Videos</strong>Review recorded assessment activity to check assessor questioning, feedback, professionalism, and decision-making.</div>
+          <div class="feature"><strong>Remote Standardisation</strong>Use online meetings to compare evidence, calibrate judgement, and support assessors across different locations.</div>
+          <div class="feature"><strong>Digital Audit Trail</strong>Check timestamps, file names, feedback history, version control, learner authentication, and secure storage.</div>
+        </div>
+      </section>
+
+      <section id="feedback" class="view">
+        <div class="section-header">
+          <h2>IQA Feedback and Improvement</h2>
+          <p>IQA feedback must be prompt, constructive, evidence-based, and focused on improving future assessment practice.</p>
+        </div>
+        <div class="feature-list">
+          <div class="feature"><strong>Strengths</strong>Identify what the assessor did well, such as clear feedback, accurate mapping, or strong evidence judgement.</div>
+          <div class="feature"><strong>Development Points</strong>Explain exactly what needs improvement, for example weak evidence references or generic feedback.</div>
+          <div class="feature"><strong>Required Actions</strong>Set clear actions, deadlines, and expected evidence of completion.</div>
+          <div class="feature"><strong>Follow-Up</strong>Check that actions are completed and that the issue does not repeat in future assessment decisions.</div>
+        </div>
+      </section>
+
+      <section id="standardisation" class="view">
+        <div class="section-header">
+          <h2>Standardisation Meetings</h2>
+          <p>Standardisation helps ensure all assessors interpret criteria and make assessment decisions in the same way.</p>
+        </div>
+        <div class="flow">
+          <div class="step"><div class="num">1</div><h3>Select Evidence</h3><p>Choose examples of learner work, observation records, feedback, and decisions.</p></div>
+          <div class="step"><div class="num">2</div><h3>Compare Decisions</h3><p>Discuss how different assessors would judge the same evidence.</p></div>
+          <div class="step"><div class="num">3</div><h3>Agree Standard</h3><p>Clarify what competent evidence looks like for each criterion.</p></div>
+          <div class="step"><div class="num">4</div><h3>Record Actions</h3><p>Document decisions, actions, attendance, and follow-up points.</p></div>
+        </div>
+      </section>
+
+      <section id="examples" class="view">
+        <div class="section-header">
+          <h2>Real-Life IQA Examples</h2>
+          <p>These scenarios show how IQAs use CAMERA, RAG ratings, sampling, feedback, and action planning.</p>
+        </div>
+        <div class="scenario">
+          <details open><summary>Taxi Driver Qualification Portfolio</summary><p>The IQA samples different candidates, assessors, evidence types, and records. If feedback is generic or criteria are missed, the IQA records an action for clearer mapping and learner-specific feedback.</p></details>
+          <details><summary>New Construction Assessor - Red Risk</summary><p>The assessor is new, so the IQA samples more observations, work products, questioning records, and feedback. The IQA may observe the assessor directly and arrange standardisation support.</p></details>
+          <details><summary>Remote Assessment Site</summary><p>The IQA checks learner authentication, video evidence quality, digital portfolio mapping, assessment conditions, and whether reasonable adjustments were managed fairly.</p></details>
+          <details><summary>Weak Records Found</summary><p>The IQA finds that assessor decisions are correct but records are incomplete. The action plan requires stronger evidence references, dated feedback, and clearer criteria mapping.</p></details>
+        </div>
+      </section>
+
+      <section id="quiz" class="view">
+        <div class="section-header">
+          <h2>Knowledge Check</h2>
+          <p>Test your understanding of Internal Quality Assurance.</p>
+        </div>
+        <div class="card">
+          <h3>Question 1</h3>
+          <p>What does CAMERA help an IQA plan?</p>
+          <button class="quiz-option" onclick="answer(this, false)">A photography lesson for learners</button>
+          <button class="quiz-option" onclick="answer(this, true)">A representative IQA sampling plan across key assessment factors</button>
+          <button class="quiz-option" onclick="answer(this, false)">A final certificate claim without sampling</button>
+          <button class="quiz-option" onclick="answer(this, false)">A replacement for assessor feedback</button>
+          <div class="feedback" id="quizFeedback"></div>
+        </div>
+      </section>
+
+      <div class="footer">Crafted &amp; Designed by Umer Malikk</div>
+    </main>
+  </div>
+
+  <script>
+    const buttons = Array.from(document.querySelectorAll('.nav button'));
+    const views = Array.from(document.querySelectorAll('.view'));
+    const completed = new Set();
+
+    function goTo(id) {
+      views.forEach(view => view.classList.toggle('active', view.id === id));
+      buttons.forEach(btn => {
+        const isActive = btn.dataset.view === id;
+        btn.classList.toggle('active', isActive);
+        if (isActive) {
+          btn.classList.add('done');
+          completed.add(id);
+          document.getElementById('sectionPill').textContent = btn.textContent.trim();
+        }
+      });
+      updateProgress();
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+
+    function updateProgress() {
+      const percentage = Math.round((completed.size / buttons.length) * 100);
+      document.getElementById('progressFill').style.width = percentage + '%';
+      document.getElementById('progressText').textContent = percentage + '%';
+    }
+
+    buttons.forEach(button => button.addEventListener('click', () => goTo(button.dataset.view)));
+
+    document.addEventListener('keydown', (e) => {
+      const currentIndex = buttons.findIndex(btn => btn.classList.contains('active'));
+      if (e.key === 'ArrowRight') {
+        const next = buttons[Math.min(currentIndex + 1, buttons.length - 1)];
+        if (next) goTo(next.dataset.view);
+      }
+      if (e.key === 'ArrowLeft') {
+        const prev = buttons[Math.max(currentIndex - 1, 0)];
+        if (prev) goTo(prev.dataset.view);
+      }
+    });
+
+    function answer(button, isCorrect) {
+      const options = button.parentElement.querySelectorAll('.quiz-option');
+      options.forEach(opt => {
+        opt.classList.remove('correct', 'wrong');
+        opt.disabled = true;
+      });
+      button.classList.add(isCorrect ? 'correct' : 'wrong');
+      document.getElementById('quizFeedback').textContent = isCorrect
+        ? 'Correct. CAMERA helps IQAs plan representative and risk-managed sampling.'
+        : 'Not quite. CAMERA is used to structure a representative IQA sampling plan.';
+    }
+
+    document.getElementById('searchInput').addEventListener('input', function () {
+      const term = this.value.toLowerCase().trim();
+      if (!term) return;
+      const match = buttons.find(btn => btn.textContent.toLowerCase().includes(term));
+      if (match) goTo(match.dataset.view);
+    });
+
+    completed.add('dashboard');
+    updateProgress();
+  </script>
+</body>
+</html>

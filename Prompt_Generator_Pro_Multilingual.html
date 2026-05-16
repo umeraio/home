@@ -1,0 +1,307 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Prompt Generator Pro | Multilingual Edition by Umer Malik</title>
+<link href="https://fonts.googleapis.com/css2?family=Segoe+UI:wght@400;600&display=swap" rel="stylesheet">
+<style>
+body{
+  margin:0;
+  font-family:'Segoe UI',sans-serif;
+  background:linear-gradient(120deg,#f8fbff 0%,#ffffff 60%,#fff8e1 100%);
+  color:#222;
+  overflow-x:hidden;
+}
+.header{
+  background:linear-gradient(90deg,#0078D7,#005fa3);
+  color:#fff;
+  text-align:center;
+  padding:28px 0;
+  font-size:1.9rem;
+  font-weight:600;
+  letter-spacing:0.5px;
+  box-shadow:0 3px 10px rgba(0,0,0,0.25);
+  animation:fadeIn 1.5s ease;
+}
+.container{
+  display:flex;
+  flex-wrap:wrap;
+  justify-content:center;
+  gap:25px;
+  max-width:1200px;
+  margin:60px auto;
+  padding:0 20px;
+}
+.card{
+  background:#fff;
+  border-radius:20px;
+  box-shadow:0 10px 25px rgba(0,0,0,0.15);
+  padding:35px;
+  flex:1 1 500px;
+  transition:transform .3s ease, box-shadow .3s ease;
+  animation:slideUp .9s ease;
+}
+.card:hover{
+  transform:translateY(-6px);
+  box-shadow:0 12px 30px rgba(0,0,0,0.25);
+}
+h3{color:#0078D7;margin-top:0;font-size:1.3rem;}
+label{font-weight:600;margin-top:12px;display:block;}
+textarea,input,select{
+  width:100%;
+  padding:12px;
+  margin:6px 0 15px;
+  border:1px solid #ccc;
+  border-radius:8px;
+  font-size:1rem;
+  transition:border .2s, box-shadow .3s;
+}
+textarea:focus,input:focus,select:focus{
+  border:1px solid #0078D7;
+  box-shadow:0 0 8px rgba(0,120,215,0.3);
+  outline:none;
+}
+button{
+  background:#FFD700;
+  color:#222;
+  border:none;
+  padding:12px 24px;
+  margin:5px;
+  border-radius:10px;
+  cursor:pointer;
+  font-weight:600;
+  font-size:1rem;
+  box-shadow:0 3px 6px rgba(0,0,0,0.2);
+  transition:background .3s, transform .2s, box-shadow .2s;
+  position:relative;
+  overflow:hidden;
+}
+button:hover{
+  background:#f2c200;
+  transform:translateY(-2px);
+  box-shadow:0 5px 10px rgba(0,0,0,0.25);
+}
+#output{
+  background:linear-gradient(180deg,#fdfdfd 0%,#f6f9ff 100%);
+  border-left:6px solid #FFD700;
+  padding:20px;
+  border-radius:15px;
+  white-space:pre-wrap;
+  font-size:1rem;
+  min-height:250px;
+  line-height:1.5;
+  box-shadow:inset 0 0 8px rgba(0,0,0,0.1);
+  animation:fadeIn .8s ease;
+}
+#footer{
+  margin-top:50px;
+  text-align:center;
+  font-size:0.9rem;
+  color:#555;
+  border-top:3px solid #FFD700;
+  padding:10px 0;
+  animation:fadeIn 1.5s ease;
+}
+@keyframes fadeIn{from{opacity:0;}to{opacity:1;}}
+@keyframes slideUp{from{transform:translateY(40px);opacity:0;}to{transform:translateY(0);opacity:1;}}
+@media(max-width:900px){.container{flex-direction:column;align-items:center;}}
+</style>
+</head>
+<body>
+
+<div class="header">🌍 Prompt Generator Pro (Multilingual Edition) | Designed by Umer Malik</div>
+
+<div class="container">
+<!-- Left Panel -->
+<div class="card" style="flex:1.2">
+<h3>🧠 Build Your AI Prompt</h3>
+
+<label>What do you want to do?</label>
+<textarea id="goal" rows="3" placeholder="Describe in detail what you want AI to do (e.g. write an article, create lesson plan, fix code)..."></textarea>
+
+<label>Choose AI Role</label>
+<select id="role">
+<option disabled>—— Education & Learning ——</option>
+<option value="teacher">Teacher / Educator</option>
+<option value="lesson planner">Lesson Planner</option>
+<option value="exam marker">Exam Marker / Assessor</option>
+<option value="curriculum designer">Curriculum Designer</option>
+<option value="simplifier">Simplifier (for Children)</option>
+<option value="learning coach">Learning Coach</option>
+
+<option disabled>—— Business & Writing ——</option>
+<option value="content writer">Content Writer</option>
+<option value="copywriter">Copywriter</option>
+<option value="email writer">Email Writer</option>
+<option value="social media manager">Social Media Manager</option>
+<option value="resume coach">Resume Coach</option>
+<option value="interview trainer">Interview Trainer</option>
+<option value="professional letter writer">Professional Letter Writer</option>
+<option value="article writer">Article Writer</option>
+<option value="linkedin post writer">LinkedIn Post Writer</option>
+<option value="university assignment writer">University Assignment Writer</option>
+
+<option disabled>—— Technology & Coding ——</option>
+<option value="developer">Software Developer</option>
+<option value="cybersecurity analyst">Cybersecurity Analyst</option>
+<option value="network engineer">Network Engineer</option>
+<option value="data analyst">Data Analyst</option>
+<option value="ai developer">AI Developer</option>
+<option value="prompt engineer">Prompt Engineer</option>
+
+<option disabled>—— Creative & Media ——</option>
+<option value="story writer">Story Writer</option>
+<option value="youtube script writer">YouTube Script Writer</option>
+<option value="graphic designer">Graphic Designer</option>
+<option value="video editor">Video Editor</option>
+<option value="marketing strategist">Marketing Strategist</option>
+
+<option disabled>—— Personal Development ——</option>
+<option value="life coach">Life Coach</option>
+<option value="motivational speaker">Motivational Speaker</option>
+<option value="health advisor">Health Advisor</option>
+<option value="financial advisor">Financial Advisor</option>
+</select>
+
+<label>Preferred Tone / Style</label>
+<select id="tone">
+<option disabled>—— Common Styles ——</option>
+<option value="simple english">Simple English</option>
+<option value="professional">Professional</option>
+<option value="friendly">Friendly</option>
+<option value="formal">Formal</option>
+<option value="informal">Informal</option>
+
+<option disabled>—— Creative & Emotional ——</option>
+<option value="inspirational">Inspirational</option>
+<option value="motivational">Motivational</option>
+<option value="humorous">Humorous</option>
+<option value="storytelling">Storytelling</option>
+<option value="emotional">Emotional</option>
+
+<option disabled>—— Technical & Academic ——</option>
+<option value="analytical">Analytical</option>
+<option value="step-by-step">Step-by-Step</option>
+<option value="data-driven">Data-Driven</option>
+<option value="technical">Technical</option>
+<option value="concise">Concise</option>
+
+<option disabled>—— Accessibility ——</option>
+<option value="teacher mode">Teacher Mode</option>
+<option value="beginner-friendly">Beginner-Friendly</option>
+<option value="elder-friendly">Elder-Friendly</option>
+</select>
+
+<label>Output Format</label>
+<select id="format">
+<option disabled>—— Text Formats ——</option>
+<option value="paragraphs">Paragraphs</option>
+<option value="bullet points">Bullet Points</option>
+<option value="numbered steps">Numbered Steps</option>
+<option value="markdown">Markdown with Headings</option>
+<option value="essay">Essay Format</option>
+<option value="letter">Letter Format</option>
+<option value="article">Article</option>
+<option value="university assignment">University Assignment</option>
+<option value="linkedin post">LinkedIn Post</option>
+
+<option disabled>—— Structured Formats ——</option>
+<option value="table">Table</option>
+<option value="list">List</option>
+<option value="timeline">Timeline</option>
+<option value="checklist">Checklist</option>
+<option value="plan template">Plan Template</option>
+
+<option disabled>—— Technical Outputs ——</option>
+<option value="json">JSON Data</option>
+<option value="csv">CSV Format</option>
+<option value="code block">Code Block</option>
+<option value="dialogue script">Dialogue Script</option>
+<option value="html page">HTML Page</option>
+
+<option disabled>—— Educational Formats ——</option>
+<option value="lesson plan">Lesson Plan</option>
+<option value="quiz questions">Quiz Questions</option>
+<option value="worksheet">Worksheet</option>
+<option value="summary sheet">Summary Sheet</option>
+</select>
+
+<label>🌍 Output Language</label>
+<select id="language">
+<option value="english">English</option>
+<option value="urdu">Urdu</option>
+<option value="arabic">Arabic</option>
+<option value="french">French</option>
+<option value="spanish">Spanish</option>
+</select>
+
+<label>Extra Instructions (optional)</label>
+<textarea id="extra" rows="3" placeholder="e.g. 500 words, UK English, add statistics, use examples"></textarea>
+
+<label>Word Count (optional)</label>
+<input id="wordcount" type="number" min="50" max="2000" placeholder="e.g. 500">
+
+<div style="text-align:center;margin-top:10px;">
+<button onclick="generatePrompt()">✨ Generate</button>
+<button onclick="clearFields()">🧹 Clear</button>
+<button onclick="openChatGPT()">🚀 Open in ChatGPT</button>
+</div>
+</div>
+
+<!-- Right Panel -->
+<div class="card" style="flex:1;">
+<h3>🪄 Prompt Preview</h3>
+<div id="output">Your structured prompt will appear here...</div>
+</div>
+</div>
+
+<div id="footer">Designed by Umer Malik | HHF Training 2025 | www.hhftraining.co.uk</div>
+
+<script>
+let generatedPrompt="";
+function generatePrompt(){
+ const goal=document.getElementById('goal').value.trim();
+ const role=document.getElementById('role').value;
+ const tone=document.getElementById('tone').value;
+ const format=document.getElementById('format').value;
+ const language=document.getElementById('language').value;
+ const extra=document.getElementById('extra').value.trim();
+ const words=document.getElementById('wordcount').value.trim();
+ if(!goal){alert("Please describe what you want AI to do.");return;}
+
+ let lengthPart = words ? ` Limit the response to around ${words} words.` : " Use optimal length and natural flow.";
+ let langPart = "";
+ if(language === "urdu"){ langPart = " Respond in Urdu (use clear, simple Urdu script)."; }
+ else if(language === "arabic"){ langPart = " Respond in Arabic (Modern Standard Arabic)."; }
+ else if(language === "french"){ langPart = " Respond in French."; }
+ else if(language === "spanish"){ langPart = " Respond in Spanish."; }
+ else { langPart = " Respond in English."; }
+
+ generatedPrompt = `Act as a ${role}. Generate a ${tone} response to the following request: "${goal}". 
+Provide the answer in ${format} format with clear explanations and examples.${lengthPart}${langPart}`;
+ if(extra){generatedPrompt += ` Additional instructions: ${extra}`;}
+
+ document.getElementById('output').style.animation='none';
+ void document.getElementById('output').offsetWidth;
+ document.getElementById('output').style.animation='fadeIn .8s ease';
+ document.getElementById('output').innerText=generatedPrompt;
+}
+
+function openChatGPT(){
+ if(!generatedPrompt){alert("Please generate a prompt first.");return;}
+ const encoded=encodeURIComponent(generatedPrompt);
+ window.open('https://chat.openai.com/?q='+encoded,'_blank');
+}
+
+function clearFields(){
+ document.getElementById('goal').value='';
+ document.getElementById('extra').value='';
+ document.getElementById('wordcount').value='';
+ document.getElementById('output').innerText='Your structured prompt will appear here...';
+ generatedPrompt='';
+}
+</script>
+
+</body>
+</html>

@@ -1,0 +1,309 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Episode 3 – AI in Daily Life & Industries</title>
+<link href="https://fonts.googleapis.com/css2?family=Segoe+UI&family=Noto+Nastaliq+Urdu&display=swap" rel="stylesheet">
+<style>
+  body {
+    margin:0;
+    font-family:"Segoe UI",sans-serif;
+    background:linear-gradient(90deg,#f8fbff 0%,#ffffff 50%,#fff8e1 100%);
+    color:#222;
+    overflow:hidden;
+  }
+  .header {
+    position:fixed; top:0; left:0; width:100%;
+    background:#0078D7; color:#fff; text-align:center;
+    font-size:1.6rem; font-weight:bold; letter-spacing:0.5px;
+    padding:15px 0; z-index:20;
+    box-shadow:0 3px 6px rgba(0,0,0,0.2);
+  }
+  .slide {
+    display:none;
+    height:100vh;
+    width:100%;
+    justify-content:space-between;
+    align-items:center;
+    padding:100px 60px 80px 60px;
+    box-sizing:border-box;
+    animation:fadein 1s ease;
+  }
+  .slide.active { display:flex; }
+  @keyframes fadein { from { opacity:0; transform:translateY(30px); } to { opacity:1; transform:translateY(0);} }
+  .card {
+    width:100%; display:flex;
+    justify-content:space-between; align-items:center;
+    background:#fff; border-radius:20px;
+    padding:40px 50px;
+    box-shadow:0 6px 15px rgba(0,0,0,0.2);
+  }
+  .text-en { width:30%; font-size:1.25rem; line-height:1.6; }
+  .text-ur {
+    width:30%; font-family:'Noto Nastaliq Urdu',serif;
+    font-size:1.6rem; direction:rtl; text-align:right;
+    line-height:2; font-weight:bold;
+  }
+  .visual { width:30%; text-align:center; }
+  .visual img { max-width:230px; height:auto; }
+
+  #controls {
+    position:fixed; bottom:65px; width:100%; text-align:center; z-index:10;
+  }
+  button {
+    background:#0078D7; color:#fff; border:none;
+    margin:0 8px; padding:12px 24px; border-radius:8px;
+    cursor:pointer; font-size:1rem; transition:0.3s;
+  }
+  button:hover { background:#005fa3; }
+  #readEnBtn, #readUrBtn { background:#FFD700; color:#222; font-weight:bold; }
+  #muteBtn { background:#ff6666; color:#fff; font-weight:bold; }
+
+  #footer {
+    position:fixed; bottom:0; left:0; width:100%;
+    font-size:0.9rem; text-align:center; padding:6px 0;
+    background:#f0f0f0; color:#333; border-top:3px solid #FFD700;
+  }
+</style>
+</head>
+<body>
+
+<div class="header">Episode 3 – AI in Daily Life & Industries</div>
+
+<!-- Slide 1: Intro -->
+<div class="slide active">
+  <div class="card">
+    <div class="text-en">
+      <h2>Welcome!</h2>
+      <p>So far, we’ve seen what AI is and its types.  
+      Now let’s look at where AI really works every day in healthcare, education, transport, and business.  
+      These are the real-world places where AI helps people now.</p>
+    </div>
+    <div class="visual"><img src="https://cdn-icons-png.flaticon.com/512/4712/4712100.png" alt="AI daily life"></div>
+    <div class="text-ur" dir="rtl">
+      <p>اب ہم دیکھیں گے کہ مصنوعی ذہانت روزمرہ زندگی اور مختلف صنعتوں میں کیسے کام کرتی ہے طب، تعلیم، ٹرانسپورٹ اور کاروبار میں۔</p>
+    </div>
+  </div>
+</div>
+
+<!-- Slide 2: Healthcare -->
+<div class="slide">
+  <div class="card">
+    <div class="text-en">
+      <h2>🩺 AI in Healthcare</h2>
+      <p>AI is transforming medicine and health in many ways:</p>
+      <ul>
+        <li>Early diagnosis AI reads scans (X-rays, MRIs) to find diseases faster.</li>
+        <li>Personalised treatment AI suggests medicines or doses based on a patient’s data.</li>
+        <li>Virtual health assistants chatbots help patients monitor symptoms.</li>
+        <li>Managing hospital operations scheduling, predicting supply needs.</li>
+      </ul>
+    </div>
+    <div class="visual"><img src="https://cdn-icons-png.flaticon.com/512/4348/4348329.png" alt="AI healthcare"></div>
+    <div class="text-ur" dir="rtl">
+      <p>صحت کے شعبے میں AI کئی طریقوں سے کام کرتی ہے:</p>
+      <ul style="list-style:none;padding:0;margin:0;">
+        <li>🔹 جلدی تشخیص AI اسکینز پڑھ کر بیماری تلاش کرتی ہے۔</li>
+        <li>🔹 ذاتی علاج مریض کی معلومات کی بنیاد پر دوائیں تجویز کرنا۔</li>
+        <li>🔹 ورچوئل اسسٹنٹ چیٹ بوٹ مریض کی علامات جانتے ہیں۔</li>
+        <li>🔹 ہسپتال کا انتظام شیڈولز، ضرورت کی پیش گوئی وغیرہ۔</li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<!-- Slide 3: Education -->
+<div class="slide">
+  <div class="card">
+    <div class="text-en">
+      <h2>🎓 AI in Education</h2>
+      <p>Education is being improved with AI in many ways:</p>
+      <ul>
+        <li>Adaptive learning software adjusts lessons to your pace.</li>
+        <li>AI tutors help you practice math, languages, or quizzes.</li>
+        <li>Automatic grading AI checks multiple-choice, essays, etc.</li>
+        <li>Designing lesson plans & study guides using AI tools.</li>
+      </ul>
+    </div>
+    <div class="visual"><img src="https://cdn-icons-png.flaticon.com/512/3865/3865362.png" alt="AI education"></div>
+    <div class="text-ur" dir="rtl">
+      <p>تعلیم کے شعبے میں AI کئی طریقوں سے کام کرتی ہے:</p>
+      <ul style="list-style:none;padding:0;margin:0;">
+        <li>🔹 مطابقتی سبق سافٹ ویئر آپ کی رفتار کے مطابق خود بدلتا ہے۔</li>
+        <li>🔹 AI ٹیوٹر آپ کی مشق کرنے میں مدد کرے۔</li>
+        <li>🔹 خودکار گریڈنگ امتحان، مضمون وغیرہ چیک کرنا۔</li>
+        <li>🔹 سبق اور رہنما تیار کرنا AI ٹولز سے۔</li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<!-- Slide 4: Transport -->
+<div class="slide">
+  <div class="card">
+    <div class="text-en">
+      <h2>🚗 AI in Transport</h2>
+      <p>Transport and mobility are getting smarter with AI:</p>
+      <ul>
+        <li>Autonomous vehicles cars that drive themselves.</li>
+        <li>Smart traffic systems managing signal timings to reduce jams.</li>
+        <li>Route optimisation finding fastest routes by analysing data.</li>
+        <li>Predictive maintenance vehicles inform when they need service.</li>
+      </ul>
+    </div>
+    <div class="visual"><img src="https://cdn-icons-png.flaticon.com/512/2887/2887235.png" alt="AI transport"></div>
+    <div class="text-ur" dir="rtl">
+      <p>ٹرانسپورٹ میں AI کی خدمات:</p>
+      <ul style="list-style:none;padding:0;margin:0;">
+        <li>🔹 خودکار گاڑیاں جو خود چل سکیں۔</li>
+        <li>🔹 ذہین ٹریفک نظام سگنلز تیار کرنا تاکہ رش کم ہو۔</li>
+        <li>🔹 بہتر راستے ڈیٹا کی بنیاد پر تیز ترین راستہ تلاش کرنا۔</li>
+        <li>🔹 پیشن گوئی خدمات گاڑی بتائے کی مرمت کب چاہیے۔</li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<!-- Slide 5: Business & Industry -->
+<div class="slide">
+  <div class="card">
+    <div class="text-en">
+      <h2>🏢 AI in Business & Industry</h2>
+      <p>Businesses use AI for efficiency, growth, and smart decisions:</p>
+      <ul>
+        <li>Customer service chatbots answer questions anytime.</li>
+        <li>Predictive analytics forecast trends, sales, inventory.</li>
+        <li>Fraud detection spotting suspicious transactions.</li>
+        <li>Supply chain optimisation reducing waste, speeding delivery.</li>
+      </ul>
+    </div>
+    <div the="visual"><img src="https://cdn-icons-png.flaticon.com/512/2917/2917992.png" alt="AI business"></div>
+    <div class="text-ur" dir="rtl">
+      <p>کاروبار اور صنعت میں AI کا استعمال:</p>
+      <ul style="list-style:none;padding:0;margin:0;">
+        <li>🔹 چیٹ بوٹ کسٹمر سروس کے لیے۔</li>
+        <li>🔹 پیش گوئی تجزیات رجحانات اور ذخیرہ کا اندازہ۔</li>
+        <li>🔹 فراڈ کی شناخت مشکوک لین دین پکڑنا۔</li>
+        <li>🔹 رسد کی منصوبہ بندی ضائع کم کرنا، تیز تر ڈیلیوری۔</li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<!-- Slide 6: Combined Examples -->
+<div class="slide">
+  <div class="card">
+    <div class="text-en">
+      <h2>🔄 Combined Real Examples</h2>
+      <p>Here’s how multiple industries get helped together:</p>
+      <ul>
+        <li>Hospitals use AI to schedule ambulances (health + transport).</li>
+        <li>Smart classrooms where AI recommends study plans (education + business).</li>
+        <li>Logistics firms using AI to route trucks and manage inventory (business + transport).</li>
+      </ul>
+    </div>
+    <div class="visual"><img src="https://cdn-icons-png.flaticon.com/512/4729/4729782.png" alt="AI integrated"></div>
+    <div class="text-ur" dir="rtl">
+      <p>یہ مختلف صنعتوں کا مشترکہ استعمال ہے:</p>
+      <ul style="list-style:none;padding:0;margin:0;">
+        <li>🔹 ہسپتال ایمبولینس شیڈول کرنے کے لیے AI استعمال کرتے ہیں۔</li>
+        <li>🔹 سمارٹ کلاس رومز جہاں AI آپ کو پڑھنے کا منصوبہ تجویز کرے۔</li>
+        <li>🔹 لاجسٹکس کمپنیاں AI سے روٹ اور ذخیرہ سنبھالتے ہیں۔</li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<!-- Slide 7: Benefits & Challenges -->
+<div class="slide">
+  <div class="card">
+    <div class="text-en">
+      <h2>⚙️ Benefits & Challenges</h2>
+      <p>AI brings big benefits but also challenges:</p>
+      <ul>
+        <li>Benefits: Efficiency, accuracy, saving time, scaling solutions.</li>
+        <li>Challenges: Data privacy, bias, job displacement, trust issues.</li>
+      </ul>
+    </div>
+    <div class="visual"><img src="https://cdn-icons-png.flaticon.com/512/2886/2886742.png" alt="AI risks"></div>
+    <div class="text-ur" dir="rtl">
+      <p>فائدے اور چیلنجز:</p>
+      <ul style="list-style:none;padding:0;margin:0;">
+        <li>🔹 فوائد: کارکردگی، درستگی، وقت بچت، بڑھتی ہوئی صلاحیت۔</li>
+        <li>🔹 چیلنجز: ڈیٹا پرائیویسی، تعصب، روزگار کا نقصان، اعتماد کے مسائل۔</li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<!-- Slide 8: Summary & Next -->
+<div class="slide">
+  <div class="card">
+    <div class="text-en">
+      <h2>🔚 Summary & What’s Next</h2>
+      <p>We saw AI in healthcare, education, transport, business and combined uses.  
+      In the next episode, we’ll dive into how to use AI tools yourself from ChatGPT to image-generators and no-code automations.</p>
+      <p><b>Like 👍 | Subscribe 📺 | Comment 💬: Where you’d like to use AI?</b></p>
+    </div>
+    <div class="visual"><img src="https://cdn-icons-png.flaticon.com/512/4712/4712135.png" alt="AI summary"></div>
+    <div the="text-ur" dir="rtl">
+      <p>ہم نے AI کو صحت، تعلیم، ٹرانسپورٹ اور کاروبار میں دیکھا۔  
+      اگلی قسط میں ہم خود AI ٹولز استعمال کرنا سیکھیں گے جیسے ChatGPT، تصویری ٹولز اور نو کوڈ خود کاری۔</p>
+      <p><b>پسند کریں 👍 | سبسکرائب کریں 📺 | تبصرہ کریں 💬: آپ AI کہاں استعمال کرنا چاہیں گے؟</b></p>
+    </div>
+  </div>
+</div>
+
+<!-- Controls -->
+<div id="controls">
+  <button id="prevBtn">⬅ Previous</button>
+  <button id="readEnBtn">🔊 Read English</button>
+  <button id="readUrBtn">🔊 Read Urdu</button>
+  <button id="muteBtn">🔇 Mute</button>
+  <button id="nextBtn">Next ➡</button>
+</div>
+
+<div id="footer">
+  Designed by Umer Malik | HHF Training 2025 | www.hhftraining.co.uk
+</div>
+
+<script>
+const slides = document.querySelectorAll('.slide');
+let current = 0;
+const synth = window.speechSynthesis;
+
+function showSlide(i) {
+  slides[current].classList.remove('active');
+  current = (i + slides.length) % slides.length;
+  slides[current].classList.add('active');
+}
+
+function readText(langType) {
+  if (synth.speaking) synth.cancel();
+  let text, utter;
+  if (langType === 'en') {
+    text = slides[current].querySelector('.text-en').innerText;
+    utter = new SpeechSynthesisUtterance(text);
+    utter.lang = 'en-GB';
+  } else {
+    text = slides[current].querySelector('.text-ur').innerText;
+    utter = new SpeechSynthesisUtterance(text);
+    const voices = synth.getVoices().filter(v => v.lang.toLowerCase().startsWith('ur'));
+    if (voices.length > 0) utter.voice = voices[0];
+    else alert("⚠ Urdu voice not available.\nPlease install Urdu (Pakistan) language pack.");
+    utter.lang = 'ur-PK';
+  }
+  utter.rate = 1;
+  synth.speak(utter);
+}
+
+document.getElementById('nextBtn').onclick = () => showSlide(current+1);
+document.getElementById('prevBtn').onclick = () => showSlide(current-1);
+document.getElementById('readEnBtn').onclick = () => readText('en');
+document.getElementById('readUrBtn').onclick = () => readText('ur');
+document.getElementById('muteBtn').onclick = () => synth.cancel();
+</script>
+
+</body>
+</html>

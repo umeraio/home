@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Episode 4 – How to Use AI Tools in Real Life</title>
+<link href="https://fonts.googleapis.com/css2?family=Segoe+UI&family=Noto+Nastaliq+Urdu&display=swap" rel="stylesheet">
+
+<style>
+body{
+  margin:0;
+  font-family:"Segoe UI",sans-serif;
+  background:linear-gradient(90deg,#f8fbff 0%,#ffffff 50%,#fff8e1 100%);
+  color:#222;overflow:hidden;
+}
+.header{
+  position:fixed;top:0;left:0;width:100%;
+  background:#0078D7;color:#fff;text-align:center;
+  font-size:1.6rem;font-weight:bold;letter-spacing:0.5px;
+  padding:15px 0;z-index:20;box-shadow:0 3px 6px rgba(0,0,0,0.2);
+}
+.slide{
+  display:none;height:100vh;width:100%;
+  justify-content:space-between;align-items:center;
+  padding:100px 60px 80px 60px;box-sizing:border-box;
+  animation:fadein 1s ease;
+}
+.slide.active{display:flex;}
+@keyframes fadein{from{opacity:0;transform:translateY(30px);}to{opacity:1;transform:translateY(0);}}
+.card{
+  width:100%;display:flex;justify-content:space-between;align-items:center;
+  background:#fff;border-radius:20px;padding:40px 50px;
+  box-shadow:0 6px 15px rgba(0,0,0,0.2);
+}
+.text-en{width:30%;font-size:1.25rem;line-height:1.6;}
+.text-ur{
+  width:30%;font-family:'Noto Nastaliq Urdu',serif;
+  font-size:1.6rem;direction:rtl;text-align:right;
+  line-height:2;font-weight:bold;
+}
+.visual{text-align:center;width:30%;}
+.visual img{max-width:230px;height:auto;}
+#controls{
+  position:fixed;bottom:65px;width:100%;text-align:center;z-index:10;
+}
+button{
+  background:#0078D7;color:#fff;border:none;margin:0 8px;
+  padding:12px 24px;border-radius:8px;cursor:pointer;
+  font-size:1rem;transition:0.3s;
+}
+button:hover{background:#005fa3;}
+#readEnBtn,#readUrBtn{background:#FFD700;color:#222;font-weight:bold;}
+#muteBtn{background:#ff6666;color:#fff;font-weight:bold;}
+#footer{
+  position:fixed;bottom:0;left:0;width:100%;
+  font-size:0.9rem;text-align:center;padding:6px 0;
+  background:#f0f0f0;color:#333;border-top:3px solid #FFD700;
+}
+</style>
+</head>
+<body>
+
+<div class="header">Episode 4 – How to Use AI Tools in Real Life</div>
+
+<!-- 1 -->
+<div class="slide active">
+  <div class="card">
+    <div class="text-en">
+      <h2>Welcome to Episode 4</h2>
+      <p>In this episode, you’ll learn how to actually <b>use AI tools</b> in your daily life.  
+      From writing and studying to creating images, automating work, and more — AI can help everyone.</p>
+    </div>
+    <div class="visual"><img src="https://cdn-icons-png.flaticon.com/512/4712/4712100.png" alt="AI tools intro"></div>
+    <div class="text-ur" dir="rtl">
+      <p>آج کی قسط میں ہم سیکھیں گے کہ مصنوعی ذہانت کے ٹولز کو روزمرہ زندگی میں عملی طور پر کیسے استعمال کیا جا سکتا ہے — تحریر، مطالعہ، تصاویر اور خودکار کاموں کے لیے۔</p>
+    </div>
+  </div>
+</div>
+
+<!-- 2 -->
+<div class="slide">
+  <div class="card">
+    <div class="text-en">
+      <h2>💬 Chatbots & Assistants</h2>
+      <p>AI chatbots like <b>ChatGPT, Google Bard, Microsoft Copilot</b> can help you:</p>
+      <ul>
+        <li>Write and edit text (emails, essays, stories).</li>
+        <li>Explain complex topics in simple words.</li>
+        <li>Summarise books, notes, or news.</li>
+        <li>Generate creative ideas or lesson plans.</li>
+      </ul>
+    </div>
+    <div class="visual"><img src="https://cdn-icons-png.flaticon.com/512/4712/4712118.png" alt="Chatbot AI"></div>
+    <div class="text-ur" dir="rtl">
+      <p>چیٹ بوٹس جیسے ChatGPT، Google Bard اور Microsoft Copilot آپ کی مدد کرتے ہیں:</p>
+      <ul style="list-style:none;padding:0;margin:0;">
+        <li>🔹 ای میل، مضمون یا کہانی لکھنے اور درست کرنے میں۔</li>
+        <li>🔹 مشکل موضوعات آسان الفاظ میں سمجھانے میں۔</li>
+        <li>🔹 کتابوں یا خبروں کا خلاصہ تیار کرنے میں۔</li>
+        <li>🔹 تخلیقی خیالات اور سبق کے منصوبے بنانے میں۔</li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<!-- 3 -->
+<div class="slide">
+  <div class="card">
+    <div class="text-en">
+      <h2>🎨 AI Image Tools</h2>
+      <p>AI image generators like <b>DALL·E 3, Bing Image Creator, Canva AI</b> let you create pictures from words!  
+      Just describe your idea — e.g. “a futuristic city at sunset” — and AI paints it for you.</p>
+    </div>
+    <div class="visual"><img src="https://cdn-icons-png.flaticon.com/512/4833/4833897.png" alt="AI image generation"></div>
+    <div class="text-ur" dir="rtl">
+      <p>تصویری ٹولز جیسے DALL·E 3، Bing Image Creator اور Canva AI آپ کے الفاظ کو تصویر میں بدل دیتے ہیں۔  
+      بس لکھیں “سورج غروب کے وقت مستقبل کا شہر” اور AI تصویر بنا دے گا۔</p>
+    </div>
+  </div>
+</div>
+
+<!-- 4 -->
+<div class="slide">
+  <div class="card">
+    <div class="text-en">
+      <h2>🎙️ Voice & Video Tools</h2>
+      <p>AI can speak, listen, and even make videos:</p>
+      <ul>
+        <li><b>Otter AI</b> – converts speech to text for notes or meetings.</li>
+        <li><b>Descript</b> – edits audio/video using text.</li>
+        <li><b>Synthesia AI</b> – creates videos with virtual presenters.</li>
+      </ul>
+    </div>
+    <div class="visual"><img src="https://cdn-icons-png.flaticon.com/512/4712/4712133.png" alt="AI voice video"></div>
+    <div class="text-ur" dir="rtl">
+      <p>AI آواز سن کر لکھ بھی سکتی ہے اور ویڈیو بھی بنا سکتی ہے:</p>
+      <ul style="list-style:none;padding:0;margin:0;">
+        <li>🔹 Otter AI بولی ہوئی بات کو تحریر میں بدلتا ہے۔</li>
+        <li>🔹 Descript ویڈیو یا آڈیو کو متن سے ایڈٹ کرتا ہے۔</li>
+        <li>🔹 Synthesia AI ورچوئل اسپیکر کے ساتھ ویڈیوز بناتا ہے۔</li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<!-- 5 -->
+<div class="slide">
+  <div class="card">
+    <div class="text-en">
+      <h2>✍️ Writing & Study Help</h2>
+      <p>Tools like <b>Grammarly, QuillBot, DeepL Translator</b> and <b>Scholar AI</b> can:</p>
+      <ul>
+        <li>Check grammar and improve writing style.</li>
+        <li>Summarise long articles and translate texts.</li>
+        <li>Generate citations or answer academic questions.</li>
+      </ul>
+    </div>
+    <div class="visual"><img src="https://cdn-icons-png.flaticon.com/512/3865/3865362.png" alt="AI study writing"></div>
+    <div class="text-ur" dir="rtl">
+      <p>تحریر اور مطالعے کے لیے مفید ٹولز:</p>
+      <ul style="list-style:none;padding:0;margin:0;">
+        <li>🔹 Grammarly اور QuillBot تحریر درست کرتے ہیں۔</li>
+        <li>🔹 DeepL اور Google Translate ترجمہ کرتے ہیں۔</li>
+        <li>🔹 Scholar AI حوالہ جات اور تعلیمی جوابات دیتا ہے۔</li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<!-- 6 -->
+<div class="slide">
+  <div class="card">
+    <div class="text-en">
+      <h2>⚙️ Business & Productivity</h2>
+      <p>AI automates work and saves time:</p>
+      <ul>
+        <li><b>Zapier / n8n</b> – connect apps and auto-send emails or posts.</li>
+        <li><b>Notion AI</b> – summarises notes and manages projects.</li>
+        <li><b>ChatGPT for Business</b> – generates reports, slides, code.</li>
+      </ul>
+    </div>
+    <div class="visual"><img src="https://cdn-icons-png.flaticon.com/512/2917/2917992.png" alt="AI productivity"></div>
+    <div class="text-ur" dir="rtl">
+      <p>کاروباری ٹولز جو وقت بچاتے ہیں:</p>
+      <ul style="list-style:none;padding:0;margin:0;">
+        <li>🔹 Zapier یا n8n — ایپس کو جوڑ کر خودکار ای میل یا پوسٹ بھیجنا۔</li>
+        <li>🔹 Notion AI — نوٹس کا خلاصہ اور منصوبہ بندی۔</li>
+        <li>🔹 ChatGPT for Business — رپورٹس، سلائیڈز اور کوڈ بنانا۔</li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<!-- 7 -->
+<div class="slide">
+  <div class="card">
+    <div class="text-en">
+      <h2>🛡️ Responsible Use</h2>
+      <p>Use AI wisely and safely:</p>
+      <ul>
+        <li>Don’t share personal or private data.</li>
+        <li>Always double-check facts and information.</li>
+        <li>Use AI ethically — avoid misuse or harmful content.</li>
+      </ul>
+    </div>
+    <div class="visual"><img src="https://cdn-icons-png.flaticon.com/512/2886/2886742.png" alt="AI ethics"></div>
+    <div class="text-ur" dir="rtl">
+      <p>AI کا ذمہ دارانہ استعمال:</p>
+      <ul style="list-style:none;padding:0;margin:0;">
+        <li>🔹 ذاتی معلومات کبھی شیئر نہ کریں۔</li>
+        <li>🔹 حاصل کردہ معلومات کی ہمیشہ تصدیق کریں۔</li>
+        <li>🔹 اخلاقی اصولوں کے مطابق استعمال کریں۔</li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<!-- 8 -->
+<div class="slide">
+  <div class="card">
+    <div class="text-en">
+      <h2>🔚 Recap & Next Episode</h2>
+      <p>We learned how to use AI tools — chat, images, writing, voice, business, and safety.  
+      In Episode 5, we’ll explore <b>“The Future of AI and Jobs.”</b>  
+      Stay tuned to discover how AI will shape tomorrow’s careers.</p>
+    </div>
+    <div class="visual"><img src="https://cdn-icons-png.flaticon.com/512/4712/4712135.png" alt="AI future"></div>
+    <div class="text-ur" dir="rtl">
+      <p>ہم نے سیکھا کہ AI ٹولز کو بات چیت، تصویری، تحریری، آواز اور کاروباری کاموں میں کیسے استعمال کیا جا سکتا ہے۔  
+      اگلی قسط میں ہم دیکھیں گے کہ AI مستقبل کی ملازمتوں کو کیسے بدلے گا۔</p>
+    </div>
+  </div>
+</div>
+
+<!-- Controls -->
+<div id="controls">
+  <button id="prevBtn">⬅ Previous</button>
+  <button id="readEnBtn">🔊 Read English</button>
+  <button id="readUrBtn">🔊 Read Urdu</button>
+  <button id="muteBtn">🔇 Mute</button>
+  <button id="nextBtn">Next ➡</button>
+</div>
+
+<div id="footer">
+  Designed by Umer Malik | HHF Training 2025 | www.hhftraining.co.uk
+</div>
+
+<script>
+const slides=document.querySelectorAll('.slide');
+let current=0;
+const synth=window.speechSynthesis;
+function showSlide(i){
+  slides[current].classList.remove('active');
+  current=(i+slides.length)%slides.length;
+  slides[current].classList.add('active');
+}
+function readText(langType){
+  if(synth.speaking)synth.cancel();
+  let text,utter;
+  if(langType==='en'){
+    text=slides[current].querySelector('.text-en').innerText;
+    utter=new SpeechSynthesisUtterance(text);
+    utter.lang='en-GB';
+  }else{
+    text=slides[current].querySelector('.text-ur').innerText;
+    utter=new SpeechSynthesisUtterance(text);
+    const voices=synth.getVoices().filter(v=>v.lang.toLowerCase().startsWith('ur'));
+    if(voices.length>0)utter.voice=voices[0];
+    else alert("⚠ Urdu voice not available.\nPlease install Urdu (Pakistan) language pack.");
+    utter.lang='ur-PK';
+  }
+  utter.rate=1;
+  synth.speak(utter);
+}
+document.getElementById('nextBtn').onclick=()=>showSlide(current+1);
+document.getElementById('prevBtn').onclick=()=>showSlide(current-1);
+document.getElementById('readEnBtn').onclick=()=>readText('en');
+document.getElementById('readUrBtn').onclick=()=>readText('ur');
+document.getElementById('muteBtn').onclick=()=>synth.cancel();
+</script>
+
+</body>
+</html>

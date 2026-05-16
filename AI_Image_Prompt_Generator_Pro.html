@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AI Image Prompt Generator Pro | Designed by Umer Malik</title>
+<link href="https://fonts.googleapis.com/css2?family=Segoe+UI:wght@400;600&display=swap" rel="stylesheet">
+<style>
+body{
+  margin:0;
+  font-family:'Segoe UI',sans-serif;
+  background:linear-gradient(120deg,#f8fbff 0%,#ffffff 60%,#fff8e1 100%);
+  color:#222;
+}
+.header{
+  background:linear-gradient(90deg,#0078D7,#005fa3);
+  color:#fff;
+  text-align:center;
+  padding:28px 0;
+  font-size:1.9rem;
+  font-weight:600;
+  letter-spacing:0.5px;
+  box-shadow:0 3px 10px rgba(0,0,0,0.25);
+}
+.container{
+  display:flex;
+  flex-wrap:wrap;
+  justify-content:center;
+  gap:25px;
+  max-width:1200px;
+  margin:50px auto;
+  padding:0 20px;
+}
+.card{
+  background:#fff;
+  border-radius:20px;
+  box-shadow:0 10px 25px rgba(0,0,0,0.15);
+  padding:30px;
+  flex:1 1 500px;
+  transition:transform .3s ease, box-shadow .3s ease;
+  animation:slideUp .9s ease;
+}
+.card:hover{transform:translateY(-6px);box-shadow:0 12px 30px rgba(0,0,0,0.25);}
+h3{color:#0078D7;margin-top:0;}
+label{font-weight:600;margin-top:12px;display:block;}
+textarea,input,select{
+  width:100%;padding:12px;margin:6px 0 15px;border:1px solid #ccc;border-radius:8px;
+  font-size:1rem;transition:border .2s, box-shadow .3s;
+}
+textarea:focus,input:focus,select:focus{border:1px solid #0078D7;box-shadow:0 0 8px rgba(0,120,215,0.3);outline:none;}
+button{
+  background:#FFD700;color:#222;border:none;padding:12px 24px;margin:5px;border-radius:10px;cursor:pointer;
+  font-weight:600;font-size:1rem;box-shadow:0 3px 6px rgba(0,0,0,0.2);
+  transition:background .3s, transform .2s, box-shadow .2s;
+}
+button:hover{background:#f2c200;transform:translateY(-2px);box-shadow:0 5px 10px rgba(0,0,0,0.25);}
+#output{
+  background:linear-gradient(180deg,#fdfdfd 0%,#f6f9ff 100%);
+  border-left:6px solid #FFD700;padding:20px;border-radius:15px;white-space:pre-wrap;
+  font-size:1rem;min-height:250px;line-height:1.5;box-shadow:inset 0 0 8px rgba(0,0,0,0.1);
+  animation:fadeIn .8s ease;
+}
+#footer{
+  margin-top:50px;text-align:center;font-size:0.9rem;color:#555;border-top:3px solid #FFD700;padding:10px 0;
+}
+.hidden{display:none;}
+@keyframes fadeIn{from{opacity:0;}to{opacity:1;}}
+@keyframes slideUp{from{transform:translateY(40px);opacity:0;}to{transform:translateY(0);opacity:1;}}
+@media(max-width:900px){.container{flex-direction:column;align-items:center;}}
+</style>
+</head>
+<body>
+
+<div class="header">🎨 AI Image Prompt Generator Pro | Designed by Umer Malik</div>
+
+<div class="container">
+
+<!-- Left Side -->
+<div class="card" style="flex:1.2">
+<h3>🧠 Build Your Image Prompt</h3>
+
+<label>Main Subject / Scene</label>
+<textarea id="subject" rows="3" placeholder="Describe the image you want (e.g. futuristic city with flying cars)..."></textarea>
+
+<label>Art Style</label>
+<select id="style">
+<option>Realistic</option><option>3D Render</option><option>Digital Painting</option><option>Cartoon</option>
+<option>Watercolor</option><option>Pencil Sketch</option><option>Anime</option><option>Cinematic</option>
+<option>Pixar-Style</option><option>Oil Painting</option><option>Minimalist</option><option>Futuristic</option>
+</select>
+
+<label>Lighting & Ambience</label>
+<select id="lighting">
+<option>Bright Daylight</option><option>Golden Hour</option><option>Neon Lights</option><option>Studio Lighting</option>
+<option>Candlelight</option><option>Soft Light</option><option>Dramatic Shadows</option><option>Moonlight</option>
+</select>
+
+<label>Camera Angle / Composition</label>
+<select id="camera">
+<option>Eye Level</option><option>Aerial View</option><option>Close-up</option><option>Portrait</option>
+<option>Wide Shot</option><option>Macro</option><option>Overhead</option>
+</select>
+
+<label>Color Palette / Tone</label>
+<select id="color">
+<option>Vibrant</option><option>Muted</option><option>Monochrome</option><option>Pastel</option>
+<option>Warm Tones</option><option>Cool Tones</option><option>Black & White</option>
+</select>
+
+<label>People / Characters</label>
+<select id="people">
+<option>None</option><option>1 Person</option><option>Group</option><option>Child</option>
+<option>Elderly</option><option>Professional</option><option>Family</option><option>Fantasy Character</option>
+</select>
+
+<label>Environment / Background</label>
+<select id="environment">
+<option>Indoor</></option><option>Outdoor</option><option>City</option><option>Nature</option>
+<option>Office</option><option>Classroom</option><option>Space</option><option>Underwater</option>
+<option>Abstract</option>
+</select>
+
+<label>Mood / Emotion</label>
+<select id="mood">
+<option>Happy</option><option>Calm</option><option>Exciting</option><option>Serious</option>
+<option>Mysterious</option><option>Dreamy</option><option>Futuristic</option><option>Hopeful</option>
+</select>
+
+<label>Image Quality</label>
+<select id="quality">
+<option>HD</option><option>Ultra Realistic</option><option>4K</option><option>8K</option>
+<option>Photorealistic</option><option>Stylized</option><option>Surreal</option>
+</select>
+
+<label>Aspect Ratio / Orientation</label>
+<select id="aspect">
+<option>Square (1:1)</option><option>Portrait (9:16)</option><option>Landscape (16:9)</option><option>Banner (21:9)</option>
+</select>
+
+<label>Do you want to add text on the image?</label>
+<select id="addText" onchange="toggleTextSection()">
+<option value="no">No</option>
+<option value="yes">Yes</option>
+</select>
+
+<div id="textSection" class="hidden">
+  <label>Text Content</label>
+  <input id="textContent" placeholder="e.g. The Future Begins Here">
+  <label>Font Style</label>
+  <select id="fontStyle">
+    <option>Elegant</option><option>Bold</option><option>Modern</option><option>Handwritten</option>
+    <option>Graffiti</option><option>Calligraphy</option>
+  </select>
+  <label>Text Placement</label>
+  <select id="placement">
+    <option>Top</option><option>Center</option><option>Bottom</option><option>Left</option><option>Right</option><option>Custom</option>
+  </select>
+</div>
+
+<label>🌍 Output Language</label>
+<select id="language">
+<option value="english">English</option><option value="urdu">Urdu</option>
+<option value="arabic">Arabic</option><option value="french">French</option><option value="spanish">Spanish</option>
+</select>
+
+<label>Extra Instructions (optional)</label>
+<textarea id="extra" rows="3" placeholder="e.g. add reflections on glass, cinematic depth of field, clouds in sky..."></textarea>
+
+<div style="text-align:center;margin-top:10px;">
+  <button onclick="generatePrompt()">✨ Generate Prompt</button>
+  <button onclick="clearFields()">🧹 Clear</button>
+  <button onclick="openInAITool()">🚀 Open in AI Tool</button>
+  <p style="font-size:0.9rem;color:#555;margin-top:8px;">
+    💡 Tip: After opening DeepAI, paste your copied prompt into the text box to generate your image.
+  </p>
+</div>
+</div>
+
+<!-- Right Side -->
+<div class="card" style="flex:1;">
+<h3>🪄 Image Prompt Preview</h3>
+<div id="output">Your image prompt will appear here...</div>
+</div>
+
+</div>
+
+<div id="footer">Designed by Umer Malik | HHF Training 2025 | www.hhftraining.co.uk</div>
+
+<script>
+function toggleTextSection(){
+  const addText=document.getElementById('addText').value;
+  document.getElementById('textSection').classList.toggle('hidden', addText!=='yes');
+}
+
+let generatedPrompt="";
+function generatePrompt(){
+ const subject=document.getElementById('subject').value.trim();
+ if(!subject){alert("Please describe your image first.");return;}
+
+ const style=document.getElementById('style').value;
+ const lighting=document.getElementById('lighting').value;
+ const camera=document.getElementById('camera').value;
+ const color=document.getElementById('color').value;
+ const people=document.getElementById('people').value;
+ const environment=document.getElementById('environment').value;
+ const mood=document.getElementById('mood').value;
+ const quality=document.getElementById('quality').value;
+ const aspect=document.getElementById('aspect').value;
+ const addText=document.getElementById('addText').value;
+ const language=document.getElementById('language').value;
+ const extra=document.getElementById('extra').value.trim();
+
+ let textPart="";
+ if(addText==='yes'){
+   const text=document.getElementById('textContent').value.trim();
+   const font=document.getElementById('fontStyle').value;
+   const placement=document.getElementById('placement').value;
+   textPart=` Add the text "${text}" in ${font} font placed at the ${placement} of the image.`;
+ }
+
+ let langPart="";
+ if(language==='urdu'){langPart=" Respond in Urdu (clear Urdu script).";}
+ else if(language==='arabic'){langPart=" Respond in Arabic (Modern Standard Arabic).";}
+ else if(language==='french'){langPart=" Respond in French.";}
+ else if(language==='spanish'){langPart=" Respond in Spanish.";}
+ else {langPart=" Respond in English.";}
+
+ generatedPrompt=`Create a ${quality} ${style} image of ${subject}, showing ${people.toLowerCase()} in a ${environment.toLowerCase()} setting, captured from a ${camera.toLowerCase()} with ${lighting.toLowerCase()} lighting and ${color.toLowerCase()} tones. The mood should be ${mood.toLowerCase()}. Use an ${aspect.toLowerCase()} orientation.${textPart}${langPart}`;
+ if(extra){generatedPrompt+=` Additional details: ${extra}`;}
+
+ document.getElementById('output').style.animation='none';
+ void document.getElementById('output').offsetWidth;
+ document.getElementById('output').style.animation='fadeIn .8s ease';
+ document.getElementById('output').innerText=generatedPrompt;
+}
+
+function openInAITool(){
+  if(!generatedPrompt){
+    alert("Please generate your prompt first."); 
+    return;
+  }
+  // Copy the prompt to clipboard for user convenience
+  navigator.clipboard.writeText(generatedPrompt)
+    .then(()=>{
+      alert("✅ Your image prompt has been copied to clipboard!\n\nNow paste it into DeepAI’s Text-to-Image generator to create your artwork.");
+      window.open('https://deepai.org/machine-learning-model/text2img','_blank');
+    })
+    .catch(()=>{
+      alert("⚠️ Unable to copy automatically.\nYou can still copy manually from the preview box.");
+      window.open('https://deepai.org/machine-learning-model/text2img','_blank');
+    });
+}
+
+function clearFields(){
+ document.querySelectorAll('textarea,input').forEach(el=>el.value='');
+ document.getElementById('addText').value='no';
+ toggleTextSection();
+ document.getElementById('output').innerText='Your image prompt will appear here...';
+ generatedPrompt='';
+}
+</script>
+
+</body>
+</html>

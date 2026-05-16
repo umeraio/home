@@ -1,0 +1,489 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>External Quality Assurance Training Portal</title>
+<style>
+:root{
+--bg:#eef5ff;
+--bg2:#fff8e7;
+--primary:#0b2f6b;
+--primary2:#1455a3;
+--gold:#d9a62e;
+--gold2:#f4c542;
+--text:#172033;
+--muted:#5f6b7a;
+--card:rgba(255,255,255,0.88);
+--shadow:0 18px 45px rgba(15,40,80,0.14);
+--radius:22px;
+--red:#d94a4a;
+--green:#2e9d55;
+--amber:#d9a62e;
+}
+*{box-sizing:border-box;}
+body{
+margin:0;
+font-family:"Segoe UI",Arial,sans-serif;
+background:radial-gradient(circle at top left,#dbeafe 0,transparent 30%),radial-gradient(circle at top right,#fff3bf 0,transparent 28%),linear-gradient(135deg,var(--bg),var(--bg2));
+color:var(--text);
+min-height:100vh;
+}
+.app{display:grid;grid-template-columns:310px 1fr;min-height:100vh;}
+.sidebar{
+position:sticky;
+top:0;
+height:100vh;
+overflow-y:auto;
+padding:24px 18px;
+background:linear-gradient(180deg,rgba(11,47,107,0.96),rgba(20,85,163,0.94));
+color:white;
+}
+.home-link{
+display:flex;
+align-items:center;
+justify-content:center;
+width:100%;
+padding:12px 16px;
+background:linear-gradient(135deg,var(--gold),var(--gold2));
+color:#172033;
+font-weight:800;
+text-decoration:none;
+border-radius:14px;
+margin-bottom:18px;
+}
+.brand{
+padding:12px 14px 22px;
+border-bottom:1px solid rgba(255,255,255,0.18);
+margin-bottom:18px;
+}
+.brand h1{margin:0 0 8px;font-size:22px;}
+.brand p{margin:0;font-size:13px;line-height:1.6;color:rgba(255,255,255,0.78);}
+.progress-box{
+background:rgba(255,255,255,0.12);
+border-radius:18px;
+padding:14px;
+margin-bottom:18px;
+}
+.progress-label{display:flex;justify-content:space-between;font-size:13px;margin-bottom:8px;}
+.progress-track{height:9px;background:rgba(255,255,255,0.18);border-radius:999px;overflow:hidden;}
+.progress-fill{height:100%;width:0;background:linear-gradient(90deg,var(--gold),#fff2a8);}
+.nav-title{
+font-size:12px;
+letter-spacing:0.08em;
+text-transform:uppercase;
+margin:14px 10px 10px;
+color:rgba(255,255,255,0.65);
+}
+.nav button{
+width:100%;
+display:flex;
+align-items:center;
+gap:10px;
+border:0;
+background:transparent;
+color:white;
+padding:12px 14px;
+border-radius:14px;
+text-align:left;
+cursor:pointer;
+transition:all .25s ease;
+}
+.nav button:hover,.nav button.active{background:rgba(255,255,255,0.16);transform:translateX(4px);}
+.dot{width:10px;height:10px;border-radius:50%;background:rgba(255,255,255,0.35);}
+.main{padding:28px;}
+.topbar{display:flex;justify-content:space-between;align-items:center;gap:18px;margin-bottom:24px;}
+.search{flex:1;max-width:540px;background:var(--card);border-radius:999px;padding:13px 18px;box-shadow:var(--shadow);}
+.search input{width:100%;border:0;outline:0;background:transparent;font-size:15px;}
+.pill{background:var(--card);padding:12px 16px;border-radius:999px;box-shadow:var(--shadow);font-weight:700;color:var(--primary);}
+.view{display:none;animation:fade .4s ease both;}
+.view.active{display:block;}
+@keyframes fade{from{opacity:0;transform:translateY(16px);}to{opacity:1;transform:translateY(0);}}
+.hero{
+background:linear-gradient(135deg,rgba(11,47,107,0.96),rgba(20,85,163,0.88));
+color:white;
+padding:44px;
+border-radius:32px;
+box-shadow:var(--shadow);
+position:relative;
+overflow:hidden;
+}
+.hero::after{
+content:"";
+position:absolute;
+right:-90px;
+top:-90px;
+width:280px;
+height:280px;
+border-radius:50%;
+background:rgba(244,197,66,0.18);
+}
+.hero h2{font-size:clamp(36px,5vw,62px);margin:0 0 18px;line-height:1.05;max-width:980px;}
+.hero p{font-size:18px;line-height:1.7;max-width:980px;color:rgba(255,255,255,0.84);}
+.hero-actions{display:flex;flex-wrap:wrap;gap:12px;margin-top:26px;position:relative;z-index:1;}
+.btn{
+border:0;
+border-radius:999px;
+padding:13px 20px;
+font-weight:800;
+cursor:pointer;
+background:white;
+color:var(--primary);
+}
+.btn.gold{background:linear-gradient(135deg,var(--gold),var(--gold2));}
+.section-header{margin-bottom:20px;}
+.section-header h2{font-size:clamp(30px,4vw,48px);margin:0 0 10px;color:var(--primary);}
+.section-header p{font-size:17px;color:var(--muted);line-height:1.7;max-width:980px;}
+.grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:18px;margin-top:22px;}
+.card{
+background:var(--card);
+border-radius:var(--radius);
+padding:22px;
+box-shadow:var(--shadow);
+}
+.card h3{margin:0 0 10px;color:var(--primary);font-size:21px;}
+.card p,.card li{font-size:15px;line-height:1.65;color:var(--muted);}
+.feature-list{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px;}
+.feature{
+background:rgba(255,255,255,0.72);
+border-left:5px solid var(--gold);
+padding:18px;
+border-radius:18px;
+line-height:1.65;
+color:var(--muted);
+}
+.feature strong{display:block;color:var(--primary);margin-bottom:6px;}
+.flow{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-top:22px;}
+.step{
+background:white;
+border-top:5px solid var(--gold);
+border-radius:18px;
+padding:20px;
+box-shadow:var(--shadow);
+}
+.num{
+width:34px;height:34px;border-radius:50%;background:var(--primary);color:white;font-weight:800;display:flex;align-items:center;justify-content:center;margin-bottom:10px;
+}
+.audit-board{
+background:#fffdf5;
+border:3px dashed rgba(217,166,46,0.35);
+border-radius:28px;
+padding:28px;
+margin-top:24px;
+box-shadow:var(--shadow);
+}
+.audit-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px;}
+.audit-box{
+background:white;
+border-radius:20px;
+padding:18px;
+border:2px dashed rgba(20,85,163,0.18);
+}
+.audit-icon{font-size:34px;display:block;margin-bottom:10px;}
+.risk-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px;margin-top:18px;}
+.risk-card{
+background:white;
+border-radius:18px;
+padding:18px;
+box-shadow:var(--shadow);
+border-top:7px solid var(--green);
+}
+.risk-card.red{border-top-color:var(--red);}
+.risk-card.amber{border-top-color:var(--amber);}
+.scenario{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px;}
+details{background:var(--card);padding:18px;border-radius:18px;box-shadow:var(--shadow);}
+summary{cursor:pointer;font-weight:800;color:var(--primary);}
+.quiz-option{
+display:block;
+width:100%;
+text-align:left;
+padding:14px 16px;
+margin:10px 0;
+border-radius:14px;
+border:1px solid rgba(20,85,163,0.16);
+background:white;
+cursor:pointer;
+}
+.quiz-option.correct{background:#e9f8ef;border-color:#2e9d55;}
+.quiz-option.wrong{background:#fff0f0;border-color:#cc3d3d;}
+.feedback{margin-top:12px;font-weight:700;color:var(--primary);}
+.footer{text-align:center;color:var(--muted);margin-top:28px;font-size:13px;}
+@media(max-width:1000px){
+.app{grid-template-columns:1fr;}
+.sidebar{position:relative;height:auto;}
+.grid,.audit-grid,.risk-grid{grid-template-columns:repeat(2,minmax(0,1fr));}
+.flow{grid-template-columns:repeat(2,1fr);}
+}
+@media(max-width:680px){
+.main{padding:18px;}
+.topbar{flex-direction:column;align-items:stretch;}
+.grid,.feature-list,.flow,.scenario,.audit-grid,.risk-grid{grid-template-columns:1fr;}
+}
+</style>
+</head>
+<body>
+<div class="app">
+<aside class="sidebar">
+<a class="home-link" href="https://umeraio.github.io/Study-Material/" target="_blank">Home Page</a>
+<div class="brand">
+<h1>EQA Training</h1>
+<p>Interactive professional learning portal for External Quality Assurers working on behalf of awarding organisations.</p>
+</div>
+<div class="progress-box">
+<div class="progress-label"><span>Learning Progress</span><span id="progressText">0%</span></div>
+<div class="progress-track"><div id="progressFill" class="progress-fill"></div></div>
+</div>
+<div class="nav-title">EQA Modules</div>
+<nav class="nav" id="nav">
+<button class="active" data-view="dashboard"><span class="dot"></span>Dashboard</button>
+<button data-view="what"><span class="dot"></span>What is an EQA?</button>
+<button data-view="principles"><span class="dot"></span>EQA Principles</button>
+<button data-view="planning"><span class="dot"></span>Planning EQA Activity</button>
+<button data-view="evaluation"><span class="dot"></span>Evaluating Centres</button>
+<button data-view="compliance"><span class="dot"></span>Compliance & Regulation</button>
+<button data-view="risk"><span class="dot"></span>Risk-Based Monitoring</button>
+<button data-view="improvement"><span class="dot"></span>Quality Improvement</button>
+<button data-view="digital"><span class="dot"></span>Digital & Remote EQA</button>
+<button data-view="reports"><span class="dot"></span>EQA Reporting</button>
+<button data-view="examples"><span class="dot"></span>Real-Life EQA Visits</button>
+<button data-view="quiz"><span class="dot"></span>Knowledge Check</button>
+</nav>
+</aside>
+
+<main class="main">
+<div class="topbar">
+<div class="search"><input id="searchInput" placeholder="Search EQA, Ofqual, audit, centre approval, compliance..." /></div>
+<div class="pill" id="sectionPill">Dashboard</div>
+</div>
+
+<section id="dashboard" class="view active">
+<div class="hero">
+<h2>External Quality Assurance in Vocational Education</h2>
+<p>Learn how External Quality Assurers maintain national standards by monitoring assessment centres, reviewing internal quality systems, evaluating assessment practice, managing risk, supporting continuous improvement, and protecting qualification integrity on behalf of awarding organisations.</p>
+<div class="hero-actions">
+<button class="btn gold" onclick="goTo('what')">Start EQA Training</button>
+<button class="btn" onclick="goTo('evaluation')">Centre Evaluation</button>
+<button class="btn" onclick="goTo('examples')">Real-Life EQA Visits</button>
+</div>
+</div>
+<div class="grid">
+<div class="card"><h3>National Standards</h3><p>EQAs ensure centres apply qualification standards consistently across regions, sites, assessors, and delivery models.</p></div>
+<div class="card"><h3>Centre Monitoring</h3><p>EQAs review internal quality assurance systems, sampling plans, records, assessment decisions, and learner evidence.</p></div>
+<div class="card"><h3>Awarding Organisation Protection</h3><p>EQAs protect qualification credibility, public confidence, compliance, and regulatory expectations.</p></div>
+</div>
+</section>
+
+<section id="what" class="view">
+<div class="section-header">
+<h2>What is an External Quality Assurer?</h2>
+<p>An External Quality Assurer works on behalf of an awarding organisation to monitor and evaluate the quality of assessment and internal quality assurance within approved centres.</p>
+</div>
+<div class="feature-list">
+<div class="feature"><strong>Independent Oversight</strong>EQAs are external to the centre and provide objective monitoring of quality systems and assessment practice.</div>
+<div class="feature"><strong>Quality Monitoring</strong>They check that assessment decisions, IQA systems, and certification claims meet awarding organisation standards.</div>
+<div class="feature"><strong>Risk Management</strong>EQAs identify quality risks, malpractice concerns, weak processes, and compliance issues.</div>
+<div class="feature"><strong>Continuous Improvement</strong>EQAs support centres by recommending improvements and monitoring corrective actions.</div>
+</div>
+</section>
+
+<section id="principles" class="view">
+<div class="section-header">
+<h2>Core Principles of External Quality Assurance</h2>
+<p>EQA activity is based on fairness, consistency, transparency, validity, reliability, and national standardisation.</p>
+</div>
+<div class="audit-board">
+<div class="audit-grid">
+<div class="audit-box"><span class="audit-icon">⚖️</span><h3>Consistency</h3><p>Ensure centres apply assessment standards consistently across all learners and assessors.</p></div>
+<div class="audit-box"><span class="audit-icon">🔍</span><h3>Validity</h3><p>Check that evidence genuinely demonstrates achievement of qualification criteria.</p></div>
+<div class="audit-box"><span class="audit-icon">🛡️</span><h3>Integrity</h3><p>Protect qualification credibility and public confidence in certification.</p></div>
+<div class="audit-box"><span class="audit-icon">📋</span><h3>Compliance</h3><p>Monitor centre compliance with awarding organisation and regulatory requirements.</p></div>
+<div class="audit-box"><span class="audit-icon">📈</span><h3>Improvement</h3><p>Encourage centres to strengthen quality systems and assessment practice.</p></div>
+<div class="audit-box"><span class="audit-icon">🏢</span><h3>Standardisation</h3><p>Maintain consistent national interpretation of standards across centres.</p></div>
+</div>
+</div>
+</section>
+
+<section id="planning" class="view">
+<div class="section-header">
+<h2>Planning External Quality Assurance Activity</h2>
+<p>EQAs plan monitoring activity using risk-based approaches, centre history, qualification complexity, delivery models, and previous action plans.</p>
+</div>
+<div class="flow">
+<div class="step"><div class="num">1</div><h3>Review Risk</h3><p>Analyse previous EQA reports, certification claims, assessor turnover, and qualification risk.</p></div>
+<div class="step"><div class="num">2</div><h3>Select Sample</h3><p>Choose learners, assessors, units, records, and IQA activities for review.</p></div>
+<div class="step"><div class="num">3</div><h3>Schedule Visit</h3><p>Arrange remote or on-site monitoring activity with centre representatives.</p></div>
+<div class="step"><div class="num">4</div><h3>Prepare Audit</h3><p>Review centre documents, policies, quality records, and digital systems before the visit.</p></div>
+</div>
+</section>
+
+<section id="evaluation" class="view">
+<div class="section-header">
+<h2>Evaluating the Quality of Assessment & IQA</h2>
+<p>EQAs evaluate whether centres maintain effective assessment and internal quality assurance systems.</p>
+</div>
+<div class="grid">
+<div class="card"><h3>Assessment Decisions</h3><p>Check whether learner evidence supports assessor judgements and qualification outcomes.</p></div>
+<div class="card"><h3>IQA Systems</h3><p>Review sampling plans, feedback quality, standardisation activity, and action tracking.</p></div>
+<div class="card"><h3>Evidence Quality</h3><p>Check authenticity, sufficiency, validity, currency, and reliability of learner evidence.</p></div>
+<div class="card"><h3>Assessor Competence</h3><p>Review assessor qualifications, CPD, monitoring records, and consistency.</p></div>
+<div class="card"><h3>Centre Processes</h3><p>Evaluate appeals procedures, malpractice systems, safeguarding, and learner support.</p></div>
+<div class="card"><h3>Certification Controls</h3><p>Ensure claims are accurate and only competent learners are certificated.</p></div>
+</div>
+</section>
+
+<section id="compliance" class="view">
+<div class="section-header">
+<h2>Compliance, Regulation & Good Practice</h2>
+<p>External Quality Assurers ensure centres comply with awarding organisation requirements, regulatory frameworks, and good practice expectations.</p>
+</div>
+<div class="feature-list">
+<div class="feature"><strong>Ofqual Expectations</strong>Monitor whether centres maintain valid, reliable, fair, and manageable assessment systems.</div>
+<div class="feature"><strong>Awarding Organisation Rules</strong>Check centre approval conditions, assessment requirements, and certification controls.</div>
+<div class="feature"><strong>GDPR & Data Protection</strong>Ensure learner records, portfolios, and digital systems are securely managed.</div>
+<div class="feature"><strong>Safeguarding & Equality</strong>Review learner protection, inclusion, and reasonable adjustment procedures.</div>
+</div>
+<div class="card" style="margin-top:18px;">
+<h3>Common Compliance Issues Found by EQAs</h3>
+<ul>
+<li>Weak assessor feedback</li>
+<li>Poor evidence mapping</li>
+<li>Insufficient IQA sampling</li>
+<li>Unqualified assessors</li>
+<li>Missing standardisation records</li>
+<li>Weak authentication procedures</li>
+<li>Unsafe certification claims</li>
+</ul>
+</div>
+</section>
+
+<section id="risk" class="view">
+<div class="section-header">
+<h2>Risk-Based EQA Monitoring</h2>
+<p>EQAs use risk-based monitoring to decide how frequently and deeply a centre should be monitored.</p>
+</div>
+<div class="risk-grid">
+<div class="risk-card red"><h3>High Risk Centre</h3><p>New centre, weak IQA systems, poor EQA history, malpractice concerns, high staff turnover, or remote delivery risk.</p></div>
+<div class="risk-card amber"><h3>Medium Risk Centre</h3><p>Generally compliant but with some recurring actions or inconsistent quality evidence.</p></div>
+<div class="risk-card"><h3>Lower Risk Centre</h3><p>Strong history, stable staff, effective IQA systems, and positive EQA outcomes.</p></div>
+</div>
+</section>
+
+<section id="improvement" class="view">
+<div class="section-header">
+<h2>Maintaining & Improving Quality</h2>
+<p>External Quality Assurance is not only about identifying problems. It also supports centres to improve assessment quality and learner outcomes.</p>
+</div>
+<div class="flow">
+<div class="step"><div class="num">1</div><h3>Identify Issues</h3><p>Highlight weaknesses in assessment, IQA systems, records, or compliance.</p></div>
+<div class="step"><div class="num">2</div><h3>Issue Actions</h3><p>Provide clear corrective actions with timescales and evidence requirements.</p></div>
+<div class="step"><div class="num">3</div><h3>Support Improvement</h3><p>Guide centres through standardisation, CPD, stronger controls, and process updates.</p></div>
+<div class="step"><div class="num">4</div><h3>Review Progress</h3><p>Monitor whether corrective actions have been completed effectively.</p></div>
+</div>
+</section>
+
+<section id="digital" class="view">
+<div class="section-header">
+<h2>Digital & Remote External Quality Assurance</h2>
+<p>Modern EQA practice increasingly includes remote monitoring, digital portfolios, online meetings, and cloud-based quality assurance systems.</p>
+</div>
+<div class="grid">
+<div class="card"><h3>Remote EQA Visits</h3><p>Carry out centre monitoring through video meetings, digital sampling, and secure online access.</p></div>
+<div class="card"><h3>E-Portfolio Systems</h3><p>Review learner evidence, assessor feedback, IQA records, and timestamps digitally.</p></div>
+<div class="card"><h3>Digital Audit Trails</h3><p>Monitor version control, learner authentication, and secure evidence storage.</p></div>
+</div>
+</section>
+
+<section id="reports" class="view">
+<div class="section-header">
+<h2>Managing Information & EQA Reporting</h2>
+<p>EQAs must maintain accurate, professional, and evidence-based records throughout the monitoring process.</p>
+</div>
+<div class="feature-list">
+<div class="feature"><strong>EQA Reports</strong>Document strengths, risks, actions, sanctions, recommendations, and centre progress.</div>
+<div class="feature"><strong>Action Plans</strong>Record required improvements, deadlines, and evidence of completion.</div>
+<div class="feature"><strong>Audit Trails</strong>Maintain traceable evidence of monitoring activity and decisions.</div>
+<div class="feature"><strong>Professional Conduct</strong>Ensure reports remain objective, evidence-based, fair, and professional.</div>
+</div>
+</section>
+
+<section id="examples" class="view">
+<div class="section-header">
+<h2>Real-Life EQA Visit Examples</h2>
+<p>These scenarios demonstrate how EQAs monitor centres and maintain qualification standards.</p>
+</div>
+<div class="scenario">
+<details open>
+<summary>Weak IQA Sampling Identified</summary>
+<p>The EQA discovers that the centre only sampled completed learner portfolios and failed to carry out interim sampling. An action plan is issued requiring stronger risk-based IQA activity.</p>
+</details>
+<details>
+<summary>Remote Assessment Concerns</summary>
+<p>The EQA reviews remote assessment procedures and identifies weak learner authentication controls. The centre must improve verification and digital audit systems.</p>
+</details>
+<details>
+<summary>High Certification Claims</summary>
+<p>The EQA notices unusually high certification rates and increases sampling to ensure assessment decisions are valid and evidence is authentic.</p>
+</details>
+<details>
+<summary>Excellent Standardisation Practice</summary>
+<p>The centre demonstrates strong standardisation meetings, detailed IQA records, clear assessor feedback, and effective CPD. Positive practice is recorded in the EQA report.</p>
+</details>
+</div>
+</section>
+
+<section id="quiz" class="view">
+<div class="section-header">
+<h2>Knowledge Check</h2>
+<p>Test your understanding of External Quality Assurance.</p>
+</div>
+<div class="card">
+<h3>Question 1</h3>
+<p>What is the primary role of an External Quality Assurer?</p>
+<button class="quiz-option" onclick="answer(this,false)">To replace all assessors inside the centre</button>
+<button class="quiz-option" onclick="answer(this,true)">To monitor and evaluate the quality of assessment and IQA systems on behalf of an awarding organisation</button>
+<button class="quiz-option" onclick="answer(this,false)">To only teach learners directly</button>
+<button class="quiz-option" onclick="answer(this,false)">To remove all internal quality assurance processes</button>
+<div class="feedback" id="quizFeedback"></div>
+</div>
+</section>
+
+<div class="footer">Crafted &amp; Designed by Umer Malikk</div>
+</main>
+</div>
+<script>
+const buttons=Array.from(document.querySelectorAll('.nav button'));
+const views=Array.from(document.querySelectorAll('.view'));
+const completed=new Set();
+function goTo(id){
+views.forEach(v=>v.classList.toggle('active',v.id===id));
+buttons.forEach(btn=>{
+const active=btn.dataset.view===id;
+btn.classList.toggle('active',active);
+if(active){completed.add(id);document.getElementById('sectionPill').textContent=btn.textContent.trim();}
+});
+updateProgress();
+window.scrollTo({top:0,behavior:'smooth'});
+}
+function updateProgress(){
+const percentage=Math.round((completed.size/buttons.length)*100);
+document.getElementById('progressFill').style.width=percentage+'%';
+document.getElementById('progressText').textContent=percentage+'%';
+}
+buttons.forEach(button=>button.addEventListener('click',()=>goTo(button.dataset.view)));
+function answer(button,isCorrect){
+const options=button.parentElement.querySelectorAll('.quiz-option');
+options.forEach(opt=>{opt.classList.remove('correct','wrong');opt.disabled=true;});
+button.classList.add(isCorrect?'correct':'wrong');
+document.getElementById('quizFeedback').textContent=isCorrect?'Correct. EQAs monitor and evaluate centres on behalf of awarding organisations.':'Not quite. The EQA role focuses on monitoring assessment quality and IQA systems externally.';
+}
+document.getElementById('searchInput').addEventListener('input',function(){
+const term=this.value.toLowerCase().trim();
+if(!term)return;
+const match=buttons.find(btn=>btn.textContent.toLowerCase().includes(term));
+if(match)goTo(match.dataset.view);
+});
+completed.add('dashboard');
+updateProgress();
+</script>
+</body>
+</html>
