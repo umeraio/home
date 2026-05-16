@@ -189,11 +189,215 @@ summary{cursor:pointer;font-weight:800;color:var(--primary);}
   .topbar{flex-direction:column;align-items:stretch;}
   .grid,.feature-list,.flow,.scenario,.lead-grid{grid-template-columns:1fr;}
 }
+
+/* ===== HTML SLIDES 3 SAFE OVERRIDES ===== */
+html{
+  scrollbar-width:thin;
+  scrollbar-color:var(--gold) rgba(11,47,107,0.18);
+}
+body::-webkit-scrollbar,
+.sidebar::-webkit-scrollbar{width:11px;}
+body::-webkit-scrollbar-track,
+.sidebar::-webkit-scrollbar-track{
+  background:rgba(11,47,107,0.10);
+  border-radius:999px;
+}
+body::-webkit-scrollbar-thumb,
+.sidebar::-webkit-scrollbar-thumb{
+  background:linear-gradient(180deg,var(--gold2),var(--gold),var(--primary2));
+  border-radius:999px;
+  border:3px solid rgba(255,255,255,0.75);
+}
+body::-webkit-scrollbar-thumb:hover,
+.sidebar::-webkit-scrollbar-thumb:hover{
+  background:linear-gradient(180deg,#ffe082,var(--gold),var(--primary));
+}
+.app{
+  transition:grid-template-columns .35s ease;
+}
+.app.sidebar-collapsed{
+  grid-template-columns:72px 1fr;
+}
+.sidebar{
+  overflow-x:hidden;
+  box-shadow:10px 0 30px rgba(11,47,107,0.22);
+  transition:padding .35s ease;
+  z-index:10;
+}
+.sidebar-toggle{
+  position:absolute;
+  top:50%;
+  right:-18px;
+  transform:translateY(-50%);
+  width:36px;
+  height:72px;
+  border:0;
+  border-radius:0 999px 999px 0;
+  background:linear-gradient(135deg,var(--gold),var(--gold2));
+  color:#172033;
+  font-size:24px;
+  font-weight:900;
+  cursor:pointer;
+  box-shadow:8px 0 22px rgba(11,47,107,0.24);
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  transition:all .25s ease;
+  z-index:20;
+}
+.sidebar-toggle:hover{
+  width:42px;
+  box-shadow:10px 0 28px rgba(11,47,107,0.30);
+}
+.sidebar-toggle span{
+  display:inline-block;
+  transition:transform .25s ease;
+}
+.app.sidebar-collapsed .sidebar{
+  padding:24px 10px;
+}
+.app.sidebar-collapsed .sidebar-toggle{
+  right:-20px;
+}
+.app.sidebar-collapsed .sidebar-toggle span{
+  transform:rotate(180deg);
+}
+.app.sidebar-collapsed .home-link,
+.app.sidebar-collapsed .brand,
+.app.sidebar-collapsed .nav-title{
+  opacity:0;
+  pointer-events:none;
+  height:0;
+  padding:0;
+  margin:0;
+  overflow:hidden;
+  border:0;
+}
+.app.sidebar-collapsed .nav button{
+  justify-content:center;
+  padding:14px 0;
+  gap:0;
+  font-size:0;
+}
+.app.sidebar-collapsed .nav .dot{
+  width:14px;
+  height:14px;
+}
+.nav-title{
+  margin-top:4px !important;
+}
+.main{
+  padding:34px 36px;
+}
+.progress-box,
+.topbar{
+  display:none !important;
+}
+.card{
+  background:linear-gradient(180deg,#ffffff,#f8fbff) !important;
+  border:1px solid rgba(20,85,163,0.24) !important;
+  border-left:6px solid var(--gold) !important;
+  box-shadow:0 24px 60px rgba(11,47,107,0.22) !important;
+  transition:all .25s ease;
+}
+.card:hover{
+  transform:translateY(-5px);
+  box-shadow:0 30px 70px rgba(11,47,107,0.28) !important;
+}
+.feature,
+.lead-box,
+.step,
+details{
+  background:linear-gradient(180deg,#ffffff,#f8fbff) !important;
+  border:1px solid rgba(20,85,163,0.24) !important;
+  box-shadow:0 18px 45px rgba(11,47,107,0.18) !important;
+}
+.feature,
+.lead-box,
+details{
+  border-left:6px solid var(--gold) !important;
+}
+.step{
+  border-top:6px solid var(--gold) !important;
+}
+.lead-board{
+  background:linear-gradient(180deg,#ffffff,#fffaf0) !important;
+  border:2px solid rgba(217,166,46,0.42) !important;
+  border-left:7px solid var(--gold) !important;
+  box-shadow:0 24px 60px rgba(11,47,107,0.20) !important;
+}
+.quiz-option{
+  background:linear-gradient(180deg,#ffffff,#f3f8ff) !important;
+  border:1px solid rgba(20,85,163,0.26) !important;
+  box-shadow:0 10px 24px rgba(11,47,107,0.12);
+  transition:all .2s ease;
+}
+.quiz-option:hover{
+  border-color:var(--primary2) !important;
+  transform:translateX(4px);
+  box-shadow:0 14px 30px rgba(11,47,107,0.18);
+}
+.collapsed-tooltip{
+  position:fixed;
+  left:82px;
+  top:0;
+  transform:translateY(-50%);
+  background:linear-gradient(135deg,rgba(11,47,107,0.98),rgba(20,85,163,0.96));
+  color:white;
+  padding:10px 14px;
+  border-radius:12px;
+  font-size:13px;
+  font-weight:800;
+  white-space:nowrap;
+  opacity:0;
+  pointer-events:none;
+  box-shadow:0 14px 35px rgba(11,47,107,0.30);
+  border:1px solid rgba(255,255,255,0.18);
+  z-index:9999;
+  transition:opacity .15s ease,transform .15s ease;
+}
+.collapsed-tooltip.show{
+  opacity:1;
+  transform:translateY(-50%) translateX(4px);
+}
+.collapsed-tooltip::before{
+  content:"";
+  position:absolute;
+  left:-8px;
+  top:50%;
+  transform:translateY(-50%);
+  border-top:7px solid transparent;
+  border-bottom:7px solid transparent;
+  border-right:8px solid rgba(11,47,107,0.98);
+}
+@media(max-width:1000px){
+  .app,
+  .app.sidebar-collapsed{grid-template-columns:1fr;}
+  .sidebar-toggle{display:none;}
+  .app.sidebar-collapsed .home-link,
+  .app.sidebar-collapsed .brand,
+  .app.sidebar-collapsed .nav-title{
+    opacity:1;
+    pointer-events:auto;
+    height:auto;
+    padding:initial;
+    margin:initial;
+    overflow:visible;
+  }
+  .app.sidebar-collapsed .nav button{
+    justify-content:flex-start;
+    padding:12px 14px;
+    gap:10px;
+    font-size:14px;
+  }
+}
+
 </style>
 </head>
 <body>
 <div class="app">
 <aside class="sidebar">
+<button class="sidebar-toggle" id="sidebarToggle" aria-label="Collapse sidebar" title="Collapse sidebar"><span>‹</span></button>
 <a class="home-link" href="https://umeraio.github.io/Study-Material/" target="_blank">Home Page</a>
 <div class="brand">
 <h1>Lead IQA Training</h1>
@@ -205,18 +409,18 @@ summary{cursor:pointer;font-weight:800;color:var(--primary);}
 </div>
 <div class="nav-title">Lead IQA Modules</div>
 <nav class="nav" id="nav">
-<button class="active" data-view="dashboard"><span class="dot"></span>Dashboard</button>
-<button data-view="lead"><span class="dot"></span>What is a Lead IQA?</button>
-<button data-view="leadrole"><span class="dot"></span>Main Responsibilities</button>
-<button data-view="strategy"><span class="dot"></span>Quality Strategy</button>
-<button data-view="risk"><span class="dot"></span>Risk Management</button>
-<button data-view="eqa"><span class="dot"></span>EQA Readiness</button>
-<button data-view="compliance"><span class="dot"></span>Compliance & Governance</button>
-<button data-view="staff"><span class="dot"></span>Managing Assessors & IQAs</button>
-<button data-view="standardisation"><span class="dot"></span>Standardisation Leadership</button>
-<button data-view="digital"><span class="dot"></span>Digital Quality Assurance</button>
-<button data-view="examples"><span class="dot"></span>Real-Life Lead IQA Examples</button>
-<button data-view="quiz"><span class="dot"></span>Knowledge Check</button>
+<button class="active" data-view="dashboard" data-tooltip="Dashboard"><span class="dot"></span>Dashboard</button>
+<button data-view="lead" data-tooltip="What is a Lead IQA?"><span class="dot"></span>What is a Lead IQA?</button>
+<button data-view="leadrole" data-tooltip="Main Responsibilities"><span class="dot"></span>Main Responsibilities</button>
+<button data-view="strategy" data-tooltip="Quality Strategy"><span class="dot"></span>Quality Strategy</button>
+<button data-view="risk" data-tooltip="Risk Management"><span class="dot"></span>Risk Management</button>
+<button data-view="eqa" data-tooltip="EQA Readiness"><span class="dot"></span>EQA Readiness</button>
+<button data-view="compliance" data-tooltip="Compliance & Governance"><span class="dot"></span>Compliance & Governance</button>
+<button data-view="staff" data-tooltip="Managing Assessors & IQAs"><span class="dot"></span>Managing Assessors & IQAs</button>
+<button data-view="standardisation" data-tooltip="Standardisation Leadership"><span class="dot"></span>Standardisation Leadership</button>
+<button data-view="digital" data-tooltip="Digital Quality Assurance"><span class="dot"></span>Digital Quality Assurance</button>
+<button data-view="examples" data-tooltip="Real-Life Lead IQA Examples"><span class="dot"></span>Real-Life Lead IQA Examples</button>
+<button data-view="quiz" data-tooltip="Knowledge Check"><span class="dot"></span>Knowledge Check</button>
 </nav>
 </aside>
 
@@ -231,7 +435,7 @@ summary{cursor:pointer;font-weight:800;color:var(--primary);}
 <h2>The Role of a Lead IQA</h2>
 <p>A Lead Internal Quality Assurer oversees the entire internal quality assurance system within a centre or organisation. They manage quality strategy, standardisation, risk control, compliance, assessor support, EQA readiness, and continuous improvement across qualifications and delivery teams.</p>
 <div class="hero-actions">
-<button class="btn gold" onclick="goTo('lead')">Start Learning</button>
+
 <button class="btn" onclick="goTo('eqa')">View EQA Readiness</button>
 <button class="btn" onclick="goTo('examples')">Real-Life Examples</button>
 </div>
@@ -420,24 +624,53 @@ summary{cursor:pointer;font-weight:800;color:var(--primary);}
 <div class="footer">Crafted &amp; Designed by Umer Malikk</div>
 </main>
 </div>
+<div class="collapsed-tooltip" id="collapsedTooltip"></div>
 <script>
 const buttons=Array.from(document.querySelectorAll('.nav button'));
 const views=Array.from(document.querySelectorAll('.view'));
 const completed=new Set();
+
+const appShell=document.querySelector('.app');
+const sidebarToggle=document.getElementById('sidebarToggle');
+const collapsedTooltip=document.getElementById('collapsedTooltip');
+
+if(sidebarToggle && appShell){
+  sidebarToggle.addEventListener('click',()=>{
+    const collapsed=appShell.classList.toggle('sidebar-collapsed');
+    if(collapsedTooltip){collapsedTooltip.classList.remove('show');}
+    sidebarToggle.setAttribute('aria-label',collapsed?'Expand sidebar':'Collapse sidebar');
+    sidebarToggle.setAttribute('title',collapsed?'Expand sidebar':'Collapse sidebar');
+  });
+}
+
+buttons.forEach(button=>{
+  button.addEventListener('mouseenter',()=>{
+    if(!appShell || !appShell.classList.contains('sidebar-collapsed') || !collapsedTooltip)return;
+    const label=button.getAttribute('data-tooltip')||button.textContent.trim();
+    const rect=button.getBoundingClientRect();
+    collapsedTooltip.textContent=label;
+    collapsedTooltip.style.top=(rect.top+rect.height/2)+'px';
+    collapsedTooltip.classList.add('show');
+  });
+  button.addEventListener('mouseleave',()=>{
+    if(collapsedTooltip){collapsedTooltip.classList.remove('show');}
+  });
+});
+
 function goTo(id){
 views.forEach(v=>v.classList.toggle('active',v.id===id));
 buttons.forEach(btn=>{
 const active=btn.dataset.view===id;
 btn.classList.toggle('active',active);
-if(active){completed.add(id);document.getElementById('sectionPill').textContent=btn.textContent.trim();}
+if(active){completed.add(id);const pill=document.getElementById('sectionPill'); if(pill){pill.textContent=btn.textContent.trim();}}
 });
 updateProgress();
 window.scrollTo({top:0,behavior:'smooth'});
 }
 function updateProgress(){
 const percentage=Math.round((completed.size/buttons.length)*100);
-document.getElementById('progressFill').style.width=percentage+'%';
-document.getElementById('progressText').textContent=percentage+'%';
+const pf=document.getElementById('progressFill'); if(pf){pf.style.width=percentage+'%';}
+const pt=document.getElementById('progressText'); if(pt){pt.textContent=percentage+'%';}
 }
 buttons.forEach(button=>button.addEventListener('click',()=>goTo(button.dataset.view)));
 document.addEventListener('keydown',e=>{
@@ -457,12 +690,13 @@ options.forEach(opt=>{opt.classList.remove('correct','wrong');opt.disabled=true;
 button.classList.add(isCorrect?'correct':'wrong');
 document.getElementById('quizFeedback').textContent=isCorrect?'Correct. Lead IQAs manage strategic quality assurance and EQA readiness.':'Not quite. Lead IQAs oversee centre-wide quality assurance systems and compliance.';
 }
-document.getElementById('searchInput').addEventListener('input',function(){
+const searchInput=document.getElementById('searchInput');
+if(searchInput){searchInput.addEventListener('input',function(){
 const term=this.value.toLowerCase().trim();
 if(!term)return;
 const match=buttons.find(btn=>btn.textContent.toLowerCase().includes(term));
 if(match)goTo(match.dataset.view);
-});
+});}
 completed.add('dashboard');
 updateProgress();
 </script>
