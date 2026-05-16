@@ -14,13 +14,41 @@
       --gold2: #f4c542;
       --text: #172033;
       --muted: #5f6b7a;
-      --card: rgba(255,255,255,0.86);
-      --border: rgba(255,255,255,0.55);
-      --shadow: 0 18px 45px rgba(15, 40, 80, 0.14);
+      --card: rgba(255,255,255,0.98);
+      --border: rgba(20,85,163,0.22);
+      --shadow: 0 22px 55px rgba(11, 47, 107, 0.20);
       --radius: 22px;
     }
 
     * { box-sizing: border-box; }
+
+    html {
+      scrollbar-width: thin;
+      scrollbar-color: var(--gold2) rgba(11,47,107,0.18);
+    }
+
+    body::-webkit-scrollbar,
+    .sidebar::-webkit-scrollbar {
+      width: 10px;
+    }
+
+    body::-webkit-scrollbar-track,
+    .sidebar::-webkit-scrollbar-track {
+      background: rgba(11,47,107,0.12);
+      border-radius: 999px;
+    }
+
+    body::-webkit-scrollbar-thumb,
+    .sidebar::-webkit-scrollbar-thumb {
+      background: linear-gradient(180deg, var(--gold2), var(--gold));
+      border-radius: 999px;
+      border: 2px solid rgba(255,255,255,0.72);
+    }
+
+    body::-webkit-scrollbar-thumb:hover,
+    .sidebar::-webkit-scrollbar-thumb:hover {
+      background: linear-gradient(180deg, #ffe08a, var(--gold));
+    }
 
     body {
       margin: 0;
@@ -37,6 +65,11 @@
       display: grid;
       grid-template-columns: 310px 1fr;
       min-height: 100vh;
+      transition: grid-template-columns 0.35s ease;
+    }
+
+    .app.sidebar-collapsed {
+      grid-template-columns: 72px 1fr;
     }
 
     .sidebar {
@@ -47,8 +80,83 @@
       background: linear-gradient(180deg, rgba(11,47,107,0.96), rgba(20,85,163,0.94));
       color: white;
       overflow-y: auto;
+      overflow-x: hidden;
       box-shadow: 10px 0 30px rgba(11,47,107,0.22);
+      transition: padding 0.35s ease;
+      z-index: 10;
     }
+
+    .sidebar-toggle {
+      position: absolute;
+      top: 50%;
+      right: -18px;
+      transform: translateY(-50%);
+      width: 36px;
+      height: 72px;
+      border: 0;
+      border-radius: 0 999px 999px 0;
+      background: linear-gradient(135deg, var(--gold), var(--gold2));
+      color: #172033;
+      font-size: 24px;
+      font-weight: 900;
+      cursor: pointer;
+      box-shadow: 8px 0 22px rgba(11,47,107,0.24);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: all 0.25s ease;
+      z-index: 20;
+    }
+
+    .sidebar-toggle:hover {
+      width: 42px;
+      box-shadow: 10px 0 28px rgba(11,47,107,0.30);
+    }
+
+    .app.sidebar-collapsed .sidebar {
+      padding: 24px 10px;
+    }
+
+    .app.sidebar-collapsed .sidebar-toggle {
+      right: -20px;
+    }
+
+    .app.sidebar-collapsed .sidebar-toggle span {
+      transform: rotate(180deg);
+    }
+
+    .sidebar-toggle span {
+      display: inline-block;
+      transition: transform 0.25s ease;
+    }
+
+    .app.sidebar-collapsed .home-link,
+    .app.sidebar-collapsed .brand,
+    .app.sidebar-collapsed .nav-title {
+      opacity: 0;
+      pointer-events: none;
+      height: 0;
+      padding: 0;
+      margin: 0;
+      overflow: hidden;
+      border: 0;
+    }
+
+    .app.sidebar-collapsed .nav button {
+      justify-content: center;
+      padding: 14px 0;
+      gap: 0;
+    }
+
+    .app.sidebar-collapsed .nav button {
+      font-size: 0;
+    }
+
+    .app.sidebar-collapsed .nav .dot {
+      width: 14px;
+      height: 14px;
+    }
+
 
     .home-link {
       display: flex;
@@ -125,7 +233,7 @@
       letter-spacing: 0.08em;
       text-transform: uppercase;
       color: rgba(255,255,255,0.65);
-      margin: 14px 10px 10px;
+      margin: 2px 10px 10px;
     }
 
     .nav button {
@@ -161,7 +269,7 @@
     .nav button.done .dot { background: var(--gold2); }
 
     .main {
-      padding: 28px;
+      padding: 34px 36px;
     }
 
     .topbar {
@@ -283,16 +391,17 @@
     }
 
     .card {
-      background: var(--card);
-      border: 1px solid var(--border);
+      background: linear-gradient(180deg, #ffffff, #f8fbff);
+      border: 1px solid rgba(20,85,163,0.24);
+      border-left: 6px solid var(--gold);
       border-radius: var(--radius);
-      padding: 22px;
-      box-shadow: var(--shadow);
+      padding: 24px;
+      box-shadow: 0 24px 60px rgba(11,47,107,0.22);
       backdrop-filter: blur(16px);
       transition: all 0.25s ease;
     }
 
-    .card:hover { transform: translateY(-4px); }
+    .card:hover { transform: translateY(-5px); box-shadow: 0 30px 70px rgba(11,47,107,0.28); }
 
     .card h3 {
       margin: 0 0 10px;
@@ -331,10 +440,12 @@
     }
 
     .feature {
-      padding: 18px;
+      padding: 20px;
       border-radius: 18px;
-      background: rgba(255,255,255,0.7);
-      border-left: 5px solid var(--gold);
+      background: linear-gradient(180deg, #ffffff, #f7fbff);
+      border: 1px solid rgba(20,85,163,0.20);
+      border-left: 6px solid var(--gold);
+      box-shadow: 0 16px 38px rgba(11,47,107,0.16);
     }
 
     .feature strong {
@@ -352,11 +463,12 @@
 
     .step {
       position: relative;
-      background: white;
+      background: linear-gradient(180deg, #ffffff, #f8fbff);
       border-radius: 18px;
-      padding: 20px;
-      box-shadow: var(--shadow);
-      border-top: 5px solid var(--gold);
+      padding: 22px;
+      box-shadow: 0 20px 50px rgba(11,47,107,0.20);
+      border: 1px solid rgba(20,85,163,0.22);
+      border-top: 6px solid var(--gold);
     }
 
     .step .num {
@@ -380,11 +492,12 @@
     }
 
     details {
-      background: var(--card);
-      border: 1px solid var(--border);
+      background: linear-gradient(180deg, #ffffff, #f8fbff);
+      border: 1px solid rgba(20,85,163,0.24);
+      border-left: 6px solid var(--gold);
       border-radius: 18px;
-      padding: 17px 18px;
-      box-shadow: var(--shadow);
+      padding: 19px 20px;
+      box-shadow: 0 20px 50px rgba(11,47,107,0.20);
     }
 
     summary {
@@ -400,17 +513,18 @@
       display: block;
       width: 100%;
       text-align: left;
-      padding: 14px 16px;
-      margin: 10px 0;
-      border-radius: 14px;
-      border: 1px solid rgba(20,85,163,0.16);
-      background: white;
+      padding: 15px 18px;
+      margin: 12px 0;
+      border-radius: 15px;
+      border: 1px solid rgba(20,85,163,0.26);
+      background: linear-gradient(180deg, #ffffff, #f3f8ff);
       cursor: pointer;
       transition: all 0.2s ease;
       font-size: 15px;
+      box-shadow: 0 10px 24px rgba(11,47,107,0.12);
     }
 
-    .quiz-option:hover { border-color: var(--primary2); transform: translateX(3px); }
+    .quiz-option:hover { border-color: var(--primary2); transform: translateX(4px); box-shadow: 0 14px 30px rgba(11,47,107,0.18); }
     .quiz-option.correct { background: #e9f8ef; border-color: #2e9d55; }
     .quiz-option.wrong { background: #fff0f0; border-color: #cc3d3d; }
 
@@ -427,9 +541,64 @@
       font-size: 13px;
     }
 
+
+    .collapsed-tooltip {
+      position: fixed;
+      left: 82px;
+      top: 0;
+      transform: translateY(-50%);
+      background: linear-gradient(135deg, rgba(11,47,107,0.98), rgba(20,85,163,0.96));
+      color: white;
+      padding: 10px 14px;
+      border-radius: 12px;
+      font-size: 13px;
+      font-weight: 800;
+      white-space: nowrap;
+      opacity: 0;
+      pointer-events: none;
+      box-shadow: 0 14px 35px rgba(11,47,107,0.30);
+      border: 1px solid rgba(255,255,255,0.18);
+      z-index: 9999;
+      transition: opacity 0.15s ease, transform 0.15s ease;
+    }
+
+    .collapsed-tooltip.show {
+      opacity: 1;
+      transform: translateY(-50%) translateX(4px);
+    }
+
+    .collapsed-tooltip::before {
+      content: "";
+      position: absolute;
+      left: -8px;
+      top: 50%;
+      transform: translateY(-50%);
+      border-top: 7px solid transparent;
+      border-bottom: 7px solid transparent;
+      border-right: 8px solid rgba(11,47,107,0.98);
+    }
+
     @media (max-width: 1000px) {
-      .app { grid-template-columns: 1fr; }
+      .app,
+      .app.sidebar-collapsed { grid-template-columns: 1fr; }
       .sidebar { position: relative; height: auto; }
+      .sidebar-toggle { display: none; }
+      .app.sidebar-collapsed .home-link,
+      .app.sidebar-collapsed .brand,
+      .app.sidebar-collapsed .nav-title {
+        opacity: 1;
+        pointer-events: auto;
+        height: auto;
+        padding: initial;
+        margin: initial;
+        overflow: visible;
+      }
+      .app.sidebar-collapsed .nav button {
+        justify-content: flex-start;
+        padding: 12px 14px;
+        gap: 10px;
+        font-size: 14px;
+      }
       .grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
       .flow { grid-template-columns: repeat(2, 1fr); }
     }
@@ -445,39 +614,29 @@
 <body>
   <div class="app">
     <aside class="sidebar">
+      <button class="sidebar-toggle" id="sidebarToggle" aria-label="Collapse sidebar" title="Collapse sidebar"><span>‹</span></button>
       <a class="home-link" href="https://umeraio.github.io/Study-Material/" target="_blank">Home Page</a>
 
       <div class="brand">
         <h1>Assessor Training</h1>
         <p>Interactive professional learning system for vocational education and assessment practice.</p>
       </div>
-
-      <div class="progress-box">
-        <div class="progress-label"><span>Learning Progress</span><span id="progressText">0%</span></div>
-        <div class="progress-track"><div id="progressFill" class="progress-fill"></div></div>
-      </div>
-
       <div class="nav-title">Learning Modules</div>
       <nav class="nav" id="nav">
-        <button class="active" data-view="dashboard"><span class="dot"></span>Dashboard</button>
-        <button data-view="assessor"><span class="dot"></span>What is an Assessor?</button>
-        <button data-view="qualification"><span class="dot"></span>Assessor Qualifications</button>
-        <button data-view="cycle"><span class="dot"></span>Assessment Cycle</button>
-        <button data-view="tools"><span class="dot"></span>Tools & Techniques</button>
-        <button data-view="principles"><span class="dot"></span>Assessment Principles</button>
-        <button data-view="examples"><span class="dot"></span>Real-Life Examples</button>
-        <button data-view="feedback"><span class="dot"></span>Feedback & Action Planning</button>
-        <button data-view="quality"><span class="dot"></span>IQA & Quality Assurance</button>
-        <button data-view="quiz"><span class="dot"></span>Knowledge Check</button>
+        <button class="active" data-view="dashboard" data-tooltip="Dashboard"><span class="dot"></span>Dashboard</button>
+        <button data-view="assessor" data-tooltip="What is an Assessor?"><span class="dot"></span>What is an Assessor?</button>
+        <button data-view="qualification" data-tooltip="Assessor Qualifications"><span class="dot"></span>Assessor Qualifications</button>
+        <button data-view="cycle" data-tooltip="Assessment Cycle"><span class="dot"></span>Assessment Cycle</button>
+        <button data-view="tools" data-tooltip="Tools & Techniques"><span class="dot"></span>Tools & Techniques</button>
+        <button data-view="principles" data-tooltip="Assessment Principles"><span class="dot"></span>Assessment Principles</button>
+        <button data-view="examples" data-tooltip="Real-Life Examples"><span class="dot"></span>Real-Life Examples</button>
+        <button data-view="feedback" data-tooltip="Feedback & Action Planning"><span class="dot"></span>Feedback & Action Planning</button>
+        <button data-view="quality" data-tooltip="IQA & Quality Assurance"><span class="dot"></span>IQA & Quality Assurance</button>
+        <button data-view="quiz" data-tooltip="Knowledge Check"><span class="dot"></span>Knowledge Check</button>
       </nav>
     </aside>
 
     <main class="main">
-      <div class="topbar">
-        <div class="search"><input id="searchInput" placeholder="Search modules, examples, evidence, IQA, CAVA..." /></div>
-        <div class="pill" id="sectionPill">Dashboard</div>
-      </div>
-
       <section id="dashboard" class="view active">
         <div class="hero">
           <h2>The Role of an Assessor in Education</h2>
@@ -643,10 +802,45 @@
     </main>
   </div>
 
+  <div class="collapsed-tooltip" id="collapsedTooltip"></div>
+
   <script>
     const buttons = Array.from(document.querySelectorAll('.nav button'));
     const views = Array.from(document.querySelectorAll('.view'));
     const completed = new Set();
+
+
+    const appShell = document.querySelector('.app');
+    const sidebarToggle = document.getElementById('sidebarToggle');
+
+    sidebarToggle.addEventListener('click', () => {
+      const collapsed = appShell.classList.toggle('sidebar-collapsed');
+      sidebarToggle.setAttribute('aria-label', collapsed ? 'Expand sidebar' : 'Collapse sidebar');
+      sidebarToggle.setAttribute('title', collapsed ? 'Expand sidebar' : 'Collapse sidebar');
+    });
+
+
+    const collapsedTooltip = document.getElementById('collapsedTooltip');
+
+    buttons.forEach(button => {
+      button.addEventListener('mouseenter', () => {
+        if (!appShell.classList.contains('sidebar-collapsed')) return;
+        const label = button.getAttribute('data-tooltip') || button.textContent.trim();
+        const rect = button.getBoundingClientRect();
+        collapsedTooltip.textContent = label;
+        collapsedTooltip.style.top = (rect.top + rect.height / 2) + 'px';
+        collapsedTooltip.classList.add('show');
+      });
+
+      button.addEventListener('mouseleave', () => {
+        collapsedTooltip.classList.remove('show');
+      });
+    });
+
+    sidebarToggle.addEventListener('click', () => {
+      collapsedTooltip.classList.remove('show');
+    });
+
 
     function goTo(id) {
       views.forEach(view => view.classList.toggle('active', view.id === id));
@@ -656,7 +850,8 @@
         if (isActive) {
           btn.classList.add('done');
           completed.add(id);
-          document.getElementById('sectionPill').textContent = btn.textContent.trim();
+          const sectionPill = document.getElementById('sectionPill');
+          if (sectionPill) sectionPill.textContent = btn.textContent.trim();
         }
       });
       updateProgress();
@@ -664,11 +859,13 @@
     }
 
     function updateProgress() {
+      const progressFill = document.getElementById('progressFill');
+      const progressText = document.getElementById('progressText');
+      if (!progressFill || !progressText) return;
       const percentage = Math.round((completed.size / buttons.length) * 100);
-      document.getElementById('progressFill').style.width = percentage + '%';
-      document.getElementById('progressText').textContent = percentage + '%';
+      progressFill.style.width = percentage + '%';
+      progressText.textContent = percentage + '%';
     }
-
     buttons.forEach(button => {
       button.addEventListener('click', () => goTo(button.dataset.view));
     });
@@ -696,14 +893,6 @@
         ? 'Correct. Assessors make evidence-based decisions against standards.'
         : 'Not quite. The assessor’s main role is to judge evidence against standards and make competence decisions.';
     }
-
-    document.getElementById('searchInput').addEventListener('input', function () {
-      const term = this.value.toLowerCase().trim();
-      if (!term) return;
-      const match = buttons.find(btn => btn.textContent.toLowerCase().includes(term));
-      if (match) goTo(match.dataset.view);
-    });
-
     completed.add('dashboard');
     updateProgress();
   </script>
