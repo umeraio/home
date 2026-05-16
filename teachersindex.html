@@ -3,44 +3,276 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Study Material | Umer Malik</title>
-<link href="https://fonts.googleapis.com/css2?family=Segoe+UI:wght@400;600;700;800&display=swap" rel="stylesheet">
+<title>Teacher Resources | Study Material</title>
 <style>
-body{margin:0;font-family:'Segoe UI',sans-serif;background:#eaf2fb;color:#222;}
-header{position:relative;background:linear-gradient(90deg,#0a3d91,#005fa3,#0078D7);color:#fff;padding:20px 30px;border-radius:40px;margin:15px;box-shadow:0 4px 15px rgba(0,0,0,0.25);text-align:center;}
-.nav{position:absolute;bottom:15px;right:30px;display:flex;gap:10px;}
-.nav a{color:#fff;text-decoration:none;font-weight:800;font-size:1rem;padding:8px 20px;border-radius:25px;background:rgba(255,255,255,0.15);transition:all 0.3s ease;}
-.nav a:hover{background:#ffffff;color:#005fa3;transform:scale(1.08);}
-.hero h1{font-size:1.6rem;font-weight:800;letter-spacing:0.5px;margin:0 0 6px 0;}
-.hero p{font-size:0.95rem;opacity:0.95;margin:0;padding-bottom:25px;}
-.container{max-width:800px;margin:60px auto;display:flex;flex-direction:column;align-items:center;gap:18px;}
-a.card{display:block;width:85%;text-align:center;text-decoration:none;background:#ffffff;padding:18px 20px;font-weight:800;font-size:1.05rem;border-radius:18px;box-shadow:0 12px 25px rgba(0,0,0,0.18);transition:all .35s ease;border-left:8px solid #28a745;border-right:8px solid #28a745;color:#1e7e34;}
-a.card:hover{transform:translateY(-8px) scale(1.03);box-shadow:0 20px 40px rgba(40,167,69,0.45);background:#f3fff6;}
-.footer-container {text-align:center;width:100%;margin:70px 0 30px 0;}
-footer{display:inline-block;text-align:center;border-top:3px solid #FFD700;padding:10px 25px;font-size:0.9rem;font-style:italic;font-weight:600;background:#f4f8fd;color:#444;border-radius:15px;box-shadow:0 4px 15px rgba(0,0,0,0.15);}
+:root{
+  --bg:#eaf4ff;
+  --bg2:#fff7df;
+  --primary:#0b2f6b;
+  --primary2:#1455a3;
+  --gold:#f4c542;
+  --orange:#ff7a18;
+  --purple:#5b1d91;
+  --text:#172033;
+  --muted:#5f6b7a;
+  --card:#ffffff;
+  --shadow:0 22px 55px rgba(11,47,107,0.18);
+  --radius:28px;
+}
+*{box-sizing:border-box;}
+html{
+  scrollbar-width:thin;
+  scrollbar-color:var(--gold) rgba(11,47,107,0.18);
+}
+body{
+  margin:0;
+  font-family:"Segoe UI",Arial,sans-serif;
+  color:var(--text);
+  min-height:100vh;
+  background:
+    radial-gradient(circle at top left, #dbeafe 0, transparent 32%),
+    radial-gradient(circle at top right, #fff0b8 0, transparent 30%),
+    linear-gradient(135deg,var(--bg),var(--bg2));
+  overflow-x:hidden;
+}
+body::-webkit-scrollbar{width:11px;}
+body::-webkit-scrollbar-track{background:rgba(11,47,107,0.10);border-radius:999px;}
+body::-webkit-scrollbar-thumb{
+  background:linear-gradient(180deg,var(--gold),var(--orange),var(--primary2));
+  border-radius:999px;
+  border:3px solid rgba(255,255,255,0.75);
+}
+.wrapper{
+  width:min(1180px,92%);
+  margin:0 auto;
+  padding:18px 0 28px;
+}
+.top-nav{
+  display:flex;
+  justify-content:flex-end;
+  margin-bottom:6px;
+}
+.home-btn{
+  text-decoration:none;
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  gap:8px;
+  background:linear-gradient(135deg,#5b1d91,#7a2bc2);
+  color:#fff;
+  font-weight:800;
+  padding:12px 22px;
+  border-radius:999px;
+  box-shadow:0 14px 32px rgba(91,29,145,0.24);
+  transition:all .25s ease;
+}
+.home-btn:hover{
+  transform:translateY(-3px);
+  box-shadow:0 20px 42px rgba(91,29,145,0.34);
+}
+.hero{
+  text-align:center;
+  padding:0 18px 26px;
+}
+.hero h1{
+  margin:0;
+  font-size:clamp(46px,7vw,78px);
+  line-height:1;
+  color:var(--orange);
+  font-weight:900;
+  letter-spacing:-1px;
+}
+.hero .cap{
+  font-size:48px;
+  display:inline-block;
+  margin-right:14px;
+  vertical-align:middle;
+}
+.hero p{
+  max-width:850px;
+  margin:28px auto 0;
+  color:#4e5868;
+  font-size:clamp(22px,3vw,38px);
+  line-height:1.35;
+}
+.section-card{
+  background:rgba(255,255,255,0.72);
+  border:1px solid rgba(20,85,163,0.16);
+  border-radius:34px;
+  padding:32px;
+  box-shadow:var(--shadow);
+  backdrop-filter:blur(14px);
+}
+.section-title{
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  gap:12px;
+  margin:0 0 26px;
+  color:var(--purple);
+  font-size:clamp(30px,4vw,48px);
+  font-weight:900;
+  text-align:center;
+}
+.cards{
+  display:grid;
+  grid-template-columns:repeat(2,minmax(0,1fr));
+  gap:22px;
+}
+.card{
+  position:relative;
+  display:flex;
+  align-items:center;
+  gap:18px;
+  text-decoration:none;
+  background:linear-gradient(180deg,#ffffff,#f8fbff);
+  color:var(--primary);
+  border-radius:24px;
+  padding:24px 24px;
+  min-height:120px;
+  box-shadow:0 18px 42px rgba(11,47,107,0.16);
+  border:1px solid rgba(20,85,163,0.20);
+  border-left:8px solid var(--gold);
+  overflow:hidden;
+  transition:all .25s ease;
+}
+.card::after{
+  content:"";
+  position:absolute;
+  right:-45px;
+  top:-45px;
+  width:120px;
+  height:120px;
+  border-radius:50%;
+  background:rgba(244,197,66,0.18);
+}
+.card:hover{
+  transform:translateY(-7px);
+  box-shadow:0 28px 62px rgba(11,47,107,0.26);
+  border-left-color:var(--orange);
+}
+.icon{
+  width:58px;
+  height:58px;
+  border-radius:18px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  flex:0 0 auto;
+  font-size:30px;
+  background:linear-gradient(135deg,var(--primary),var(--primary2));
+  color:#fff;
+  box-shadow:0 12px 24px rgba(11,47,107,0.22);
+  position:relative;
+  z-index:1;
+}
+.card-content{
+  position:relative;
+  z-index:1;
+}
+.card h2{
+  margin:0 0 7px;
+  font-size:21px;
+  color:var(--primary);
+}
+.card p{
+  margin:0;
+  color:var(--muted);
+  font-size:15px;
+  line-height:1.55;
+}
+.footer-container{
+  text-align:center;
+  margin:34px 0 0;
+}
+footer{
+  display:inline-block;
+  background:rgba(255,255,255,0.78);
+  border-top:3px solid var(--gold);
+  color:#46505f;
+  padding:12px 24px;
+  border-radius:18px;
+  font-size:14px;
+  font-weight:700;
+  font-style:italic;
+  box-shadow:0 12px 28px rgba(11,47,107,0.14);
+}
+@media(max-width:800px){
+  .cards{grid-template-columns:1fr;}
+  .section-card{padding:22px;}
+  .hero p{font-size:22px;}
+  .card{padding:20px;min-height:auto;}
+}
 </style>
 </head>
 <body>
-<header>
-  <div class="hero">
-    <h1>Study Material</h1>
-    <p>Structured learning resources, certification prep, and simplified notes.</p>
+<div class="wrapper">
+  <div class="top-nav">
+    <a class="home-btn" href="https://umeraio.github.io/home/">Home</a>
   </div>
-  <div class="nav"><a href="https://umeraio.github.io/home/">🏠 Home</a></div>
-</header>
-<div class="container">
-<a href="Assessor-Certification.html" class="card">How to Become a Certified Assessor</a>
 
-<a href="Role-of-Assessor.html" class="card">Role of Assessor in Education</a>
+  <section class="hero">
+    <h1><span class="cap">🎓</span>Teacher Resources</h1>
+    <p>Teaching resources, classroom guidance, professional development, and education support materials.</p>
+  </section>
 
-<a href="Role-of-EQA.html" class="card">Role of EQA in Vocational Education</a>
+  <section class="section-card">
+    <h2 class="section-title">Teacher Resources</h2>
 
-<a href="Role-of-IQA.html" class="card">Role of IQA in Education</a>
+    <div class="cards">
+      <a href="Assessor-Certification.html" class="card">
+        <span class="icon">📋</span>
+        <span class="card-content">
+          <h2>How to Become a Certified Assessor</h2>
+          <p>Understand assessor qualification routes, CAVA, ACWE, AVRA, and practical assessment requirements.</p>
+        </span>
+      </a>
 
-<a href="Role-of-Lead-IQA.html" class="card">Role of Lead IQA in Education</a>
+      <a href="Role-of-Assessor.html" class="card">
+        <span class="icon">✅</span>
+        <span class="card-content">
+          <h2>Role of Assessor in Education</h2>
+          <p>Explore how assessors plan, gather evidence, judge competence, and provide learner feedback.</p>
+        </span>
+      </a>
 
-<a href="Wht-IS-AI.html" class="card">What is Artificial Intelligence</a>
+      <a href="Role-of-EQA.html" class="card">
+        <span class="icon">🏢</span>
+        <span class="card-content">
+          <h2>Role of EQA in Vocational Education</h2>
+          <p>Learn how external quality assurance protects standards, centres, learners, and qualification integrity.</p>
+        </span>
+      </a>
+
+      <a href="Role-of-IQA.html" class="card">
+        <span class="icon">🔍</span>
+        <span class="card-content">
+          <h2>Role of IQA in Education</h2>
+          <p>Review internal quality assurance, sampling, CAMERA, RAG risk, and assessor standardisation.</p>
+        </span>
+      </a>
+
+      <a href="Role-of-Lead-IQA.html" class="card">
+        <span class="icon">📊</span>
+        <span class="card-content">
+          <h2>Role of Lead IQA in Education</h2>
+          <p>Understand centre-wide quality leadership, compliance, EQA readiness, and strategic quality systems.</p>
+        </span>
+      </a>
+
+      <a href="Wht-IS-AI.html" class="card">
+        <span class="icon">🤖</span>
+        <span class="card-content">
+          <h2>What is Artificial Intelligence</h2>
+          <p>A simple introduction to AI, everyday uses, teacher benefits, and practical classroom examples.</p>
+        </span>
+      </a>
+    </div>
+  </section>
+
+  <div class="footer-container">
+    <footer>Crafted Through Research by Umer Malik</footer>
+  </div>
 </div>
-<div class="footer-container"><footer>Crafted Through Research by Umer Malik</footer></div>
 </body>
 </html>
