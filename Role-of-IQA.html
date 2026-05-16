@@ -521,11 +521,216 @@
       .grid, .feature-list, .scenario, .flow, .camera-grid, .rag { grid-template-columns: 1fr; }
       .hero { padding: 28px; }
     }
-  </style>
+  
+/* ===== HTML SLIDES 3 SAFE OVERRIDES ===== */
+html{
+  scrollbar-width:thin;
+  scrollbar-color:var(--gold) rgba(11,47,107,0.18);
+}
+body::-webkit-scrollbar,
+.sidebar::-webkit-scrollbar{width:11px;}
+body::-webkit-scrollbar-track,
+.sidebar::-webkit-scrollbar-track{
+  background:rgba(11,47,107,0.10);
+  border-radius:999px;
+}
+body::-webkit-scrollbar-thumb,
+.sidebar::-webkit-scrollbar-thumb{
+  background:linear-gradient(180deg,var(--gold2),var(--gold),var(--primary2));
+  border-radius:999px;
+  border:3px solid rgba(255,255,255,0.75);
+}
+body::-webkit-scrollbar-thumb:hover,
+.sidebar::-webkit-scrollbar-thumb:hover{
+  background:linear-gradient(180deg,#ffe082,var(--gold),var(--primary));
+}
+.app{
+  transition:grid-template-columns .35s ease;
+}
+.app.sidebar-collapsed{
+  grid-template-columns:72px 1fr;
+}
+.sidebar{
+  overflow-x:hidden;
+  box-shadow:10px 0 30px rgba(11,47,107,0.22);
+  transition:padding .35s ease;
+  z-index:10;
+}
+.sidebar-toggle{
+  position:absolute;
+  top:50%;
+  right:-18px;
+  transform:translateY(-50%);
+  width:36px;
+  height:72px;
+  border:0;
+  border-radius:0 999px 999px 0;
+  background:linear-gradient(135deg,var(--gold),var(--gold2));
+  color:#172033;
+  font-size:24px;
+  font-weight:900;
+  cursor:pointer;
+  box-shadow:8px 0 22px rgba(11,47,107,0.24);
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  transition:all .25s ease;
+  z-index:20;
+}
+.sidebar-toggle:hover{
+  width:42px;
+  box-shadow:10px 0 28px rgba(11,47,107,0.30);
+}
+.sidebar-toggle span{
+  display:inline-block;
+  transition:transform .25s ease;
+}
+.app.sidebar-collapsed .sidebar{
+  padding:24px 10px;
+}
+.app.sidebar-collapsed .sidebar-toggle{
+  right:-20px;
+}
+.app.sidebar-collapsed .sidebar-toggle span{
+  transform:rotate(180deg);
+}
+.app.sidebar-collapsed .home-link,
+.app.sidebar-collapsed .brand,
+.app.sidebar-collapsed .nav-title{
+  opacity:0;
+  pointer-events:none;
+  height:0;
+  padding:0;
+  margin:0;
+  overflow:hidden;
+  border:0;
+}
+.app.sidebar-collapsed .nav button{
+  justify-content:center;
+  padding:14px 0;
+  gap:0;
+  font-size:0;
+}
+.app.sidebar-collapsed .nav .dot{
+  width:14px;
+  height:14px;
+}
+.nav-title{
+  margin-top:4px !important;
+}
+.main{
+  padding:34px 36px;
+}
+.progress-box,
+.topbar{
+  display:none !important;
+}
+.card{
+  background:linear-gradient(180deg,#ffffff,#f8fbff) !important;
+  border:1px solid rgba(20,85,163,0.24) !important;
+  border-left:6px solid var(--gold) !important;
+  box-shadow:0 24px 60px rgba(11,47,107,0.22) !important;
+  transition:all .25s ease;
+}
+.card:hover{
+  transform:translateY(-5px);
+  box-shadow:0 30px 70px rgba(11,47,107,0.28) !important;
+}
+.feature,
+.camera-item,
+.rag-card,
+.step,
+details{
+  background:linear-gradient(180deg,#ffffff,#f8fbff) !important;
+  border:1px solid rgba(20,85,163,0.24) !important;
+  box-shadow:0 18px 45px rgba(11,47,107,0.18) !important;
+}
+.feature,
+.camera-item,
+details{
+  border-left:6px solid var(--gold) !important;
+}
+.step{
+  border-top:6px solid var(--gold) !important;
+}
+.camera-board{
+  background:linear-gradient(180deg,#ffffff,#fffaf0) !important;
+  border:2px solid rgba(217,166,46,0.42) !important;
+  border-left:7px solid var(--gold) !important;
+  box-shadow:0 24px 60px rgba(11,47,107,0.20) !important;
+}
+.quiz-option{
+  background:linear-gradient(180deg,#ffffff,#f3f8ff) !important;
+  border:1px solid rgba(20,85,163,0.26) !important;
+  box-shadow:0 10px 24px rgba(11,47,107,0.12);
+  transition:all .2s ease;
+}
+.quiz-option:hover{
+  border-color:var(--primary2) !important;
+  transform:translateX(4px);
+  box-shadow:0 14px 30px rgba(11,47,107,0.18);
+}
+.collapsed-tooltip{
+  position:fixed;
+  left:82px;
+  top:0;
+  transform:translateY(-50%);
+  background:linear-gradient(135deg,rgba(11,47,107,0.98),rgba(20,85,163,0.96));
+  color:white;
+  padding:10px 14px;
+  border-radius:12px;
+  font-size:13px;
+  font-weight:800;
+  white-space:nowrap;
+  opacity:0;
+  pointer-events:none;
+  box-shadow:0 14px 35px rgba(11,47,107,0.30);
+  border:1px solid rgba(255,255,255,0.18);
+  z-index:9999;
+  transition:opacity .15s ease,transform .15s ease;
+}
+.collapsed-tooltip.show{
+  opacity:1;
+  transform:translateY(-50%) translateX(4px);
+}
+.collapsed-tooltip::before{
+  content:"";
+  position:absolute;
+  left:-8px;
+  top:50%;
+  transform:translateY(-50%);
+  border-top:7px solid transparent;
+  border-bottom:7px solid transparent;
+  border-right:8px solid rgba(11,47,107,0.98);
+}
+@media(max-width:1000px){
+  .app,
+  .app.sidebar-collapsed{grid-template-columns:1fr;}
+  .sidebar-toggle{display:none;}
+  .app.sidebar-collapsed .home-link,
+  .app.sidebar-collapsed .brand,
+  .app.sidebar-collapsed .nav-title{
+    opacity:1;
+    pointer-events:auto;
+    height:auto;
+    padding:initial;
+    margin:initial;
+    overflow:visible;
+  }
+  .app.sidebar-collapsed .nav button{
+    justify-content:flex-start;
+    padding:12px 14px;
+    gap:10px;
+    font-size:14px;
+  }
+}
+
+</style>
 </head>
 <body>
   <div class="app">
     <aside class="sidebar">
+      <button class="sidebar-toggle" id="sidebarToggle" aria-label="Collapse sidebar" title="Collapse sidebar"><span>‹</span></button>
       <a class="home-link" href="https://umeraio.github.io/Study-Material/" target="_blank">Home Page</a>
       <div class="brand">
         <h1>IQA Training</h1>
@@ -537,19 +742,19 @@
       </div>
       <div class="nav-title">Learning Modules</div>
       <nav class="nav" id="nav">
-        <button class="active" data-view="dashboard"><span class="dot"></span>Dashboard</button>
-        <button data-view="what"><span class="dot"></span>What is an IQA?</button>
-        <button data-view="role"><span class="dot"></span>Main IQA Role</button>
-        <button data-view="camera"><span class="dot"></span>CAMERA Framework</button>
-        <button data-view="sampling"><span class="dot"></span>Sampling Strategy</button>
-        <button data-view="rag"><span class="dot"></span>RAG Risk Sampling</button>
-        <button data-view="cycle"><span class="dot"></span>IQA Cycle</button>
-        <button data-view="checks"><span class="dot"></span>What IQAs Check</button>
-        <button data-view="technology"><span class="dot"></span>Digital IQA Monitoring</button>
-        <button data-view="feedback"><span class="dot"></span>IQA Feedback</button>
-        <button data-view="standardisation"><span class="dot"></span>Standardisation</button>
-        <button data-view="examples"><span class="dot"></span>Real-Life Examples</button>
-        <button data-view="quiz"><span class="dot"></span>Knowledge Check</button>
+        <button class="active" data-view="dashboard" data-tooltip="Dashboard"><span class="dot"></span>Dashboard</button>
+        <button data-view="what" data-tooltip="What is an IQA?"><span class="dot"></span>What is an IQA?</button>
+        <button data-view="role" data-tooltip="Main IQA Role"><span class="dot"></span>Main IQA Role</button>
+        <button data-view="camera" data-tooltip="CAMERA Framework"><span class="dot"></span>CAMERA Framework</button>
+        <button data-view="sampling" data-tooltip="Sampling Strategy"><span class="dot"></span>Sampling Strategy</button>
+        <button data-view="rag" data-tooltip="RAG Risk Sampling"><span class="dot"></span>RAG Risk Sampling</button>
+        <button data-view="cycle" data-tooltip="IQA Cycle"><span class="dot"></span>IQA Cycle</button>
+        <button data-view="checks" data-tooltip="What IQAs Check"><span class="dot"></span>What IQAs Check</button>
+        <button data-view="technology" data-tooltip="Digital IQA Monitoring"><span class="dot"></span>Digital IQA Monitoring</button>
+        <button data-view="feedback" data-tooltip="IQA Feedback"><span class="dot"></span>IQA Feedback</button>
+        <button data-view="standardisation" data-tooltip="Standardisation"><span class="dot"></span>Standardisation</button>
+        <button data-view="examples" data-tooltip="Real-Life Examples"><span class="dot"></span>Real-Life Examples</button>
+        <button data-view="quiz" data-tooltip="Knowledge Check"><span class="dot"></span>Knowledge Check</button>
       </nav>
     </aside>
 
@@ -564,7 +769,7 @@
           <h2>Internal Quality Assurance in Vocational Education</h2>
           <p>Explore how IQAs maintain high standards by checking assessment decisions, sampling learner evidence, supporting assessors, improving practice, and ensuring assessment remains fair, consistent, valid, reliable, and compliant.</p>
           <div class="hero-actions">
-            <button class="btn gold" onclick="goTo('what')">Start IQA Training</button>
+            
             <button class="btn" onclick="goTo('camera')">Open CAMERA Framework</button>
             <button class="btn" onclick="goTo('rag')">View RAG Sampling</button>
           </div>
@@ -755,10 +960,42 @@
     </main>
   </div>
 
+  <div class="collapsed-tooltip" id="collapsedTooltip"></div>
+
   <script>
     const buttons = Array.from(document.querySelectorAll('.nav button'));
     const views = Array.from(document.querySelectorAll('.view'));
     const completed = new Set();
+
+    const appShell = document.querySelector('.app');
+    const sidebarToggle = document.getElementById('sidebarToggle');
+    const collapsedTooltip = document.getElementById('collapsedTooltip');
+
+    if (sidebarToggle && appShell) {
+      sidebarToggle.addEventListener('click', () => {
+        const collapsed = appShell.classList.toggle('sidebar-collapsed');
+        if (collapsedTooltip) { collapsedTooltip.classList.remove('show'); }
+        sidebarToggle.setAttribute('aria-label', collapsed ? 'Expand sidebar' : 'Collapse sidebar');
+        sidebarToggle.setAttribute('title', collapsed ? 'Expand sidebar' : 'Collapse sidebar');
+      });
+    }
+
+    buttons.forEach(button => {
+      button.addEventListener('mouseenter', () => {
+        if (!appShell || !appShell.classList.contains('sidebar-collapsed') || !collapsedTooltip) return;
+        const label = button.getAttribute('data-tooltip') || button.textContent.trim();
+        const rect = button.getBoundingClientRect();
+        collapsedTooltip.textContent = label;
+        collapsedTooltip.style.top = (rect.top + rect.height / 2) + 'px';
+        collapsedTooltip.classList.add('show');
+      });
+
+      button.addEventListener('mouseleave', () => {
+        if (collapsedTooltip) { collapsedTooltip.classList.remove('show'); }
+      });
+    });
+
+
 
     function goTo(id) {
       views.forEach(view => view.classList.toggle('active', view.id === id));
@@ -768,7 +1005,7 @@
         if (isActive) {
           btn.classList.add('done');
           completed.add(id);
-          document.getElementById('sectionPill').textContent = btn.textContent.trim();
+          const pill = document.getElementById('sectionPill'); if (pill) { pill.textContent = btn.textContent.trim(); }
         }
       });
       updateProgress();
@@ -777,8 +1014,8 @@
 
     function updateProgress() {
       const percentage = Math.round((completed.size / buttons.length) * 100);
-      document.getElementById('progressFill').style.width = percentage + '%';
-      document.getElementById('progressText').textContent = percentage + '%';
+      const pf = document.getElementById('progressFill'); if (pf) { pf.style.width = percentage + '%'; }
+      const pt = document.getElementById('progressText'); if (pt) { pt.textContent = percentage + '%'; }
     }
 
     buttons.forEach(button => button.addEventListener('click', () => goTo(button.dataset.view)));
@@ -807,12 +1044,15 @@
         : 'Not quite. CAMERA is used to structure a representative IQA sampling plan.';
     }
 
-    document.getElementById('searchInput').addEventListener('input', function () {
+    const searchInput = document.getElementById('searchInput');
+    if (searchInput) {
+    searchInput.addEventListener('input', function () {
       const term = this.value.toLowerCase().trim();
       if (!term) return;
       const match = buttons.find(btn => btn.textContent.toLowerCase().includes(term));
       if (match) goTo(match.dataset.view);
     });
+    }
 
     completed.add('dashboard');
     updateProgress();
