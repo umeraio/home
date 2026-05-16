@@ -45,34 +45,68 @@ body::-webkit-scrollbar-thumb{
 .wrapper{
   width:min(1180px,92%);
   margin:0 auto;
-  padding:18px 0 28px;
+  padding:0 0 28px;
 }
 .top-nav{
   display:flex;
   justify-content:flex-end;
-  margin-bottom:6px;
+  margin-bottom:0;
+  margin-top:18px;
 }
 .home-btn{
   text-decoration:none;
+  width:64px;
+  height:64px;
   display:inline-flex;
   align-items:center;
   justify-content:center;
-  gap:8px;
-  background:linear-gradient(135deg,#5b1d91,#7a2bc2);
+  background:
+    linear-gradient(135deg, rgba(255,255,255,0.84), rgba(255,248,241,0.95));
   color:#fff;
-  font-weight:800;
-  padding:12px 22px;
-  border-radius:999px;
-  box-shadow:0 14px 32px rgba(91,29,145,0.24);
+  border-radius:50%;
+  border:3px solid var(--purple);
+  box-shadow:
+    0 0 0 4px rgba(255,122,24,0.48),
+    0 14px 32px rgba(180,83,9,0.24),
+    inset 0 1px 0 rgba(255,255,255,0.95);
+  backdrop-filter:blur(10px);
   transition:all .25s ease;
+  position:relative;
+  overflow:hidden;
+}
+.home-btn::before{
+  content:"";
+  position:absolute;
+  inset:0;
+  border-radius:50%;
+  background:linear-gradient(
+    135deg,
+    rgba(255,255,255,0.78) 0%,
+    rgba(255,255,255,0.15) 42%,
+    transparent 70%
+  );
+  pointer-events:none;
+}
+.home-btn svg{
+  width:32px;
+  height:32px;
+  fill:var(--orange);
+  filter:drop-shadow(0 2px 2px rgba(0,0,0,0.18));
+  transform:translateY(2px);
+  position:relative;
+  z-index:1;
 }
 .home-btn:hover{
-  transform:translateY(-3px);
-  box-shadow:0 20px 42px rgba(91,29,145,0.34);
+  transform:translateY(-3px) scale(1.08);
+  box-shadow:
+    0 0 0 6px rgba(91,29,145,0.44),
+    0 22px 48px rgba(180,83,9,0.32),
+    inset 0 1px 0 rgba(255,255,255,1);
 }
 .hero{
   text-align:center;
-  padding:0 18px 26px;
+  padding:0 18px 8px;
+  margin-top:-62px;
 }
 .hero h1{
   margin:0;
@@ -98,10 +132,10 @@ body::-webkit-scrollbar-thumb{
 .section-card{
   background:rgba(255,255,255,0.72);
   border:1px solid rgba(20,85,163,0.16);
-  border-radius:34px;
-  padding:32px;
-  box-shadow:var(--shadow);
-  backdrop-filter:blur(14px);
+  border-radius:36px;
+  padding:34px;
+  box-shadow:0 26px 65px rgba(180,83,9,0.15);
+  backdrop-filter:blur(16px);
 }
 .section-title{
   display:flex;
@@ -130,7 +164,7 @@ body::-webkit-scrollbar-thumb{
   border-radius:24px;
   padding:24px 24px;
   min-height:120px;
-  box-shadow:0 18px 42px rgba(11,47,107,0.16);
+  box-shadow:0 20px 48px rgba(180,83,9,0.14);
   border:1px solid rgba(20,85,163,0.20);
   border-left:8px solid var(--gold);
   overflow:hidden;
@@ -148,7 +182,7 @@ body::-webkit-scrollbar-thumb{
 }
 .card:hover{
   transform:translateY(-7px);
-  box-shadow:0 28px 62px rgba(11,47,107,0.26);
+  box-shadow:0 30px 70px rgba(180,83,9,0.25);
   border-left-color:var(--orange);
 }
 .icon{
@@ -160,9 +194,9 @@ body::-webkit-scrollbar-thumb{
   justify-content:center;
   flex:0 0 auto;
   font-size:30px;
-  background:linear-gradient(135deg,var(--primary),var(--primary2));
+  background:linear-gradient(135deg,var(--orange),#b45309);
   color:#fff;
-  box-shadow:0 12px 24px rgba(11,47,107,0.22);
+  box-shadow:0 12px 24px rgba(180,83,9,0.22);
   position:relative;
   z-index:1;
 }
@@ -208,7 +242,11 @@ footer{
 <body>
 <div class="wrapper">
   <div class="top-nav">
-    <a class="home-btn" href="https://umeraio.github.io/home/">Home</a>
+    <a class="home-btn" href="https://umeraio.github.io/home/" aria-label="Home" title="Home">
+      <svg viewBox="0 0 24 24" aria-hidden="true">
+        <path d="M10.8 2.4a1.8 1.8 0 0 1 2.4 0l8 7.2c.4.4.5 1 .1 1.5-.3.4-.9.5-1.4.2l-.9-.8V20a1.5 1.5 0 0 1-1.5 1.5h-4v-6h-3v6h-4A1.5 1.5 0 0 1 5 20v-9.5l-.9.8c-.5.3-1.1.2-1.4-.2-.4-.5-.3-1.1.1-1.5l8-7.2z"/>
+      </svg>
+    </a>
   </div>
 
   <section class="hero">
