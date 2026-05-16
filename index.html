@@ -4,230 +4,332 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Simple Guides for Tech & Everyday Life | Umer Malik</title>
-<link href="https://fonts.googleapis.com/css2?family=Segoe+UI:wght@400;600;700;800&display=swap" rel="stylesheet">
-
 <style>
+:root{
+  --bg:#eaf4ff;
+  --bg2:#fff7df;
+  --primary:#0b2f6b;
+  --primary2:#1455a3;
+  --gold:#f4c542;
+  --text:#172033;
+  --muted:#5f6b7a;
+  --shadow:0 22px 55px rgba(11,47,107,0.18);
+  --purple:#6f2dbd;
+  --blue:#0878d8;
+  --green:#23a455;
+  --red:#dc3545;
+  --orange:#ff7a18;
+  --life:#c28a00;
+}
+*{box-sizing:border-box;}
+html{
+  scrollbar-width:thin;
+  scrollbar-color:var(--gold) rgba(11,47,107,0.18);
+}
 body{
   margin:0;
-  font-family:'Segoe UI',sans-serif;
-  background:#eaf2fb;
-  color:#222;
+  font-family:"Segoe UI",Arial,sans-serif;
+  color:var(--text);
+  min-height:100vh;
+  background:
+    radial-gradient(circle at top left,#dbeafe 0,transparent 32%),
+    radial-gradient(circle at top right,#fff0b8 0,transparent 30%),
+    linear-gradient(135deg,var(--bg),var(--bg2));
+  overflow-x:hidden;
 }
-
-/* ===== HEADER ===== */
-header{
-  position:relative;
-  background:linear-gradient(90deg,#0a3d91,#005fa3,#0078D7);
-  color:#fff;
-  padding:20px 30px;
-  border-radius:40px;
-  margin:15px;
-  box-shadow:0 4px 15px rgba(0,0,0,0.25);
-  text-align:center;
+body::-webkit-scrollbar{width:11px;}
+body::-webkit-scrollbar-track{background:rgba(11,47,107,0.10);border-radius:999px;}
+body::-webkit-scrollbar-thumb{
+  background:linear-gradient(180deg,var(--gold),#ffb84d,var(--primary2));
+  border-radius:999px;
+  border:3px solid rgba(255,255,255,0.75);
 }
-
-/* NAVIGATION (Far Right Only) */
-.nav{
-  position:absolute;
-  bottom:15px;
-  right:30px; /* Moved to right as requested */
+.wrapper{
+  width:min(1240px,92%);
+  margin:0 auto;
+  padding:18px 0 30px;
+}
+.top-nav{
   display:flex;
-  gap:10px;
+  justify-content:flex-end;
+  margin-bottom:2px;
 }
-
-.nav a{
-  color:#fff;
+.about-btn{
   text-decoration:none;
-  font-weight:800;
-  font-size:1rem;
-  padding:8px 20px;
-  border-radius:25px;
-  background:rgba(255,255,255,0.15);
-  transition:all 0.3s ease;
+  width:64px;
+  height:64px;
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  border-radius:50%;
+  background:
+    linear-gradient(135deg, rgba(255,255,255,0.88), rgba(247,243,255,0.96));
+  border:3px solid #f4c542;
+  box-shadow:
+    0 0 0 4px rgba(122,43,194,0.42),
+    0 16px 40px rgba(91,29,145,0.26),
+    inset 0 1px 0 rgba(255,255,255,0.95);
+  transition:all .25s ease;
+  position:relative;
+  overflow:hidden;
+  backdrop-filter:blur(10px);
+}
+.about-btn::before{
+  content:"";
+  position:absolute;
+  inset:0;
+  border-radius:50%;
+  background:linear-gradient(
+    135deg,
+    rgba(255,255,255,0.75) 0%,
+    rgba(255,255,255,0.14) 42%,
+    transparent 70%
+  );
+}
+.about-btn svg{
+  width:30px;
+  height:30px;
+  fill:#7a2bc2;
+  position:relative;
+  z-index:2;
+  transform:translateY(2px);
+}
+.about-btn:hover{
+  transform:translateY(-3px) scale(1.08);
+  box-shadow:
+    0 0 0 6px rgba(244,197,66,0.55),
+    0 22px 48px rgba(91,29,145,0.34);
+}
+.hero{
+  text-align:center;
+  padding:0 18px 6px;
+  margin-top:-62px;
 }
 
-.nav a:hover{
-  background:#ffffff;
-  color:#005fa3;
-  transform:scale(1.08);
-}
-
-/* HERO CENTERED */
 .hero h1{
-  font-size:1.6rem;
-  font-weight:800;
-  letter-spacing:0.5px;
-  margin:0 0 6px 0;
-}
-
-.hero p{
-  font-size:0.95rem;
-  opacity:0.95;
   margin:0;
-  padding-bottom:25px; 
+  font-size:clamp(44px,6.5vw,82px);
+  line-height:1.02;
+  color:var(--primary);
+  font-weight:950;
+  letter-spacing:-1.5px;
 }
-
-/* ===== MAIN CONTENT ===== */
-.container{
-  max-width:1200px;
-  margin:60px auto;
-  display:flex;
-  justify-content:space-around;
-  flex-wrap:wrap;
-  gap:40px;
+.hero h1 span{
+  color:#ff7a18;
 }
-
-.column{
-  flex:1 1 320px;
+.hero p{
+  max-width:930px;
+  margin:26px auto 0;
+  color:#4e5868;
+  font-size:clamp(22px,3vw,38px);
+  line-height:1.35;
+}
+.portal{
+  background:rgba(255,255,255,0.72);
+  border:1px solid rgba(20,85,163,0.16);
+  border-radius:36px;
+  padding:34px;
+  box-shadow:var(--shadow);
+  backdrop-filter:blur(14px);
+}
+.portal-title{
+  text-align:center;
+  margin:0 0 28px;
+  color:var(--primary);
+  font-size:clamp(30px,4vw,50px);
+  font-weight:950;
+}
+.grid{
+  display:grid;
+  grid-template-columns:repeat(3,minmax(0,1fr));
+  gap:24px;
+}
+.card{
+  position:relative;
+  min-height:245px;
+  text-decoration:none;
+  background:linear-gradient(180deg,#ffffff,#f8fbff);
+  border-radius:28px;
+  padding:28px;
+  box-shadow:0 18px 42px rgba(11,47,107,0.15);
+  border:1px solid rgba(20,85,163,0.20);
+  border-left:9px solid var(--accent);
+  overflow:hidden;
+  transition:all .28s ease;
   display:flex;
   flex-direction:column;
+  justify-content:space-between;
+}
+.card::before{
+  content:"";
+  position:absolute;
+  right:-55px;
+  top:-55px;
+  width:150px;
+  height:150px;
+  border-radius:50%;
+  background:color-mix(in srgb, var(--accent) 16%, transparent);
+}
+.card:hover{
+  transform:translateY(-8px);
+  box-shadow:0 30px 70px rgba(11,47,107,0.26);
+}
+.icon{
+  width:68px;
+  height:68px;
+  border-radius:22px;
+  display:flex;
   align-items:center;
-  gap:18px;
+  justify-content:center;
+  font-size:34px;
+  background:linear-gradient(135deg,var(--accent),var(--accent2));
+  color:white;
+  box-shadow:0 14px 28px color-mix(in srgb, var(--accent) 32%, transparent);
+  position:relative;
+  z-index:1;
 }
-
-h2{
-  font-weight:700;
-  margin-bottom:5px;
+.card h2{
+  margin:20px 0 10px;
+  color:var(--accent);
+  font-size:26px;
+  line-height:1.15;
+  position:relative;
+  z-index:1;
 }
-
-.description{
-  font-size:0.9rem;
+.card p{
+  margin:0;
+  color:var(--muted);
+  font-size:16px;
+  line-height:1.58;
+  position:relative;
+  z-index:1;
+}
+.open{
+  margin-top:20px;
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  width:max-content;
+  background:rgba(255,255,255,0.84);
+  border:1px solid color-mix(in srgb, var(--accent) 22%, transparent);
+  color:var(--accent);
+  font-weight:900;
+  padding:10px 16px;
+  border-radius:999px;
+  position:relative;
+  z-index:1;
+}
+.tech{--accent:#0878d8;--accent2:#0b4f9c;}
+.ai{--accent:#23a455;--accent2:#0b7dba;}
+.tools{--accent:#6f2dbd;--accent2:#8d4de8;}
+.life{--accent:#c28a00;--accent2:#f4c542;}
+.cyber{--accent:#dc3545;--accent2:#a71d2a;}
+.teachers{--accent:#ff7a18;--accent2:#b45309;}
+.footer-container{
   text-align:center;
-  color:#555;
-  margin-bottom:10px;
-  max-width:300px;
+  margin:34px 0 0;
 }
-
-/* ===== CARD BASE ===== */
-a.card{
-  display:block;
-  width:85%;
-  text-align:center;
-  text-decoration:none;
-  background:#ffffff;
-  padding:18px 20px;
-  font-weight:800;
-  font-size:1.05rem;
-  border-radius:18px;
-  box-shadow:0 12px 25px rgba(0,0,0,0.18);
-  transition:all .35s ease;
-  border-left:8px solid;
-  border-right:8px solid;
-}
-
-a.card:hover{
-  transform:translateY(-8px) scale(1.03);
-}
-
-/* CARD COLORS */
-.tech{ border-color:#0078D7; color:#004a99; }
-.tech:hover{ box-shadow:0 20px 40px rgba(0,120,215,0.45); background:#f2f8ff; }
-
-.study{ border-color:#28a745; color:#1e7e34; }
-.study:hover{ box-shadow:0 20px 40px rgba(40,167,69,0.45); background:#f3fff6; }
-
-.tools{ border-color:#6f42c1; color:#4b2e83; }
-.tools:hover{ box-shadow:0 20px 40px rgba(111,66,193,0.45); background:#f7f3ff; }
-
-.life{ border-color:#FFD700; color:#b8860b; }
-.life:hover{ box-shadow:0 20px 40px rgba(255,215,0,0.45); background:#fffdf2; }
-
-.cyber{ border-color:#dc3545; color:#a71d2a; }
-.cyber:hover{ box-shadow:0 20px 40px rgba(220,53,69,0.45); background:#fff5f6; }
-
-.teachers{ border-color:#fd7e14; color:#b45309; }
-.teachers:hover{ box-shadow:0 20px 40px rgba(253,126,20,0.45); background:#fff8f1; }
-
-.footer-container {
-  text-align: center;
-  width: 100%;
-  margin: 70px 0 30px 0;
-}
-
 footer{
   display:inline-block;
-  text-align:center;
-  border-top:3px solid #FFD700;
-  padding:10px 25px; 
-  font-size:0.9rem;
+  background:rgba(255,255,255,0.78);
+  border-top:3px solid var(--gold);
+  color:#46505f;
+  padding:12px 24px;
+  border-radius:18px;
+  font-size:14px;
+  font-weight:800;
   font-style:italic;
-  font-weight:600;
-  background:#f4f8fd;
-  color:#444;
-  border-radius:15px;
-  box-shadow: 0 4px 15px rgba(0,0,0,0.15);
+  box-shadow:0 12px 28px rgba(11,47,107,0.14);
 }
-
+@media(max-width:1050px){
+  .grid{grid-template-columns:repeat(2,minmax(0,1fr));}
+}
+@media(max-width:720px){
+  .grid{grid-template-columns:1fr;}
+  .portal{padding:22px;}
+  .hero p{font-size:22px;}
+  .card{min-height:auto;}
+}
 </style>
 </head>
 <body>
-
-<header>
-  <div class="hero">
-    <h1>Simple Guides for Tech & Everyday Life</h1>
-    <p>Explore tutorials, courses, and step-by-step guides with Umer Malik.</p>
+<div class="wrapper">
+  <div class="top-nav">
+    <a class="about-btn" href="https://umeraio.github.io/about/" aria-label="About" title="About">
+<svg viewBox="0 0 24 24" aria-hidden="true">
+<path d="M12 2a10 10 0 1 0 10 10A10 10 0 0 0 12 2zm0 4a1.5 1.5 0 1 1-1.5 1.5A1.5 1.5 0 0 1 12 6zm2 12h-4a1 1 0 0 1 0-2h1v-3h-1a1 1 0 0 1 0-2h2a1 1 0 0 1 1 1v4h1a1 1 0 0 1 0 2z"/>
+</svg>
+</a>
   </div>
 
-  <div class="nav">
-    <a href="https://umeraio.github.io/about/">🌐 About</a>
-  </div>
-</header>
+  <section class="hero">
+    <h1>Simple Guides for <span>Tech</span> & Everyday Life</h1>
+    <p>Explore tutorials, courses, tools, templates, teaching resources, and step-by-step guides in one clean learning portal.</p>
+  </section>
 
-<div class="container">
+  <section class="portal">
+    <h2 class="portal-title">Explore Learning Areas</h2>
 
-  <div class="column">
-    <h2 style="color:#0078D7;">📂 IT & Tech Guides</h2>
-    <div class="description">
-      Practical technical tutorials, system walkthroughs, and real-world IT knowledge.
+    <div class="grid">
+      <a href="https://umeraio.github.io/Tech-Guides/" class="card tech">
+        <div>
+          <div class="icon">📁</div>
+          <h2>IT & Tech Guides</h2>
+          <p>Practical technical tutorials, system walkthroughs, and real-world IT knowledge.</p>
+        </div>
+        <span class="open">Explore Tech Tutorials</span>
+      </a>
+
+      <a href="AI.html" class="card ai">
+        <div>
+          <div class="icon">🤖</div>
+          <h2>Artificial Intelligence - AI</h2>
+          <p>AI training resources, prompt engineering guidance, and practical AI learning materials.</p>
+        </div>
+        <span class="open">Artificial Intelligence - AI</span>
+      </a>
+
+      <a href="https://umeraio.github.io/Tools-Downloads/" class="card tools">
+        <div>
+          <div class="icon">💻</div>
+          <h2>Tools & Templates</h2>
+          <p>Templates, utilities, scripts, and helpful downloadable materials.</p>
+        </div>
+        <span class="open">Access Tools & Templates</span>
+      </a>
+
+      <a href="https://umeraio.github.io/Life-Skills/" class="card life">
+        <div>
+          <div class="icon">🧪</div>
+          <h2>Life Skills</h2>
+          <p>Productivity tips, personal development insights, and practical life skills.</p>
+        </div>
+        <span class="open">Improve Life Skills</span>
+      </a>
+
+      <a href="Cyber.html" class="card cyber">
+        <div>
+          <div class="icon">🛡️</div>
+          <h2>Cybersecurity</h2>
+          <p>Cybersecurity awareness, online safety, threat prevention, and practical security guidance.</p>
+        </div>
+        <span class="open">Cybersecurity</span>
+      </a>
+
+      <a href="teachersindex.html" class="card teachers">
+        <div>
+          <div class="icon">🎓</div>
+          <h2>Teacher Resources</h2>
+          <p>Teaching resources, classroom guidance, professional development, and education support materials.</p>
+        </div>
+        <span class="open">Teacher Resources</span>
+      </a>
     </div>
-    <a href="https://umeraio.github.io/Tech-Guides/" class="card tech">Explore Tech Tutorials</a>
-  </div>
+  </section>
 
-  <div class="column">
-    <h2 style="color:#28a745;">🤖 Artificial Intelligence - AI</h2>
-    <div class="description">
-      AI training resources, prompt engineering guidance, and practical AI learning materials.
-    </div>
-    <a href="AI.html" class="card study">Artificial Intelligence - AI</a>
+  <div class="footer-container">
+    <footer>Crafted Through Research by Umer Malik</footer>
   </div>
-
-  <div class="column">
-    <h2 style="color:#6f42c1;">💻 Tools & Templates</h2>
-    <div class="description">
-      Templates, utilities, scripts, and helpful downloadable materials.
-    </div>
-    <a href="https://umeraio.github.io/Tools-Downloads/" class="card tools">Access Tools & Templates</a>
-  </div>
-
-  <div class="column">
-    <h2 style="color:#b8860b;">🧪 Life Skills</h2>
-    <div class="description">
-      Productivity tips, personal development insights, and life skills.
-    </div>
-    <a href="https://umeraio.github.io/Life-Skills/" class="card life">Improve Life Skills</a>
-  </div>
-
-  <div class="column">
-    <h2 style="color:#dc3545;">🛡️ Cybersecurity</h2>
-    <div class="description">
-      Cybersecurity awareness, online safety, threat prevention, and practical security guidance.
-    </div>
-    <a href="Cyber.html" class="card cyber">Cybersecurity</a>
-  </div>
-
-  <div class="column">
-    <h2 style="color:#fd7e14;">🎓 Teacher Resources</h2>
-    <div class="description">
-      Teaching resources, classroom guidance, professional development, and education support materials.
-    </div>
- <a href="teachersindex.html" class="card">Teacher Resources</a>
 </div>
-
-<div class="footer-container">
-  <footer>
-  Crafted Through Research by Umer Malik
-  </footer>
-</div>
-
 </body>
 </html>
