@@ -1,284 +1,703 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Level 3 Assessor Qualifications (CAVA)</title>
-<link href="https://fonts.googleapis.com/css2?family=Segoe+UI:wght@400;600&display=swap" rel="stylesheet">
-<style>
-body{
-  margin:0;
-  font-family:"Segoe UI",sans-serif;
-  background:linear-gradient(120deg, #f7f4e6 0%, #f1e6c5 100%);  /* Light cream gradient */
-  color:#002b5b;
-  overflow:hidden;
-}
-.header{
-  position:fixed;top:0;left:0;width:100%;
-  background:linear-gradient(90deg,#004aad,#002b80);
-  color:#FFD700;text-align:center;
-  font-size:2rem;font-weight:bold;
-  padding:20px 0;z-index:20;
-  text-shadow:1px 1px 3px #000;
-  box-shadow:0 4px 8px rgba(0,0,0,0.25);
-  border-bottom:3px solid #FFD700;
-}
-.slide{
-  position:absolute;top:0;left:0;width:100%;height:100vh;
-  opacity:0;display:flex;justify-content:center;align-items:center;
-  transition:opacity 1s ease;
-}
-.slide.active{opacity:1;z-index:5;}
-.text-box{
-  background:rgba(255,255,255,0.9);
-  backdrop-filter:blur(10px);
-  border-radius:20px;
-  box-shadow:0 8px 25px rgba(0,0,0,0.15);
-  max-width:900px;
-  padding:40px 50px;
-  text-align:center;
-  animation:fadeIn 1s ease;
-  border-left:5px solid #004aad;
-  border-right:5px solid #004aad;
-}
-@keyframes fadeIn{
-  from{opacity:0;transform:translateY(20px);}
-  to{opacity:1;transform:translateY(0);}
-}
-.text-box h2{
-  color:#004aad;
-  margin-bottom:15px;
-  font-size:2rem;
-  text-shadow:0 0 4px rgba(255,255,255,0.7);
-}
-.text-box p, .text-box ul{
-  font-size:1.2rem;
-  line-height:1.8;
-  color:#002b5b;
-}
-ul{list-style:none;padding:0;}
-ul li::before{content:"• ";color:#004aad;font-weight:bold;}
-.page-num{
-  position:absolute;bottom:25px;right:30px;
-  font-size:1rem;font-weight:600;
-  color:#004aad;background:rgba(255,255,255,0.85);
-  padding:6px 12px;border-radius:8px;
-}
-#controls{
-  position:fixed;bottom:40px;width:100%;
-  text-align:center;z-index:10;
-}
-button{
-  background:#FFD700;
-  color:#001f54;
-  border:none;
-  margin:0 6px;
-  padding:6px 12px;
-  border-radius:50px;
-  cursor:pointer;
-  font-size:1.1rem;
-  font-weight:600;
-  transition:0.3s ease;
-}
-button:hover{background:#004aad;color:#fff;transform:scale(1.05);}
-#readBtn{background:#00c9a7;}
-#readBtn:hover{background:#009e82;color:#fff;}
-#muteBtn{background:#ff6666;color:#fff;}
-#muteBtn:hover{background:#cc0000;}
-#menuBtn{background:#fff;color:#001f54;}
-#menuBtn:hover{background:#FFD700;color:#001f54;}
-#footer{
-  position:fixed;bottom:0;left:0;width:100%;
-  font-size:0.9rem;text-align:center;padding:8px 0;
-  background:#002b80;color:#FFD700;border-top:2px solid #FFD700;
-}
-.progress-container{
-  position:fixed;bottom:48px;left:0;width:100%;height:6px;
-  background:rgba(0,0,0,0.1);z-index:5;
-}
-.progress-bar{
-  height:6px;
-  background:linear-gradient(90deg,#00c9a7,#FFD700,#004aad);
-  width:0%;
-  transition:width 0.6s ease,background 0.6s ease;
-  border-radius:3px;
-}
-</style>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Level 3 Assessor Qualifications | CAVA Training Portal</title>
+  <style>
+    :root {
+      --bg: #eef5ff;
+      --bg2: #fff8e7;
+      --primary: #0b2f6b;
+      --primary2: #1455a3;
+      --gold: #d9a62e;
+      --gold2: #f4c542;
+      --text: #172033;
+      --muted: #5f6b7a;
+      --card: rgba(255,255,255,0.98);
+      --border: rgba(20,85,163,0.22);
+      --shadow: 0 22px 55px rgba(11,47,107,0.20);
+      --radius: 22px;
+    }
+
+    * { box-sizing: border-box; }
+
+    html {
+      scrollbar-width: thin;
+      scrollbar-color: var(--gold) rgba(11,47,107,0.18);
+    }
+
+    body {
+      margin: 0;
+      font-family: "Segoe UI", Arial, sans-serif;
+      color: var(--text);
+      background: radial-gradient(circle at top left, #dbeafe 0, transparent 30%),
+                  radial-gradient(circle at top right, #fff3bf 0, transparent 28%),
+                  linear-gradient(135deg, var(--bg), var(--bg2));
+      min-height: 100vh;
+      overflow-x: hidden;
+    }
+
+    body::-webkit-scrollbar,
+    .sidebar::-webkit-scrollbar {
+      width: 11px;
+    }
+
+    body::-webkit-scrollbar-track,
+    .sidebar::-webkit-scrollbar-track {
+      background: rgba(11,47,107,0.10);
+      border-radius: 999px;
+    }
+
+    body::-webkit-scrollbar-thumb,
+    .sidebar::-webkit-scrollbar-thumb {
+      background: linear-gradient(180deg, var(--gold2), var(--gold), var(--primary2));
+      border-radius: 999px;
+      border: 3px solid rgba(255,255,255,0.75);
+    }
+
+    body::-webkit-scrollbar-thumb:hover,
+    .sidebar::-webkit-scrollbar-thumb:hover {
+      background: linear-gradient(180deg, #ffe082, var(--gold), var(--primary));
+    }
+
+    .app {
+      display: grid;
+      grid-template-columns: 310px 1fr;
+      min-height: 100vh;
+      transition: grid-template-columns 0.35s ease;
+    }
+
+    .app.sidebar-collapsed {
+      grid-template-columns: 72px 1fr;
+    }
+
+    .sidebar {
+      position: sticky;
+      top: 0;
+      height: 100vh;
+      padding: 24px 18px;
+      background: linear-gradient(180deg, rgba(11,47,107,0.96), rgba(20,85,163,0.94));
+      color: white;
+      overflow-y: auto;
+      overflow-x: hidden;
+      box-shadow: 10px 0 30px rgba(11,47,107,0.22);
+      transition: padding 0.35s ease;
+      z-index: 10;
+    }
+
+    .sidebar-toggle {
+      position: absolute;
+      top: 50%;
+      right: -18px;
+      transform: translateY(-50%);
+      width: 36px;
+      height: 72px;
+      border: 0;
+      border-radius: 0 999px 999px 0;
+      background: linear-gradient(135deg, var(--gold), var(--gold2));
+      color: #172033;
+      font-size: 24px;
+      font-weight: 900;
+      cursor: pointer;
+      box-shadow: 8px 0 22px rgba(11,47,107,0.24);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: all 0.25s ease;
+      z-index: 20;
+    }
+
+    .sidebar-toggle:hover {
+      width: 42px;
+      box-shadow: 10px 0 28px rgba(11,47,107,0.30);
+    }
+
+    .sidebar-toggle span {
+      display: inline-block;
+      transition: transform 0.25s ease;
+    }
+
+    .app.sidebar-collapsed .sidebar {
+      padding: 24px 10px;
+    }
+
+    .app.sidebar-collapsed .sidebar-toggle {
+      right: -20px;
+    }
+
+    .app.sidebar-collapsed .sidebar-toggle span {
+      transform: rotate(180deg);
+    }
+
+    .home-link {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 100%;
+      text-decoration: none;
+      background: linear-gradient(135deg, var(--gold), var(--gold2));
+      color: #172033;
+      font-weight: 800;
+      padding: 12px 16px;
+      border-radius: 14px;
+      margin-bottom: 18px;
+      box-shadow: 0 10px 25px rgba(0,0,0,0.18);
+      transition: all 0.25s ease;
+    }
+
+    .home-link:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 14px 28px rgba(0,0,0,0.24);
+    }
+
+    .brand {
+      padding: 12px 14px 22px;
+      border-bottom: 1px solid rgba(255,255,255,0.18);
+      margin-bottom: 18px;
+    }
+
+    .brand h1 {
+      font-size: 22px;
+      line-height: 1.15;
+      margin: 0 0 8px;
+    }
+
+    .brand p {
+      margin: 0;
+      font-size: 13px;
+      color: rgba(255,255,255,0.78);
+      line-height: 1.6;
+    }
+
+    .nav-title {
+      font-size: 12px;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.65);
+      margin: 4px 10px 10px;
+    }
+
+    .nav button {
+      width: 100%;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      border: 0;
+      cursor: pointer;
+      color: white;
+      text-align: left;
+      background: transparent;
+      padding: 12px 14px;
+      border-radius: 14px;
+      font-size: 14px;
+      transition: all 0.25s ease;
+      position: relative;
+    }
+
+    .nav button:hover,
+    .nav button.active {
+      background: rgba(255,255,255,0.16);
+      transform: translateX(4px);
+    }
+
+    .nav .dot {
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      background: rgba(255,255,255,0.35);
+      flex-shrink: 0;
+    }
+
+    .nav button.done .dot {
+      background: var(--gold2);
+    }
+
+    .app.sidebar-collapsed .home-link,
+    .app.sidebar-collapsed .brand,
+    .app.sidebar-collapsed .nav-title {
+      opacity: 0;
+      pointer-events: none;
+      height: 0;
+      padding: 0;
+      margin: 0;
+      overflow: hidden;
+      border: 0;
+    }
+
+    .app.sidebar-collapsed .nav button {
+      justify-content: center;
+      padding: 14px 0;
+      gap: 0;
+      font-size: 0;
+    }
+
+    .app.sidebar-collapsed .nav .dot {
+      width: 14px;
+      height: 14px;
+    }
+
+    .main {
+      padding: 34px 36px;
+    }
+
+    .view {
+      display: none;
+      animation: fadeUp 0.45s ease both;
+    }
+
+    .view.active {
+      display: block;
+    }
+
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(16px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .hero {
+      background: linear-gradient(135deg, rgba(11,47,107,0.96), rgba(20,85,163,0.88)),
+                  radial-gradient(circle at top right, rgba(244,197,66,0.35), transparent 35%);
+      color: white;
+      border-radius: 32px;
+      padding: 44px;
+      box-shadow: var(--shadow);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero::after {
+      content: "";
+      position: absolute;
+      width: 280px;
+      height: 280px;
+      border-radius: 50%;
+      right: -80px;
+      top: -90px;
+      background: rgba(244,197,66,0.18);
+    }
+
+    .hero h2 {
+      font-size: clamp(34px, 5vw, 60px);
+      margin: 0 0 18px;
+      line-height: 1.05;
+      max-width: 980px;
+      position: relative;
+      z-index: 1;
+    }
+
+    .hero p,
+    .hero li {
+      font-size: 18px;
+      max-width: 900px;
+      color: rgba(255,255,255,0.88);
+      line-height: 1.65;
+      position: relative;
+      z-index: 1;
+    }
+
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      position: relative;
+      z-index: 1;
+      margin-top: 22px;
+    }
+
+    .btn {
+      border: 0;
+      border-radius: 999px;
+      padding: 13px 20px;
+      cursor: pointer;
+      font-weight: 800;
+      background: white;
+      color: var(--primary);
+      box-shadow: 0 10px 25px rgba(0,0,0,0.12);
+      transition: all 0.25s ease;
+    }
+
+    .btn:hover {
+      transform: translateY(-2px);
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 18px;
+      margin-top: 22px;
+    }
+
+    .card {
+      background: linear-gradient(180deg, #ffffff, #f8fbff);
+      border: 1px solid rgba(20,85,163,0.24);
+      border-left: 6px solid var(--gold);
+      border-radius: var(--radius);
+      padding: 24px;
+      box-shadow: 0 24px 60px rgba(11,47,107,0.22);
+      backdrop-filter: blur(16px);
+      transition: all 0.25s ease;
+    }
+
+    .card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 30px 70px rgba(11,47,107,0.28);
+    }
+
+    .card h3 {
+      margin: 0 0 10px;
+      font-size: 21px;
+      color: var(--primary);
+    }
+
+    .card p,
+    .card li {
+      color: var(--muted);
+      line-height: 1.7;
+      font-size: 17px;
+    }
+
+    .content-card {
+      max-width: 980px;
+    }
+
+    .content-card p,
+    .content-card ul,
+    .content-card ol {
+      font-size: 18px;
+      line-height: 1.8;
+      color: var(--muted);
+    }
+
+    .content-card ul,
+    .content-card ol {
+      padding-left: 26px;
+    }
+
+    .section-header {
+      margin-bottom: 20px;
+    }
+
+    .section-header h2 {
+      font-size: clamp(30px, 4vw, 48px);
+      color: var(--primary);
+      margin: 0 0 10px;
+    }
+
+    .section-header p {
+      color: var(--muted);
+      font-size: 17px;
+      max-width: 920px;
+      line-height: 1.7;
+    }
+
+    .collapsed-tooltip {
+      position: fixed;
+      left: 82px;
+      top: 0;
+      transform: translateY(-50%);
+      background: linear-gradient(135deg, rgba(11,47,107,0.98), rgba(20,85,163,0.96));
+      color: white;
+      padding: 10px 14px;
+      border-radius: 12px;
+      font-size: 13px;
+      font-weight: 800;
+      white-space: nowrap;
+      opacity: 0;
+      pointer-events: none;
+      box-shadow: 0 14px 35px rgba(11,47,107,0.30);
+      border: 1px solid rgba(255,255,255,0.18);
+      z-index: 9999;
+      transition: opacity 0.15s ease, transform 0.15s ease;
+    }
+
+    .collapsed-tooltip.show {
+      opacity: 1;
+      transform: translateY(-50%) translateX(4px);
+    }
+
+    .collapsed-tooltip::before {
+      content: "";
+      position: absolute;
+      left: -8px;
+      top: 50%;
+      transform: translateY(-50%);
+      border-top: 7px solid transparent;
+      border-bottom: 7px solid transparent;
+      border-right: 8px solid rgba(11,47,107,0.98);
+    }
+
+    @media (max-width: 1000px) {
+      .app,
+      .app.sidebar-collapsed {
+        grid-template-columns: 1fr;
+      }
+
+      .sidebar {
+        position: relative;
+        height: auto;
+      }
+
+      .sidebar-toggle {
+        display: none;
+      }
+
+      .app.sidebar-collapsed .home-link,
+      .app.sidebar-collapsed .brand,
+      .app.sidebar-collapsed .nav-title {
+        opacity: 1;
+        pointer-events: auto;
+        height: auto;
+        padding: initial;
+        margin: initial;
+        overflow: visible;
+      }
+
+      .app.sidebar-collapsed .nav button {
+        justify-content: flex-start;
+        padding: 12px 14px;
+        gap: 10px;
+        font-size: 14px;
+      }
+
+      .grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+    }
+
+    @media (max-width: 680px) {
+      .main {
+        padding: 18px;
+      }
+
+      .grid {
+        grid-template-columns: 1fr;
+      }
+
+      .hero {
+        padding: 28px;
+      }
+    }
+  </style>
 </head>
 <body>
+  <div class="app">
+    <aside class="sidebar">
+      <button class="sidebar-toggle" id="sidebarToggle" aria-label="Collapse sidebar" title="Collapse sidebar"><span>‹</span></button>
+      <a class="home-link" href="https://umeraio.github.io/Study-Material/" target="_blank">Home Page</a>
 
-<div class="header">📋 Level 3 Assessor Qualifications (CAVA)</div>
+      <div class="brand">
+        <h1>Assessor Qualification</h1>
+        <p>Interactive training portal for Level 3 Assessor Qualifications, including CAVA, ACWE, and AVRA.</p>
+      </div>
 
-<div class="slide active"><div class="text-box">
-<h2>Welcome to Assessor Training</h2>
-<p>Welcome to the <b>Level 3 Assessor Qualifications</b> guide. Today we break down the requirements to become a qualified assessor in the UK. 🇬🇧</p>
-<p>Whether you are looking to assess apprenticeships, NVQs, or vocational skills, this module covers the <b>CAVA, ACWE, and AVRA</b> qualifications. 🎓</p>
-</div><div class="page-num">1 / 12</div></div>
+      <div class="nav-title">Learning Modules</div>
+      <nav class="nav" id="nav">
+        <button class="active" data-view="dashboard" data-tooltip="Welcome to Assessor Training"><span class="dot"></span>Welcome to Assessor Training</button>
+<button data-view="qualification" data-tooltip="What is an Assessor Qualification?"><span class="dot"></span>What is an Assessor Qualification?</button>
+<button data-view="cava" data-tooltip="1️⃣ The CAVA Qualification"><span class="dot"></span>1️⃣ The CAVA Qualification</button>
+<button data-view="coverage" data-tooltip="What does CAVA Cover?"><span class="dot"></span>What does CAVA Cover?</button>
+<button data-view="acwe" data-tooltip="2️⃣ The ACWE Award"><span class="dot"></span>2️⃣ The ACWE Award</button>
+<button data-view="avra" data-tooltip="3️⃣ The AVRA Award"><span class="dot"></span>3️⃣ The AVRA Award</button>
+<button data-view="experience" data-tooltip="Do You Have the Experience?"><span class="dot"></span>Do You Have the Experience?</button>
+<button data-view="legacy" data-tooltip="What happened to A1 and D32/33?"><span class="dot"></span>What happened to A1 and D32/33?</button>
+<button data-view="cycle" data-tooltip="The Assessment Cycle"><span class="dot"></span>The Assessment Cycle</button>
+<button data-view="methods" data-tooltip="How Will You Assess?"><span class="dot"></span>How Will You Assess?</button>
+<button data-view="tips" data-tooltip="Study Tips for Success"><span class="dot"></span>Study Tips for Success</button>
+<button data-view="summary" data-tooltip="🎓 Summary & Recap"><span class="dot"></span>🎓 Summary & Recap</button>
+      </nav>
+    </aside>
 
-<div class="slide"><div class="text-box">
-<h2>What is an Assessor Qualification?</h2>
-<p>These qualifications authorise you to make decisions about a learner's occupational competence.</p>
-<ul>
-<li>🔎 You gather evidence (observation, questions, work products).</li>
-<li>⚖️ You judge that evidence against a set of standards.</li>
-<li>✅ You provide feedback and sign off on their competence.</li>
-</ul>
-<p>The most comprehensive qualification is the <b>Level 3 CAVA</b>. 🏆</p>
-</div><div class="page-num">2 / 12</div></div>
+    <main class="main">
+      
+      <section id="dashboard" class="view active">
+        <div class="hero">
+          <h2>Welcome to Assessor Training</h2>
+          <div class="hero-text"><p>Welcome to the <b>Level 3 Assessor Qualifications</b> guide. Today we break down the requirements to become a qualified assessor in the UK. 🇬🇧</p> <p>Whether you are looking to assess apprenticeships, NVQs, or vocational skills, this module covers the <b>CAVA, ACWE, and AVRA</b> qualifications. 🎓</p></div>
+          <div class="hero-actions">
+            <button class="btn" onclick="goTo('qualification')">What is an Assessor Qualification?</button>
+            <button class="btn" onclick="goTo('cava')">Open CAVA Qualification</button>
+          </div>
+        </div>
+        <div class="grid">
+          <div class="card"><h3>CAVA</h3><p>The full assessor qualification covering workplace and learning environment assessment.</p></div>
+          <div class="card"><h3>ACWE</h3><p>A focused route for assessors who assess competence in real workplace settings.</p></div>
+          <div class="card"><h3>AVRA</h3><p>A focused route for assessors working in classroom, workshop, or training centre settings.</p></div>
+        </div>
+      </section>
 
-<div class="slide"><div class="text-box">
-<h2>1️⃣ The CAVA Qualification</h2>
-<p><b>CAVA</b> stands for <b>Certificate in Assessing Vocational Achievement</b>.</p>
-<p>This is the modern replacement for the old "A1" or "D32/D33" awards. It is the "gold standard" because it qualifies you to assess in <b>ALL</b> environments:</p>
-<ul>
-<li>🏗️ <b>The Workplace:</b> Real jobs, live tasks.</li>
-<li>🏫 <b>The Learning Environment:</b> Classrooms, workshops, simulations.</li>
-</ul>
-</div><div class="page-num">3 / 12</div></div>
+      <section id="qualification" class="view">
+        <div class="section-header">
+          <h2>What is an Assessor Qualification?</h2>
+          <p>Level 3 assessor qualification guidance presented in a clear training format.</p>
+        </div>
+        <div class="card content-card">
+          <p>These qualifications authorise you to make decisions about a learner's occupational competence.</p> <ul> <li>🔎 You gather evidence (observation, questions, work products).</li> <li>⚖️ You judge that evidence against a set of standards.</li> <li>✅ You provide feedback and sign off on their competence.</li> </ul> <p>The most comprehensive qualification is the <b>Level 3 CAVA</b>. 🏆</p>
+        </div>
+      </section>
 
-<div class="slide"><div class="text-box">
-<h2>What does CAVA Cover?</h2>
-<p>To achieve CAVA, you typically complete three units:</p>
-<ul>
-<li>📘 <b>Unit 1:</b> Understanding the Principles & Practices of Assessment (Theory).</li>
-<li>💼 <b>Unit 2:</b> Assessing Competence in the Work Environment (Practical).</li>
-<li>🎓 <b>Unit 3:</b> Assessing Vocationally Related Achievement (Classroom/Skills Lab).</li>
-</ul>
-<p>This makes you a fully qualified assessor for Apprenticeships and NVQs. 🌟</p>
-</div><div class="page-num">4 / 12</div></div>
+      <section id="cava" class="view">
+        <div class="section-header">
+          <h2>1️⃣ The CAVA Qualification</h2>
+          <p>Level 3 assessor qualification guidance presented in a clear training format.</p>
+        </div>
+        <div class="card content-card">
+          <p><b>CAVA</b> stands for <b>Certificate in Assessing Vocational Achievement</b>.</p> <p>This is the modern replacement for the old "A1" or "D32/D33" awards. It is the "gold standard" because it qualifies you to assess in <b>ALL</b> environments:</p> <ul> <li>🏗️ <b>The Workplace:</b> Real jobs, live tasks.</li> <li>🏫 <b>The Learning Environment:</b> Classrooms, workshops, simulations.</li> </ul>
+        </div>
+      </section>
 
-<div class="slide"><div class="text-box">
-<h2>2️⃣ The ACWE Award</h2>
-<p><b>ACWE</b> stands for <b>Award in Assessing Competence in the Work Environment</b>.</p>
-<p>This is a shorter qualification for those who <b>ONLY</b> assess staff doing their daily jobs.</p>
-<ul>
-<li>🏗️ Ideal for: Construction site foremen assessing bricklayers.</li>
-<li>✂️ Ideal for: Salon managers assessing junior stylists on real clients.</li>
-<li>❌ You cannot assess in a classroom or workshop with this award.</li>
-</ul>
-</div><div class="page-num">5 / 12</div></div>
+      <section id="coverage" class="view">
+        <div class="section-header">
+          <h2>What does CAVA Cover?</h2>
+          <p>Level 3 assessor qualification guidance presented in a clear training format.</p>
+        </div>
+        <div class="card content-card">
+          <p>To achieve CAVA, you typically complete three units:</p> <ul> <li>📘 <b>Unit 1:</b> Understanding the Principles & Practices of Assessment (Theory).</li> <li>💼 <b>Unit 2:</b> Assessing Competence in the Work Environment (Practical).</li> <li>🎓 <b>Unit 3:</b> Assessing Vocationally Related Achievement (Classroom/Skills Lab).</li> </ul> <p>This makes you a fully qualified assessor for Apprenticeships and NVQs. 🌟</p>
+        </div>
+      </section>
 
-<div class="slide"><div class="text-box">
-<h2>3️⃣ The AVRA Award</h2>
-<p><b>AVRA</b> stands for <b>Award in Assessing Vocationally Related Achievement</b>.</p>
-<p>This is for assessors who <b>ONLY</b> work in learning environments, such as colleges or training centres.</p>
-<ul>
-<li>🏫 Ideal for: Lecturers marking assignments or tests.</li>
-<li>📝 Ideal for: Assessing simulations or role-plays (not real work).</li>
-<li>❌ You cannot assess a learner in their real place of work with this.</li>
-</ul>
-</div><div class="page-num">6 / 12</div></div>
+      <section id="acwe" class="view">
+        <div class="section-header">
+          <h2>2️⃣ The ACWE Award</h2>
+          <p>Level 3 assessor qualification guidance presented in a clear training format.</p>
+        </div>
+        <div class="card content-card">
+          <p><b>ACWE</b> stands for <b>Award in Assessing Competence in the Work Environment</b>.</p> <p>This is a shorter qualification for those who <b>ONLY</b> assess staff doing their daily jobs.</p> <ul> <li>🏗️ Ideal for: Construction site foremen assessing bricklayers.</li> <li>✂️ Ideal for: Salon managers assessing junior stylists on real clients.</li> <li>❌ You cannot assess in a classroom or workshop with this award.</li> </ul>
+        </div>
+      </section>
 
-<div class="slide"><div class="text-box">
-<h2>Do You Have the Experience?</h2>
-<p>You cannot buy these qualifications off the shelf—you need <b>Occupational Competence</b>. 🛠️</p>
-<ul>
-<li>💡 To assess a plumber, you must be a qualified plumber.</li>
-<li>💡 To assess a coder, you must have coding experience.</li>
-</ul>
-<p>Regulatory bodies require you to have relevant, up-to-date industry experience to judge others safely and fairly. 📜</p>
-</div><div class="page-num">7 / 12</div></div>
+      <section id="avra" class="view">
+        <div class="section-header">
+          <h2>3️⃣ The AVRA Award</h2>
+          <p>Level 3 assessor qualification guidance presented in a clear training format.</p>
+        </div>
+        <div class="card content-card">
+          <p><b>AVRA</b> stands for <b>Award in Assessing Vocationally Related Achievement</b>.</p> <p>This is for assessors who <b>ONLY</b> work in learning environments, such as colleges or training centres.</p> <ul> <li>🏫 Ideal for: Lecturers marking assignments or tests.</li> <li>📝 Ideal for: Assessing simulations or role-plays (not real work).</li> <li>❌ You cannot assess a learner in their real place of work with this.</li> </ul>
+        </div>
+      </section>
 
-<div class="slide"><div class="text-box">
-<h2>What happened to A1 and D32/33?</h2>
-<p>You might hear older colleagues refer to their <b>"A1 Assessor Award"</b> or the even older <b>"D32/D33"</b>.</p>
-<ul>
-<li>🔄 These are <b>legacy qualifications</b>.</li>
-<li>✅ If you hold them, they are usually still valid (you don't need to retake CAVA).</li>
-<li>📈 However, you must show you have kept your skills up to date (CPD).</li>
-</ul>
-<p>CAVA is simply the current version of these historic awards. 🕰️</p>
-</div><div class="page-num">8 / 12</div></div>
+      <section id="experience" class="view">
+        <div class="section-header">
+          <h2>Do You Have the Experience?</h2>
+          <p>Level 3 assessor qualification guidance presented in a clear training format.</p>
+        </div>
+        <div class="card content-card">
+          <p>You cannot buy these qualifications off the shelf—you need <b>Occupational Competence</b>. 🛠️</p> <ul> <li>💡 To assess a plumber, you must be a qualified plumber.</li> <li>💡 To assess a coder, you must have coding experience.</li> </ul> <p>Regulatory bodies require you to have relevant, up-to-date industry experience to judge others safely and fairly. 📜</p>
+        </div>
+      </section>
 
-<div class="slide"><div class="text-box">
-<h2>The Assessment Cycle</h2>
-<p>Regardless of which qualification you choose (CAVA, ACWE, AVRA), you will learn the <b>Assessment Cycle</b>:</p>
-<ol>
-<li>📅 <b>Plan:</b> Agree on what will be assessed and how.</li>
-<li>👁️ <b>Judge:</b> Observe the learner or examine their work.</li>
-<li>💬 <b>Feedback:</b> Give constructive praise and advice.</li>
-<li>📝 <b>Record:</b> Document the decision formally.</li>
-</ol>
-</div><div class="page-num">9 / 12</div></div>
+      <section id="legacy" class="view">
+        <div class="section-header">
+          <h2>What happened to A1 and D32/33?</h2>
+          <p>Level 3 assessor qualification guidance presented in a clear training format.</p>
+        </div>
+        <div class="card content-card">
+          <p>You might hear older colleagues refer to their <b>"A1 Assessor Award"</b> or the even older <b>"D32/D33"</b>.</p> <ul> <li>🔄 These are <b>legacy qualifications</b>.</li> <li>✅ If you hold them, they are usually still valid (you don't need to retake CAVA).</li> <li>📈 However, you must show you have kept your skills up to date (CPD).</li> </ul> <p>CAVA is simply the current version of these historic awards. 🕰️</p>
+        </div>
+      </section>
 
-<div class="slide"><div class="text-box">
-<h2>How Will You Assess?</h2>
-<p>During your Level 3 course, you will master various methods:</p>
-<ul>
-<li>👀 <b>Observation:</b> Watching the learner work.</li>
-<li>🗣️ <b>Professional Discussion:</b> Asking them "why" they did something.</li>
-<li>📂 <b>Product Evidence:</b> Looking at documents or items they created.</li>
-<li>✍️ <b>Witness Testimony:</b> Asking their manager for feedback.</li>
-</ul>
-<p>A good assessor uses a mix of these methods (Triangulation). 📐</p>
-</div><div class="page-num">10 / 12</div></div>
+      <section id="cycle" class="view">
+        <div class="section-header">
+          <h2>The Assessment Cycle</h2>
+          <p>Level 3 assessor qualification guidance presented in a clear training format.</p>
+        </div>
+        <div class="card content-card">
+          <p>Regardless of which qualification you choose (CAVA, ACWE, AVRA), you will learn the <b>Assessment Cycle</b>:</p> <ol> <li>📅 <b>Plan:</b> Agree on what will be assessed and how.</li> <li>👁️ <b>Judge:</b> Observe the learner or examine their work.</li> <li>💬 <b>Feedback:</b> Give constructive praise and advice.</li> <li>📝 <b>Record:</b> Document the decision formally.</li> </ol>
+        </div>
+      </section>
 
-<div class="slide"><div class="text-box">
-<h2>Study Tips for Success</h2>
-<p>If you are enrolling in CAVA, prepare by:</p>
-<ul>
-<li>🤝 <b>Finding two learners:</b> You need real people to assess to pass your course.</li>
-<li>📑 <b>Knowing the Standards:</b> Read the NVQ/Unit criteria you are assessing against.</li>
-<li>🛡️ <b>Understanding IQA:</b> Learn how Internal Quality Assurers check your work.</li>
-</ul>
-<p>Remember: Assessment must be Valid, Authentic, Current, Sufficient, and Reliable (VACSR). 🔐</p>
-</div><div class="page-num">11 / 12</div></div>
+      <section id="methods" class="view">
+        <div class="section-header">
+          <h2>How Will You Assess?</h2>
+          <p>Level 3 assessor qualification guidance presented in a clear training format.</p>
+        </div>
+        <div class="card content-card">
+          <p>During your Level 3 course, you will master various methods:</p> <ul> <li>👀 <b>Observation:</b> Watching the learner work.</li> <li>🗣️ <b>Professional Discussion:</b> Asking them "why" they did something.</li> <li>📂 <b>Product Evidence:</b> Looking at documents or items they created.</li> <li>✍️ <b>Witness Testimony:</b> Asking their manager for feedback.</li> </ul> <p>A good assessor uses a mix of these methods (Triangulation). 📐</p>
+        </div>
+      </section>
 
-<div class="slide"><div class="text-box">
-<h2>🎓 Summary & Recap</h2>
-<ul>
-<li>🏆 <b>CAVA:</b> The full qualification (Workplace + Classroom).</li>
-<li>🏗️ <b>ACWE:</b> Workplace assessment only.</li>
-<li>🏫 <b>AVRA:</b> Classroom/Workshop assessment only.</li>
-</ul>
-<p>Becoming an assessor allows you to pass on your industry expertise to the next generation. Good luck with your Level 3 studies! 🍀</p>
-</div><div class="page-num">12 / 12</div></div>
+      <section id="tips" class="view">
+        <div class="section-header">
+          <h2>Study Tips for Success</h2>
+          <p>Level 3 assessor qualification guidance presented in a clear training format.</p>
+        </div>
+        <div class="card content-card">
+          <p>If you are enrolling in CAVA, prepare by:</p> <ul> <li>🤝 <b>Finding two learners:</b> You need real people to assess to pass your course.</li> <li>📑 <b>Knowing the Standards:</b> Read the NVQ/Unit criteria you are assessing against.</li> <li>🛡️ <b>Understanding IQA:</b> Learn how Internal Quality Assurers check your work.</li> </ul> <p>Remember: Assessment must be Valid, Authentic, Current, Sufficient, and Reliable (VACSR). 🔐</p>
+        </div>
+      </section>
 
-<div class="progress-container"><div class="progress-bar" id="progressBar"></div></div>
+      <section id="summary" class="view">
+        <div class="section-header">
+          <h2>🎓 Summary & Recap</h2>
+          <p>Level 3 assessor qualification guidance presented in a clear training format.</p>
+        </div>
+        <div class="card content-card">
+          <ul> <li>🏆 <b>CAVA:</b> The full qualification (Workplace + Classroom).</li> <li>🏗️ <b>ACWE:</b> Workplace assessment only.</li> <li>🏫 <b>AVRA:</b> Classroom/Workshop assessment only.</li> </ul> <p>Becoming an assessor allows you to pass on your industry expertise to the next generation. Good luck with your Level 3 studies! 🍀</p>
+        </div>
+      </section>
+    </main>
+  </div>
 
-<div id="controls">
-  <button id="prevBtn">⬅ Previous</button>
-  <button id="readBtn">🔊 Read</button>
-  <a href="index.html"><button id="menuBtn">🏠 Menu</button></a>
-  <button id="muteBtn">🔇 Mute</button>
-  <button id="nextBtn">Next ➡</button>
-</div>
+  <div class="collapsed-tooltip" id="collapsedTooltip"></div>
 
-<div id="footer">
-  © 2025 HHF Training | Designed by Umer Malik | www.hhftraining.co.uk
-</div>
+  <script>
+    const appShell = document.querySelector('.app');
+    const sidebarToggle = document.getElementById('sidebarToggle');
+    const collapsedTooltip = document.getElementById('collapsedTooltip');
+    const buttons = Array.from(document.querySelectorAll('.nav button'));
+    const views = Array.from(document.querySelectorAll('.view'));
+    const completed = new Set(['dashboard']);
 
-<script>
-const slides=document.querySelectorAll('.slide');
-let current=0;
-const synth=window.speechSynthesis;
-const progressBar=document.getElementById('progressBar');
-function showSlide(i){
-  slides[current].classList.remove('active');
-  current=(i+slides.length)%slides.length;
-  slides[current].classList.add('active');
-  updateProgress();
-}
-function updateProgress(){
-  const progress=((current+1)/slides.length)*100;
-  progressBar.style.width=progress+"%";
-  if(progress<33){progressBar.style.background="linear-gradient(90deg,#00c9a7,#7fff00)";} 
-  else if(progress<66){progressBar.style.background="linear-gradient(90deg,#FFD700,#FFA500)";} 
-  else{progressBar.style.background="linear-gradient(90deg,#004aad,#001f54)";} 
-}
-function readText(){
-  if(synth.speaking){synth.cancel();}
-  const text=slides[current].innerText;
-  const utter=new SpeechSynthesisUtterance(text);
-  utter.lang='en-GB';utter.rate=1;
-  synth.speak(utter);
-}
-document.getElementById('nextBtn').onclick=()=>showSlide(current+1);
-document.getElementById('prevBtn').onclick=()=>showSlide(current-1);
-document.getElementById('readBtn').onclick=()=>readText();
-document.getElementById('muteBtn').onclick=()=>synth.cancel();
-updateProgress();
-</script>
+    if (sidebarToggle && appShell) {
+      sidebarToggle.addEventListener('click', () => {
+        const collapsed = appShell.classList.toggle('sidebar-collapsed');
+        if (collapsedTooltip) { collapsedTooltip.classList.remove('show'); }
+        sidebarToggle.setAttribute('aria-label', collapsed ? 'Expand sidebar' : 'Collapse sidebar');
+        sidebarToggle.setAttribute('title', collapsed ? 'Expand sidebar' : 'Collapse sidebar');
+      });
+    }
 
+    buttons.forEach(button => {
+      button.addEventListener('click', () => goTo(button.dataset.view));
+
+      button.addEventListener('mouseenter', () => {
+        if (!appShell || !appShell.classList.contains('sidebar-collapsed') || !collapsedTooltip) return;
+        const label = button.getAttribute('data-tooltip') || button.textContent.trim();
+        const rect = button.getBoundingClientRect();
+        collapsedTooltip.textContent = label;
+        collapsedTooltip.style.top = (rect.top + rect.height / 2) + 'px';
+        collapsedTooltip.classList.add('show');
+      });
+
+      button.addEventListener('mouseleave', () => {
+        if (collapsedTooltip) { collapsedTooltip.classList.remove('show'); }
+      });
+    });
+
+    function goTo(id) {
+      views.forEach(view => view.classList.toggle('active', view.id === id));
+      buttons.forEach(btn => {
+        const isActive = btn.dataset.view === id;
+        btn.classList.toggle('active', isActive);
+        if (isActive) {
+          btn.classList.add('done');
+          completed.add(id);
+        }
+      });
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+
+    document.addEventListener('keydown', (e) => {
+      const currentIndex = buttons.findIndex(btn => btn.classList.contains('active'));
+      if (e.key === 'ArrowRight') {
+        const next = buttons[Math.min(currentIndex + 1, buttons.length - 1)];
+        if (next) goTo(next.dataset.view);
+      }
+      if (e.key === 'ArrowLeft') {
+        const prev = buttons[Math.max(currentIndex - 1, 0)];
+        if (prev) goTo(prev.dataset.view);
+      }
+    });
+  </script>
 </body>
 </html>
