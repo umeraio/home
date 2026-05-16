@@ -1,0 +1,549 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Cybersecurity Learning Hub | Umer Malik</title>
+<style>
+:root{
+  --blue:#0078d7;
+  --deep:#071b3a;
+  --navy:#0a2a5e;
+  --cyan:#00c8ff;
+  --gold:#ffd700;
+  --white:#ffffff;
+  --soft:#eef6ff;
+  --text:#1f2937;
+  --muted:#5b677a;
+  --shadow:0 18px 45px rgba(0,0,0,.18);
+}
+*{box-sizing:border-box}
+body{
+  margin:0;
+  font-family:"Segoe UI",Arial,sans-serif;
+  background:linear-gradient(180deg,#eaf4ff 0%,#f8fbff 45%,#eef6ff 100%);
+  color:var(--text);
+}
+header{
+  position:relative;
+  margin:12px 16px 0 16px;
+  border-radius:32px;
+  padding:26px 28px;
+  min-height:135px;
+  background:
+    radial-gradient(circle at 15% 20%,rgba(0,200,255,.32),transparent 28%),
+    radial-gradient(circle at 90% 15%,rgba(255,215,0,.22),transparent 24%),
+    linear-gradient(135deg,#061933,#0a3d91,#0078d7);
+  color:white;
+  box-shadow:var(--shadow);
+  overflow:hidden;
+}
+header:before{
+  content:"";
+  position:absolute;
+  inset:-60px;
+  background:linear-gradient(120deg,transparent,rgba(255,255,255,.16),transparent);
+  transform:rotate(12deg);
+}
+.header-inner{
+  position:relative;
+  z-index:2;
+  max-width:1150px;
+  margin:auto;
+  padding-right:180px;
+}
+.header-inner h1{
+  margin:0 0 8px 0;
+  font-size:clamp(2rem,4vw,4.2rem);
+  line-height:1;
+  font-weight:900;
+  letter-spacing:-1px;
+}
+.header-inner p{
+  margin:0;
+  font-size:clamp(1rem,1.4vw,1.25rem);
+  max-width:780px;
+  opacity:.95;
+}
+.home-btn{
+  position:absolute;
+  right:34px;
+  top:50%;
+  transform:translateY(-50%);
+  z-index:4;
+  background:rgba(255,255,255,.15);
+  color:white;
+  text-decoration:none;
+  border:1px solid rgba(255,255,255,.45);
+  padding:12px 18px;
+  border-radius:999px;
+  font-weight:800;
+  box-shadow:0 8px 25px rgba(0,0,0,.2);
+  backdrop-filter:blur(8px);
+}
+.home-btn:hover{background:white;color:#064282}
+main{
+  width:min(1260px,94%);
+  margin:28px auto 70px auto;
+}
+.intro{
+  background:rgba(255,255,255,.92);
+  border:1px solid rgba(0,120,215,.18);
+  border-radius:26px;
+  padding:26px;
+  box-shadow:0 12px 35px rgba(0,80,160,.12);
+}
+.intro h2{
+  margin:0 0 12px 0;
+  color:#064282;
+  font-size:1.7rem;
+}
+.intro-grid{
+  display:grid;
+  grid-template-columns:1.3fr .7fr;
+  gap:22px;
+  align-items:center;
+}
+.simple-diagram{
+  min-height:190px;
+  border-radius:22px;
+  background:linear-gradient(135deg,#f3f9ff,#ffffff);
+  border:1px dashed rgba(0,120,215,.35);
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  text-align:center;
+  padding:20px;
+}
+.diagram-row{
+  display:flex;
+  gap:10px;
+  align-items:center;
+  justify-content:center;
+  flex-wrap:wrap;
+}
+.diagram-box{
+  background:white;
+  border:2px solid #0078d7;
+  color:#064282;
+  border-radius:18px;
+  padding:12px 14px;
+  font-weight:800;
+  box-shadow:0 8px 20px rgba(0,120,215,.13);
+}
+.arrow{font-size:1.8rem;color:#0078d7;font-weight:900}
+.path-title{
+  text-align:center;
+  margin:40px 0 18px 0;
+}
+.path-title h2{
+  color:#062b5f;
+  margin:0;
+  font-size:2rem;
+}
+.path-title p{
+  margin:8px auto 0 auto;
+  color:var(--muted);
+  max-width:720px;
+}
+.grid{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:22px;
+}
+.card{
+  background:rgba(255,255,255,.95);
+  border-radius:24px;
+  padding:22px;
+  box-shadow:0 16px 36px rgba(15,64,120,.14);
+  border:1px solid rgba(0,120,215,.16);
+  transition:.25s ease;
+  position:relative;
+  overflow:hidden;
+}
+.card:before{
+  content:"";
+  position:absolute;
+  left:0;
+  top:0;
+  height:6px;
+  width:100%;
+  background:linear-gradient(90deg,#0078d7,#00c8ff,#ffd700);
+}
+.card:hover{
+  transform:translateY(-7px);
+  box-shadow:0 24px 55px rgba(0,80,160,.25);
+}
+.icon{
+  width:54px;
+  height:54px;
+  border-radius:18px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  font-size:1.7rem;
+  background:linear-gradient(135deg,#e7f6ff,#ffffff);
+  border:1px solid rgba(0,120,215,.25);
+  margin-bottom:14px;
+}
+.card h3{
+  margin:0 0 8px 0;
+  color:#073b7a;
+  font-size:1.22rem;
+}
+.card p{
+  color:#566277;
+  line-height:1.55;
+  margin:0 0 16px 0;
+}
+.card button{
+  border:0;
+  background:linear-gradient(135deg,#0078d7,#005fa3);
+  color:white;
+  padding:11px 16px;
+  border-radius:999px;
+  font-weight:800;
+  cursor:pointer;
+  box-shadow:0 10px 24px rgba(0,120,215,.24);
+}
+.module{
+  margin-top:26px;
+  background:white;
+  border-radius:28px;
+  box-shadow:0 18px 50px rgba(0,60,120,.18);
+  border:1px solid rgba(0,120,215,.16);
+  overflow:hidden;
+  display:none;
+}
+.module.active{display:block}
+.module-head{
+  padding:24px 28px;
+  background:linear-gradient(135deg,#061933,#0a3d91,#0078d7);
+  color:white;
+}
+.module-head h2{margin:0 0 8px 0;font-size:1.8rem}
+.module-head p{margin:0;opacity:.95}
+.module-body{padding:26px}
+.lesson-grid{
+  display:grid;
+  grid-template-columns:repeat(2,1fr);
+  gap:18px;
+}
+.lesson{
+  border-radius:20px;
+  padding:18px;
+  background:#f8fbff;
+  border-left:6px solid #0078d7;
+}
+.lesson h4{
+  margin:0 0 10px 0;
+  color:#064282;
+  font-size:1.08rem;
+}
+.lesson p,.lesson li{
+  color:#374151;
+  line-height:1.62;
+  font-size:.98rem;
+}
+.lesson ul{margin:8px 0 0 18px;padding:0}
+.example{
+  margin-top:12px;
+  background:#fffdf0;
+  border:1px solid rgba(255,215,0,.45);
+  border-radius:16px;
+  padding:12px;
+  color:#5f4a00;
+}
+.recap{
+  margin-top:20px;
+  padding:18px;
+  border-radius:20px;
+  background:linear-gradient(135deg,#eef8ff,#ffffff);
+  border:1px solid rgba(0,120,215,.2);
+}
+.close-row{
+  display:flex;
+  justify-content:flex-end;
+  padding:0 26px 26px 26px;
+}
+.close-row button{
+  border:0;
+  background:#0a3d91;
+  color:#fff;
+  padding:11px 18px;
+  border-radius:999px;
+  font-weight:800;
+  cursor:pointer;
+}
+footer{
+  display:block;
+  width:max-content;
+  max-width:90%;
+  margin:90px auto 20px auto;
+  padding:8px 18px;
+  background:#f4f8fd;
+  border-top:3px solid var(--gold);
+  border-radius:14px;
+  color:#444;
+  font-size:.78rem;
+  font-style:italic;
+  font-weight:700;
+  box-shadow:0 6px 20px rgba(0,0,0,.12);
+}
+@media(max-width:950px){
+  .grid{grid-template-columns:repeat(2,1fr)}
+  .intro-grid,.lesson-grid{grid-template-columns:1fr}
+  .header-inner{padding-right:0;text-align:center}
+  .home-btn{position:relative;display:inline-block;right:auto;top:auto;transform:none;margin-top:18px}
+}
+@media(max-width:620px){
+  header{border-radius:22px;padding:22px 18px}
+  .grid{grid-template-columns:1fr}
+  main{width:92%}
+}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="header-inner">
+    <h1>Cybersecurity Learning Hub</h1>
+    <p>Start from the very basics and move step by step into real cybersecurity skills, tools, threats, defence, and careers.</p>
+  </div>
+  <a class="home-btn" href="https://umeraio.github.io/">Back to Home</a>
+</header>
+
+<main>
+  <section class="intro">
+    <div class="intro-grid">
+      <div>
+        <h2>What is this page for?</h2>
+        <p>Cybersecurity means protecting computers, phones, networks, websites, accounts, and data from damage, theft, misuse, and attack. This learning hub is designed for beginners, students, teachers, staff, small businesses, and anyone who wants to understand cybersecurity in simple English.</p>
+        <p>You do not need to be an expert. Start with the first topic, then move forward. Each section explains the idea, gives examples, and shows why it matters in real life.</p>
+      </div>
+      <div class="simple-diagram">
+        <div class="diagram-row">
+          <div class="diagram-box">User</div>
+          <div class="arrow">→</div>
+          <div class="diagram-box">Device</div>
+          <div class="arrow">→</div>
+          <div class="diagram-box">Network</div>
+          <div class="arrow">→</div>
+          <div class="diagram-box">Data</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="path-title">
+    <h2>Cybersecurity Learning Path</h2>
+    <p>Use these 12 sections as your roadmap. They start with simple ideas and gradually move into more professional cybersecurity areas.</p>
+  </section>
+
+  <section class="grid">
+    <article class="card"><div class="icon">🛡️</div><h3>1. Introduction to Cybersecurity</h3><p>Understand what cybersecurity is, why it matters, and how cyber attacks affect real people and organisations.</p><button onclick="openModule('m1')">Start Cybersecurity Journey</button></article>
+    <article class="card"><div class="icon">🔐</div><h3>2. Cybersecurity Fundamentals</h3><p>Learn the basic language of security: risk, threats, vulnerabilities, CIA triad, authentication, and authorization.</p><button onclick="openModule('m2')">Learn Security Basics</button></article>
+    <article class="card"><div class="icon">🌐</div><h3>3. Networking Fundamentals</h3><p>Learn how computers talk to each other using IP addresses, DNS, DHCP, ports, protocols, and the OSI model.</p><button onclick="openModule('m3')">Learn Networking</button></article>
+    <article class="card"><div class="icon">💻</div><h3>4. Operating Systems & Security</h3><p>Understand Windows, Linux, users, permissions, updates, hardening, and how systems can be protected.</p><button onclick="openModule('m4')">Explore System Security</button></article>
+    <article class="card"><div class="icon">⚠️</div><h3>5. Cyber Attacks & Threats</h3><p>Learn about malware, ransomware, phishing, social engineering, DDoS, insider threats, and common attack methods.</p><button onclick="openModule('m5')">Understand Cyber Threats</button></article>
+    <article class="card"><div class="icon">🧱</div><h3>6. Defensive Security</h3><p>Learn how organisations defend systems using firewalls, antivirus, monitoring, logging, IDS, IPS, EDR, and SIEM.</p><button onclick="openModule('m6')">Learn Defensive Security</button></article>
+    <article class="card"><div class="icon">🧪</div><h3>7. Ethical Hacking & Penetration Testing</h3><p>Understand legal security testing, reconnaissance, scanning, enumeration, basic exploitation, and reporting.</p><button onclick="openModule('m7')">Explore Ethical Hacking</button></article>
+    <article class="card"><div class="icon">🔎</div><h3>8. Digital Forensics & Incident Response</h3><p>Learn how incidents are investigated using evidence collection, timelines, IOCs, containment, and reporting.</p><button onclick="openModule('m8')">Investigate Cyber Incidents</button></article>
+    <article class="card"><div class="icon">☁️</div><h3>9. Cloud & Modern Security</h3><p>Learn about Azure, AWS, Google Cloud, SaaS security, MFA, Zero Trust, and cloud protection basics.</p><button onclick="openModule('m9')">Learn Cloud Security</button></article>
+    <article class="card"><div class="icon">👥</div><h3>10. Security Awareness & Human Factors</h3><p>Understand passwords, email safety, scams, human error, social engineering, and security culture.</p><button onclick="openModule('m10')">Improve Security Awareness</button></article>
+    <article class="card"><div class="icon">🧰</div><h3>11. Cybersecurity Tools & Downloads</h3><p>Explore common tools such as Wireshark, Nmap, Sysinternals, Burp Suite, Autopsy, scripts, and templates.</p><button onclick="openModule('m11')">Access Security Tools</button></article>
+    <article class="card"><div class="icon">🎓</div><h3>12. Certifications & Career Pathways</h3><p>Learn about Security+, CEH, CISSP, SOC Analyst, DFIR Analyst, Blue Team, and career roadmaps.</p><button onclick="openModule('m12')">Explore Careers</button></article>
+  </section>
+
+  <section id="modules"></section>
+</main>
+
+<footer>Crafted Through Research by Umer Malik</footer>
+
+<script>
+const modules = [
+{
+id:"m1", title:"1. Introduction to Cybersecurity", intro:"This section explains cybersecurity in very simple language.",
+lessons:[
+["What cybersecurity means","Cybersecurity means protecting digital things. These digital things can include computers, laptops, mobile phones, websites, accounts, emails, networks, and data. The goal is to stop people from stealing, changing, deleting, or misusing information.","A school protects learner records. A business protects customer details. A family protects online banking and email accounts."],
+["Why security matters","Security matters because most people now use technology every day. If an account, computer, or website is attacked, the damage can be financial, personal, legal, or reputational.","If a small business loses access to its booking system, it may lose customers and money."],
+["Types of cyber threats","A cyber threat is anything that can cause harm to digital systems or information. Examples include phishing emails, weak passwords, malware, fake websites, stolen devices, and unsafe Wi-Fi.","A fake delivery email may ask someone to click a link and enter their bank details."],
+["Real-world attacks","Real attacks often begin with simple mistakes. Someone clicks a harmful link, opens a dangerous attachment, uses the same password everywhere, or ignores updates.","Ransomware can lock files and demand money to unlock them."],
+["Cybersecurity careers","Cybersecurity has many career paths. Some people protect networks. Some investigate incidents. Some test systems legally. Some teach awareness. Some write policies and manage risk.","Example jobs include SOC Analyst, Cybersecurity Technician, Penetration Tester, Security Engineer, and DFIR Analyst."]
+],
+recap:"Cybersecurity is about protecting people, systems, and data. It is not only a technical subject. It is also about safe behaviour, good decisions, and careful processes."
+},
+{
+id:"m2", title:"2. Cybersecurity Fundamentals", intro:"This section explains the core ideas used in almost every security lesson.",
+lessons:[
+["CIA triad","The CIA triad means Confidentiality, Integrity, and Availability. Confidentiality means only the right people can see information. Integrity means information stays correct. Availability means systems are working when needed.","A hospital record must be private, accurate, and available when a doctor needs it."],
+["Authentication","Authentication checks who you are. A password, PIN, fingerprint, face scan, or security code can be used for authentication.","Logging into email with a password and a phone code is authentication."],
+["Authorization","Authorization decides what you are allowed to do after you log in. A user may be allowed to read a file but not delete it.","A normal employee can view their own payslip but cannot view everyone else's payslip."],
+["Risk","Risk means the chance that something bad may happen and the level of damage it may cause. Risk is usually linked to threats, vulnerabilities, and impact.","A weak password creates a risk because an attacker may guess it and access an account."],
+["Threats","A threat is a possible source of harm. Threats can be people, software, mistakes, natural events, or technical failures.","A hacker, a power cut, a lost laptop, or a harmful email can all be threats."],
+["Vulnerabilities","A vulnerability is a weakness that can be used by a threat. Weak passwords, outdated software, open ports, and poor permissions are common vulnerabilities.","An old computer with no updates may have a weakness attackers already know about."]
+],
+recap:"Security fundamentals give you the basic words and ideas. These ideas help you understand every later topic."
+},
+{
+id:"m3", title:"3. Networking Fundamentals", intro:"Cybersecurity becomes much easier when you understand how networks work.",
+lessons:[
+["IP addresses","An IP address is like a digital address for a device on a network. Devices use IP addresses to send and receive information.","A laptop may have an address like 192.168.1.25 inside a home network."],
+["DNS","DNS changes website names into IP addresses. People remember names like example.com, but computers use IP addresses.","When you type a website name, DNS helps your computer find the correct server."],
+["DHCP","DHCP automatically gives devices network settings, such as an IP address. Without DHCP, users may need to configure addresses manually.","When your phone joins Wi-Fi, DHCP usually gives it an IP address automatically."],
+["Routers and switches","A router connects networks together, such as your home network to the internet. A switch connects devices inside the same local network.","In an office, a switch connects computers. The router connects the office to the internet."],
+["Ports and protocols","Ports help computers know which service is being used. Protocols are rules for communication. Common examples include HTTP, HTTPS, DNS, SMTP, and SSH.","HTTPS normally uses port 443 for secure websites."],
+["OSI model and TCP/IP","The OSI model is a learning model that explains networking in layers. TCP/IP is the practical model used on real networks.","If a website does not load, the issue could be at the cable, IP, DNS, firewall, or application layer."]
+],
+recap:"Networks move data. Cybersecurity protects that movement and checks whether network activity is safe or suspicious."
+},
+{
+id:"m4", title:"4. Operating Systems & Security", intro:"Operating systems run devices. Securing them is a major part of cybersecurity.",
+lessons:[
+["Windows security","Windows systems need updates, antivirus, firewall rules, secure accounts, and careful permission settings.","A business laptop should use Windows updates, BitLocker, antivirus, and a standard user account."],
+["Linux basics","Linux is widely used on servers and security tools. Users should understand files, permissions, services, updates, and command-line basics.","Many websites run on Linux servers, so Linux security is important for web hosting."],
+["User accounts","Each person should have their own account. Admin accounts should only be used when needed. Shared accounts make investigations harder.","If five people share one login, it is difficult to know who changed or deleted something."],
+["Permissions","Permissions control who can read, write, change, or delete files and settings.","A learner should not have permission to delete staff records."],
+["Hardening","Hardening means reducing weaknesses. This can include disabling unused services, removing unnecessary software, applying updates, and using secure settings.","A server that does not need remote login should not keep remote login open."],
+["Updates and patching","Updates fix bugs and security weaknesses. Delaying updates can leave systems open to known attacks.","Attackers often target old software because public fixes and weaknesses are already known."]
+],
+recap:"A secure operating system uses updates, correct permissions, strong accounts, and fewer unnecessary services."
+},
+{
+id:"m5", title:"5. Cyber Attacks & Threats", intro:"This section explains common attacks in simple English.",
+lessons:[
+["Malware","Malware is harmful software. It can steal data, spy on users, damage files, or control a device.","A fake file download may install malware on a computer."],
+["Ransomware","Ransomware locks files or systems and demands payment. It can stop a business, school, or hospital from working.","A company may be unable to open invoices, customer records, or bookings after ransomware."],
+["Phishing","Phishing is a fake message designed to trick people. It may look like a bank, delivery company, manager, or service provider.","An email says your account will close unless you click a link and log in."],
+["Social engineering","Social engineering tricks people instead of attacking technology directly. Attackers use fear, urgency, trust, or confusion.","A caller pretends to be IT support and asks for a login code."],
+["DDoS attacks","A DDoS attack sends too much traffic to a website or service so real users cannot access it.","An online shop may go offline during a sale because attackers flood the website."],
+["Insider threats","An insider threat comes from someone inside an organisation. It can be intentional or accidental.","An employee may copy data before leaving, or accidentally email private data to the wrong person."]
+],
+recap:"Many cyber attacks work because people are rushed, systems are outdated, or basic protections are missing."
+},
+{
+id:"m6", title:"6. Defensive Security", intro:"Defensive security is about stopping, detecting, and responding to attacks.",
+lessons:[
+["Firewalls","A firewall controls traffic going in and out of a device or network. It can block unwanted connections.","A firewall can block unknown traffic trying to reach a server."],
+["Antivirus and anti-malware","Antivirus tools help detect and stop harmful files and programs. They are useful but not enough on their own.","Antivirus may block a known malware file before it runs."],
+["IDS and IPS","An IDS detects suspicious activity. An IPS can block suspicious activity. IDS means Intrusion Detection System. IPS means Intrusion Prevention System.","An IDS may alert when it sees scanning activity from an unknown device."],
+["Logging","Logs record what happened on a system. Logs are important for troubleshooting and investigations.","A login log can show failed password attempts at 2:00am."],
+["Monitoring","Monitoring means watching systems for problems, attacks, or unusual behaviour.","A monitoring tool may alert when a server suddenly sends large amounts of data."],
+["EDR, XDR, and SIEM","EDR protects endpoints like laptops. XDR combines more security data. SIEM collects and analyses logs from many systems.","A SIEM can show failed logins, firewall blocks, and malware alerts in one place."]
+],
+recap:"Defensive security uses layers. No single tool is enough. Good defence combines technology, people, and process."
+},
+{
+id:"m7", title:"7. Ethical Hacking & Penetration Testing", intro:"Ethical hacking means testing security legally and with permission.",
+lessons:[
+["Legal permission","Ethical hacking must only be done with clear permission. Testing without permission can be illegal.","A company hires a tester and gives written permission to test a website."],
+["Reconnaissance","Reconnaissance means collecting information before testing. This may include domains, IP addresses, public staff details, and technologies used.","A tester checks what services are visible from the internet."],
+["Scanning","Scanning checks systems for open ports, services, and possible weaknesses.","A scan may show that a server has port 22 open for SSH."],
+["Enumeration","Enumeration means collecting more detailed information from discovered services.","A tester may identify usernames, software versions, or shared folders."],
+["Exploitation basics","Exploitation means proving a weakness can be used. In professional testing, this must be controlled and safe.","A tester may prove that a weak password allows access, then stop and report it."],
+["Reporting","A good report explains the issue, risk, evidence, impact, and how to fix it in simple language.","A report should help the organisation improve, not just show technical findings."]
+],
+recap:"Ethical hacking is controlled, legal, documented, and focused on improving security."
+},
+{
+id:"m8", title:"8. Digital Forensics & Incident Response", intro:"DFIR means investigating cyber incidents and responding properly.",
+lessons:[
+["Evidence collection","Evidence collection means saving important data before it disappears. This can include logs, running processes, network connections, files, and system information.","An investigator may collect event logs before restarting a computer."],
+["Incident response process","Incident response usually includes preparation, identification, containment, eradication, recovery, and lessons learned.","If malware is found, the team identifies it, contains the device, removes the threat, restores systems, and improves controls."],
+["IOC analysis","IOC means Indicator of Compromise. It is a clue that may show an attack happened. Examples include suspicious IP addresses, file hashes, domains, or registry keys.","A known malicious IP address in firewall logs may be an IOC."],
+["Timeline analysis","Timeline analysis puts events in order. This helps investigators understand what happened first, next, and last.","A timeline may show phishing email received, file opened, malware installed, then data copied."],
+["Memory forensics","Memory forensics looks at live memory. It may show running malware, hidden processes, network connections, or encryption activity.","Some malware only exists in memory and may not leave a normal file."],
+["Containment","Containment means stopping the attack from spreading while keeping evidence safe.","A device may be isolated from the network but not immediately wiped, so evidence is preserved."]
+],
+recap:"DFIR is careful and evidence-based. The aim is to understand what happened, limit damage, and recover safely."
+},
+{
+id:"m9", title:"9. Cloud & Modern Security", intro:"Many organisations now use cloud services. Cloud security is essential.",
+lessons:[
+["Azure, AWS, and Google Cloud","These are major cloud platforms. They provide servers, storage, databases, identity services, and security tools.","A business may host its website in Azure or store backups in AWS."],
+["SaaS security","SaaS means Software as a Service. Examples include Microsoft 365, Google Workspace, Dropbox, and online CRM systems.","A company must protect Microsoft 365 accounts because email and files may be stored there."],
+["MFA","MFA means Multi-Factor Authentication. It requires more than just a password, such as a phone code or app approval.","If a password is stolen, MFA can still stop the attacker."],
+["Zero Trust","Zero Trust means do not automatically trust anyone or anything. Always verify users, devices, location, and access needs.","A user may need MFA when logging in from a new country or unknown device."],
+["Cloud misconfiguration","Many cloud breaches happen because settings are wrong. Storage may be public, permissions may be too wide, or keys may be exposed.","A public cloud storage bucket may leak private documents."],
+["Shared responsibility","Cloud security is shared. The cloud provider secures the platform, but the customer must secure accounts, data, permissions, and settings.","Microsoft may secure the cloud infrastructure, but the organisation must protect user accounts."]
+],
+recap:"Cloud security is about identity, permissions, settings, monitoring, and strong access control."
+},
+{
+id:"m10", title:"10. Security Awareness & Human Factors", intro:"People are often the first target. Good awareness prevents many attacks.",
+lessons:[
+["Password safety","Use long, unique passwords. Do not reuse the same password everywhere. Use a password manager where possible.","If one website is hacked, reused passwords can put other accounts at risk."],
+["Email safety","Be careful with unexpected emails, links, attachments, urgent messages, and requests for money or login details.","A fake invoice attachment may contain malware."],
+["Social engineering awareness","Attackers may pretend to be trusted people. They may use phone calls, texts, emails, or social media.","A message pretending to be the boss may ask staff to buy gift cards quickly."],
+["Human error","Many incidents happen by mistake. Examples include sending data to the wrong person, losing a device, or clicking the wrong link.","An employee may attach the wrong file to an email."],
+["Security culture","Security culture means people take security seriously every day. Staff should feel safe reporting mistakes quickly.","A strong culture encourages staff to report phishing instead of hiding the mistake."],
+["Safe daily habits","Lock screens, update devices, check links, verify payment requests, back up important files, and use MFA.","A quick phone call to confirm a payment request can prevent fraud."]
+],
+recap:"Security is not only about tools. People, habits, and awareness are just as important."
+},
+{
+id:"m11", title:"11. Cybersecurity Tools & Downloads", intro:"Tools help security professionals inspect, protect, and investigate systems.",
+lessons:[
+["Wireshark","Wireshark captures and analyses network traffic. It helps users see what is moving across a network.","A learner can use Wireshark to understand DNS requests or suspicious connections."],
+["Nmap","Nmap scans networks and systems to find open ports and services. It is widely used in network discovery and security testing.","Nmap may show that a web server has ports 80 and 443 open."],
+["Sysinternals","Sysinternals is a set of Windows tools from Microsoft. It helps inspect processes, autoruns, network activity, and system behaviour.","Autoruns can show programs that start automatically with Windows."],
+["Burp Suite","Burp Suite is used for web application security testing. It helps inspect requests, responses, and possible web weaknesses.","A tester can see how a login form sends data to a website."],
+["Autopsy","Autopsy is a digital forensics tool. It helps examine disk images, files, browser history, and artefacts.","An investigator may use Autopsy to review deleted files or browser activity."],
+["Scripts and templates","Scripts and templates help automate repeated work. They should be tested, documented, and used carefully.","A PowerShell script can collect basic system information during an investigation."]
+],
+recap:"Tools are useful, but understanding is more important. A tool should support good thinking, not replace it."
+},
+{
+id:"m12", title:"12. Certifications & Career Pathways", intro:"Cybersecurity has many learning and career routes.",
+lessons:[
+["Security+","Security+ is a popular beginner-friendly cybersecurity certification. It covers general security concepts, threats, risk, and controls.","A learner may start with Security+ before choosing a specialist pathway."],
+["CEH","CEH focuses on ethical hacking concepts. It introduces attack methods and testing ideas.","It can support learners interested in penetration testing, but practical skills are still needed."],
+["CISSP","CISSP is a more advanced certification for experienced security professionals. It covers management, risk, architecture, and governance.","This is usually not the first certification for a beginner."],
+["SOC Analyst","A SOC Analyst monitors alerts, investigates suspicious activity, checks logs, and escalates incidents.","A SOC Analyst may review a failed login alert and decide whether it is normal or suspicious."],
+["DFIR Analyst","A DFIR Analyst investigates incidents, collects evidence, builds timelines, and helps organisations recover.","After ransomware, a DFIR Analyst helps identify how the attack started."],
+["Blue Team career path","Blue Team roles focus on defence. This includes monitoring, detection, hardening, incident response, and security improvement.","A Blue Team member may improve firewall rules, review logs, and reduce risk."]
+],
+recap:"Start with fundamentals, then choose a route. Good cybersecurity careers are built through learning, practice, documentation, and real examples."
+}
+];
+
+function buildModules(){
+  const wrap = document.getElementById("modules");
+  wrap.innerHTML = modules.map(m => `
+    <section class="module" id="${m.id}">
+      <div class="module-head">
+        <h2>${m.title}</h2>
+        <p>${m.intro}</p>
+      </div>
+      <div class="module-body">
+        <div class="lesson-grid">
+          ${m.lessons.map(l => `
+            <div class="lesson">
+              <h4>${l[0]}</h4>
+              <p>${l[1]}</p>
+              <div class="example"><strong>Example:</strong> ${l[2]}</div>
+            </div>
+          `).join("")}
+        </div>
+        <div class="recap"><strong>Quick recap:</strong> ${m.recap}</div>
+      </div>
+      <div class="close-row"><button onclick="closeModules()">Close Section</button></div>
+    </section>
+  `).join("");
+}
+function openModule(id){
+  document.querySelectorAll(".module").forEach(m => m.classList.remove("active"));
+  const target = document.getElementById(id);
+  if(target){
+    target.classList.add("active");
+    target.scrollIntoView({behavior:"smooth",block:"start"});
+  }
+}
+function closeModules(){
+  document.querySelectorAll(".module").forEach(m => m.classList.remove("active"));
+  document.querySelector(".path-title").scrollIntoView({behavior:"smooth"});
+}
+buildModules();
+</script>
+</body>
+</html>

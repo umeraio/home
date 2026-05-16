@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>What is Artificial Intelligence? | AI in Daily Life</title>
+<link href="https://fonts.googleapis.com/css2?family=Segoe+UI:wght@400;600;700;800&display=swap" rel="stylesheet">
+<style>
+html, body { min-height: 100%; margin: 0; }
+body {
+    font-family: 'Segoe UI', sans-serif;
+    background: #eaf2fb;
+    color: #222;
+    display: flex;
+    flex-direction: column;
+}
+header {
+    background: linear-gradient(90deg, #0a3d91, #005fa3, #0078D7);
+    color: #fff;
+    padding: 12px 20px;
+    border-radius: 0 0 20px 20px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+}
+.header-spacer { flex: 1; }
+.hero { flex: 2; text-align: center; }
+.hero h1 { font-size: 1.55rem; font-weight: 800; margin: 0; }
+.hero p { font-size: 0.88rem; opacity: 0.95; margin: 4px 0 0 0; }
+.nav { flex: 1; display: flex; justify-content: flex-end; gap: 8px; }
+.nav a, .nav button, .slide-btn {
+    color: #0a3d91;
+    text-decoration: none;
+    font-weight: 800;
+    font-size: 0.82rem;
+    padding: 8px 14px;
+    border-radius: 10px;
+    background: #FFD700;
+    box-shadow: 0 3px 8px rgba(0,0,0,0.15);
+    transition: all 0.3s ease;
+    white-space: nowrap;
+    border: none;
+    cursor: pointer;
+    font-family: 'Segoe UI', sans-serif;
+}
+.nav a:hover, .nav button:hover, .slide-btn:hover { background: #fff; color: #0078D7; }
+main { width: 100%; flex: 1; }
+.slide-shell {
+    max-width: 1100px;
+    margin: 26px auto 16px auto;
+    padding: 0 40px;
+}
+.progress-panel {
+    background: linear-gradient(135deg, #ffffff, #f6fbff);
+    border-left: 5px solid #FFD700;
+    border-radius: 14px;
+    padding: 14px 18px;
+    box-shadow: 0 5px 14px rgba(0,0,0,0.06);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+    margin-bottom: 18px;
+}
+.progress-text { color: #004a99; font-weight: 800; font-size: 0.95rem; }
+.progress-bar { flex: 1; height: 10px; background: #d7eaff; border-radius: 999px; overflow: hidden; }
+.progress-fill { height: 100%; width: 6.66%; background: linear-gradient(90deg, #0a3d91, #0078D7, #FFD700); border-radius: 999px; transition: width 0.3s ease; }
+.slide {
+    display: none;
+    background: #ffffff;
+    border-radius: 18px;
+    box-shadow: 0 8px 22px rgba(0,0,0,0.08);
+    border-left: 6px solid #0078D7;
+    padding: 28px;
+    min-height: 520px;
+}
+.slide.active { display: block; animation: fadeIn 0.35s ease; }
+@keyframes fadeIn { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: translateY(0); } }
+.slide-top {
+    display: grid;
+    grid-template-columns: 1.15fr 0.85fr;
+    gap: 24px;
+    align-items: stretch;
+}
+.slide h2 { color: #004a99; margin: 0 0 12px 0; font-size: 1.85rem; line-height: 1.2; }
+.kicker { color: #0078D7; font-weight: 800; text-transform: uppercase; letter-spacing: .04em; font-size: .8rem; margin-bottom: 8px; }
+p, li { font-size: 1rem; line-height: 1.65; color: #333; }
+ul { margin-top: 10px; padding-left: 22px; }
+.visual-card {
+    background: linear-gradient(135deg, #eaf2fb, #ffffff);
+    border: 2px solid #d7eaff;
+    border-radius: 18px;
+    min-height: 230px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 20px;
+    position: relative;
+    overflow: hidden;
+}
+.visual-card::before {
+    content: '';
+    position: absolute;
+    width: 160px;
+    height: 160px;
+    background: rgba(255,215,0,0.16);
+    border-radius: 50%;
+    top: -55px;
+    right: -45px;
+}
+.visual-main { position: relative; z-index: 1; }
+.symbol { font-size: 4rem; display: block; margin-bottom: 12px; color: #0a3d91; font-weight: 800; }
+.diagram { font-size: 0.95rem; font-weight: 800; color: #004a99; line-height: 1.7; }
+.box-row { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-top: 22px; }
+.example-box, .key-box, .think-box {
+    border-radius: 14px;
+    padding: 16px 18px;
+    box-shadow: 0 3px 10px rgba(0,0,0,0.04);
+}
+.example-box { background: #f8fbff; border-left: 5px solid #0078D7; }
+.key-box { background: #fffbea; border-left: 5px solid #FFD700; }
+.think-box { background: #f4f9ff; border-left: 5px solid #0a3d91; margin-top: 16px; }
+.box-title { font-weight: 800; color: #004a99; margin-bottom: 6px; }
+.controls {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 12px;
+    margin-top: 18px;
+    flex-wrap: wrap;
+}
+.footer-container { margin-top: auto; text-align: center; width: 100%; padding: 18px 0 15px 0; }
+footer {
+    display: inline-block;
+    border-top: 3px solid #FFD700;
+    padding: 8px 25px;
+    font-size: 0.95rem;
+    background: linear-gradient(135deg, #f8fbff, #edf5fe);
+    color: #333;
+    border-radius: 10px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+}
+footer b i { font-style: italic; font-weight: bold; }
+@media (max-width: 850px) {
+    header { flex-direction: column; padding: 12px; }
+    .header-spacer { display: none; }
+    .nav { justify-content: center; flex-wrap: wrap; }
+    .slide-shell { padding: 0 20px; margin-top: 20px; }
+    .slide { padding: 22px; min-height: auto; }
+    .slide-top, .box-row { grid-template-columns: 1fr; }
+    .hero h1 { font-size: 1.35rem; }
+    .slide h2 { font-size: 1.45rem; }
+    .progress-panel { flex-direction: column; align-items: stretch; }
+}
+</style>
+</head>
+<body>
+<header>
+  <div class="header-spacer"></div>
+  <div class="hero">
+    <h1>AI in Daily Life</h1>
+    <p>What is Artificial Intelligence? - A simple introduction with everyday examples.</p>
+  </div>
+  <div class="nav">
+    <a href="ai-in-daily-life-index.html">Index</a>
+    <a href="https://umeraio.github.io/home/">Home</a>
+  </div>
+</header>
+
+<main>
+  <div class="slide-shell">
+    <div class="progress-panel">
+      <span class="progress-text" id="counter">Slide 1 of 15</span>
+      <div class="progress-bar"><div class="progress-fill" id="progressFill"></div></div>
+    </div>
+
+    <section class="slide active">
+      <div class="slide-top"><div><div class="kicker">Introduction</div><h2>What is Artificial Intelligence?</h2><p>Artificial Intelligence, or AI, means computer systems that can do tasks that normally need human thinking. These tasks can include understanding language, recognising pictures, making suggestions, answering questions, and helping people make decisions.</p><p>AI does not think like a human. It works by finding patterns in information and using those patterns to make helpful predictions or responses.</p></div><div class="visual-card"><div class="visual-main"><span class="symbol">AI</span><div class="diagram">Information -> Pattern -> Helpful Answer</div></div></div></div><div class="box-row"><div class="example-box"><div class="box-title">Practical Example</div>Your phone suggests the next word while you type a message. It has learned common word patterns and predicts what may come next.</div><div class="key-box"><div class="box-title">Key Point</div>AI is software that can recognise patterns and support decisions.</div></div><div class="think-box"><div class="box-title">Think About This</div>Where have you already seen AI today - on your phone, TV, car, or website?</div>
+    </section>
+
+    <section class="slide">
+      <div class="slide-top"><div><div class="kicker">Simple meaning</div><h2>AI is a Smart Helper, Not Magic</h2><p>AI can feel clever because it can respond quickly and give useful answers. But AI is not magic. It follows computer processes. It uses data, rules, and patterns to create an answer or action.</p><p>A useful way to understand AI is this: AI is like a trained assistant that has studied many examples and can help with common tasks.</p></div><div class="visual-card"><div class="visual-main"><span class="symbol">?</span><div class="diagram">Question -> AI checks patterns -> Response</div></div></div></div><div class="box-row"><div class="example-box"><div class="box-title">Practical Example</div>You ask an AI assistant to write a polite email. It uses language patterns to create a clear message.</div><div class="key-box"><div class="box-title">Key Point</div>AI can be helpful, but it is still a computer tool.</div></div><div class="think-box"><div class="box-title">Think About This</div>Would you trust AI more if you understood how it created the answer?</div>
+    </section>
+
+    <section class="slide">
+      <div class="slide-top"><div><div class="kicker">Daily life</div><h2>AI is Already Around Us</h2><p>Many people use AI without realising it. AI is built into phones, apps, websites, maps, cameras, shopping platforms, banking systems, streaming services, and customer support chats.</p><p>You do not need to be technical to use AI. In many cases, you simply ask a question, press a button, speak into your phone, or accept a suggestion.</p></div><div class="visual-card"><div class="visual-main"><span class="symbol">APP</span><div class="diagram">Phone | Maps | Shopping | Banking | Music</div></div></div></div><div class="box-row"><div class="example-box"><div class="box-title">Practical Example</div>Netflix or YouTube recommends videos based on what you watched before.</div><div class="key-box"><div class="box-title">Key Point</div>AI is not only for experts. It is already part of everyday tools.</div></div><div class="think-box"><div class="box-title">Think About This</div>Which app gives you suggestions most often?</div>
+    </section>
+
+    <section class="slide">
+      <div class="slide-top"><div><div class="kicker">How it works</div><h2>AI Learns from Data</h2><p>Data means information. AI systems are trained using many examples. These examples may include text, images, sounds, numbers, or actions. The AI looks for patterns and uses those patterns later.</p><p>For example, if an AI has seen many pictures of cats, it can learn common cat features such as ears, eyes, fur, and shape.</p></div><div class="visual-card"><div class="visual-main"><span class="symbol">DATA</span><div class="diagram">Many examples -> Patterns -> Prediction</div></div></div></div><div class="box-row"><div class="example-box"><div class="box-title">Practical Example</div>A spam filter learns from many examples of unwanted emails and then moves similar emails to spam.</div><div class="key-box"><div class="box-title">Key Point</div>AI becomes useful by learning from examples.</div></div><div class="think-box"><div class="box-title">Think About This</div>If AI learns from poor examples, what could happen?</div>
+    </section>
+
+    <section class="slide">
+      <div class="slide-top"><div><div class="kicker">Patterns</div><h2>AI Looks for Patterns</h2><p>A pattern is something that repeats or connects. AI looks for patterns in the information it has been given. It may notice what words usually appear together, what products people often buy together, or what routes are usually faster.</p><p>This is why AI can predict, recommend, organise, and respond.</p></div><div class="visual-card"><div class="visual-main"><span class="symbol">...</span><div class="diagram">Repeat | Compare | Predict | Suggest</div></div></div></div><div class="box-row"><div class="example-box"><div class="box-title">Practical Example</div>A map app notices traffic patterns and suggests a faster route to work.</div><div class="key-box"><div class="box-title">Key Point</div>AI is powerful because it can find patterns quickly.</div></div><div class="think-box"><div class="box-title">Think About This</div>Can a pattern be useful even if it is not always perfect?</div>
+    </section>
+
+    <section class="slide">
+      <div class="slide-top"><div><div class="kicker">Normal software</div><h2>AI vs Normal Computer Programs</h2><p>A normal computer program usually follows fixed instructions. If this happens, do that. AI is different because it can deal with more flexible situations. It can make a prediction or create an answer even when the question is not exactly the same as before.</p><p>AI is still programmed by people, but it uses learned patterns instead of only fixed rules.</p></div><div class="visual-card"><div class="visual-main"><span class="symbol">RULE</span><div class="diagram">Normal Program: fixed rule<br>AI: learned pattern</div></div></div></div><div class="box-row"><div class="example-box"><div class="box-title">Practical Example</div>A calculator follows fixed maths rules. An AI writing assistant can help improve many different types of sentences.</div><div class="key-box"><div class="box-title">Key Point</div>AI is better for flexible tasks where answers can vary.</div></div><div class="think-box"><div class="box-title">Think About This</div>Which tasks need fixed answers, and which tasks need flexible help?</div>
+    </section>
+
+    <section class="slide">
+      <div class="slide-top"><div><div class="kicker">AI vs search</div><h2>AI is Different from a Search Engine</h2><p>A search engine finds web pages that may contain the answer. AI can create a direct response, summary, explanation, plan, or draft based on the question you ask.</p><p>Search is like looking through a library catalogue. AI is like asking a helper to explain the topic in simple words. Both can be useful, but they are not the same.</p></div><div class="visual-card"><div class="visual-main"><span class="symbol">S</span><div class="diagram">Search: finds links<br>AI: explains and creates</div></div></div></div><div class="box-row"><div class="example-box"><div class="box-title">Practical Example</div>Search can show websites about healthy meals. AI can create a 7-day meal plan using your food preferences.</div><div class="key-box"><div class="box-title">Key Point</div>Search finds information. AI can organise, explain, and generate content.</div></div><div class="think-box"><div class="box-title">Think About This</div>When would you prefer links, and when would you prefer a direct explanation?</div>
+    </section>
+
+    <section class="slide">
+      <div class="slide-top"><div><div class="kicker">Common uses</div><h2>What Can AI Do?</h2><p>AI can help with many tasks. It can answer questions, summarise long text, translate languages, write drafts, check spelling, recognise speech, suggest products, sort photos, detect fraud, and give reminders.</p><p>AI is useful when a task needs speed, pattern recognition, or simple support.</p></div><div class="visual-card"><div class="visual-main"><span class="symbol">HELP</span><div class="diagram">Write | Translate | Plan | Summarise | Suggest</div></div></div></div><div class="box-row"><div class="example-box"><div class="box-title">Practical Example</div>A student can ask AI to explain a difficult topic in simpler words and then create revision questions.</div><div class="key-box"><div class="box-title">Key Point</div>AI is best used as support, not as a replacement for thinking.</div></div><div class="think-box"><div class="box-title">Think About This</div>What daily task would you like AI to make easier?</div>
+    </section>
+
+    <section class="slide">
+      <div class="slide-top"><div><div class="kicker">Generative AI</div><h2>AI Can Create New Content</h2><p>Some AI tools are called generative AI. This means they can generate new text, images, summaries, lesson plans, ideas, code, or designs based on your instructions.</p><p>Generative AI does not copy one single source every time. It creates a new response using learned patterns. But its answer still needs checking.</p></div><div class="visual-card"><div class="visual-main"><span class="symbol">CREATE</span><div class="diagram">Prompt -> AI draft -> Human checks</div></div></div></div><div class="box-row"><div class="example-box"><div class="box-title">Practical Example</div>A small business owner can ask AI to draft a customer reply, social media post, or service description.</div><div class="key-box"><div class="box-title">Key Point</div>AI can create drafts quickly, but humans should review them.</div></div><div class="think-box"><div class="box-title">Think About This</div>Why is it important to check AI-generated content before using it?</div>
+    </section>
+
+    <section class="slide">
+      <div class="slide-top"><div><div class="kicker">Strengths</div><h2>Why AI is Useful</h2><p>AI can save time, explain difficult ideas, help people communicate, improve organisation, support learning, and make digital tools easier to use. It can also help people who struggle with reading, writing, language, or typing.</p><p>AI is useful because it can respond quickly and handle many types of information.</p></div><div class="visual-card"><div class="visual-main"><span class="symbol">TIME</span><div class="diagram">Save time | Reduce stress | Explain simply</div></div></div></div><div class="box-row"><div class="example-box"><div class="box-title">Practical Example</div>A busy parent can ask AI to create a shopping list and meal ideas for the week.</div><div class="key-box"><div class="box-title">Key Point</div>AI is helpful when it makes life easier, clearer, or faster.</div></div><div class="think-box"><div class="box-title">Think About This</div>Could AI help you save 10 minutes every day?</div>
+    </section>
+
+    <section class="slide">
+      <div class="slide-top"><div><div class="kicker">Limits</div><h2>AI Can Make Mistakes</h2><p>AI can sound confident even when it is wrong. It may misunderstand the question, use old information, miss context, or give an answer that needs checking.</p><p>This is why AI should not be treated as always correct. Important information should be checked with trusted sources, especially for health, money, law, safety, or official decisions.</p></div><div class="visual-card"><div class="visual-main"><span class="symbol">CHECK</span><div class="diagram">AI answer -> Check facts -> Use safely</div></div></div></div><div class="box-row"><div class="example-box"><div class="box-title">Practical Example</div>If AI gives medicine advice, you should not rely on it alone. Speak to a qualified healthcare professional.</div><div class="key-box"><div class="box-title">Key Point</div>AI is useful, but it must be checked for important decisions.</div></div><div class="think-box"><div class="box-title">Think About This</div>What types of AI answers should always be verified?</div>
+    </section>
+
+    <section class="slide">
+      <div class="slide-top"><div><div class="kicker">Privacy</div><h2>Be Careful What You Share with AI</h2><p>When using AI, avoid sharing private information unless you fully understand where it goes and how it is used. Private information includes passwords, bank details, personal documents, medical records, addresses, and confidential work information.</p><p>A safe rule is: do not type anything into AI that you would not want shared or stored.</p></div><div class="visual-card"><div class="visual-main"><span class="symbol">LOCK</span><div class="diagram">Keep private data private</div></div></div></div><div class="box-row"><div class="example-box"><div class="box-title">Practical Example</div>Instead of pasting a full customer record, remove names, addresses, and account numbers before asking AI to help summarise it.</div><div class="key-box"><div class="box-title">Key Point</div>Use AI safely by protecting personal and confidential information.</div></div><div class="think-box"><div class="box-title">Think About This</div>What information should never be copied into an AI tool?</div>
+    </section>
+
+    <section class="slide">
+      <div class="slide-top"><div><div class="kicker">Bias</div><h2>AI Can Be Biased</h2><p>Bias means unfairness or one-sided judgement. AI can become biased if the data used to train it contains unfair patterns or missing viewpoints.</p><p>This means AI answers should be reviewed carefully, especially when they affect people, jobs, education, healthcare, or important choices.</p></div><div class="visual-card"><div class="visual-main"><span class="symbol">BALANCE</span><div class="diagram">Data quality affects AI quality</div></div></div></div><div class="box-row"><div class="example-box"><div class="box-title">Practical Example</div>If a hiring tool was trained on unfair past hiring data, it may repeat unfair patterns unless checked properly.</div><div class="key-box"><div class="box-title">Key Point</div>AI should be used fairly, carefully, and with human judgement.</div></div><div class="think-box"><div class="box-title">Think About This</div>Why should humans review AI decisions that affect people?</div>
+    </section>
+
+    <section class="slide">
+      <div class="slide-top"><div><div class="kicker">Good prompts</div><h2>How to Ask AI Better Questions</h2><p>AI gives better answers when you give clear instructions. A good question should include what you want, who it is for, the style you need, and any important limits.</p><p>Instead of saying “help me”, say exactly what help you need.</p></div><div class="visual-card"><div class="visual-main"><span class="symbol">ASK</span><div class="diagram">Clear task + Context + Example = Better answer</div></div></div></div><div class="box-row"><div class="example-box"><div class="box-title">Practical Example</div>Weak: “Write about AI.” Better: “Explain AI in simple English for beginners with 3 daily life examples.”</div><div class="key-box"><div class="box-title">Key Point</div>Better instructions usually create better AI answers.</div></div><div class="think-box"><div class="box-title">Think About This</div>How could you improve your next AI question?</div>
+    </section>
+
+    <section class="slide">
+      <div class="slide-top"><div><div class="kicker">Responsible use</div><h2>Use AI as a Helper, Not a Replacement</h2><p>AI is most useful when people use it to support their own thinking. It can help you plan, learn, write, compare, practise, and organise. But you should still check, edit, and make the final decision.</p><p>The best approach is: ask AI, review the answer, improve it, check important facts, and then use your own judgement.</p></div><div class="visual-card"><div class="visual-main"><span class="symbol">YOU + AI</span><div class="diagram">Human judgement + AI support</div></div></div></div><div class="box-row"><div class="example-box"><div class="box-title">Practical Example</div>A teacher can use AI to draft lesson ideas, but should adapt them for the learners, course level, and assessment needs.</div><div class="key-box"><div class="box-title">Key Point</div>AI works best when humans stay in control.</div></div><div class="think-box"><div class="box-title">Think About This</div>What should always remain your responsibility when using AI?</div>
+    </section>
+
+    <section class="slide">
+      <div class="slide-top"><div><div class="kicker">Summary</div><h2>What You Have Learned</h2><p>Artificial Intelligence is a computer system that can use patterns in data to help with tasks that normally need human thinking. It can answer questions, create drafts, make recommendations, translate language, recognise speech, and support everyday decisions.</p><p>AI is useful, but it is not perfect. Use it carefully, protect private information, check important facts, and keep human judgement at the centre.</p></div><div class="visual-card"><div class="visual-main"><span class="symbol">READY</span><div class="diagram">Understand AI -> Use AI -> Check AI -> Improve life</div></div></div></div><div class="box-row"><div class="example-box"><div class="box-title">Practical Example</div>After this lesson, you could use AI to plan your week, simplify a document, translate a message, or practise interview questions.</div><div class="key-box"><div class="box-title">Key Point</div>AI is a practical everyday tool when used safely and wisely.</div></div><div class="think-box"><div class="box-title">Think About This</div>What is one safe and useful way you will try AI this week?</div>
+    </section>
+
+    <div class="controls">
+      <button class="slide-btn" onclick="prevSlide()">Previous</button>
+      <a class="slide-btn" href="ai-in-daily-life-index.html">Index</a>
+      <button class="slide-btn" onclick="nextSlide()">Next</button>
+    </div>
+  </div>
+</main>
+
+<div class="footer-container">
+  <footer><b><i>Umer Malik: Where Craft Meets Research</i></b></footer>
+</div>
+
+<script>
+const slides = document.querySelectorAll('.slide');
+const counter = document.getElementById('counter');
+const progressFill = document.getElementById('progressFill');
+let current = 0;
+
+function showSlide(index) {
+    if (index < 0) index = slides.length - 1;
+    if (index >= slides.length) index = 0;
+    slides[current].classList.remove('active');
+    current = index;
+    slides[current].classList.add('active');
+    counter.textContent = 'Slide ' + (current + 1) + ' of ' + slides.length;
+    progressFill.style.width = ((current + 1) / slides.length * 100) + '%';
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+}
+function nextSlide() { showSlide(current + 1); }
+function prevSlide() { showSlide(current - 1); }
+document.addEventListener('keydown', function(e) {
+    if (e.key === 'ArrowRight') nextSlide();
+    if (e.key === 'ArrowLeft') prevSlide();
+});
+</script>
+</body>
+</html>
