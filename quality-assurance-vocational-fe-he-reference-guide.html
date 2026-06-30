@@ -1,0 +1,1649 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Quality Assurance in Vocational Education, Further Education and Higher Education</title>
+  <style>
+    :root {
+      --ink: #172033;
+      --muted: #5a667d;
+      --line: #d8deea;
+      --paper: #ffffff;
+      --soft: #f3f6fb;
+      --navy: #173b63;
+      --blue: #2268a8;
+      --teal: #087a7f;
+      --green: #25825a;
+      --gold: #b7791f;
+      --red: #b23a48;
+    }
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      color: var(--ink);
+      background: #eef2f7;
+      font-family: "Segoe UI", Arial, sans-serif;
+      line-height: 1.65;
+    }
+    a { color: var(--blue); }
+    .page {
+      max-width: 1180px;
+      margin: 0 auto;
+      background: var(--paper);
+      box-shadow: 0 24px 70px rgba(23,32,51,.12);
+    }
+    header {
+      padding: 54px 56px 36px;
+      color: white;
+      background:
+        linear-gradient(135deg, rgba(12,39,68,.94), rgba(15,83,100,.92)),
+        radial-gradient(circle at 88% 14%, rgba(255,255,255,.22), transparent 28%);
+    }
+    .eyebrow { text-transform: uppercase; letter-spacing: .12em; font-size: .82rem; opacity: .88; }
+    h1 {
+      max-width: 980px;
+      margin: 10px 0 18px;
+      font-size: 2.72rem;
+      line-height: 1.08;
+      letter-spacing: 0;
+    }
+    .subtitle { max-width: 900px; font-size: 1.1rem; opacity: .95; }
+    .hero-grid {
+      display: grid;
+      grid-template-columns: 1.2fr .8fr;
+      gap: 28px;
+      align-items: center;
+      margin-top: 30px;
+    }
+    .hero-visual {
+      border: 1px solid rgba(255,255,255,.28);
+      border-radius: 8px;
+      background: rgba(255,255,255,.08);
+      padding: 18px;
+    }
+    main { padding: 34px 56px 60px; }
+    nav.toc {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 12px;
+      margin: 0 0 34px;
+      padding: 18px;
+      background: var(--soft);
+      border: 1px solid var(--line);
+      border-radius: 8px;
+    }
+    nav.toc a {
+      display: block;
+      padding: 9px 10px;
+      color: var(--ink);
+      text-decoration: none;
+      border-radius: 6px;
+      background: white;
+      border: 1px solid #e3e8f2;
+      font-size: .95rem;
+    }
+    section { margin: 42px 0; }
+    h2 {
+      margin: 0 0 16px;
+      padding-top: 8px;
+      font-size: 1.92rem;
+      line-height: 1.2;
+      color: var(--navy);
+      border-top: 4px solid var(--navy);
+    }
+    h3 { margin: 28px 0 10px; font-size: 1.32rem; color: #214665; }
+    h4 { margin: 20px 0 8px; font-size: 1.08rem; color: #263d56; }
+    p { margin: 0 0 13px; }
+    ul, ol { margin-top: 8px; padding-left: 24px; }
+    li { margin: 5px 0; }
+    .lead {
+      font-size: 1.08rem;
+      color: #33415b;
+    }
+    .callout {
+      border-left: 5px solid var(--teal);
+      background: #edf8f8;
+      padding: 16px 18px;
+      margin: 18px 0;
+      border-radius: 0 8px 8px 0;
+    }
+    .scenario {
+      border: 1px solid #d9e4ef;
+      background: #fbfdff;
+      border-radius: 8px;
+      padding: 16px;
+      margin: 16px 0;
+    }
+    .scenario strong { color: var(--navy); }
+    .grid-2 { display: grid; grid-template-columns: repeat(2, 1fr); gap: 16px; }
+    .grid-3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
+    .card {
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: white;
+      padding: 16px;
+    }
+    .card h4 { margin-top: 0; }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 16px 0 24px;
+      font-size: .94rem;
+    }
+    th, td {
+      border: 1px solid var(--line);
+      padding: 10px 11px;
+      vertical-align: top;
+    }
+    th { background: #eaf0f8; color: #203a59; text-align: left; }
+    .compact td, .compact th { padding: 8px 9px; }
+    .tag {
+      display: inline-block;
+      padding: 2px 7px;
+      border-radius: 999px;
+      background: #e9f3ff;
+      color: #1b5c8f;
+      font-size: .78rem;
+      font-weight: 700;
+    }
+    .diagram {
+      margin: 18px 0 26px;
+      padding: 18px;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: linear-gradient(180deg, #ffffff, #f7faff);
+    }
+    .flow {
+      display: grid;
+      grid-template-columns: repeat(5, 1fr);
+      gap: 10px;
+      align-items: stretch;
+    }
+    .flow div {
+      padding: 14px 10px;
+      text-align: center;
+      border-radius: 8px;
+      color: white;
+      background: var(--navy);
+      min-height: 88px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+    .flow small { display: block; opacity: .88; margin-top: 5px; }
+    .cycle {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 10px;
+    }
+    .cycle div {
+      border-radius: 8px;
+      padding: 15px;
+      background: #f1f8f4;
+      border: 1px solid #cfe5d8;
+    }
+    .cycle b { color: var(--green); }
+    .risk-matrix {
+      display: grid;
+      grid-template-columns: 110px repeat(3, 1fr);
+      gap: 6px;
+      text-align: center;
+      margin-top: 12px;
+    }
+    .risk-matrix div {
+      min-height: 58px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 8px;
+      border-radius: 6px;
+      font-size: .9rem;
+      border: 1px solid #d7deea;
+      background: white;
+    }
+    .risk-low { background: #e8f6ef !important; }
+    .risk-med { background: #fff4d8 !important; }
+    .risk-high { background: #fde7e9 !important; }
+    .tool-stack {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 10px;
+      margin: 14px 0 20px;
+    }
+    .tool-stack div {
+      border: 1px solid var(--line);
+      border-top: 4px solid var(--blue);
+      border-radius: 8px;
+      padding: 12px;
+      background: #fbfdff;
+      min-height: 120px;
+    }
+    .tool-stack b { display: block; color: var(--navy); margin-bottom: 5px; }
+    .rag {
+      display: inline-block;
+      min-width: 58px;
+      text-align: center;
+      border-radius: 999px;
+      padding: 3px 8px;
+      font-size: .78rem;
+      font-weight: 800;
+      color: #172033;
+    }
+    .rag-red { background: #ffd9de; }
+    .rag-amber { background: #ffe7ad; }
+    .rag-green { background: #d8f2e4; }
+    .swimlane {
+      display: grid;
+      grid-template-columns: 150px repeat(5, 1fr);
+      gap: 6px;
+      margin: 16px 0 22px;
+      font-size: .88rem;
+    }
+    .swimlane div {
+      border: 1px solid #d7deea;
+      border-radius: 6px;
+      background: white;
+      padding: 9px;
+      min-height: 58px;
+    }
+    .swimlane .lane-head {
+      background: #eaf0f8;
+      font-weight: 800;
+      color: #203a59;
+    }
+    .swimlane .stage { background: #f6fafc; font-weight: 700; }
+    .mini-diagram {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 12px;
+      margin: 14px 0 20px;
+    }
+    .mini-diagram div {
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      padding: 13px;
+      background: #fff;
+    }
+    .mini-diagram b { color: var(--teal); }
+    .appendix {
+      background: #f8fafc;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      padding: 18px;
+    }
+    footer {
+      padding: 26px 56px 44px;
+      color: #526078;
+      background: #f5f7fb;
+      border-top: 1px solid var(--line);
+    }
+    @media print {
+      body { background: white; }
+      .page { box-shadow: none; }
+      nav.toc { break-inside: avoid; }
+      section, .card, .scenario, table { break-inside: avoid; }
+      a { color: #111; text-decoration: none; }
+    }
+    @media (max-width: 860px) {
+      header, main, footer { padding-left: 22px; padding-right: 22px; }
+      h1 { font-size: 2rem; }
+      .hero-grid, .grid-2, .grid-3, nav.toc { grid-template-columns: 1fr; }
+      .flow, .cycle { grid-template-columns: 1fr; }
+      .tool-stack, .mini-diagram { grid-template-columns: 1fr; }
+      .swimlane { grid-template-columns: 1fr; }
+      table { display: block; overflow-x: auto; }
+    }
+
+    /* HHF / mumer.org inspired page treatment */
+    :root {
+      --hhf-ink: #111827;
+      --hhf-ink-2: #263a57;
+      --hhf-muted: #667085;
+      --hhf-paper: #f7fbff;
+      --hhf-wash: #edf6ff;
+      --hhf-white: #ffffff;
+      --hhf-blue: #1d4ed8;
+      --hhf-sky: #38bdf8;
+      --hhf-teal: #0f766e;
+      --hhf-teal-2: #14b8a6;
+      --hhf-line: rgba(147, 197, 253, 0.66);
+      --hhf-shadow: 0 22px 64px rgba(17, 24, 39, 0.10);
+      --hhf-radius: 22px;
+    }
+    body {
+      color: var(--hhf-ink);
+      background: linear-gradient(180deg, var(--hhf-paper), var(--hhf-wash));
+      overflow-x: hidden;
+    }
+    a { text-decoration: none; }
+    .site-header {
+      position: sticky;
+      top: 0;
+      z-index: 50;
+      padding: 0 !important;
+      color: var(--hhf-ink);
+      background: linear-gradient(135deg, rgba(255,255,255,0.94), rgba(231,241,255,0.90));
+      border-bottom: 1px solid rgba(147, 197, 253, 0.45);
+      box-shadow: 0 10px 28px rgba(17, 24, 39, 0.06);
+      backdrop-filter: blur(18px);
+    }
+    .container {
+      width: min(1180px, calc(100% - 40px));
+      margin: 0 auto;
+    }
+    .nav {
+      min-height: 58px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 12px;
+    }
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      color: var(--hhf-ink);
+    }
+    .brand-mark {
+      width: 52px;
+      height: 52px;
+      display: grid;
+      place-items: center;
+      border-radius: 16px;
+      color: var(--hhf-white);
+      background: linear-gradient(135deg, #102033, var(--hhf-blue));
+      border: 1px solid rgba(37, 99, 235, 0.24);
+      box-shadow: 0 18px 38px rgba(29, 78, 216, 0.18);
+      font-weight: 950;
+    }
+    .brand-mark img {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+      border-radius: 14px;
+    }
+    .brand strong {
+      display: block;
+      font-size: 1.12rem;
+      line-height: 1.1;
+      font-weight: 950;
+    }
+    .brand span span {
+      display: block;
+      margin-top: 2px;
+      color: #43546f;
+      font-size: 0.78rem;
+      font-weight: 750;
+    }
+    .menu {
+      display: flex;
+      align-items: center;
+      gap: 4px;
+      padding: 5px;
+      border-radius: 999px;
+      list-style: none;
+      background: rgba(255,255,255,0.76);
+      border: 1px solid rgba(147, 197, 253, 0.38);
+      box-shadow: inset 0 1px 0 rgba(255,255,255,0.95), 0 16px 34px rgba(17,24,39,0.07);
+    }
+    .menu a {
+      min-height: 34px;
+      display: inline-flex;
+      align-items: center;
+      padding: 0 12px;
+      border-radius: 999px;
+      color: #24364f;
+      font-size: 0.84rem;
+      font-weight: 850;
+    }
+    .menu a:hover {
+      background: linear-gradient(135deg, rgba(219,234,254,0.92), rgba(224,242,254,0.90));
+      color: var(--hhf-blue);
+    }
+    .nav-cta {
+      color: var(--hhf-white) !important;
+      background: linear-gradient(135deg, var(--hhf-blue), var(--hhf-teal));
+      box-shadow: 0 16px 34px rgba(29, 78, 216, 0.24);
+    }
+    .page {
+      max-width: none;
+      margin: 0;
+      background: transparent;
+      box-shadow: none;
+    }
+    .page > header {
+      padding: 52px 0 52px;
+      color: var(--hhf-ink);
+      background:
+        radial-gradient(circle at 88% 10%, rgba(147,197,253,0.36), transparent 34%),
+        linear-gradient(180deg, #f8fbff 0%, #edf6ff 100%);
+      border-bottom: 1px solid rgba(147,197,253,0.36);
+    }
+    .page > header .hero-grid {
+      width: min(1180px, calc(100% - 40px));
+      margin: 0 auto;
+      grid-template-columns: minmax(0, 1.03fr) minmax(360px, 0.77fr);
+      gap: 34px;
+      align-items: stretch;
+    }
+    .page > header .hero-grid > div:first-child,
+    .hero-visual {
+      position: relative;
+      overflow: hidden;
+      border-radius: 26px;
+      border: 1px solid var(--hhf-line);
+      background: linear-gradient(105deg, rgba(255,255,255,0.96), rgba(231,243,255,0.94));
+      box-shadow: var(--hhf-shadow);
+    }
+    .page > header .hero-grid > div:first-child {
+      padding: clamp(32px, 5vw, 56px);
+    }
+    .hero-visual {
+      display: grid;
+      place-items: center;
+      padding: 28px;
+      background:
+        linear-gradient(180deg, rgba(255,255,255,0.98), rgba(224,242,254,0.88)),
+        url("hhf-quality-assurance-hero.png") center/cover;
+    }
+    .eyebrow,
+    .label-style {
+      display: inline-flex;
+      align-items: center;
+      width: max-content;
+      max-width: 100%;
+      padding: 10px 20px;
+      border-radius: 999px;
+      background: rgba(219, 234, 254, 0.86);
+      color: var(--hhf-blue);
+      border: 1px solid rgba(147, 197, 253, 0.92);
+      box-shadow: inset 0 1px 0 rgba(255,255,255,0.85);
+      font-size: 0.78rem;
+      font-weight: 950;
+      letter-spacing: 0.10em;
+      text-transform: uppercase;
+      opacity: 1;
+    }
+    h1 {
+      max-width: 850px;
+      margin-top: 18px;
+      color: var(--hhf-ink);
+      font-size: clamp(2.45rem, 4.2vw, 4.25rem);
+      line-height: 1.02;
+      font-weight: 950;
+    }
+    .subtitle {
+      max-width: 820px;
+      margin-top: 22px;
+      color: var(--hhf-ink-2);
+      font-size: clamp(1.08rem, 1.4vw, 1.25rem);
+      line-height: 1.66;
+      font-weight: 680;
+      opacity: 1;
+    }
+    main {
+      width: min(1180px, calc(100% - 40px));
+      margin: 0 auto;
+      padding: 48px 0 70px;
+    }
+    section {
+      margin: 0;
+      padding: 54px 0;
+    }
+    nav.toc,
+    .section-panel {
+      border-radius: 26px;
+      border: 1px solid var(--hhf-line);
+      background: linear-gradient(105deg, rgba(255,255,255,0.96), rgba(231,243,255,0.94));
+      box-shadow: var(--hhf-shadow);
+    }
+    nav.toc {
+      grid-template-columns: repeat(3, 1fr);
+      gap: 12px;
+      padding: 22px;
+      margin-bottom: 28px;
+    }
+    nav.toc a {
+      min-height: 48px;
+      display: flex;
+      align-items: center;
+      padding: 0 15px;
+      border-radius: 12px;
+      color: #24364f;
+      background: rgba(255,255,255,0.78);
+      border: 1px solid rgba(147,197,253,0.58);
+      font-weight: 820;
+    }
+    h2 {
+      margin: 0 0 18px;
+      padding-top: 0;
+      color: var(--hhf-ink);
+      border-top: 0;
+      font-size: clamp(2rem, 3.6vw, 3.35rem);
+      line-height: 1.04;
+      font-weight: 950;
+    }
+    h3 {
+      margin: 30px 0 11px;
+      color: var(--hhf-ink);
+      font-size: clamp(1.28rem, 1.6vw, 1.55rem);
+      line-height: 1.16;
+      font-weight: 950;
+    }
+    h4 {
+      color: var(--hhf-ink);
+      font-weight: 950;
+    }
+    p, li {
+      color: #334155;
+      font-weight: 590;
+    }
+    .lead {
+      color: var(--hhf-ink-2);
+      font-size: 1.14rem;
+      font-weight: 700;
+    }
+    .card,
+    .scenario,
+    .diagram,
+    .callout,
+    .appendix,
+    .tool-stack div,
+    .mini-diagram div {
+      position: relative;
+      overflow: hidden;
+      border-radius: var(--hhf-radius);
+      border: 1px solid var(--hhf-line);
+      background: linear-gradient(180deg, rgba(255,255,255,0.98), rgba(246,250,255,0.96));
+      box-shadow: 0 20px 58px rgba(17,24,39,0.09);
+    }
+    .card::before,
+    .scenario::before,
+    .diagram::before,
+    .callout::before,
+    .appendix::before,
+    .tool-stack div::before,
+    .mini-diagram div::before {
+      content: "";
+      position: absolute;
+      inset: 0 0 auto 0;
+      height: 6px;
+      background: linear-gradient(90deg, var(--hhf-blue), var(--hhf-sky), var(--hhf-teal));
+    }
+    .card,
+    .scenario,
+    .diagram,
+    .callout,
+    .appendix {
+      padding: 24px;
+    }
+    .callout { border-left: 1px solid var(--hhf-line); }
+    .tool-stack div,
+    .mini-diagram div {
+      padding: 20px;
+      border-top: 1px solid var(--hhf-line);
+    }
+    th {
+      background: linear-gradient(135deg, rgba(219,234,254,0.92), rgba(224,242,254,0.90));
+      color: #203a59;
+      font-weight: 950;
+    }
+    th, td {
+      border-color: rgba(147,197,253,0.58);
+    }
+    table {
+      background: rgba(255,255,255,0.76);
+      border-radius: 16px;
+      overflow: hidden;
+      box-shadow: 0 14px 34px rgba(17,24,39,0.06);
+    }
+    footer {
+      padding: 32px 0 50px;
+      background: transparent;
+      border-top: 0;
+    }
+    footer p {
+      width: min(1180px, calc(100% - 40px));
+      margin: 0 auto;
+      padding: 22px;
+      border-radius: 22px;
+      border: 1px solid var(--hhf-line);
+      background: rgba(255,255,255,0.82);
+      box-shadow: 0 14px 34px rgba(17,24,39,0.06);
+    }
+    .framework-diagram {
+      display: grid;
+      grid-template-columns: repeat(6, 1fr);
+      gap: 10px;
+      margin: 16px 0 22px;
+    }
+    .framework-diagram div {
+      min-height: 96px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      padding: 14px;
+      border-radius: 18px;
+      border: 1px solid rgba(147,197,253,0.66);
+      background: linear-gradient(180deg, rgba(255,255,255,0.98), rgba(246,250,255,0.96));
+      box-shadow: 0 14px 34px rgba(17,24,39,0.06);
+      text-align: center;
+    }
+    .framework-diagram b {
+      color: var(--hhf-blue);
+      font-size: 1.34rem;
+      font-weight: 950;
+    }
+    @media (max-width: 980px) {
+      .menu { display: none; }
+      .page > header .hero-grid { grid-template-columns: 1fr; }
+      .framework-diagram { grid-template-columns: repeat(2, 1fr); }
+    }
+  </style>
+</head>
+<body>
+  <header class="site-header">
+    <nav class="container nav" aria-label="Main navigation">
+      <ul class="menu" id="mainMenu">
+        <li><a href="https://umeraio.github.io/home/teachersindex.html">Back to Home</a></li>
+        <li><a href="#qa-manager">QA Manager</a></li>
+        <li><a href="#lead-iqa">Lead IQA</a></li>
+        <li><a href="#iqa">IQA</a></li>
+        <li><a href="#assessor">Assessor</a></li>
+        <li><a href="#tools">Tools</a></li>
+        <li><a class="nav-cta" href="#references">References</a></li>
+      </ul>
+    </nav>
+  </header>
+  <div class="page">
+    <header>
+      <div class="eyebrow">Professional reference guide</div>
+      <div class="hero-grid">
+        <div>
+          <h1>Quality Assurance in Vocational Education, Further Education and Higher Education</h1>
+          <p class="subtitle">A detailed paper on the purpose, responsibilities, compliance expectations and practical operation of quality assurance roles across vocational training, FE and HE settings.</p>
+          <p class="subtitle">Prepared for use by quality managers, Lead IQAs, IQAs, assessors, trainee assessors, curriculum leaders and senior managers.</p>
+        </div>
+        <div class="hero-visual" aria-label="Quality assurance governance illustration">
+          <svg viewBox="0 0 520 330" role="img" width="100%" height="auto">
+            <title>Quality assurance system illustration</title>
+            <rect x="22" y="22" width="476" height="286" rx="20" fill="rgba(255,255,255,.12)" stroke="rgba(255,255,255,.45)"/>
+            <circle cx="260" cy="165" r="76" fill="#ffffff" opacity=".96"/>
+            <text x="260" y="154" text-anchor="middle" font-size="22" font-weight="700" fill="#173b63">Learner</text>
+            <text x="260" y="182" text-anchor="middle" font-size="15" fill="#42516a">valid, fair, supported</text>
+            <g fill="#e9f7ff" stroke="#ffffff" stroke-width="2">
+              <rect x="52" y="52" width="146" height="55" rx="10"/>
+              <rect x="322" y="52" width="146" height="55" rx="10"/>
+              <rect x="52" y="224" width="146" height="55" rx="10"/>
+              <rect x="322" y="224" width="146" height="55" rx="10"/>
+            </g>
+            <g fill="#173b63" font-size="16" font-weight="700">
+              <text x="125" y="84" text-anchor="middle">Assessor</text>
+              <text x="395" y="84" text-anchor="middle">IQA</text>
+              <text x="125" y="257" text-anchor="middle">Lead IQA</text>
+              <text x="395" y="257" text-anchor="middle">QA Manager</text>
+            </g>
+            <g stroke="#ffffff" stroke-width="5" stroke-linecap="round" fill="none" opacity=".85">
+              <path d="M194 102 L222 125"/>
+              <path d="M326 102 L298 125"/>
+              <path d="M194 228 L222 205"/>
+              <path d="M326 228 L298 205"/>
+            </g>
+          </svg>
+        </div>
+      </div>
+    </header>
+
+    <main>
+      <nav class="toc" aria-label="Contents">
+        <a href="#executive-summary">Executive summary</a>
+        <a href="#sector-context">Sector context</a>
+        <a href="#qa-system">The QA system</a>
+        <a href="#frameworks">Frameworks and regulation</a>
+        <a href="#qa-manager">Quality Assurance Manager</a>
+        <a href="#lead-iqa">Lead Internal Quality Assurer</a>
+        <a href="#iqa">Internal Quality Assurer</a>
+        <a href="#assessor">Assessor</a>
+        <a href="#assessor-training">Assessor in Training</a>
+        <a href="#managing-team">Managing the quality team</a>
+        <a href="#tools">Tools, templates and diagrams</a>
+        <a href="#references">References</a>
+      </nav>
+
+      <section id="executive-summary">
+        <h2>Executive Summary</h2>
+        <p class="lead">Quality assurance in vocational education, Further Education (FE) and Higher Education (HE) is the planned, evidence-based system through which an organisation confirms that learning, assessment, learner support, academic standards and qualification outcomes are valid, reliable, inclusive, ethical and continuously improving.</p>
+        <p>In vocational and apprenticeship provision, quality assurance protects the credibility of occupational competence. In FE, it supports curriculum intent, teaching and training quality, learner progress, safeguarding, personal development, employer engagement and achievement. In HE, it secures academic standards, programme quality, student experience, external examining, governance and regulatory compliance. Across all three sectors, quality assurance should not be treated as a paperwork exercise. It is a leadership discipline that connects curriculum design, assessment practice, staff development, learner voice, data analysis, risk management and improvement planning.</p>
+        <p>The five roles examined in this paper form a connected assurance chain. The Quality Assurance Manager sets the strategy, governs risk and ensures compliance. The Lead IQA translates strategy into coherent sampling, standardisation and assessor support across programmes. The IQA verifies assessment decisions, coaches assessors and identifies trends. The Assessor makes valid assessment judgements and supports learner progress. The Assessor in Training develops professional competence under supervision until they are safe, consistent and occupationally credible.</p>
+        <div class="callout">
+          <strong>Central argument:</strong> the best quality assurance cultures are developmental and rigorous at the same time. They support staff to improve, but they also intervene quickly when assessment validity, learner safety, data integrity or regulatory compliance is at risk.
+        </div>
+      </section>
+
+      <section id="sector-context">
+        <h2>Sector Context: Vocational Education, FE and HE</h2>
+        <h3>Vocational Education</h3>
+        <p>Vocational education is designed to develop knowledge, skills and behaviours that are relevant to a role, sector or occupational standard. Assessment may involve portfolios, observation, professional discussion, practical tasks, witness testimony, projects, reflective accounts, end-point assessment preparation, skills demonstrations and employer evidence. Quality assurance therefore focuses heavily on authenticity, sufficiency, occupational currency, assessment validity, safe practice and the relationship between learning and workplace performance.</p>
+        <p>A strong vocational QA system answers practical questions: Are assessment decisions based on the stated criteria? Is workplace evidence current and authentic? Are assessors making consistent decisions? Are learners receiving timely developmental feedback? Is reasonable adjustment being applied without reducing standards? Are employers clear about their role? Are assessment records secure and auditable?</p>
+
+        <h3>Further Education</h3>
+        <p>FE covers a wide range of provision, including 16 to 19 study programmes, adult learning, apprenticeships, vocational qualifications, English and mathematics, employability programmes, traineeships where relevant, and higher technical or sub-degree pathways. FE quality assurance is therefore broad. It must assure teaching, assessment, learner support, safeguarding, attendance, progress, destinations, employer engagement, funding compliance and inspection readiness.</p>
+        <p>Current Ofsted inspection guidance for FE and skills in England is organised around the renewed education inspection framework and the FE and skills inspection toolkit. Ofsted’s current page states that the previous FE and skills inspection handbook was withdrawn on 10 November 2025 and replaced by the toolkit, operating guides and inspection information. This matters because providers should align self-assessment, quality improvement planning and evidence systems with the current inspection model rather than relying on withdrawn handbook language.</p>
+
+        <h3>Higher Education</h3>
+        <p>HE quality assurance is concerned with academic standards and the quality of the student learning experience. It includes programme approval, annual monitoring, periodic review, assessment boards, external examining, student representation, complaints and appeals, academic integrity, continuation and completion outcomes, awarding powers, collaborative provision and regulatory conditions. HE delivered in FE colleges adds a further layer: the provider must satisfy its own college quality system, the validating university or awarding body, the Office for Students where applicable, and the expectations of the UK Quality Code for Higher Education.</p>
+        <p>The UK Quality Code 2024 describes itself as a sector-led reference point for securing academic standards and offering a high-quality student learning experience. It is especially important for HE because it frames quality as both assurance and enhancement: the organisation must protect standards while deliberately improving provision through evidence, governance and student partnership.</p>
+      </section>
+
+      <section id="qa-system">
+        <h2>The Quality Assurance System</h2>
+        <p>Quality assurance works best as an integrated system rather than a set of isolated checks. A provider needs clear policies, competent staff, accurate data, valid assessment practice, reliable sampling, standardisation, learner feedback, employer input, audit trails and improvement planning. Each role contributes different evidence to the same organisational question: can the provider demonstrate that learners receive a high-quality experience and that qualifications or awards are credible?</p>
+
+        <div class="diagram">
+          <h3>Diagram 1: The Quality Assurance Chain</h3>
+          <div class="flow">
+            <div><b>Curriculum</b><small>intent, sequencing, resources, employer relevance</small></div>
+            <div style="background:#225c88"><b>Assessment</b><small>valid tasks, clear criteria, fair judgement</small></div>
+            <div style="background:#087a7f"><b>Internal QA</b><small>sampling, observation, feedback, standardisation</small></div>
+            <div style="background:#25825a"><b>External QA</b><small>awarding body, EPAO, external examiner, inspection</small></div>
+            <div style="background:#b7791f"><b>Improvement</b><small>QIP actions, CPD, risk controls, impact review</small></div>
+          </div>
+        </div>
+
+        <h3>Assurance and Enhancement</h3>
+        <p>Assurance asks whether provision meets required standards. Enhancement asks how it can become better. The two should be inseparable. For example, IQA sampling may confirm that assessment decisions are valid, but a high-performing IQA will also notice that feedback lacks stretch, that learners are over-relying on written accounts, or that assessors need more support with professional discussion. The action is then not simply “sample complete”; it becomes targeted coaching, updated standardisation, revised assessment resources and a later impact review.</p>
+
+        <h3>Core Principles</h3>
+        <ul>
+          <li><strong>Validity:</strong> assessment measures the intended knowledge, skills, behaviours or learning outcomes.</li>
+          <li><strong>Reliability:</strong> different assessors would make consistent decisions using the same standards.</li>
+          <li><strong>Fairness:</strong> learners have equitable access to assessment and support, with reasonable adjustments where appropriate.</li>
+          <li><strong>Authenticity:</strong> evidence is the learner’s own work and, where workplace based, genuinely reflects their practice.</li>
+          <li><strong>Sufficiency:</strong> evidence is enough in range, depth and quality to justify the decision.</li>
+          <li><strong>Currency:</strong> evidence and staff occupational competence remain up to date.</li>
+          <li><strong>Transparency:</strong> policies, feedback, appeals and decisions are clear and auditable.</li>
+          <li><strong>Continuous improvement:</strong> QA findings lead to measurable actions and reviewed impact.</li>
+        </ul>
+      </section>
+
+      <section id="frameworks">
+        <h2>Frameworks, Regulation and Best Practice</h2>
+        <p>Quality assurance roles operate within overlapping frameworks. The exact requirements depend on the country, funding stream, qualification type, awarding organisation, university partner and learner cohort. The following framework map should be used as a starting point, not as a substitute for checking the live requirements attached to each programme.</p>
+
+        <table>
+          <thead>
+            <tr>
+              <th>Framework or requirement</th>
+              <th>Why it matters</th>
+              <th>Implementation in practice</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Ofsted FE and skills inspection toolkit and operating guides</td>
+              <td>Shapes external scrutiny of FE and skills provision in England, including leadership, curriculum, teaching, learner progress, safeguarding and outcomes.</td>
+              <td>Map self-assessment and quality improvement plans to the current toolkit, maintain evidence of curriculum impact, conduct learner and employer voice activity, and ensure leaders know strengths and risks.</td>
+            </tr>
+            <tr>
+              <td>Ofqual General Conditions of Recognition</td>
+              <td>Sets rules for regulated qualifications and awarding organisations, including governance, third-party centre arrangements, assessment delivery, reasonable adjustments, moderation, appeals and certificates.</td>
+              <td>Follow awarding organisation centre agreements, ensure malpractice and conflict of interest controls, maintain secure assessment records, and respond promptly to external quality assurance actions.</td>
+            </tr>
+            <tr>
+              <td>Awarding organisation centre guidance</td>
+              <td>Translates qualification rules into operational expectations for assessors, IQAs and centres.</td>
+              <td>Maintain qualification-specific IQA strategies, sampling plans, assessor matrices, assessment records, standardisation minutes, action logs and external verifier evidence.</td>
+            </tr>
+            <tr>
+              <td>Apprenticeship funding rules and apprenticeship standards</td>
+              <td>Govern eligibility, off-the-job training, reviews, evidence, progress, employer involvement and end-point assessment readiness.</td>
+              <td>Audit learner files, initial assessment, training plans, review records, progress data, employer contributions, gateway evidence and EPA preparation.</td>
+            </tr>
+            <tr>
+              <td>UK Quality Code for Higher Education 2024</td>
+              <td>Provides sector-agreed principles for securing academic standards and enhancing student learning experience.</td>
+              <td>Use in programme approval, annual monitoring, student engagement, academic governance, externality, assessment design and enhancement planning.</td>
+            </tr>
+            <tr>
+              <td>Office for Students conditions of registration</td>
+              <td>Regulate registered English HE providers, including quality, standards, student outcomes, governance, information and consumer protection.</td>
+              <td>Monitor continuation, completion and progression, assessment standards, student support, complaints, academic governance and regulatory reporting.</td>
+            </tr>
+            <tr>
+              <td>External examiner and academic board systems</td>
+              <td>Provide independent judgement on academic standards and consistency in HE.</td>
+              <td>Ensure timely assessment boards, responses to external examiner reports, module evaluation, moderation, second marking and action tracking.</td>
+            </tr>
+            <tr>
+              <td>Equality Act 2010</td>
+              <td>Requires education providers to prevent discrimination and make reasonable adjustments for disabled learners where applicable.</td>
+              <td>Embed inclusive assessment design, document reasonable adjustments, train staff and check that adjustments support access without weakening standards.</td>
+            </tr>
+            <tr>
+              <td>Safeguarding and Prevent duties</td>
+              <td>Protect learners from harm and require appropriate arrangements for safeguarding, online safety and radicalisation risks.</td>
+              <td>Train staff, record concerns, escalate appropriately, monitor vulnerable learners, and include safeguarding themes in learner reviews and observations.</td>
+            </tr>
+            <tr>
+              <td>UK GDPR and Data Protection Act 2018</td>
+              <td>Protect learner, staff and employer data, including assessment records and sensitive information.</td>
+              <td>Use secure platforms, role-based access, retention schedules, privacy notices and controlled sharing with awarding bodies or partners.</td>
+            </tr>
+            <tr>
+              <td>Education and Training Foundation professional standards</td>
+              <td>Offer a professional development reference point for teachers and trainers in the FE and skills sector.</td>
+              <td>Use for CPD planning, observation feedback, reflective practice and assessor-in-training development.</td>
+            </tr>
+            <tr>
+              <td>Quality improvement models: PDCA, self-assessment, QIP, root cause analysis, risk-based sampling</td>
+              <td>Convert quality monitoring into measurable improvement.</td>
+              <td>Plan actions, do interventions, check impact through evidence, act by embedding or revising practice.</td>
+            </tr>
+          </tbody>
+        </table>
+
+        <div class="diagram">
+          <h3>Diagram 2: PDCA Quality Improvement Cycle</h3>
+          <div class="cycle">
+            <div><b>Plan</b><br>Use data, learner voice, IQA findings and regulatory requirements to define priorities.</div>
+            <div><b>Do</b><br>Implement staff training, revised assessment resources, audits, support plans or curriculum changes.</div>
+            <div><b>Check</b><br>Review samples, observations, achievement, learner progress, complaints and external feedback.</div>
+            <div><b>Act</b><br>Standardise improved practice, update policies, address residual risk and set the next target.</div>
+          </div>
+        </div>
+      </section>
+
+      <section id="qa-manager">
+        <h2>Quality Assurance Manager</h2>
+        <p class="lead">The Quality Assurance Manager is the senior operational owner of the provider’s quality assurance architecture. Their purpose is to make sure that quality systems are coherent, compliant, evidence-rich and improvement focused.</p>
+
+        <h3>Purpose Within the Organisation</h3>
+        <p>The Quality Assurance Manager connects strategic objectives with the daily reality of delivery. They translate inspection, regulatory, awarding body, funding and academic expectations into policies, procedures, calendars, risk controls and staff behaviours. They do not simply collect evidence for external review; they lead a culture in which quality is owned by everyone and verified through robust internal systems.</p>
+
+        <h3>Key Responsibilities</h3>
+        <ul>
+          <li>Design and maintain the quality assurance strategy, including annual QA calendar, audit schedule, standardisation plan and reporting cycle.</li>
+          <li>Ensure that policies for assessment, IQA, malpractice, reasonable adjustment, appeals, complaints, safeguarding escalation, academic integrity and data protection are current and implemented.</li>
+          <li>Line manage or matrix manage Lead IQAs, IQAs, assessors and trainees, depending on organisational structure.</li>
+          <li>Monitor learner progress, achievement, retention, attendance, progression, employer feedback, student voice and completion data.</li>
+          <li>Chair or contribute to quality boards, curriculum reviews, self-assessment, quality improvement planning and risk meetings.</li>
+          <li>Oversee external quality assurance visits, awarding organisation approvals, inspection readiness and HE review activity.</li>
+          <li>Maintain a provider risk register and ensure high-risk programmes receive enhanced sampling, support or intervention.</li>
+          <li>Lead CPD and standardisation so that assessment decisions are consistent and staff remain occupationally current.</li>
+          <li>Report accurately to senior leaders and governors on quality strengths, risks, compliance and improvement impact.</li>
+        </ul>
+
+        <h3>Daily, Weekly, Monthly and Annual Duties</h3>
+        <table class="compact">
+          <thead><tr><th>Frequency</th><th>Duties</th></tr></thead>
+          <tbody>
+            <tr><td>Daily</td><td>Respond to quality risks, review urgent learner or assessment issues, support Lead IQAs, check time-sensitive awarding body communications, monitor complaints or malpractice alerts, and make decisions about escalation.</td></tr>
+            <tr><td>Weekly</td><td>Review progress dashboards, hold quality huddles, track overdue assessment or IQA actions, check sampling completion, support underperforming teams and update risk controls.</td></tr>
+            <tr><td>Monthly</td><td>Run quality meetings, review performance against KPIs, evaluate learner and employer feedback, audit selected learner files, monitor CPD completion, review observation outcomes and report to senior leaders.</td></tr>
+            <tr><td>Termly or quarterly</td><td>Lead deep dives, curriculum reviews, standardisation events, self-assessment evidence reviews, policy checks, external examiner or EQA action reviews and cross-programme moderation.</td></tr>
+            <tr><td>Annual</td><td>Produce or contribute to self-assessment reports, quality improvement plans, annual monitoring reports, awarding body reviews, staff capability planning, audit plans, risk strategy and board-level quality reporting.</td></tr>
+          </tbody>
+        </table>
+
+        <h3>Contribution to Quality Standards</h3>
+        <p>The manager improves standards by turning evidence into action. For example, if sampling shows that feedback is too descriptive and not developmental, the manager should not merely note the issue. They should commission assessor CPD, require revised feedback templates, ask Lead IQAs to resample feedback quality, monitor learner progress after the intervention, and report whether the action improved achievement or learner confidence.</p>
+
+        <h3>Collaboration With the Quality Team</h3>
+        <p>The Quality Assurance Manager works through others. They need Lead IQAs to interpret subject-specific risks, IQAs to identify assessor practice issues, assessors to provide accurate progress evidence, administrators to maintain auditable records, curriculum leaders to align learning and assessment, and senior leaders to remove organisational barriers. Collaboration should be structured through meetings, dashboards, shared action logs and professional dialogue rather than informal conversations alone.</p>
+
+        <h3>Leadership, Communication and Management Skills</h3>
+        <p>Effective managers combine precision with emotional intelligence. They must be able to challenge weak practice without creating a blame culture, explain complex compliance requirements in plain language, coach staff through improvement, use data critically, write clear reports, chair purposeful meetings and prioritise risk. They also need credibility: staff are more likely to engage with quality when the manager understands the realities of assessment workload, learner barriers and vocational delivery.</p>
+
+        <h3>Compliance and Regulatory Responsibilities</h3>
+        <p>The manager must ensure that the organisation can demonstrate compliance with awarding organisation rules, Ofqual-regulated qualification requirements where applicable, apprenticeship funding rules, Ofsted inspection expectations, safeguarding duties, Equality Act responsibilities, data protection requirements and HE quality systems where relevant. In HE, this includes alignment with validation agreements, external examiner systems, academic regulations, Office for Students conditions where applicable and the UK Quality Code.</p>
+
+        <h3>Tools, Frameworks and Techniques the QA Manager Should Use</h3>
+        <p>The Quality Assurance Manager should operate a complete quality management toolkit. The tools should be visible, shared and used consistently across departments so that quality is not dependent on individual habits.</p>
+        <div class="tool-stack">
+          <div><b>Strategic tools</b>Self-assessment report, quality improvement plan, annual QA calendar, risk register, governance dashboard, curriculum deep-dive schedule and policy review tracker.</div>
+          <div><b>Performance tools</b>RAG-rated programme scorecards, learner progress dashboards, attendance and retention reports, achievement analysis, EPA readiness tracker and HE continuation or completion reports.</div>
+          <div><b>Assurance tools</b>Internal audit templates, learner file audit, observation of practice, assessment sampling, standardisation records, external quality action log and compliance evidence map.</div>
+          <div><b>Improvement tools</b>PDCA, root cause analysis, 5 Whys, cause-and-effect diagrams, action-impact reviews, coaching logs, CPD plans and lessons-learned reviews.</div>
+        </div>
+        <p>A practical QA Manager RAG framework should define thresholds before data is reviewed. For example, <span class="rag rag-green">Green</span> may mean sampling is complete, learner progress is on track and no overdue actions exist; <span class="rag rag-amber">Amber</span> may mean minor delays, inconsistent feedback or emerging learner risk; <span class="rag rag-red">Red</span> should trigger intervention where assessment validity, learner progress, safeguarding, funding compliance or certification is at risk.</p>
+        <div class="diagram">
+          <h3>QA Manager Framework Diagram: Govern, Assure, Improve</h3>
+          <div class="flow">
+            <div><b>Set Standards</b><small>policies, awarding body rules, Ofsted, HE quality code</small></div>
+            <div style="background:#225c88"><b>Measure Risk</b><small>RAG dashboards, audits, learner data, complaints</small></div>
+            <div style="background:#087a7f"><b>Assure Practice</b><small>sampling, observations, deep dives, file audits</small></div>
+            <div style="background:#25825a"><b>Develop People</b><small>coaching, mentoring, CPD, standardisation</small></div>
+            <div style="background:#b7791f"><b>Prove Impact</b><small>QIP review, trend analysis, governance reports</small></div>
+          </div>
+        </div>
+        <h4>How the QA Manager Oversees the Evidence Trail</h4>
+        <p>The Quality Assurance Manager should make sure every qualification has a clear evidence trail from the learner’s assessment evidence to the learning outcome, assessment criterion, assessor judgement, IQA sample and final claim. This means the manager should not only ask whether portfolios are complete; they should test whether the organisation can prove why a learner was judged competent or achieved a learning outcome.</p>
+        <table class="compact">
+          <thead><tr><th>QA Manager control</th><th>What it checks</th><th>Evidence the manager should expect</th></tr></thead>
+          <tbody>
+            <tr><td>Evidence mapping audit</td><td>Whether every evidence item is mapped to the correct LO and AC.</td><td>Portfolio index, assessment plan, criteria mapping grid, assessor feedback and IQA confirmation.</td></tr>
+            <tr><td>Assessment-method review</td><td>Whether assessors use suitable methods, not just written accounts.</td><td>Observation records, Q&A, professional discussion, work products, witness testimony and reflective accounts.</td></tr>
+            <tr><td>Sampling coverage review</td><td>Whether IQA sampling covers assessors, learners, units, assessment methods and risk areas.</td><td>Sampling plan, sampling log, IQA reports, action tracker and resampling evidence.</td></tr>
+            <tr><td>Certification claim check</td><td>Whether claims are made only after valid assessment and IQA controls.</td><td>Final portfolio checklist, assessor declaration, IQA sign-off, claim report and EQA readiness evidence.</td></tr>
+          </tbody>
+        </table>
+        <div class="diagram">
+          <h3>Evidence Governance Diagram</h3>
+          <div class="flow">
+            <div><b>Evidence</b><small>collected by assessor using suitable methods</small></div>
+            <div style="background:#225c88"><b>Mapped</b><small>referenced to LO, AC, unit and date</small></div>
+            <div style="background:#087a7f"><b>Assessed</b><small>judgement recorded against criteria</small></div>
+            <div style="background:#25825a"><b>Sampled</b><small>IQA confirms validity and consistency</small></div>
+            <div style="background:#b7791f"><b>Claimed</b><small>certification or progression decision protected</small></div>
+          </div>
+        </div>
+
+        <h3>Common Challenges and Practical Responses</h3>
+        <ul>
+          <li><strong>Inconsistent assessor practice:</strong> use risk-based sampling, standardisation using real anonymised evidence, paired assessment and targeted coaching.</li>
+          <li><strong>Quality seen as bureaucracy:</strong> demonstrate how QA prevents learner disadvantage, protects staff and improves outcomes.</li>
+          <li><strong>Weak data quality:</strong> define data owners, audit source records and use one agreed version of performance dashboards.</li>
+          <li><strong>Late IQA sampling:</strong> build sampling into workload planning, monitor milestones and escalate repeatedly missed deadlines.</li>
+          <li><strong>External action plans not closed:</strong> assign owners, dates and evidence requirements, then review at every quality meeting until impact is proven.</li>
+          <li><strong>Rapid growth or new provision:</strong> apply enhanced risk controls, early sampling, staff competence checks and staged approval before full delivery.</li>
+        </ul>
+
+        <div class="scenario">
+          <strong>Workplace scenario:</strong> A provider launches a new health and social care qualification. The Quality Assurance Manager checks awarding body approval conditions, confirms assessor occupational competence, appoints a Lead IQA, requires early sampling within the first month, asks for a standardisation session on observation evidence, and schedules a learner file audit. When the first samples show weak links between workplace evidence and criteria, the manager commissions CPD and temporarily increases sampling from 20% to 50% until decisions stabilise.
+        </div>
+      </section>
+
+      <section id="lead-iqa">
+        <h2>Lead Internal Quality Assurer</h2>
+        <p class="lead">The Lead IQA provides subject or programme-level leadership for internal quality assurance. They coordinate IQA activity, support IQAs and assessors, maintain consistency and act as the bridge between strategic quality management and operational assessment practice.</p>
+
+        <h3>Purpose Within the Organisation</h3>
+        <p>The Lead IQA ensures that internal verification is not fragmented. In a multi-assessor programme, different assessors may interpret criteria differently, use different evidence expectations or provide variable feedback. The Lead IQA reduces this variation by setting clear sampling approaches, leading standardisation, reviewing trends and ensuring that IQA actions are completed.</p>
+
+        <h3>Key Responsibilities</h3>
+        <ul>
+          <li>Create and maintain the programme IQA strategy and risk-based sampling plan.</li>
+          <li>Allocate IQA sampling to suitably competent IQAs and avoid conflicts of interest.</li>
+          <li>Review assessment plans, assessment briefs, learner portfolios and assessor feedback.</li>
+          <li>Lead standardisation meetings using real evidence and clear decision records.</li>
+          <li>Coach assessors and IQAs, especially where assessment decisions are inconsistent.</li>
+          <li>Monitor completion of IQA actions and escalate unresolved quality risks.</li>
+          <li>Prepare evidence for external quality assurance visits, external examiners or programme reviews.</li>
+          <li>Analyse patterns in learner achievement, resubmissions, assessor workload and feedback quality.</li>
+        </ul>
+
+        <h3>Operational Duties</h3>
+        <table class="compact">
+          <thead><tr><th>Frequency</th><th>Duties</th></tr></thead>
+          <tbody>
+            <tr><td>Daily</td><td>Answer assessor queries, review urgent assessment issues, approve assessment plans where required and check emerging risks.</td></tr>
+            <tr><td>Weekly</td><td>Monitor sampling progress, review new claims, check action completion, meet assessors or IQAs needing support and review learner progress exceptions.</td></tr>
+            <tr><td>Monthly</td><td>Lead standardisation, update the sampling plan, report trends to the QA Manager, analyse assessor performance and review complaints or appeals linked to assessment.</td></tr>
+            <tr><td>Annual</td><td>Evaluate the IQA strategy, contribute to self-assessment, update staff competence matrices, prepare for EQA or external examiner review and identify CPD priorities.</td></tr>
+          </tbody>
+        </table>
+
+        <h3>Maintaining and Improving Standards</h3>
+        <p>The Lead IQA improves quality by making assessment expectations visible. They should provide model answers where appropriate, exemplar evidence, judgement notes, standardisation outcomes and clear rules about what counts as sufficient evidence. Their role is particularly important when qualifications change, new assessors join, employers provide variable witness testimony or assessment criteria are open to interpretation.</p>
+
+        <h3>Collaboration</h3>
+        <p>Lead IQAs collaborate upward with the Quality Assurance Manager, sideways with other Lead IQAs, and downward with IQAs and assessors. They should also work with curriculum leads, employers, learning support staff and administrators. In HE-linked vocational provision, they may need to coordinate with module leaders, external examiners or university link tutors.</p>
+
+        <h3>Skills Required</h3>
+        <p>A Lead IQA requires technical assessment expertise, occupational credibility, coaching skill, analytical thinking and calm authority. They must communicate standards clearly, facilitate professional disagreement, record decisions accurately and manage quality conversations that may be uncomfortable. The best Lead IQAs are both guardians of standards and developers of people.</p>
+
+        <h3>Tools, Frameworks and Techniques for Lead IQAs</h3>
+        <p>The Lead IQA should use a programme-level toolkit that converts the organisation’s QA strategy into everyday assessment control. Core tools include a risk-based sampling plan, assessor allocation matrix, standardisation planner, qualification evidence guide, IQA action tracker, assessor performance profile, EQA preparation checklist and programme RAG dashboard.</p>
+        <p>The Lead IQA should apply the <strong>CAMERA framework</strong> when reviewing assessment and IQA evidence: <strong>C</strong>urrency of evidence and staff competence; <strong>A</strong>uthenticity of learner work; <strong>M</strong>ethod suitability; <strong>E</strong>quality and fairness; <strong>R</strong>eliability of assessor judgement; and <strong>A</strong>uditability of records. CAMERA works well alongside VARCS because it helps the Lead IQA look beyond a single assessment decision and consider the whole assessment system.</p>
+        <div class="framework-diagram" aria-label="CAMERA framework diagram">
+          <div><b>C</b>Currency<br><small>evidence and staff competence are up to date</small></div>
+          <div><b>A</b>Authenticity<br><small>work belongs to the learner</small></div>
+          <div><b>M</b>Method<br><small>assessment method fits the criterion</small></div>
+          <div><b>E</b>Equality<br><small>fair access and reasonable adjustment</small></div>
+          <div><b>R</b>Reliability<br><small>assessors judge consistently</small></div>
+          <div><b>A</b>Auditability<br><small>records show the decision trail</small></div>
+        </div>
+        <p>In practice, a Lead IQA applies CAMERA during programme reviews, standardisation, new assessor support and external quality preparation. For example, if assessor decisions are valid but records are weak, the issue is not necessarily assessment competence; it may be auditability. If evidence is rich but all from one method, the issue may be method suitability or sufficiency. CAMERA helps the Lead IQA diagnose the exact quality weakness.</p>
+        <div class="mini-diagram">
+          <div><b>Calibrate</b><br>Use standardisation to agree what pass, referral, distinction or competent evidence looks like.</div>
+          <div><b>Control</b><br>Apply sampling, observation, countersigning and action tracking where risk is higher.</div>
+          <div><b>Coach</b><br>Use IQA findings to develop assessors, not only to approve or reject claims.</div>
+        </div>
+        <h4>How the Lead IQA Should Control Evidence Collection and Mapping</h4>
+        <p>The Lead IQA should set the programme rules for evidence collection. This includes agreeing which evidence methods are suitable for each unit, what minimum evidence is expected, how assessors should reference LO and AC, and when IQA sampling must happen. The Lead IQA should produce an evidence guide so assessors do not invent different standards across the same qualification.</p>
+        <table class="compact">
+          <thead><tr><th>Lead IQA tool</th><th>How it supports the evidence trail</th><th>Practical example</th></tr></thead>
+          <tbody>
+            <tr><td>Qualification evidence guide</td><td>Explains acceptable evidence types for each LO and AC.</td><td>AC 2.1 must include workplace observation or work product, not only a learner statement.</td></tr>
+            <tr><td>Assessment method matrix</td><td>Shows which assessment methods are best suited to knowledge, skills and behaviours.</td><td>Knowledge criteria may use Q&A; practical skills require observation or product evidence.</td></tr>
+            <tr><td>Sampling coverage tracker</td><td>Ensures all assessors, units, learners, sites and evidence methods are sampled over time.</td><td>Sampling includes one observation record, one professional discussion and one portfolio claim from each assessor.</td></tr>
+            <tr><td>Standardisation bank</td><td>Stores agreed examples of strong, weak and borderline evidence.</td><td>Assessors compare new learner evidence with agreed anonymised samples.</td></tr>
+          </tbody>
+        </table>
+        <div class="diagram">
+          <h3>Lead IQA Evidence Control Diagram</h3>
+          <div class="cycle">
+            <div><b>Define</b><br>Agree evidence expectations by unit, LO and AC.</div>
+            <div><b>Train</b><br>Standardise assessors using real examples and evidence maps.</div>
+            <div><b>Monitor</b><br>Track sampling coverage, assessor actions and evidence quality.</div>
+            <div><b>Adjust</b><br>Update the evidence guide after EQA, appeals, sampling or standardisation findings.</div>
+          </div>
+        </div>
+
+        <h3>Challenges and Responses</h3>
+        <ul>
+          <li><strong>Assessors resist IQA feedback:</strong> use evidence-based examples, link feedback to criteria and agree specific actions with dates.</li>
+          <li><strong>Sampling becomes tick-box:</strong> include interim, summative, thematic, vertical and horizontal sampling, not just final claim checks.</li>
+          <li><strong>New IQAs lack confidence:</strong> use shadowing, paired sampling and calibration until decisions align.</li>
+          <li><strong>Standards drift over time:</strong> revisit qualification specifications, EQA feedback and anonymised borderline cases regularly.</li>
+        </ul>
+
+        <div class="scenario">
+          <strong>Workplace scenario:</strong> Three assessors mark practical cookery units. One accepts photographs with brief learner statements; another requires observation; a third requests repeated witness testimony. The Lead IQA runs a standardisation session using the unit criteria, agrees when each evidence type is acceptable, creates an evidence sufficiency guide and samples the next five decisions from each assessor. Consistency improves and learners receive clearer guidance.
+        </div>
+      </section>
+
+      <section id="iqa">
+        <h2>Internal Quality Assurer</h2>
+        <p class="lead">The IQA verifies the quality and consistency of assessment decisions. Their work protects learners, assessors, the organisation and the credibility of the qualification.</p>
+
+        <h3>Purpose Within the Organisation</h3>
+        <p>The IQA provides independent internal scrutiny. They check that assessment decisions are valid, reliable, fair, authentic, sufficient and recorded correctly. They also provide developmental feedback to assessors and identify patterns that may require wider action. IQA is not simply “checking portfolios”; it is professional judgement about the health of assessment practice.</p>
+
+        <h3>Key Responsibilities</h3>
+        <ul>
+          <li>Sample assessment decisions according to the risk-based IQA plan.</li>
+          <li>Check assessment planning, evidence quality, assessor feedback and learner understanding.</li>
+          <li>Observe assessor practice, including workplace observation, professional discussion and feedback delivery.</li>
+          <li>Record clear IQA findings, actions, deadlines and outcomes.</li>
+          <li>Support assessors to improve through coaching and professional dialogue.</li>
+          <li>Identify malpractice, plagiarism, conflicts of interest, unsafe practice or data concerns and escalate them.</li>
+          <li>Participate in standardisation and maintain CPD and occupational currency.</li>
+        </ul>
+
+        <h3>Sampling Practice</h3>
+        <p>Good IQA sampling is risk based. It considers new assessors, new qualifications, high-volume cohorts, previous EQA actions, learner complaints, late progress, low achievement, high achievement that appears unusual, new assessment methods, remote assessment and vulnerable learner groups. Sampling should include interim checks while there is still time to improve the learner experience, not only final certification checks after damage has already occurred.</p>
+
+        <div class="diagram">
+          <h3>Diagram 3: Risk-Based IQA Sampling Pyramid</h3>
+          <svg viewBox="0 0 760 360" width="100%" height="auto" role="img">
+            <title>Risk-based IQA sampling pyramid</title>
+            <polygon points="380,25 710,330 50,330" fill="#f7faff" stroke="#d8deea" stroke-width="3"/>
+            <polygon points="380,25 505,140 255,140" fill="#fde7e9" stroke="#fff"/>
+            <polygon points="255,140 505,140 610,236 150,236" fill="#fff4d8" stroke="#fff"/>
+            <polygon points="150,236 610,236 710,330 50,330" fill="#e8f6ef" stroke="#fff"/>
+            <text x="380" y="91" text-anchor="middle" font-size="23" font-weight="700" fill="#8d2633">High risk</text>
+            <text x="380" y="121" text-anchor="middle" font-size="15" fill="#5f3440">new assessors, new awards, EQA actions, complaints</text>
+            <text x="380" y="185" text-anchor="middle" font-size="23" font-weight="700" fill="#9a651c">Medium risk</text>
+            <text x="380" y="214" text-anchor="middle" font-size="15" fill="#62512b">changed criteria, mixed outcomes, remote assessment</text>
+            <text x="380" y="282" text-anchor="middle" font-size="23" font-weight="700" fill="#216b4b">Lower risk</text>
+            <text x="380" y="311" text-anchor="middle" font-size="15" fill="#385849">stable assessor, strong EQA history, consistent outcomes</text>
+          </svg>
+        </div>
+
+        <h3>Duties by Frequency</h3>
+        <table class="compact">
+          <thead><tr><th>Frequency</th><th>Duties</th></tr></thead>
+          <tbody>
+            <tr><td>Daily or delivery days</td><td>Review assigned samples, answer assessment queries, check action responses and record IQA feedback.</td></tr>
+            <tr><td>Weekly</td><td>Update sampling logs, meet assessors, monitor learners at risk, check pending claims and identify emerging themes.</td></tr>
+            <tr><td>Monthly</td><td>Attend standardisation, complete observations, report trends to the Lead IQA and review CPD needs.</td></tr>
+            <tr><td>Annual</td><td>Contribute to programme review, evaluate sampling effectiveness, update occupational competence evidence and support EQA preparation.</td></tr>
+          </tbody>
+        </table>
+
+        <h3>Challenges and Responses</h3>
+        <ul>
+          <li><strong>Limited evidence quality:</strong> give precise feedback linked to criteria and model what stronger evidence would look like.</li>
+          <li><strong>Overfamiliarity with assessors:</strong> use documented criteria, rotate IQAs where possible and escalate conflicts of interest.</li>
+          <li><strong>Remote or digital portfolios:</strong> check authenticity, metadata where appropriate, version control and secure platform use.</li>
+          <li><strong>Pressure to sign off weak claims:</strong> protect the standard; explain the risk to learners, the centre and the awarding organisation.</li>
+        </ul>
+
+        <h3>Tools, Frameworks and Techniques for IQAs</h3>
+        <p>IQAs should use a structured judgement framework so that sampling is consistent and defensible. The main framework is <strong>VARCS</strong>: valid, authentic, reliable, current and sufficient. This should be extended with the CAMERA prompts, equality checks, malpractice checks, feedback-quality checks and audit-trail checks.</p>
+        <div class="framework-diagram" aria-label="IQA VARCS framework diagram" style="grid-template-columns: repeat(5, 1fr);">
+          <div><b>V</b>Valid<br><small>evidence matches the criteria</small></div>
+          <div><b>A</b>Authentic<br><small>evidence is the learner's own</small></div>
+          <div><b>R</b>Reliable<br><small>decision would be consistent</small></div>
+          <div><b>C</b>Current<br><small>evidence reflects recent competence</small></div>
+          <div><b>S</b>Sufficient<br><small>enough depth, range and quality</small></div>
+        </div>
+        <table class="compact">
+          <thead><tr><th>IQA tool</th><th>Purpose</th><th>Practical use</th></tr></thead>
+          <tbody>
+            <tr><td>CAMERA checklist</td><td>Broad review of evidence quality and assessment process.</td><td>Use during interim and final sampling to check currency, authenticity, method, equality, reliability and auditability.</td></tr>
+            <tr><td>VARCS evidence grid</td><td>Confirms whether evidence can support the assessment decision.</td><td>Annotate each sampled criterion with the reason the decision is confirmed or not confirmed.</td></tr>
+            <tr><td>RAG sampling profile</td><td>Prioritises sampling by risk.</td><td>Red for new assessors, EQA actions, appeals or weak records; amber for changed units or mixed performance; green for stable delivery.</td></tr>
+            <tr><td>Assessor observation form</td><td>Checks assessment practice directly.</td><td>Observe planning, questioning, professional discussion, workplace observation and feedback delivery.</td></tr>
+            <tr><td>Action and impact log</td><td>Prevents IQA feedback being ignored.</td><td>Record action, owner, deadline, completion evidence and later impact.</td></tr>
+          </tbody>
+        </table>
+        <p>Useful IQA techniques include triangulation, blind double sampling, paired sampling, horizontal sampling across one unit, vertical sampling across a full learner journey, thematic sampling of feedback or questioning, and focused resampling after an action has been completed.</p>
+        <h4>How the IQA Should Sample Assessed Work</h4>
+        <p>The IQA should sample both the final decision and the process that led to it. A portfolio may look complete, but the IQA must check whether the evidence is mapped correctly, whether the assessor feedback explains the judgement, whether learner evidence is authentic, and whether the assessment method was appropriate for the LO and AC. Sampling should be planned, risk based and clearly recorded.</p>
+        <table class="compact">
+          <thead><tr><th>Sampling method</th><th>What it checks</th><th>When to use it</th></tr></thead>
+          <tbody>
+            <tr><td>Interim sampling</td><td>Assessment quality while the learner is still in progress.</td><td>Use early so weak practice can be corrected before final claim.</td></tr>
+            <tr><td>Summative sampling</td><td>Final assessment decisions before certification or completion.</td><td>Use before claim, gateway or award board sign-off.</td></tr>
+            <tr><td>Vertical sampling</td><td>One learner journey from initial assessment to final judgement.</td><td>Use to test the full evidence trail and learner progress.</td></tr>
+            <tr><td>Horizontal sampling</td><td>One unit, LO, AC or assessment method across several learners.</td><td>Use when a criterion is difficult or assessors are inconsistent.</td></tr>
+            <tr><td>Thematic sampling</td><td>A specific quality theme such as feedback, Q&A, observation or witness testimony.</td><td>Use after complaints, EQA actions, standardisation findings or data concerns.</td></tr>
+            <tr><td>Risk-based sampling</td><td>Higher sample for high-risk assessors, learners, sites or qualifications.</td><td>Use for new assessors, new programmes, late learners or previous actions.</td></tr>
+            <tr><td>Blind or second sampling</td><td>Whether another IQA reaches the same conclusion independently.</td><td>Use for borderline decisions, appeals, new IQAs or high-stakes claims.</td></tr>
+            <tr><td>Resampling</td><td>Whether previous IQA actions have been completed and improved practice.</td><td>Use after an assessor has corrected evidence or feedback.</td></tr>
+          </tbody>
+        </table>
+        <div class="diagram">
+          <h3>IQA Sampling Trail Diagram</h3>
+          <div class="flow">
+            <div><b>Select Sample</b><small>risk, unit, assessor, learner and method</small></div>
+            <div style="background:#225c88"><b>Check Mapping</b><small>evidence references LO and AC accurately</small></div>
+            <div style="background:#087a7f"><b>Verify Judgement</b><small>VARCS, CAMERA and qualification rules</small></div>
+            <div style="background:#25825a"><b>Record Action</b><small>clear feedback, owner and deadline</small></div>
+            <div style="background:#b7791f"><b>Resample</b><small>confirm action and impact before closure</small></div>
+          </div>
+        </div>
+
+        <div class="scenario">
+          <strong>Workplace scenario:</strong> An IQA samples a business administration portfolio and finds that the assessor has accepted a learner’s reflective account for several practical criteria without workplace corroboration. The IQA records the decision as not yet confirmed, explains why the evidence is insufficient, asks the assessor to obtain a work product and witness testimony, and arranges a coaching conversation on triangulating evidence.
+        </div>
+      </section>
+
+      <section id="assessor">
+        <h2>Assessor</h2>
+        <p class="lead">The Assessor is responsible for planning assessment, supporting learners to generate appropriate evidence and making assessment decisions against agreed standards.</p>
+
+        <h3>Purpose Within the Organisation</h3>
+        <p>Assessors are the point at which standards meet the learner. They interpret qualification criteria, plan fair assessment opportunities, judge evidence, provide feedback and support progress. Their decisions directly affect learner achievement and the reputation of the provider. In apprenticeships and vocational programmes, they also connect learning with workplace competence and employer expectations.</p>
+
+        <h3>Key Responsibilities</h3>
+        <ul>
+          <li>Conduct or contribute to initial assessment and identify prior learning, support needs and starting points.</li>
+          <li>Plan assessment with learners and employers, ensuring clear targets and realistic timescales.</li>
+          <li>Collect and judge evidence against criteria, standards or learning outcomes.</li>
+          <li>Use appropriate assessment methods, including observation, questioning, professional discussion, projects, work products and witness testimony.</li>
+          <li>Provide timely, constructive and developmental feedback.</li>
+          <li>Maintain accurate records on the e-portfolio, learner management system or HE assessment system.</li>
+          <li>Promote equality, safeguarding, Prevent awareness, health and safety, British values where relevant, academic integrity and professional conduct.</li>
+          <li>Engage with IQA feedback, standardisation and CPD.</li>
+        </ul>
+
+        <h3>Duties by Frequency</h3>
+        <table class="compact">
+          <thead><tr><th>Frequency</th><th>Duties</th></tr></thead>
+          <tbody>
+            <tr><td>Daily</td><td>Meet learners, assess evidence, provide feedback, update records, communicate with employers and address learner barriers.</td></tr>
+            <tr><td>Weekly</td><td>Review caseload progress, plan visits or tutorials, chase outstanding evidence, update risk notes and prepare assessment activities.</td></tr>
+            <tr><td>Monthly</td><td>Complete progress reviews, analyse learner targets, attend team meetings, respond to IQA actions and contribute to standardisation.</td></tr>
+            <tr><td>Annual</td><td>Refresh occupational competence, complete mandatory CPD, contribute to course review and update knowledge of qualification specifications.</td></tr>
+          </tbody>
+        </table>
+
+        <h3>Maintaining Standards</h3>
+        <p>Assessors maintain quality by making decisions only when evidence meets the criteria. They must avoid both over-assessment and under-assessment. Over-assessment burdens learners with unnecessary evidence; under-assessment risks invalid certification. The assessor should use triangulation: combining observation, learner explanation, work product and third-party testimony to build a convincing picture of competence.</p>
+
+        <h3>Collaboration</h3>
+        <p>Assessors collaborate with IQAs, Lead IQAs, employers, tutors, learning support teams, safeguarding leads and administrators. They should treat IQA feedback as professional development, not personal criticism. In HE contexts, assessors may also work within module teams and marking moderation arrangements.</p>
+
+        <h3>Skills Required</h3>
+        <p>Assessors need subject expertise, assessment literacy, coaching ability, accurate written communication, digital competence, time management, professional curiosity and ethical judgement. They must be able to explain standards to learners in accessible language while still preserving the rigour of those standards.</p>
+
+        <h3>Challenges and Responses</h3>
+        <ul>
+          <li><strong>Learners submit weak evidence:</strong> improve assessment planning and use formative feedback before summative judgement.</li>
+          <li><strong>Employer availability is limited:</strong> agree review dates early, use concise employer guidance and offer flexible communication routes.</li>
+          <li><strong>Large caseloads:</strong> prioritise at-risk learners, use dashboard alerts and keep records current after each interaction.</li>
+          <li><strong>Borderline decisions:</strong> consult the IQA, use qualification guidance and record the rationale carefully.</li>
+          <li><strong>Academic misconduct or plagiarism:</strong> follow policy, gather evidence, avoid informal penalties and escalate appropriately.</li>
+        </ul>
+
+        <h3>Tools, Frameworks and Techniques for Assessors</h3>
+        <p>Assessors should use tools that make assessment transparent to learners and auditable for the organisation. These include assessment plans, criteria mapping sheets, evidence matrices, observation templates, professional discussion plans, questioning banks, feedback templates, learner progress trackers and employer review forms. The assessment judgement should be built around VARCS, while learner support should use SMART targets and regular progress review.</p>
+        <h4>How Assessors Should Collect Evidence</h4>
+        <p>Assessors should choose evidence methods because they fit the learning outcome and assessment criterion, not because they are convenient. Practical competence should normally be evidenced through observation, work products and professional discussion. Knowledge can be evidenced through questioning, assignments, projects, reflective accounts or discussion. Behaviour and workplace performance may require observation, employer testimony, records of real work and review over time.</p>
+        <table class="compact">
+          <thead><tr><th>Evidence method</th><th>Best used for</th><th>How to reference to LO/AC</th><th>Quality checks</th></tr></thead>
+          <tbody>
+            <tr><td>Direct observation</td><td>Practical skills, workplace performance, professional behaviours and safe practice.</td><td>Observation record should list unit, LO, AC, date, setting, activity observed and assessor judgement.</td><td>Must describe what was actually seen, not just say “competent”.</td></tr>
+            <tr><td>Question and answer</td><td>Underpinning knowledge, decision making, gaps from observation and confirmation of understanding.</td><td>Each question should be linked to specific AC; answers should be recorded or summarised clearly.</td><td>Questions should be open enough to test understanding, not leading.</td></tr>
+            <tr><td>Professional discussion</td><td>Complex knowledge, reflective decision making, leadership, behaviours and applied practice.</td><td>Discussion plan should map prompts to LO/AC; transcript or assessor notes should show judgement.</td><td>Should be structured, recorded where appropriate and authenticated.</td></tr>
+            <tr><td>Portfolio of evidence</td><td>A collected record of multiple evidence types across a qualification or programme.</td><td>Portfolio index should map every item to unit, LO, AC, date, evidence type and assessor decision.</td><td>Should avoid duplication and show a clear audit trail.</td></tr>
+            <tr><td>Work products</td><td>Documents, reports, plans, emails, designs, care plans, risk assessments, records or artefacts produced at work.</td><td>Annotate the product to show which parts meet which AC.</td><td>Check confidentiality, authenticity and relevance.</td></tr>
+            <tr><td>Witness testimony</td><td>Workplace evidence observed by supervisors, employers or competent witnesses.</td><td>Witness form should identify the activity, date, role of witness and AC covered.</td><td>Witnesses should be credible and testimony should be specific.</td></tr>
+            <tr><td>Reflective account</td><td>Learner explanation of practice, learning from experience and professional development.</td><td>Learner should label sections against LO/AC and explain real examples.</td><td>Usually needs supporting evidence; reflection alone may not prove competence.</td></tr>
+            <tr><td>Assignment or written task</td><td>Knowledge criteria, research, analysis, evaluation and theory application.</td><td>Assessment brief and feedback should identify which AC are covered.</td><td>Check plagiarism, referencing, level and authenticity.</td></tr>
+            <tr><td>Project or case study</td><td>Integrated skills, planning, problem solving, evaluation and applied knowledge.</td><td>Project criteria map should show where each LO/AC is evidenced.</td><td>Check learner contribution, scope and sufficiency.</td></tr>
+            <tr><td>Audio, video or photographic evidence</td><td>Practical tasks, presentations, demonstrations and remote assessment evidence.</td><td>Evidence log should identify date, context, consent, LO/AC and assessor annotation.</td><td>Check consent, security, authenticity and whether the image or recording is sufficient.</td></tr>
+            <tr><td>Simulation</td><td>Rare or unsafe situations where real workplace evidence is not possible and rules allow simulation.</td><td>Record the simulated conditions, criteria covered and why simulation was permitted.</td><td>Must follow awarding organisation rules and not reduce standards.</td></tr>
+            <tr><td>Recognition of prior learning</td><td>Existing skills or knowledge already achieved before the programme.</td><td>Map prior evidence to current LO/AC and record assessor judgement.</td><td>Evidence must still be valid, authentic, current and sufficient.</td></tr>
+          </tbody>
+        </table>
+        <div class="diagram">
+          <h3>Assessor Evidence Collection Diagram</h3>
+          <div class="flow">
+            <div><b>Plan</b><small>choose method from LO and AC</small></div>
+            <div style="background:#225c88"><b>Collect</b><small>observation, Q&A, portfolio, product, witness</small></div>
+            <div style="background:#087a7f"><b>Map</b><small>reference each item to unit, LO and AC</small></div>
+            <div style="background:#25825a"><b>Judge</b><small>apply VARCS and qualification rules</small></div>
+            <div style="background:#b7791f"><b>Feedback</b><small>confirm met criteria and set next actions</small></div>
+          </div>
+        </div>
+        <h4>How to Reference Evidence to LO and AC</h4>
+        <p>Every evidence item should have a unique reference code so the assessor, learner, IQA and external verifier can follow the evidence trail. A simple format is: learner initials, unit number, evidence number and date. For example, <strong>MU-U3-EV04-2026-06-30</strong> could identify the fourth evidence item for Unit 3. The portfolio index should then show which learning outcomes and assessment criteria this item covers.</p>
+        <table class="compact">
+          <thead><tr><th>Evidence reference</th><th>Evidence type</th><th>LO/AC covered</th><th>Assessor decision trail</th></tr></thead>
+          <tbody>
+            <tr><td>MU-U2-EV01</td><td>Direct observation</td><td>LO2, AC 2.1, 2.2, 2.3</td><td>Observation notes describe task, setting, performance and why each AC was met.</td></tr>
+            <tr><td>MU-U2-EV02</td><td>Q&A</td><td>LO1, AC 1.1, 1.2</td><td>Questions and learner answers confirm knowledge not visible during observation.</td></tr>
+            <tr><td>MU-U2-EV03</td><td>Work product</td><td>LO3, AC 3.1</td><td>Document is annotated to show the exact section meeting the criterion.</td></tr>
+            <tr><td>MU-U2-EV04</td><td>Witness testimony</td><td>LO2, AC 2.4</td><td>Supervisor confirms repeated competent practice with dates and role details.</td></tr>
+          </tbody>
+        </table>
+        <h4>VARCS for Assessors: What It Means and How to Apply It</h4>
+        <p><strong>VARCS</strong> is one of the most important practical frameworks for assessment. It helps an assessor decide whether evidence is strong enough to support a judgement. Assessors should use VARCS before signing off evidence, when giving feedback, when preparing learners for final assessment and when responding to IQA actions.</p>
+        <div class="framework-diagram" aria-label="Assessor VARCS framework diagram" style="grid-template-columns: repeat(5, 1fr);">
+          <div><b>V</b>Valid<br><small>Does this evidence prove the actual criterion or outcome?</small></div>
+          <div><b>A</b>Authentic<br><small>Can I confirm this is the learner's own work or practice?</small></div>
+          <div><b>R</b>Reliable<br><small>Would another assessor reach the same decision?</small></div>
+          <div><b>C</b>Current<br><small>Is the evidence recent enough for the qualification or role?</small></div>
+          <div><b>S</b>Sufficient<br><small>Is there enough evidence in range and depth?</small></div>
+        </div>
+        <table class="compact">
+          <thead><tr><th>VARCS element</th><th>Assessor question</th><th>Example of application</th></tr></thead>
+          <tbody>
+            <tr><td>Valid</td><td>Does the evidence match the exact criterion?</td><td>A learner writes about customer service, but the criterion requires handling a complaint. The assessor asks for complaint-specific evidence.</td></tr>
+            <tr><td>Authentic</td><td>How do I know the learner produced it?</td><td>The assessor combines a work product with questioning and employer confirmation.</td></tr>
+            <tr><td>Reliable</td><td>Would the decision be consistent if sampled?</td><td>The assessor uses the standardisation guide and records why the evidence meets the criterion.</td></tr>
+            <tr><td>Current</td><td>Is the evidence recent and still relevant?</td><td>Old workplace evidence is supported by a new observation or professional discussion.</td></tr>
+            <tr><td>Sufficient</td><td>Is there enough evidence to prove competence?</td><td>One witness statement is not enough, so the assessor adds observation, questioning and work products.</td></tr>
+          </tbody>
+        </table>
+        <div class="mini-diagram">
+          <div><b>Plan</b><br>Agree criteria, method, date, support needs, employer role and evidence expected.</div>
+          <div><b>Assess</b><br>Use observation, questioning, products, professional discussion and witness evidence.</div>
+          <div><b>Feedback</b><br>Give criterion-linked strengths, clear gaps, SMART targets and next assessment steps.</div>
+        </div>
+        <p>For apprenticeships, assessors should also use a training plan, off-the-job training log, progress review template, gateway checklist and EPA readiness tracker. For HE, they should follow marking criteria, moderation arrangements, academic integrity procedures, feedback turnaround rules and assessment board requirements.</p>
+
+        <div class="scenario">
+          <strong>Workplace scenario:</strong> A learner submits a customer service witness statement that praises their attitude but does not describe the required criteria. The assessor thanks the employer, explains the evidence gap, arranges a workplace observation and asks targeted questions afterwards. The final decision is based on observed practice, learner explanation and a revised witness statement that refers to specific duties.
+        </div>
+      </section>
+
+      <section id="assessor-training">
+        <h2>Assessor in Training</h2>
+        <p class="lead">An Assessor in Training is developing the competence to assess independently. They should work under supervision until their decisions are demonstrably valid, consistent and compliant.</p>
+
+        <h3>Purpose Within the Organisation</h3>
+        <p>The trainee assessor role supports workforce development and succession planning. It allows occupational experts to become assessment professionals without placing learners or standards at risk. A trainee may hold strong industry knowledge but still need to develop assessment planning, evidence judgement, feedback writing, regulatory awareness and record keeping.</p>
+
+        <h3>Responsibilities and Boundaries</h3>
+        <ul>
+          <li>Work within a documented development plan and supervision agreement.</li>
+          <li>Shadow qualified assessors and gradually take on assessment tasks.</li>
+          <li>Complete assessor qualification requirements where required by the awarding organisation or provider.</li>
+          <li>Prepare assessment plans and draft feedback for review.</li>
+          <li>Participate in standardisation, CPD and reflective practice.</li>
+          <li>Maintain evidence of competence, including observation records, reflective accounts, witness testimony and IQA feedback.</li>
+          <li>Never make unsupported final assessment decisions unless permitted by policy and countersigned where required.</li>
+        </ul>
+
+        <h3>Development Journey</h3>
+        <table class="compact">
+          <thead><tr><th>Stage</th><th>Expected development</th><th>Quality control</th></tr></thead>
+          <tbody>
+            <tr><td>Induction</td><td>Understands policies, qualification structure, safeguarding, data protection, assessment principles and learner systems.</td><td>Checklist signed by mentor and Lead IQA.</td></tr>
+            <tr><td>Shadowing</td><td>Observes assessment planning, learner reviews, workplace observations and feedback.</td><td>Reflective log and mentor discussion.</td></tr>
+            <tr><td>Supported practice</td><td>Conducts parts of assessment under observation and drafts records.</td><td>Qualified assessor reviews and countersigns.</td></tr>
+            <tr><td>Developing independence</td><td>Manages selected learners or units with close sampling.</td><td>Enhanced IQA sampling and observation.</td></tr>
+            <tr><td>Competence confirmation</td><td>Demonstrates consistent decisions, professional feedback and compliance.</td><td>Formal sign-off by Lead IQA or QA Manager.</td></tr>
+          </tbody>
+        </table>
+
+        <h3>Challenges and Responses</h3>
+        <ul>
+          <li><strong>Strong industry expert but weak assessment writing:</strong> provide feedback exemplars and require draft feedback review.</li>
+          <li><strong>Over-supporting learners:</strong> clarify the boundary between coaching and giving answers.</li>
+          <li><strong>Lack of confidence in judgement:</strong> use paired assessment, borderline examples and structured standardisation.</li>
+          <li><strong>Incomplete records:</strong> train on the e-portfolio system and audit early rather than waiting for certification.</li>
+        </ul>
+
+        <h3>Tools, Frameworks and Techniques for Assessors in Training</h3>
+        <p>Assessors in Training should use a development portfolio. This should include an induction checklist, shadowing log, reflective journal, mentor meeting record, observed practice form, draft assessment decision records, CPD log, qualification evidence and a countersigning tracker. The development framework should move from observation to supported practice, then to supervised independence and final sign-off.</p>
+        <p>Useful techniques include paired assessment, micro-standardisation, reflective supervision, feedback rehearsal, evidence annotation practice and comparison of trainee judgements with qualified assessor and IQA judgements. A trainee should also use a personal RAG profile: <span class="rag rag-red">Red</span> for units or methods they cannot yet assess independently, <span class="rag rag-amber">Amber</span> for areas requiring countersigning, and <span class="rag rag-green">Green</span> for areas formally signed off.</p>
+        <div class="diagram">
+          <h3>Assessor in Training Framework Diagram: Supported Competence Pathway</h3>
+          <div class="flow">
+            <div><b>Induct</b><small>policies, qualification, safeguarding, systems</small></div>
+            <div style="background:#225c88"><b>Shadow</b><small>observe planning, assessment and feedback</small></div>
+            <div style="background:#087a7f"><b>Practise</b><small>draft records and assess under observation</small></div>
+            <div style="background:#25825a"><b>Countersign</b><small>mentor and IQA verify decisions</small></div>
+            <div style="background:#b7791f"><b>Sign Off</b><small>competence confirmed and sampling reduced</small></div>
+          </div>
+        </div>
+
+        <div class="scenario">
+          <strong>Workplace scenario:</strong> A trainee assessor with extensive construction experience observes a learner installing a component. Their draft feedback says, “good work, competent.” The mentor helps them rewrite the feedback so it links to the specific criteria, explains the evidence observed, identifies one improvement target and records the questions asked to confirm underpinning knowledge.
+        </div>
+      </section>
+
+      <section id="managing-team">
+        <h2>How the Quality Assurance Manager Should Manage and Support the Team</h2>
+        <p>The Quality Assurance Manager should manage the quality team through clear expectations, proportionate monitoring, developmental support and decisive intervention. The aim is not to control every professional decision, but to create a system where good decisions are likely, weak decisions are detected early and improvement is visible.</p>
+
+        <h3>Whole-System Standardisation Model</h3>
+        <p>Standardisation should cover the whole learner journey, not only assessment decisions. The Quality Assurance Manager should standardise policies, templates, language, evidence expectations, RAG thresholds, sampling methods, meeting records, dashboard definitions and escalation routes. This creates one quality language across vocational, FE and HE departments.</p>
+        <div class="swimlane" aria-label="Whole system standardisation model">
+          <div class="lane-head">Stage</div><div class="lane-head">Design</div><div class="lane-head">Deliver</div><div class="lane-head">Assess</div><div class="lane-head">Assure</div><div class="lane-head">Improve</div>
+          <div class="stage">QA Manager</div><div>Sets policies, calendar, RAG rules and audit schedule.</div><div>Monitors dashboards and learner experience.</div><div>Checks assessment strategy and risk.</div><div>Reviews sampling, observations and audits.</div><div>Owns QIP and reports impact.</div>
+          <div class="stage">Lead IQA</div><div>Creates programme IQA strategy and evidence guide.</div><div>Supports assessors and reviews delivery risks.</div><div>Leads standardisation of criteria.</div><div>Controls sampling and action closure.</div><div>Reports trends and CPD needs.</div>
+          <div class="stage">IQA</div><div>Checks assessment plans and resources.</div><div>Observes assessor practice.</div><div>Samples learner evidence and feedback.</div><div>Records findings and actions.</div><div>Resamples to confirm impact.</div>
+          <div class="stage">Assessor</div><div>Plans assessment and support.</div><div>Teaches, trains, coaches and reviews.</div><div>Makes criterion-based decisions.</div><div>Responds to IQA actions.</div><div>Improves feedback and learner progress.</div>
+        </div>
+
+        <h3>Ofsted-Aligned Quality Tools</h3>
+        <p>Ofsted does not require providers to use one fixed internal template, but effective providers use tools that help them understand curriculum quality, learner progress, safeguarding, leadership, behaviour, personal development, employer engagement and outcomes. The manager should therefore use Ofsted-aligned tools as internal quality instruments, while remembering that inspection evidence should reflect real practice rather than a staged compliance folder.</p>
+        <table class="compact">
+          <thead><tr><th>Tool</th><th>What it checks</th><th>How to use it properly</th></tr></thead>
+          <tbody>
+            <tr><td>Curriculum deep dive</td><td>Intent, sequencing, teaching, assessment, learner work, staff understanding and learner progress.</td><td>Interview leaders, speak with learners and employers, review work, observe sessions and compare evidence against curriculum plans.</td></tr>
+            <tr><td>Quality of education evidence map</td><td>Whether curriculum plans translate into learning and achievement.</td><td>Map curriculum intent to schemes of work, assessment records, learner work, progress data and destinations.</td></tr>
+            <tr><td>Learner voice and employer voice</td><td>Whether learners and employers experience what leaders claim is happening.</td><td>Use structured questions, triangulate with records and avoid treating satisfaction alone as proof of quality.</td></tr>
+            <tr><td>Safeguarding and welfare audit</td><td>Culture of safety, staff training, referral routes, recording, online safety and Prevent awareness.</td><td>Test staff and learner understanding, review case recording and check that actions are timely.</td></tr>
+            <tr><td>Leadership and management dashboard</td><td>Whether leaders know strengths, weaknesses and impact of actions.</td><td>Use RAG ratings, trend data, risk notes and QIP impact evidence at governance meetings.</td></tr>
+            <tr><td>Observation and learning walk</td><td>Quality of teaching, training, assessment, feedback, inclusion and learner engagement.</td><td>Use as developmental evidence alongside learner work, progress reviews and IQA findings.</td></tr>
+          </tbody>
+        </table>
+
+        <div class="diagram">
+          <h3>Diagram 5: Ofsted-Style Evidence Triangulation</h3>
+          <svg viewBox="0 0 780 340" width="100%" height="auto" role="img">
+            <title>Ofsted-style evidence triangulation</title>
+            <circle cx="390" cy="170" r="78" fill="#173b63"/>
+            <text x="390" y="160" text-anchor="middle" fill="#fff" font-size="22" font-weight="700">Quality</text>
+            <text x="390" y="188" text-anchor="middle" fill="#fff" font-size="15">judgement</text>
+            <g fill="#f7faff" stroke="#b8c6d8" stroke-width="2">
+              <rect x="60" y="42" width="185" height="70" rx="10"/>
+              <rect x="298" y="28" width="185" height="70" rx="10"/>
+              <rect x="535" y="42" width="185" height="70" rx="10"/>
+              <rect x="60" y="226" width="185" height="70" rx="10"/>
+              <rect x="298" y="244" width="185" height="70" rx="10"/>
+              <rect x="535" y="226" width="185" height="70" rx="10"/>
+            </g>
+            <g fill="#173b63" font-size="15" font-weight="700">
+              <text x="152" y="82" text-anchor="middle">Learner work</text>
+              <text x="390" y="68" text-anchor="middle">Progress data</text>
+              <text x="628" y="82" text-anchor="middle">Observation</text>
+              <text x="152" y="266" text-anchor="middle">Learner voice</text>
+              <text x="390" y="284" text-anchor="middle">Staff discussion</text>
+              <text x="628" y="266" text-anchor="middle">Employer voice</text>
+            </g>
+            <g stroke="#5c7898" stroke-width="3" stroke-linecap="round">
+              <line x1="245" y1="92" x2="323" y2="128"/>
+              <line x1="390" y1="98" x2="390" y2="92"/>
+              <line x1="535" y1="92" x2="457" y2="128"/>
+              <line x1="245" y1="248" x2="323" y2="212"/>
+              <line x1="390" y1="244" x2="390" y2="248"/>
+              <line x1="535" y1="248" x2="457" y2="212"/>
+            </g>
+          </svg>
+        </div>
+
+        <h3>Departmental Quality Flow</h3>
+        <p>Each department should operate the same quality cycle but apply it to its own subject risks. Construction may focus on health and safety, practical observation and site evidence. Health and social care may focus on workplace authenticity, safeguarding and confidentiality. Business or digital programmes may focus on project authenticity, employer relevance and plagiarism. HE departments may focus on academic standards, moderation, external examiner reports and student outcomes.</p>
+        <div class="flow">
+          <div><b>Department SAR</b><small>strengths, risks, learner evidence</small></div>
+          <div style="background:#225c88"><b>Department QIP</b><small>actions, owners, milestones</small></div>
+          <div style="background:#087a7f"><b>Programme RAG</b><small>progress, sampling, staffing, compliance</small></div>
+          <div style="background:#25825a"><b>Deep Dive</b><small>curriculum, learner work, voice, outcomes</small></div>
+          <div style="background:#b7791f"><b>Impact Review</b><small>what changed, what remains, next action</small></div>
+        </div>
+
+        <h3>Performance Management</h3>
+        <p>Performance management should use a balanced scorecard rather than one narrow measure. For assessors, it may include learner progress, timely feedback, achievement, retention, learner voice, employer feedback, IQA action completion, observation outcomes, record accuracy and CPD. For IQAs, it should include sampling timeliness, quality of feedback, action follow-up, standardisation contribution and trend reporting. For Lead IQAs, it should include programme risk management, consistency across assessors, external quality outcomes and impact of improvement actions.</p>
+
+        <h3>Mentoring and Coaching</h3>
+        <p>Mentoring provides guidance from a more experienced practitioner; coaching helps staff think and improve their own practice. The manager should use both. A new assessor may need mentoring on qualification rules, while an experienced assessor with inconsistent feedback may benefit from coaching questions such as: “What evidence told you the learner had met this criterion?” or “How would another assessor understand your judgement from the record?”</p>
+
+        <h3>Standardisation</h3>
+        <p>Standardisation should be purposeful and evidence based. Meetings should use real or anonymised learner evidence, borderline cases, EQA feedback, assessment briefs, external examiner comments and common learner misconceptions. Each meeting should produce decisions, actions and examples that staff can apply. Attendance alone is not enough; the manager should check whether standardisation changes practice.</p>
+
+        <h3>Quality Improvement Planning</h3>
+        <p>A quality improvement plan should be concise, owned and measurable. Weak actions such as “improve assessment feedback” should be replaced with precise actions: “By 31 October, Lead IQA will deliver feedback CPD, update the feedback template, resample five assessments per assessor and report whether learner resubmission rates reduce.” The plan should distinguish between compliance actions, quality enhancement and strategic development.</p>
+
+        <h3>Risk Management</h3>
+        <p>Risk management should determine how much assurance is needed. New provision, new staff, poor prior EQA outcomes, high learner numbers, subcontracted delivery, low achievement, complaints, remote assessment and rapid growth should trigger enhanced monitoring. Stable, high-performing areas should still be sampled but may require less intensive control.</p>
+
+        <div class="diagram">
+          <h3>Diagram 4: Practical Quality Risk Matrix</h3>
+          <div class="risk-matrix">
+            <div></div><div><b>Low impact</b></div><div><b>Medium impact</b></div><div><b>High impact</b></div>
+            <div><b>High likelihood</b></div><div class="risk-med">Monitor weekly</div><div class="risk-high">Lead IQA action plan</div><div class="risk-high">Manager intervention</div>
+            <div><b>Medium likelihood</b></div><div class="risk-low">Routine controls</div><div class="risk-med">Targeted sampling</div><div class="risk-high">Enhanced audit</div>
+            <div><b>Low likelihood</b></div><div class="risk-low">Annual review</div><div class="risk-low">Routine sampling</div><div class="risk-med">Contingency plan</div>
+          </div>
+        </div>
+
+        <h3>Auditing</h3>
+        <p>Audits should test whether policy is working in practice. Useful audits include learner file audits, assessment decision audits, feedback quality audits, reasonable adjustment audits, employer engagement audits, safeguarding record audits, apprenticeship review audits, HE assessment board audits and data accuracy audits. Audit findings should be rated, assigned and followed up. Repeated findings indicate a system problem, not just an individual error.</p>
+
+        <h3>Observation of Practice</h3>
+        <p>Observation should include teaching, training, assessment, learner reviews, professional discussions and feedback sessions. The purpose is to understand quality at the point of delivery. Observers should focus on learner progress, inclusion, assessment validity, professional standards, safeguarding awareness, employer involvement and the quality of interaction. Judgement language should be developmental, with clear strengths, actions and impact review dates.</p>
+
+        <h3>CPD</h3>
+        <p>CPD should be planned from evidence. If IQA sampling shows weak questioning, CPD should address questioning. If learner voice shows feedback is unclear, CPD should address feedback. If HE external examiner reports identify inconsistency in marking, CPD should address moderation and assessment criteria. Staff should maintain CPD logs that include reflection and impact, not just attendance certificates.</p>
+
+        <h3>Monitoring Learner Progress</h3>
+        <p>Learner progress monitoring should combine data and professional judgement. Dashboards can show attendance, assessment completion, review timeliness, target progress, predicted achievement, off-the-job training, resubmissions and support needs. However, managers should ask why the data looks the way it does. A learner may be behind because of poor assessment planning, employer barriers, personal circumstances, weak teaching, system errors or unrealistic targets. The response must match the cause.</p>
+
+        <h3>Maintaining Compliance</h3>
+        <p>Compliance is maintained through routine habits: current policies, staff training, accurate records, secure systems, declared conflicts of interest, valid assessment, controlled certification claims, timely action closure, audit trails and honest reporting. The Quality Assurance Manager should build compliance into workflows rather than relying on emergency clean-up before external visits.</p>
+      </section>
+
+      <section id="tools">
+        <h2>Tools, Templates and Practical Frameworks</h2>
+
+        <h3>End-to-End Evidence Trail: From Learner Work to Quality Sign-Off</h3>
+        <p>The evidence trail is the backbone of vocational and professional quality assurance. A strong evidence trail allows anyone reviewing the qualification to move from a learner’s evidence item to the exact LO and AC, then to the assessor decision, IQA sample, Lead IQA oversight and QA Manager governance. This protects the learner, the assessor, the provider and the credibility of the qualification.</p>
+        <div class="diagram">
+          <h3>Diagram 7: Complete Evidence Trail</h3>
+          <svg viewBox="0 0 920 360" width="100%" height="auto" role="img">
+            <title>Complete evidence trail from assessment planning to quality governance</title>
+            <defs>
+              <linearGradient id="trailGrad" x1="0" x2="1">
+                <stop offset="0%" stop-color="#1d4ed8"/>
+                <stop offset="50%" stop-color="#38bdf8"/>
+                <stop offset="100%" stop-color="#0f766e"/>
+              </linearGradient>
+            </defs>
+            <rect x="25" y="42" width="870" height="250" rx="26" fill="#f8fbff" stroke="#bfdbfe" stroke-width="3"/>
+            <g fill="#fff" stroke="#93c5fd" stroke-width="2">
+              <rect x="55" y="110" width="130" height="90" rx="16"/>
+              <rect x="215" y="110" width="130" height="90" rx="16"/>
+              <rect x="375" y="110" width="130" height="90" rx="16"/>
+              <rect x="535" y="110" width="130" height="90" rx="16"/>
+              <rect x="695" y="110" width="150" height="90" rx="16"/>
+            </g>
+            <g fill="#111827" font-size="18" font-weight="800">
+              <text x="120" y="145" text-anchor="middle">Plan</text>
+              <text x="280" y="145" text-anchor="middle">Collect</text>
+              <text x="440" y="145" text-anchor="middle">Map</text>
+              <text x="600" y="145" text-anchor="middle">Sample</text>
+              <text x="770" y="145" text-anchor="middle">Govern</text>
+            </g>
+            <g fill="#334155" font-size="13">
+              <text x="120" y="170" text-anchor="middle">method from</text><text x="120" y="187" text-anchor="middle">LO and AC</text>
+              <text x="280" y="170" text-anchor="middle">evidence from</text><text x="280" y="187" text-anchor="middle">real practice</text>
+              <text x="440" y="170" text-anchor="middle">reference each</text><text x="440" y="187" text-anchor="middle">item to criteria</text>
+              <text x="600" y="170" text-anchor="middle">IQA confirms</text><text x="600" y="187" text-anchor="middle">assessment quality</text>
+              <text x="770" y="170" text-anchor="middle">Lead IQA and QA</text><text x="770" y="187" text-anchor="middle">Manager review risk</text>
+            </g>
+            <path d="M185 155 H215 M345 155 H375 M505 155 H535 M665 155 H695" stroke="url(#trailGrad)" stroke-width="8" stroke-linecap="round"/>
+            <g fill="#1d4ed8" font-size="14" font-weight="800">
+              <text x="120" y="248" text-anchor="middle">Assessment plan</text>
+              <text x="280" y="248" text-anchor="middle">Evidence record</text>
+              <text x="440" y="248" text-anchor="middle">Portfolio index</text>
+              <text x="600" y="248" text-anchor="middle">IQA report</text>
+              <text x="770" y="248" text-anchor="middle">Quality dashboard</text>
+            </g>
+          </svg>
+        </div>
+
+        <h3>Evidence Collection and Mapping Checklist</h3>
+        <table class="compact">
+          <thead><tr><th>Step</th><th>Assessor action</th><th>IQA check</th><th>Lead IQA / QA Manager oversight</th></tr></thead>
+          <tbody>
+            <tr><td>1. Plan evidence</td><td>Select suitable methods for each LO and AC.</td><td>Check assessment planning during interim sampling.</td><td>Ensure qualification evidence guide is current.</td></tr>
+            <tr><td>2. Collect evidence</td><td>Use observation, Q&A, professional discussion, portfolio, work product, witness testimony and other approved methods.</td><td>Check method suitability and evidence quality.</td><td>Monitor whether methods are varied and appropriate.</td></tr>
+            <tr><td>3. Reference evidence</td><td>Give each evidence item a code and map it to unit, LO and AC.</td><td>Check that references are accurate and easy to follow.</td><td>Audit portfolio indexes and sampling reports.</td></tr>
+            <tr><td>4. Judge evidence</td><td>Apply VARCS and record the decision clearly.</td><td>Verify judgement against criteria and assessor rationale.</td><td>Review trends in assessment decisions and appeals.</td></tr>
+            <tr><td>5. Feedback and action</td><td>Tell the learner what is met, what is not yet met and what to do next.</td><td>Sample feedback quality and action completion.</td><td>Use feedback trends for CPD and standardisation.</td></tr>
+            <tr><td>6. Sign-off and claim</td><td>Claim only when all required criteria are achieved and records are complete.</td><td>Confirm final sample and any actions are closed.</td><td>Check certification controls and external quality readiness.</td></tr>
+          </tbody>
+        </table>
+
+        <h3>Core Toolkit for a Standardised QA System</h3>
+        <p>A provider should maintain a controlled quality toolkit so every department uses the same language, thresholds and evidence expectations. Templates can be adapted for subject context, but the underlying method should remain consistent. This makes quality easier to manage, easier to audit and easier to explain to inspectors, awarding organisations, external examiners and governors.</p>
+        <table class="compact">
+          <thead><tr><th>Tool or framework</th><th>Used by</th><th>Purpose</th><th>Standardisation rule</th></tr></thead>
+          <tbody>
+            <tr><td>RAG dashboard</td><td>QA Manager, Lead IQA, curriculum leads</td><td>Shows programme risk for progress, achievement, sampling, staffing, compliance and learner experience.</td><td>Use agreed thresholds and do not change colours without evidence.</td></tr>
+            <tr><td>CAMERA review</td><td>Lead IQA, IQA, QA Manager</td><td>Checks currency, authenticity, method, equality, reliability and auditability.</td><td>Use for every thematic sample, new assessor review and high-risk programme review.</td></tr>
+            <tr><td>VARCS grid</td><td>IQA, assessor</td><td>Checks assessment evidence quality.</td><td>Each sampled decision must state whether evidence is valid, authentic, reliable, current and sufficient.</td></tr>
+            <tr><td>Deep-dive template</td><td>QA Manager, curriculum leaders</td><td>Tests curriculum intent, implementation and impact using triangulated evidence.</td><td>Always include leader discussion, learner work, learner voice, staff discussion and performance data.</td></tr>
+            <tr><td>Standardisation record</td><td>Lead IQA, IQA, assessors</td><td>Records agreed interpretation of criteria and evidence expectations.</td><td>Every meeting must produce decisions, examples, actions and a date to review impact.</td></tr>
+            <tr><td>Observation of practice form</td><td>QA Manager, Lead IQA, IQA</td><td>Reviews teaching, training, assessment, feedback and professional discussion.</td><td>Link findings to learner progress and staff development, not only session performance.</td></tr>
+            <tr><td>Quality improvement plan</td><td>Senior leaders, QA Manager, departments</td><td>Tracks improvement priorities, owners, milestones and impact.</td><td>Actions must be specific, measurable, dated and reviewed for impact.</td></tr>
+            <tr><td>External quality action tracker</td><td>QA Manager, Lead IQA</td><td>Tracks EQA, awarding body, external examiner, Ofsted or partner actions.</td><td>No action is closed until evidence and impact have been checked.</td></tr>
+          </tbody>
+        </table>
+
+        <h3>RAG Threshold Example</h3>
+        <table class="compact">
+          <thead><tr><th>Area</th><th><span class="rag rag-green">Green</span></th><th><span class="rag rag-amber">Amber</span></th><th><span class="rag rag-red">Red</span></th></tr></thead>
+          <tbody>
+            <tr><td>Learner progress</td><td>Most learners on or ahead of target; actions current.</td><td>Some slippage; recovery plans in place.</td><td>Significant slippage; no credible recovery plan or repeated missed reviews.</td></tr>
+            <tr><td>IQA sampling</td><td>Sampling current and actions closed.</td><td>Minor delays or repeated low-level actions.</td><td>Sampling overdue, invalid decisions found or unresolved high-risk actions.</td></tr>
+            <tr><td>Assessment feedback</td><td>Clear, criterion-linked and developmental.</td><td>Inconsistent detail or weak target setting.</td><td>Feedback unclear, late, not linked to criteria or causing learner disadvantage.</td></tr>
+            <tr><td>Compliance</td><td>Records complete, secure and audit ready.</td><td>Minor gaps with owners and dates.</td><td>Missing evidence, certification risk, funding risk, safeguarding concern or data breach risk.</td></tr>
+          </tbody>
+        </table>
+
+        <h3>Standardisation Techniques</h3>
+        <p>Standardisation should be active, evidence-led and recorded. The following techniques help prevent standards drift:</p>
+        <ul>
+          <li><strong>Blind marking or blind assessment:</strong> two assessors judge the same evidence independently, then compare decisions.</li>
+          <li><strong>Borderline case review:</strong> teams discuss evidence close to the pass or competence threshold to agree consistent interpretation.</li>
+          <li><strong>Horizontal sampling:</strong> one unit, module or criterion is checked across several learners and assessors.</li>
+          <li><strong>Vertical sampling:</strong> one learner journey is checked from initial assessment through delivery, assessment, IQA and completion.</li>
+          <li><strong>Thematic standardisation:</strong> focus on one issue such as feedback quality, professional discussion, witness testimony, academic integrity or reasonable adjustment.</li>
+          <li><strong>Cross-department moderation:</strong> teams from different curriculum areas compare how they apply common policies such as feedback, appeals or learner support.</li>
+          <li><strong>External benchmark review:</strong> use awarding body guidance, external examiner reports, EQA feedback, sector standards and inspection findings to test internal expectations.</li>
+        </ul>
+
+        <div class="diagram">
+          <h3>Diagram 6: Standardisation Cycle</h3>
+          <div class="cycle">
+            <div><b>Prepare</b><br>Select criteria, evidence, risks and staff. Share guidance before the meeting.</div>
+            <div><b>Compare</b><br>Review real evidence, discuss judgements and identify differences.</div>
+            <div><b>Agree</b><br>Record the standard, examples, non-examples and assessor actions.</div>
+            <div><b>Verify</b><br>Sample later decisions to confirm the agreed standard is being applied.</div>
+          </div>
+        </div>
+
+        <h3>Role Collaboration Map</h3>
+        <table class="compact">
+          <thead>
+            <tr><th>Activity</th><th>QA Manager</th><th>Lead IQA</th><th>IQA</th><th>Assessor</th><th>Assessor in Training</th></tr>
+          </thead>
+          <tbody>
+            <tr><td>QA strategy</td><td>Accountable</td><td>Consulted</td><td>Consulted</td><td>Informed</td><td>Informed</td></tr>
+            <tr><td>Sampling plan</td><td>Approves</td><td>Accountable</td><td>Delivers</td><td>Responds</td><td>Observed</td></tr>
+            <tr><td>Assessment decisions</td><td>Monitors</td><td>Oversees</td><td>Verifies</td><td>Accountable</td><td>Supported</td></tr>
+            <tr><td>Standardisation</td><td>Chairs strategic themes</td><td>Leads</td><td>Contributes</td><td>Participates</td><td>Participates</td></tr>
+            <tr><td>External quality visit</td><td>Accountable</td><td>Prepares programme evidence</td><td>Provides samples</td><td>Provides records</td><td>May provide development evidence</td></tr>
+            <tr><td>Quality improvement</td><td>Accountable</td><td>Owns programme actions</td><td>Identifies actions</td><td>Implements actions</td><td>Reflects and develops</td></tr>
+          </tbody>
+        </table>
+
+        <h3>Annual Quality Calendar</h3>
+        <table class="compact">
+          <thead><tr><th>Period</th><th>Key quality activity</th><th>Evidence produced</th></tr></thead>
+          <tbody>
+            <tr><td>Start of year</td><td>Policy refresh, staff induction, qualification updates, risk register, sampling plans, CPD plan.</td><td>QA calendar, staff matrix, induction records, risk register.</td></tr>
+            <tr><td>Autumn term</td><td>Early sampling, learner starting point audits, first standardisation, initial learner voice.</td><td>IQA reports, learner voice analysis, action logs.</td></tr>
+            <tr><td>Mid-year</td><td>Progress review, deep dives, observation cycle, employer feedback, external action review.</td><td>Deep dive reports, observation records, updated QIP.</td></tr>
+            <tr><td>Spring to summer</td><td>Certification checks, annual monitoring, EQA preparation, assessment board preparation in HE.</td><td>Claim audits, board papers, EQA evidence, external examiner responses.</td></tr>
+            <tr><td>Year end</td><td>Self-assessment, impact review, achievement analysis, next-year planning.</td><td>SAR, annual quality report, revised QIP, CPD priorities.</td></tr>
+          </tbody>
+        </table>
+
+        <h3>Minimum Evidence Set for a Strong QA System</h3>
+        <div class="grid-2">
+          <div class="card">
+            <h4>People and competence</h4>
+            <p>Staff CVs, occupational competence records, assessor and IQA qualifications, CPD logs, mentoring records, observation reports, supervision notes and conflict of interest declarations.</p>
+          </div>
+          <div class="card">
+            <h4>Assessment and IQA</h4>
+            <p>Assessment plans, learner evidence, assessor feedback, IQA sampling records, standardisation minutes, action logs, appeals records and certification claim checks.</p>
+          </div>
+          <div class="card">
+            <h4>Learner experience</h4>
+            <p>Initial assessment, support plans, progress reviews, attendance, learner voice, complaints, safeguarding records, reasonable adjustments and destination evidence.</p>
+          </div>
+          <div class="card">
+            <h4>Governance and improvement</h4>
+            <p>Quality strategy, QA calendar, risk register, audit reports, self-assessment, quality improvement plan, external reports, senior leader minutes and impact reviews.</p>
+          </div>
+        </div>
+
+        <h3>Framework Selection Guide by Role</h3>
+        <table>
+          <thead><tr><th>Role</th><th>Core frameworks to use</th><th>How to apply them</th></tr></thead>
+          <tbody>
+            <tr><td>Quality Assurance Manager</td><td>Ofsted toolkit, Ofqual Conditions, awarding body requirements, apprenticeship funding rules, UK Quality Code, OfS conditions, Equality Act, safeguarding, GDPR, PDCA and risk management.</td><td>Build policy, calendar, audit, reporting and improvement systems around these requirements; verify that each programme has evidence of compliance and impact.</td></tr>
+            <tr><td>Lead IQA</td><td>Awarding body IQA guidance, qualification specifications, assessment strategy, risk-based sampling, standardisation models, EQA feedback.</td><td>Create programme sampling plans, lead standardisation, monitor assessor consistency and escalate systemic risk.</td></tr>
+            <tr><td>IQA</td><td>VARCS principles, IQA sampling strategy, qualification criteria, reasonable adjustment rules, malpractice policy, assessor standards.</td><td>Sample assessment decisions, verify evidence, coach assessors and record clear actions.</td></tr>
+            <tr><td>Assessor</td><td>Qualification specification, assessment plan, occupational standards, assessment principles, safeguarding, equality, academic integrity and feedback models.</td><td>Plan fair assessment, judge evidence accurately, support learner progress and maintain records.</td></tr>
+            <tr><td>Assessor in Training</td><td>Assessor qualification standards, provider induction, mentor framework, qualification specification, professional standards.</td><td>Develop assessment competence through shadowing, supported practice, reflection, CPD and countersigned decisions.</td></tr>
+          </tbody>
+        </table>
+      </section>
+
+      <section>
+        <h2>Integrated Workplace Case Study</h2>
+        <p>A college delivers a Level 3 vocational programme, an apprenticeship standard and a foundation degree validated by a university. Achievement data is broadly positive, but learner voice suggests feedback varies by assessor and employers report that some apprentices are unclear about gateway requirements.</p>
+        <p>The Quality Assurance Manager reviews the data and identifies assessment consistency as a cross-provision risk. The Lead IQA compares assessor feedback across three programmes and finds that some comments are encouraging but not linked to criteria. IQAs complete a thematic sample of feedback, professional discussions and employer review records. Assessors attend a standardisation session using anonymised examples. Assessor trainees observe the session and complete reflective logs.</p>
+        <p>The improvement plan includes a revised feedback template, a gateway readiness checklist, CPD on criterion-referenced feedback and a follow-up sample after six weeks. The HE programme team also discusses the issue at a module meeting and aligns its marking feedback with university guidance. The next learner voice survey shows improved understanding of targets, and resubmission rates reduce. The provider can now evidence not only that it found a problem, but that it acted, checked impact and embedded better practice.</p>
+      </section>
+
+      <section id="references">
+        <h2>References and Source Links</h2>
+        <div class="appendix">
+          <ul>
+            <li>Ofsted. <a href="https://www.gov.uk/government/publications/further-education-and-skills-inspection-toolkit-operating-guide-and-information">Further education and skills inspection: toolkit, operating guides and information</a>. Published 9 September 2025; last updated 12 June 2026.</li>
+            <li>Ofsted. <a href="https://www.gov.uk/government/publications/further-education-and-skills-inspection-handbook-eif">Further education and skills inspection handbook</a>. Withdrawn 10 November 2025 and replaced by the current toolkit page.</li>
+            <li>QAA. <a href="https://www.qaa.ac.uk/the-quality-code/2024">UK Quality Code for Higher Education 2024</a>. Publication date 27 June 2024.</li>
+            <li>Ofqual. <a href="https://www.gov.uk/guidance/ofqual-handbook">Ofqual Handbook: General Conditions of Recognition</a>. Current handbook page for regulated qualifications and awarding organisations.</li>
+            <li>Office for Students. <a href="https://www.officeforstudents.org.uk/publications/regulatory-framework-for-higher-education-in-england/">Securing student success: Regulatory framework for higher education in England</a>.</li>
+            <li>UK Government. <a href="https://www.legislation.gov.uk/ukpga/2010/15/contents">Equality Act 2010</a>.</li>
+            <li>UK Government. <a href="https://www.legislation.gov.uk/ukpga/2018/12/contents">Data Protection Act 2018</a>.</li>
+            <li>Information Commissioner’s Office. <a href="https://ico.org.uk/for-organisations/uk-gdpr-guidance-and-resources/">UK GDPR guidance and resources</a>.</li>
+            <li>Department for Education. <a href="https://www.gov.uk/government/publications/keeping-children-safe-in-education--2">Keeping children safe in education</a>.</li>
+            <li>Education and Training Foundation. <a href="https://www.et-foundation.co.uk/professional-standards/">Professional Standards for Teachers and Trainers</a>.</li>
+          </ul>
+        </div>
+      </section>
+    </main>
+
+    <footer>
+      <p><strong>Document note:</strong> This guide is written as a professional reference paper. Providers should always check the latest live guidance from their regulator, awarding organisation, university partner, funder and local safeguarding board before finalising policies or making high-stakes decisions.</p>
+    </footer>
+  </div>
+</body>
+</html>
